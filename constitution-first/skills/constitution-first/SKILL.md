@@ -31,7 +31,7 @@ Pitch, who-for, non-negotiables, out-of-scope, philosophical done, broken patter
 
 ### 4. Write the constitution (§3)
 
-Theory, not feature list. End with Creed + decision checklist.
+Theory, not feature list. End with Creed + decision checklist. Optional: start from [north-star.template.md](./north-star.template.md).
 
 ### 5. Wire companions if needed (§4)
 

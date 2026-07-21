@@ -2,6 +2,10 @@
 
 **👉 Read [`KICKOFF.md`](./KICKOFF.md) first** when continuing extraction work.
 
+**North Star:** [`docs/north-star.md`](./docs/north-star.md) — constitution for this monorepo. When it conflicts with KICKOFF/tickets/vibes, the North Star wins. Before a new pack or pack shape change, run its decision checklist.
+
+**Agent trust:** [`docs/agent-trust.md`](./docs/agent-trust.md) — coding-agent / PR rules here; product accept-gates live in `accept-gated-ai`.
+
 ## Linear tracking (non-negotiable)
 
 Team **Off-brand** · project **[extracted-skills](https://linear.app/off-brand-studio/project/extracted-skills-4d7c79e03387)**.

@@ -1,0 +1,1 @@
+../../shared/north-star.template.md

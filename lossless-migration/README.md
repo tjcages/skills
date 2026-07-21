@@ -8,7 +8,7 @@ Extracted from Socials/Obi’s inventory-audit + migration-roadmap doctrines. Co
 
 **v0.1.0 — drafting + dogfood.** Not published to skills.sh yet.
 
-Dogfood: Obi audit **16/16** (source) + visual-cursor module inventory slice **12/16** (non-Obi). Full Product roadmap still open for v1.
+Dogfood: Obi audit **16/16** · visual-cursor slice **12/16** · skills publish inventory **14/16**. Template: `shared/inventory-audit.template.md`.
 
 ## Skills
 

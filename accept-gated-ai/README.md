@@ -13,7 +13,7 @@ Dogfood:
 1. Tasks agent rules → **9/16** (gaps on create lanes + exceptions)
 2. Obi Phase 3 accept-gated path (inventory/roadmap) → **14/16**
 3. visual-cursor live Tool → **10/16** (apply+undo; zeros on pre-diff + stale)
-
+4. skills monorepo → `docs/agent-trust.md` installed (coding-agent boundary)
 ## Skills
 
 | Skill | Job |

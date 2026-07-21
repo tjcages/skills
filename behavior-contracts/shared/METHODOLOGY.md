@@ -159,11 +159,12 @@ Score 0 / 1 / 2. Max 16. **≥12 and no load-bearing 0 on #1–#5** = contract-r
 
 ## 10. Open gaps
 
-- [ ] Template `docs/behavior-contracts.template.md`
+- [x] Template `shared/behavior-contracts.template.md` — 2026-07-21
 - [ ] Machine-checkable E2E mapping (verb → test id)
 - [ ] Android / second mobile toolkit examples
 - [ ] Live Socials kit file paths when tree mounted
 - [ ] Relationship to design-system tokens packs — compose, don’t replace
+- [x] In-repo contracts draft (visual-cursor dogfood) — still need product-tree install + ≥2 kits for v1
 
 ---
 

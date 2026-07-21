@@ -19,15 +19,19 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 **Merged / in-tree**
 1. 🚀 `linear-methodology/` — shipped
 2. ✅ `agent-worktrees/` — **v1.0.0** (skills 12/12; keyframe applied locally, push 403)
-3. 🧪 `constitution-first/` — Tool solid; Product discovery on `obi` (3/14)
-4. 🔁 `accept-gated-ai/` — + visual-cursor live **10/16**
-5. 🔁 `lossless-migration/` — + visual-cursor inventory slice **12/16**
-6. 🔁 `behavior-contracts/` — + visual-cursor contracts draft **10/16**
+3. 🔁 `constitution-first/` — keyframe + skills north-star installs; Product (`obi`) discovery only
+4. 🔁 `accept-gated-ai/` — + visual-cursor + skills `docs/agent-trust.md`
+5. 🔁 `lossless-migration/` — + visual-cursor + skills publish inventory
+6. 🔁 `behavior-contracts/` — + visual-cursor draft + template
+
+**Also installed in this monorepo**
+- `docs/north-star.md` · `docs/agent-trust.md` · `docs/inventory-audit.md`
+- Pack templates: north-star · inventory-audit · behavior-contracts
 
 **Next (do this now)**
 1. Owner: `bash agent-worktrees/dogfood/PUSH-keyframe.sh /path/to/keyframe`
-2. Owner answers for constitution on `obi` (6 anchoring Qs) → write full form
-3. Product accept-gate outside Obi/Tasks; install behavior contracts into a real product tree
+2. Owner answers for constitution on `obi` (6 anchoring Qs) → Product write
+3. Product accept-gate outside Obi/Tasks; install behavior contracts into a multi-kit product tree
 4. Hold 🚀 skills.sh until more packs hit ✅ v1
 
 **Later**

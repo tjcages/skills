@@ -1,0 +1,1 @@
+../../shared/inventory-audit.template.md

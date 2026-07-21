@@ -210,13 +210,13 @@ Score 0 / 1 / 2. Max 16. **≥12 and no load-bearing 0 on #1–#5** = ready to e
 ## 11. Open gaps
 
 - [ ] Machine-checkable “zero callers” script vs honor-system grep
-- [ ] Template file `docs/inventory-audit.template.md` (legend + empty tables)
+- [x] Template file `shared/inventory-audit.template.md` (legend + empty tables) — 2026-07-21
 - [ ] How aggressive to force reframe when leadership wants a green-field rewrite
 - [ ] Data backfill / dual-read windows — mention vs full online-migration guide
 - [ ] Live Socials tree re-verify when mounted
 - [x] Non-Obi authored inventory slice — visual-cursor agent-extract **12/16** (2026-07-21)
-- [ ] Full Product roadmap + audit outside Obi family (v1 exit still wants Product depth)
----
+- [x] Skills monorepo publish inventory — **14/16** + `docs/inventory-audit.md` (2026-07-21)
+- [ ] Full Product roadmap + audit outside Obi family (v1 exit still wants Product depth)---
 
 ## 12. Relationship to other skills
 

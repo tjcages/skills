@@ -6,7 +6,7 @@ Extracted from Socials/Obi's manifesto governance (constitution → SCOPE → ro
 
 ## Status
 
-**v0.1.0 — drafting + dogfood.** Tool solid (keyframe). Product discovery logged (`obi` Gmail Chat, 3/14 — waiting owner answers). Not published.
+**v0.1.0 — drafting + dogfood.** Tools solid (keyframe 12/14, skills monorepo 13/14). Product discovery (`obi` 3/14) waiting owner answers. Template: `shared/north-star.template.md`.
 
 ## Skills
 
@@ -16,9 +16,9 @@ Extracted from Socials/Obi's manifesto governance (constitution → SCOPE → ro
 
 ## Dogfood targets
 
-1. `keyframe` — Tool write → 12/14 (solid)
-2. `obi` (Gmail Chat) — Product discovery → 3/14; need owner anchoring answers for write
-
+1. `keyframe` — Tool write → 12/14
+2. `skills` monorepo — Tool install → 13/14
+3. `obi` (Gmail Chat) — Product discovery → 3/14; need owner anchoring answers
 ## Install (local, while drafting)
 
 ```bash

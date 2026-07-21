@@ -178,11 +178,12 @@ Score 0 / 1 / 2. Max 14. **≥10 and no load-bearing 0 on #1–#4** = constituti
 
 ## 11. Open gaps
 
-- [ ] Template file (`docs/manifesto.template.md`) vs questions-only flow
+- [x] Template file (`shared/north-star.template.md`) — 2026-07-21
 - [x] How aggressive when README is "fine but thin" — **flag it**: Linear-ready ≠ constitution-ready; offer lightweight Tool page, don't silently pass (keyframe dogfood 2026-07-21)
 - [ ] Relationship to `to-prd` / `grill-with-docs` — compose, don't compete
-- [ ] Accept-gated AI chapter: inline summary vs hard dependency on sibling skill
-
+- [x] Accept-gated AI chapter: point at sibling + `docs/agent-trust.md` (skills monorepo install)
+- [x] Second Tool install dogfood — skills monorepo north-star **13/14** (2026-07-21)
+- [ ] Product write dogfood (`obi` or other) with owner answers (v1 Product side)
 ---
 
 ## 12. Relationship to other skills

@@ -72,3 +72,28 @@ Owner answered all 6 anchoring questions. Drafted lightweight Tool constitution:
 **Next action (needs owner answers — do not invent):** ask the 6 anchoring questions (§2), then draft full constitution + wire conflict rule into agent instructions.
 
 **Friction:** Product dogfood without owner present stops at discovery + rubric. Logging the stop is the dogfood — inventing a manifesto fails the skill.
+
+## 2026-07-21 — skills monorepo (Tool / methodology library) — install dogfood
+
+**Discovery:** README + KICKOFF already stated pitch, non-negotiables, out-of-scope, lifecycle. CLAUDE/AGENTS had Linear + worktrees only — no conflict rule or checklist.
+
+**Size call:** Tool / library monorepo → lightweight `docs/north-star.md` (not a 12-part manifesto).
+
+**Write (from in-repo doctrine, not invented product answers):**
+- `docs/north-star.md` authored
+- Wired into `CLAUDE.md` + `AGENTS.md` (read-first + conflict rule + checklist pointer)
+- Template added: `shared/north-star.template.md`
+
+**Rubric after write: 13/14**
+
+| # | Score | Note |
+|---|---|---|
+| 1 North Star findable | 2 | Linked from agent instructions |
+| 2 Pitch + who-for + non-negotiables | 2 | |
+| 3 Conflict rule | 2 | Written |
+| 4 Decision checklist | 2 | Six questions installed |
+| 5 Size-calibrated | 2 | Tool page |
+| 6 Companions | 2 | inventory-audit + agent-trust added same day |
+| 7 Drift cadence | 1 | Stated; not yet run as ritual |
+
+**Pass.** This is a second Tool-shaped install (keyframe was first). Product write on `obi` still blocked on owner answers for v1’s Product requirement in §10.

@@ -105,3 +105,7 @@ Pulled into §0–§2 / §7 without copying product vocabulary as universal law:
 1. Name the pattern: **apply + undo** is §4.1-adjacent for *devtool* agents; still fails #3/#4 unless a pre-land diff accept exists.
 2. Auto-revert on syntax is a safety net, not an accept gate — user never chose “accept.”
 3. Scoring a Tool coding agent against Product proposal rubric is valid for v1 “independent target” — don’t inflate to pass by redefining #2–#4.
+
+## 2026-07-21 — skills monorepo agent-trust install
+
+Installed `docs/agent-trust.md`: declares product accept-gate **N/A**, coding-agent PR/diff as the gate, points at `agent-trust.template.md` for real products. Complements constitution install same day.

@@ -74,3 +74,11 @@ Tasks extracted from Obi without a fresh inventory-audit doc in Linear. **Score 
 **Phases (sketch):** 0 keep monolith green · 1 extract agent package behind same `cursorAgent()` API · 2 point overlay at package · 3 RETIRE in-tree duplicate only at zero callers.
 
 **Friction:** Tool libraries still benefit from destination tags before “extract middleware” PRs. Rubric #1/#8 stay soft without constitution — don’t invent one mid-audit.
+
+## 2026-07-21 — skills monorepo publish inventory — 🔁
+
+**Path:** `docs/inventory-audit.md` in this repo. Template: `shared/inventory-audit.template.md`.
+
+**Rubric: 14/16** (see audit file). Constitution now exists (`docs/north-star.md`) so #1 scores 2.
+
+**Friction:** Publishing methodology packs is mostly reframe — the danger is premature 🚀 and absolute symlink RETIRE leftovers.

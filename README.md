@@ -2,6 +2,8 @@
 
 Monorepo of **methodology-first Agent Skills** — extracted from real builds (especially Socials/Obi), dogfooded, then packaged.
 
+**North Star:** [`docs/north-star.md`](./docs/north-star.md) · **Agent trust:** [`docs/agent-trust.md`](./docs/agent-trust.md) · **Publish inventory:** [`docs/inventory-audit.md`](./docs/inventory-audit.md)
+
 Each folder is one **pack** (router skill + methodology + shared docs), same shape as `linear-methodology`.
 
 ## Lifecycle (read this)
@@ -24,18 +26,18 @@ Each folder is one **pack** (router skill + methodology + shared docs), same sha
 | Pack | Phase | Version | Detail |
 |------|-------|---------|--------|
 | [`linear-methodology/`](./linear-methodology) | 🚀 Published | 1.x | Only pack at ship quality |
-| [`agent-worktrees/`](./agent-worktrees) | ✅ v1 | 1.0.0 | Skills install 12/12. Keyframe applied locally; **push 403** — run `dogfood/PUSH-keyframe.sh` |
-| [`constitution-first/`](./constitution-first) | 🧪 Solid Tool · 🔁 Product discovery | v0.1 | keyframe 12/14; `obi` Product 3/14 (needs owner answers) |
-| [`accept-gated-ai/`](./accept-gated-ai) | 🔁 Tool solid · Product thin | v0.2 | Tasks 9/16 · Obi docs 14/16 · visual-cursor 10/16 |
-| [`lossless-migration/`](./lossless-migration) | 🔁 Thin→Solid mix | v0.1 | Obi 16/16 · visual-cursor slice 12/16 |
-| [`behavior-contracts/`](./behavior-contracts) | 🔁 Thin→Solid mix | v0.1 | Issues 8/16 · visual-cursor contracts draft 10/16 |
+| [`agent-worktrees/`](./agent-worktrees) | ✅ v1 | 1.0.0 | Skills 12/12; keyframe apply local, push 🧱 |
+| [`constitution-first/`](./constitution-first) | 🔁 Tools solid · Product 🧱 | v0.1 | keyframe 12/14 · skills NS 13/14 · obi 3/14 |
+| [`accept-gated-ai/`](./accept-gated-ai) | 🔁 | v0.2 | Tasks 9 · Obi 14 · visual-cursor 10 · skills agent-trust installed |
+| [`lossless-migration/`](./lossless-migration) | 🔁 | v0.1 | Obi 16 · visual-cursor 12 · skills publish audit 14 |
+| [`behavior-contracts/`](./behavior-contracts) | 🔁 | v0.1 | Issues 8 · visual-cursor draft 10 · template shipped |
 
 ## Pack shape (every folder)
 
 ```
 <pack>/
   README.md
-  shared/           # METHODOLOGY.md, RESPONSE.md, EXAMPLES.md, …
+  shared/           # METHODOLOGY.md, RESPONSE.md, EXAMPLES.md, templates…
   skills/<name>/    # SKILL.md (+ symlinks to shared)
   scripts/          # optional
 ```

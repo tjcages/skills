@@ -78,3 +78,7 @@ Safer reference — parity work that *did* follow a shared shape.
 **Load-bearing for multi-platform v1:** still need contracts **installed in a product repo** + ≥2 kits. This pass proves the pack can author installable contracts from a live Tool tree.
 
 **Friction:** Don’t force multi-platform ship rule on single-kit Tools — §1 skip still wins; contracts are optional prep.
+
+## 2026-07-21 — template install
+
+Added `shared/behavior-contracts.template.md` (+ skill symlink). Closes open gap for copy-paste install into product `docs/behavior-contracts.md`.
