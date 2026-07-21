@@ -26,7 +26,7 @@ Each folder is one **pack** (router skill + methodology + shared docs), same sha
 | [`constitution-first/`](./constitution-first) | 🧪 | v0.1 | 2nd Product-shaped dogfood (keyframe was Tool) |
 | [`accept-gated-ai/`](./accept-gated-ai) | 🧪 | v0.2 | Live Socials UI audit; Tasks still 9/16 |
 | [`lossless-migration/`](./lossless-migration) | 🧪 | v0.1 | Fresh audit on a *non-Obi* repo |
-| [`behavior-contracts/`](./behavior-contracts) | 📝→✍️ | stub→drafting | Everything |
+| [`behavior-contracts/`](./behavior-contracts) | 🧪 | v0.1 | Live kit path audit; install contracts doc in a product |
 
 ## Pack shape (every folder)
 
