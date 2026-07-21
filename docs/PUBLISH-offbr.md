@@ -6,24 +6,19 @@
 
 Cloud bot **cannot** create GitHub repos or write private `rust/off-brand` D1. Run locally.
 
-## 1. Push standalone skill repos
+## Progress
 
-```bash
-cd /Users/ty/Workspace/skills
-git fetch origin && git checkout cursor/keyframe-apply-continue-2b41   # or main after PR #6 merges
-git pull
+| Step | agent-worktrees | constitution-first |
+|------|-----------------|-------------------|
+| GitHub `*-skill` repo | ✅ | ✅ |
+| `npx skills add -g` | ✅ (Eve/PromptScript skip expected) | ✅ |
+| offbr.co D1 + page | ❌ 404 | ❌ 404 |
 
-bash scripts/publish-skill-repo.sh agent-worktrees
-bash scripts/publish-skill-repo.sh constitution-first
-```
+**Do now:** add D1 rows in **rust/off-brand** (mirror `linear-methodology`). Then verify:
 
-Smoke install:
-
-```bash
-npx skills add tjcages/agent-worktrees-skill -g -a '*' -y
-npx skills add tjcages/constitution-first-skill -g -a '*' -y
-npx skills list -g | grep -E 'agent-worktrees|constitution-first'
-```
+- https://offbr.co/skills/agent-worktrees  
+- https://offbr.co/skills/constitution-first  
+- https://offbr.co/skills lists both
 
 ## 2. Add rows on offbr.co (rust/off-brand D1)
 
