@@ -8,33 +8,27 @@ This monorepo: **`skills`** (`/Users/ty/Workspace/skills` locally).
 
 Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-only reference — manifesto, CLAUDE.md, inventory-audit, etc.).
 
+## Lifecycle reminder
+
+📝 Stub → ✍️ Draft → 🧪 Dogfood → 🔁 2nd dogfood (other repo) → ✅ v1 → 🚀 Publish
+
+**v0.x = drafted + first dogfood. v1 = two dogfoods on independent targets.** Do not call packs “complete” at v0.x.
+
 ## State (2026-07-21)
 
-**Done**
-1. `linear-methodology/` — already shipped pack, moved into this monorepo
-2. `agent-worktrees/` — v0.1 methodology + `scripts/worktree.sh`; dogfooded on `visual-cursor` + `socials`
-3. `constitution-first/` — v0.1 methodology; dogfooded by writing `keyframe/docs/north-star.md` (rubric 12/14)
-<<<<<<< HEAD
-4. `accept-gated-ai/` — v0.1 methodology + SKILL + RESPONSE + EXAMPLES; dogfooded against Tasks agent rules (OFF-183/174/187/189) + Linear-mirrored manifesto Parts VI/XI/XII (OFF-266)
+**Merged / in-tree**
+1. 🚀 `linear-methodology/` — shipped
+2. 🧪 `agent-worktrees/` — v0.1 (OFF-256 still In Progress)
+3. 🧪 `constitution-first/` — v0.1 (keyframe Tool dogfood)
+4. 🧪 `accept-gated-ai/` — v0.2 (Tasks 9/16 + Obi docs 14/16)
+5. 🧪 `lossless-migration/` — v0.1 (Obi audit re-score 16/16; source dogfood)
 
 **Next (do this now)**
-1. **Stop here for pack 3** — wait before `lossless-migration` (owner gate after rubric + open gaps report)
-2. Optional polish: live Socials EditProposal UI audit when `socials` checkout is available
+1. ✍️ **Pack 5: `behavior-contracts`** ← manifesto Part IX + macos / web↔iOS parity
+2. After draft+dogfood: **slow down** — second dogfoods + live Socials audits before any v1 claims
 
-**Then**
-3. `lossless-migration` ← `socials/docs/inventory-audit.md` + migration-roadmap doctrines
-4. `behavior-contracts` ← manifesto Part IX + macos-convergence parity matrix
-=======
-4. `accept-gated-ai/` — v0.2 on branch `cursor/accept-gated-ai-v01-2b41` (OFF-266/268)
-5. `lossless-migration/` — v0.1 methodology; dogfooded by re-scoring Obi inventory audit (16/16) — OFF-269
-
-**Next (do this now)**
-1. Optional: live Socials checkout re-verify for packs 3–4
-2. **Pack 5: `behavior-contracts`** ← manifesto Part IX + macos-convergence parity matrix
-
-**Then**
-3. Publish polish / skills.sh when packs stabilize
->>>>>>> 25559db (feat: draft lossless-migration v0.1 methodology + dogfood)
+**Later**
+3. Publish polish / skills.sh only when packs hit ✅ v1
 
 ## How these skills work (do not confuse layers)
 
@@ -59,35 +53,37 @@ A pack teaches *how*. A north-star doc is *one result* of running that pack on a
 
 - Creed / accept-gate: `socials/docs/manifesto.md` Parts VI, XI, XII
 - Inventory pattern: `socials/docs/inventory-audit.md`
+- Behavior contracts: manifesto Part IX + `docs/macos-convergence-plan.md` / web↔iOS kit drift
 - Worktrees origin: `socials/CLAUDE.md` “Parallel agents” + `socials/scripts/worktree.sh`
 - Skill-building style reference: `skills/linear-methodology/shared/METHODOLOGY.md`
 
-## Linear issues already open
+## Linear issues
 
-- [OFF-256](https://linear.app/off-brand-studio/issue/OFF-256/draft-agent-worktrees-v01) — agent-worktrees (still open; polish/publish later)
+- [OFF-256](https://linear.app/off-brand-studio/issue/OFF-256/draft-agent-worktrees-v01) — agent-worktrees (In Progress)
 - [OFF-257](https://linear.app/off-brand-studio/issue/OFF-257/draft-constitution-first-v01) — Done
-- [OFF-266](https://linear.app/off-brand-studio/issue/OFF-266/draft-accept-gated-ai-v01) — accept-gated-ai v0.1 (draft + dogfood)
+- [OFF-266](https://linear.app/off-brand-studio/issue/OFF-266/draft-accept-gated-ai-v01) / [OFF-268](https://linear.app/off-brand-studio/issue/OFF-268/polish-accept-gated-ai-v02) — Done
+- [OFF-269](https://linear.app/off-brand-studio/issue/OFF-269/draft-lossless-migration-v01) — Done
+- Create issue for behavior-contracts under milestone `5 — behavior-contracts` when starting
 
 ## Install for local dogfood while drafting
 
 ```bash
-ln -sfn "$(pwd)/accept-gated-ai/skills/accept-gated-ai" ~/.claude/skills/accept-gated-ai
-ln -sfn "$(pwd)/accept-gated-ai/shared/METHODOLOGY.md" ~/.claude/skills/accept-gated-ai/METHODOLOGY.md
-ln -sfn "$(pwd)/accept-gated-ai/shared/RESPONSE.md" ~/.claude/skills/accept-gated-ai/RESPONSE.md
+ln -sfn "$(pwd)/behavior-contracts/skills/behavior-contracts" ~/.claude/skills/behavior-contracts
+ln -sfn "$(pwd)/behavior-contracts/shared/METHODOLOGY.md" ~/.claude/skills/behavior-contracts/METHODOLOGY.md
+ln -sfn "$(pwd)/behavior-contracts/shared/RESPONSE.md" ~/.claude/skills/behavior-contracts/RESPONSE.md
 # same for ~/.cursor/skills/
 ```
 
 ## Out of scope for this session
 
 - Republishing linear-methodology to skills.sh (separate; keep install paths working)
-- Deleting old sibling folders `~/Workspace/linear-methodology-skill`, `agent-worktrees-skill`, `constitution-first-skill` until this monorepo is the pushed GitHub remote and installs are updated
-- Building accept-gated UI inside Socials — this pack is the *methodology*, not a Socials feature PR
+- Deleting old sibling Workspace folders until installs point at this monorepo
+- Building Socials UI/feature PRs — packs are *methodology*
 
 ## First message checklist
 
-1. Read this file + `README.md`
-2. Skim `linear-methodology/shared/METHODOLOGY.md` §0 (tone/shape)
-3. Read Socials manifesto Parts VI + XII
-4. Draft `accept-gated-ai` METHODOLOGY + SKILL
-5. Dogfood (audit an existing AI-write path or draft against Tasks agent rules)
-6. Commit + Linear comment
+1. Read this file + `README.md` (lifecycle table)
+2. Skim `linear-methodology/shared/METHODOLOGY.md` §0
+3. Continue next stub pack
+4. Dogfood + commit + Linear comment
+5. Restate pack status board every turn

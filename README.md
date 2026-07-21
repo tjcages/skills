@@ -4,21 +4,29 @@ Monorepo of **methodology-first Agent Skills** — extracted from real builds (e
 
 Each folder is one **pack** (router skill + methodology + shared docs), same shape as `linear-methodology`.
 
+## Lifecycle (read this)
+
+| Phase | Meaning |
+|-------|---------|
+| 📝 Stub | Folder exists, thesis only |
+| ✍️ Draft | METHODOLOGY + SKILL written |
+| 🧪 Dogfood | Scored against a real target; friction in EXAMPLES |
+| 🔁 2nd dogfood | Different repo than extraction source (required for **v1**) |
+| ✅ v1 | Two dogfoods + rubric usable without undocumented judgment |
+| 🚀 Published | skills.sh / install paths announced |
+
+**Right now we are mostly in ✍️/🧪 — not ✅ v1 and not 🚀.** Thin dogfood (docs / Linear mirrors) counts for v0.x learning, not for calling a pack done.
+
 ## Packs
 
-| Pack | Status | Job |
-|------|--------|-----|
-| [`linear-methodology/`](./linear-methodology) | Shipped | How to track projects in Linear well |
-| [`agent-worktrees/`](./agent-worktrees) | v0.1 dogfood | Parallel AI agents on one git repo |
-| [`constitution-first/`](./constitution-first) | v0.1 dogfood | Author/govern a product North Star |
-<<<<<<< HEAD
-| [`accept-gated-ai/`](./accept-gated-ai) | v0.1 dogfood | Write-access AI must be accept-gated |
-| [`lossless-migration/`](./lossless-migration) | Stub | Inventory before rewrite; zero loss |
-=======
-| [`accept-gated-ai/`](./accept-gated-ai) | v0.2 on PR (separate branch) | Write-access AI must be accept-gated |
-| [`lossless-migration/`](./lossless-migration) | v0.1 dogfood | Inventory before rewrite; zero loss |
->>>>>>> 25559db (feat: draft lossless-migration v0.1 methodology + dogfood)
-| [`behavior-contracts/`](./behavior-contracts) | Stub | Cross-platform parity via behavior contracts |
+| Pack | Phase | Version | What's missing for v1 |
+|------|-------|---------|------------------------|
+| [`linear-methodology/`](./linear-methodology) | 🚀 | 1.x shipped | — |
+| [`agent-worktrees/`](./agent-worktrees) | 🧪 | v0.1 | 2nd stack dogfood; OFF-256 still open |
+| [`constitution-first/`](./constitution-first) | 🧪 | v0.1 | 2nd Product-shaped dogfood (keyframe was Tool) |
+| [`accept-gated-ai/`](./accept-gated-ai) | 🧪 | v0.2 | Live Socials UI audit; Tasks still 9/16 |
+| [`lossless-migration/`](./lossless-migration) | 🧪 | v0.1 | Fresh audit on a *non-Obi* repo |
+| [`behavior-contracts/`](./behavior-contracts) | 📝→✍️ | stub→drafting | Everything |
 
 ## Pack shape (every folder)
 
