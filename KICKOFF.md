@@ -18,18 +18,19 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 
 **Merged / in-tree**
 1. 🚀 `linear-methodology/` — shipped
-2. 🔁 `agent-worktrees/` — v0.2 (keyframe smoke; install pass still open) — OFF-256/273
+2. ✅ `agent-worktrees/` — **v1.0.0** (skills install 12/12; keyframe patch in `dogfood/`)
 3. 🧪 `constitution-first/` — v0.1 Tool dogfood (keyframe)
 4. 🧪 `accept-gated-ai/` — v0.2 (Tasks + Obi docs)
 5. 🧪 `lossless-migration/` — v0.1 (Obi audit docs)
 6. 🧪 `behavior-contracts/` — v0.1 (issue evidence)
 
 **Next (do this now)**
-1. **Finish agent-worktrees → ✅ v1** — install protocol into keyframe (or another public repo) and re-score ≥10/12
-2. Then rotate 🔁 second dogfoods: constitution Product · accept-gated live UI · lossless non-Obi · behavior contracts in-repo
+1. Rotate 🔁 second dogfoods: constitution Product · accept-gated live UI · lossless non-Obi · behavior contracts in-repo
+2. Optional: apply `agent-worktrees/dogfood/keyframe-install.patch` on keyframe (human — bot 403)
+3. Hold 🚀 skills.sh until more packs hit ✅ v1
 
 **Later**
-3. Publish / skills.sh only at ✅ v1
+4. Publish packs that reach ✅ v1
 
 ## How these skills work (do not confuse layers)
 

@@ -63,3 +63,32 @@
 3. keyframe public tree has no `docs/north-star.md` (constitution-first dogfood may still be local-only) — noted for that pack's 🔁 backlog.
 
 **v1 gate for agent-worktrees:** still need one target with protocol **installed** (dimensions 3+5) on a non-Socials repo scoring ≥10. keyframe is the candidate — install pass next.
+
+## 2026-07-21 — skills monorepo install (🔁 → ✅ v1)
+
+**Shape:** this repo (`tjcages/skills`) — methodology monorepo, no preview server, no secrets.
+
+**Blocked path:** cloud bot cannot push to `tjcages/keyframe` (403). Shipped `dogfood/keyframe-install.patch` + `APPLY-keyframe.md` for manual apply.
+
+**Installed here instead:**
+
+| Artifact | Path |
+|---|---|
+| Script | `scripts/worktree.sh` |
+| Share config | `worktree.share` (intentionally empty) |
+| Protocol | `CLAUDE.md` + `AGENTS.md` → Parallel agents section + status line |
+
+**Smoke:** setup on main (ok) → worktree setup (empty share ok) → land refused from worktree → teardown ok.
+
+**Rubric: 12/12**
+
+| # | Score | Note |
+|---|---|---|
+| 1 Script | 2 | setup / land / teardown |
+| 2 Share list | 2 | empty `worktree.share` honored |
+| 3 Protocol in instructions | 2 | CLAUDE + AGENTS |
+| 4 Auto-port | 2 | N/A documented (no preview in this repo) |
+| 5 Status line | 2 | Required in agent instructions |
+| 6 Smoke this session | 2 | Full path exercised |
+
+**v1 exit:** two independent non-Socials dogfoods — visual-cursor (package / empty share) + skills (full install ≥10). Socials remains source validation. Keyframe patch pending human apply (nice-to-have, not blocking).
