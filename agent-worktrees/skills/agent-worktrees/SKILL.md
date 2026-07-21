@@ -1,12 +1,12 @@
 ---
 name: agent-worktrees
-version: 0.2.0
+version: 1.0.0
 description: >-
   Isolate parallel AI agents on one git repo via branch+worktree, shared env
   symlinks, auto-ported previews, status lines, claims, and a land-from-main
-  ritual. Use when ≥2 agents will touch the same repo, the user asks to set up
-  worktrees / parallel agents / agent isolation, or an agent is about to share
-  a working tree with another. NOT for ordinary single-agent work on main.
+  ritual. Use when ≥2 agents will touch this or any repo, the user asks to set
+  up worktrees / parallel agents / agent isolation, or an agent is about to
+  share a working tree with another. NOT for ordinary single-agent work on main.
 ---
 
 # Agent worktrees

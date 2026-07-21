@@ -6,7 +6,9 @@ Extracted from Socials/Obi's multi-agent protocol. Methodology-first (not just `
 
 ## Status
 
-**v0.2.0 — 🔁 nearly.** Script polished (`worktree.share`, `teardown`). Dogfoods: visual-cursor, socials, keyframe smoke. Not ✅ v1 until a non-Socials repo has the protocol *installed* and scores ≥10/12.
+**✅ v1.0.0** — dogfooded on visual-cursor + skills monorepo install (12/12). Not 🚀 published to skills.sh yet.
+
+Keyframe apply patch (bot lacks push): [`dogfood/APPLY-keyframe.md`](./dogfood/APPLY-keyframe.md).
 
 ## Skills
 
@@ -18,9 +20,10 @@ Extracted from Socials/Obi's multi-agent protocol. Methodology-first (not just `
 
 1. `visual-cursor` — empty-share success
 2. `socials` — Workers share symlinks (extraction source)
-3. `keyframe` — 🔁 smoke + `worktree.share` bugfix (install pass still open)
+3. `keyframe` — smoke + patch ready to apply
+4. **`skills` monorepo** — full install ≥10/12 (v1 gate)
 
-## Install (local, while drafting)
+## Install (local)
 
 ```bash
 ln -sfn "$(pwd)/agent-worktrees/skills/agent-worktrees" ~/.claude/skills/agent-worktrees
@@ -28,7 +31,7 @@ ln -sfn "$(pwd)/agent-worktrees/shared/METHODOLOGY.md" ~/.claude/skills/agent-wo
 ln -sfn "$(pwd)/agent-worktrees/shared/RESPONSE.md" ~/.claude/skills/agent-worktrees/RESPONSE.md
 ```
 
-Copy `scripts/worktree.sh` into the target repo (or keep theirs). Optional: `worktree.share` from `worktree.share.example`.
+This monorepo already ships root `scripts/worktree.sh` + `worktree.share` + CLAUDE/AGENTS sections.
 
 ## License
 

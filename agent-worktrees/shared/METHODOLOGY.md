@@ -1,6 +1,6 @@
 # Agent Worktrees Methodology
 
-**Version:** 0.2.0 — extracted from Socials/Obi (`CLAUDE.md` + `scripts/worktree.sh`), 2026-07-21; polished after keyframe dogfood
+**Version:** 1.0.0 — extracted from Socials/Obi; dogfooded on visual-cursor, socials, keyframe (smoke), and **skills monorepo install** (2026-07-21)
 
 > **What this is.** How multiple AI agents work the same git repo without clobbering each other's files, env, or preview servers.
 >

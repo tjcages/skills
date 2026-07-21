@@ -24,7 +24,7 @@ Each folder is one **pack** (router skill + methodology + shared docs), same sha
 | Pack | Phase | Version | Detail |
 |------|-------|---------|--------|
 | [`linear-methodology/`](./linear-methodology) | 🚀 Published | 1.x | Only pack at ship quality |
-| [`agent-worktrees/`](./agent-worktrees) | 🔁 Nearly — needs install pass | v0.2 | visual-cursor + socials + keyframe smoke; still missing protocol install on a non-Socials repo (≥10/12) |
+| [`agent-worktrees/`](./agent-worktrees) | ✅ v1 | 1.0.0 | Installed on skills monorepo (12/12). Keyframe patch ready (bot 403). Not 🚀 skills.sh yet |
 | [`constitution-first/`](./constitution-first) | 🧪 Solid (Tool only) | v0.1 | keyframe north-star wrote (may be local-only on remote); needs Product-shaped 🔁 |
 | [`accept-gated-ai/`](./accept-gated-ai) | 🧪 Thin→Solid mix | v0.2 | Tasks 9/16 + Obi docs 14/16; 🧱 live Socials UI |
 | [`lossless-migration/`](./lossless-migration) | 🧪 Thin (source docs) | v0.1 | Obi audit re-score 16/16; needs non-Obi 🔁 |
