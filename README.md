@@ -11,7 +11,7 @@ Each folder is one **pack** (router skill + methodology + shared docs), same sha
 | [`linear-methodology/`](./linear-methodology) | Shipped | How to track projects in Linear well |
 | [`agent-worktrees/`](./agent-worktrees) | v0.1 dogfood | Parallel AI agents on one git repo |
 | [`constitution-first/`](./constitution-first) | v0.1 dogfood | Author/govern a product North Star |
-| [`accept-gated-ai/`](./accept-gated-ai) | Stub — **next** | Write-access AI must be accept-gated |
+| [`accept-gated-ai/`](./accept-gated-ai) | v0.1 dogfood | Write-access AI must be accept-gated |
 | [`lossless-migration/`](./lossless-migration) | Stub | Inventory before rewrite; zero loss |
 | [`behavior-contracts/`](./behavior-contracts) | Stub | Cross-platform parity via behavior contracts |
 

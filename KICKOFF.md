@@ -14,17 +14,15 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 1. `linear-methodology/` — already shipped pack, moved into this monorepo
 2. `agent-worktrees/` — v0.1 methodology + `scripts/worktree.sh`; dogfooded on `visual-cursor` + `socials`
 3. `constitution-first/` — v0.1 methodology; dogfooded by writing `keyframe/docs/north-star.md` (rubric 12/14)
+4. `accept-gated-ai/` — v0.1 methodology + SKILL + RESPONSE + EXAMPLES; dogfooded against Tasks agent rules (OFF-183/174/187/189) + Linear-mirrored manifesto Parts VI/XI/XII (OFF-266)
 
 **Next (do this now)**
-1. **Pack 3: `accept-gated-ai`** — highest unique value
-2. Fill `accept-gated-ai/shared/METHODOLOGY.md` + `skills/accept-gated-ai/SKILL.md` + `RESPONSE.md` + `EXAMPLES.md`
-3. Dogfood against Socials/Obi (`docs/manifesto.md` Parts VI + XII, `atom_proposals`, EditProposal UI) and/or Tasks agent CRUD+undo direction
-4. Commit as you go (owner rule: always commit meaningful units)
-5. Update Linear [extracted-skills](https://linear.app/off-brand-studio/project/extracted-skills-4d7c79e03387) — milestone `3 — accept-gated-ai`; file/update issues
+1. **Stop here for pack 3** — wait before `lossless-migration` (owner gate after rubric + open gaps report)
+2. Optional polish: live Socials EditProposal UI audit when `socials` checkout is available
 
 **Then**
-6. `lossless-migration` ← `socials/docs/inventory-audit.md` + migration-roadmap doctrines
-7. `behavior-contracts` ← manifesto Part IX + macos-convergence parity matrix
+3. `lossless-migration` ← `socials/docs/inventory-audit.md` + migration-roadmap doctrines
+4. `behavior-contracts` ← manifesto Part IX + macos-convergence parity matrix
 
 ## How these skills work (do not confuse layers)
 
@@ -56,7 +54,7 @@ A pack teaches *how*. A north-star doc is *one result* of running that pack on a
 
 - [OFF-256](https://linear.app/off-brand-studio/issue/OFF-256/draft-agent-worktrees-v01) — agent-worktrees (still open; polish/publish later)
 - [OFF-257](https://linear.app/off-brand-studio/issue/OFF-257/draft-constitution-first-v01) — Done
-- Create issue for accept-gated-ai under milestone `3 — accept-gated-ai` when you start
+- [OFF-266](https://linear.app/off-brand-studio/issue/OFF-266/draft-accept-gated-ai-v01) — accept-gated-ai v0.1 (draft + dogfood)
 
 ## Install for local dogfood while drafting
 
