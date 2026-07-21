@@ -1,0 +1,39 @@
+{
+  "name": "linear-methodology",
+  "version": "1.0.1",
+  "description": "A proven methodology for building and tracking features, projects, and issues across numerous builds.",
+  "type": "module",
+  "license": "MIT",
+  "author": "tjcages",
+  "homepage": "https://offbr.co/skills/linear-methodology",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjcages/linear-methodology-skill.git"
+  },
+  "keywords": [
+    "linear",
+    "agent-skills",
+    "agentskills",
+    "cursor",
+    "claude-code",
+    "codex",
+    "project-tracking",
+    "methodology"
+  ],
+  "bin": {
+    "linear-methodology": "bin/install.mjs"
+  },
+  "files": [
+    "bin",
+    "skills",
+    "shared",
+    ".claude-plugin",
+    "README.md",
+    "INSTALL.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
