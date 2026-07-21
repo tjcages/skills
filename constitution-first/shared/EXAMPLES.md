@@ -106,7 +106,7 @@ Owner answered all 6 anchoring questions. Drafted lightweight Tool constitution:
 
 **Owner answers** → see [`dogfood/obi-reanchor-2026-07-21.md`](../dogfood/obi-reanchor-2026-07-21.md).
 
-**Drift result:** align on pitch / who / non-negotiables / out-of-scope / broken pattern. **One enrichment candidate:** “Cursor for information & context” as philosophical done (owner confirm before Socials edit).
+**Drift result:** align on pitch / who / non-negotiables / out-of-scope / broken pattern. **Enrichment CONFIRMED:** “Cursor for information & context” — paste at [`dogfood/obi-cursor-enrichment-PASTE.md`](../dogfood/obi-cursor-enrichment-PASTE.md) (Socials SoT; bot 🧱).
 
 **Rubric (existing manifesto): 14/14** — Product 🔁 satisfied.
 

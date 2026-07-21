@@ -25,20 +25,22 @@
 | 2 Who | **Align** | Manifesto: many projects, violent context-switch, forgetful. Same person. |
 | 3 Non-negotiables | **Align** | Maps to Creed #4 (capture), #5–#7 (quiet / ask / rethink), curated ingestion (Part VIII), surfacing from reservoir. Accept-gate not listed in answer #3 but is load-bearing in Creed #6 — keep; don’t drop. |
 | 4 Out of scope | **Align (strong)** | Part I: social-media *reflex* for capture, **not** a social network. Not an email client. |
-| 5 Philosophical done | **Enrichment candidate** | “Cursor for your information & context” / hours deep in organizing projects is **sharper than** the mirrored doc’s “lovable if Obi did nothing” alone. Propose conscious premise line — not a silent rewrite. |
+| 5 Philosophical done | **Enrichment CONFIRMED** | Owner said yes 2026-07-21. Paste file: [`obi-cursor-enrichment-PASTE.md`](./obi-cursor-enrichment-PASTE.md). Land in Socials repo (SoT), then re-sync Linear. |
 | 6 Broken pattern | **Align** | Part I: tools make *you* do the brain’s work (Notion librarian). Opinionated organize *or* habit→schema fit = asymmetry + Obi filing. |
 
 **Overall:** no Creed-breaking drift. One optional conscious edit: elevate the **Cursor-for-context** interface metaphor into Premise / philosophical done.
 
 ---
 
-## Proposed conscious enrichment (owner confirm before Socials write)
+## Conscious enrichment — CONFIRMED 2026-07-21
 
-Add under Premise (or “philosophical done”), one short block:
+Owner approved. Paste instructions: [`obi-cursor-enrichment-PASTE.md`](./obi-cursor-enrichment-PASTE.md).
 
 > **Done feels like Cursor for your life’s information.** Obi is the interface layer for a person’s contexts and projects — a place you can open and spend hours organizing, iterating, and improving — the same way Cursor is the interface layer for code. Capture stays effortless; organization is Obi’s job (opinionated filing, or fitting content to the schema of *your* habits).
 
 **Conflict rule remains:** manifesto > SCOPE > roadmap > tickets.
+
+**Land status:** 🧱 cloud bot cannot write Socials. Owner pastes into `socials/docs/manifesto.md` Part I, then re-syncs Linear mirror.
 
 ---
 
@@ -58,6 +60,6 @@ Add under Premise (or “philosophical done”), one short block:
 
 ---
 
-## Install note (blocked here)
+## Install note
 
-Cloud bot cannot write `socials/docs/manifesto.md` (private / 403). Owner: paste enrichment after confirm, or reject and keep manifesto as-is.
+Cloud bot cannot write `socials/docs/manifesto.md`. Owner paste = ship for this enrichment. After paste + Linear re-sync, mark complete in EXAMPLES.

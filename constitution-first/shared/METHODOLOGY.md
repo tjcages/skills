@@ -184,8 +184,8 @@ Score 0 / 1 / 2. Max 14. **≥10 and no load-bearing 0 on #1–#4** = constituti
 - [x] Accept-gated AI chapter: point at sibling + `docs/agent-trust.md` (skills monorepo install)
 - [x] Second Tool install dogfood — skills monorepo north-star **13/14** (2026-07-21)
 - [x] Product dogfood — Obi manifesto exists; owner re-anchor + drift audit **14/14** (2026-07-21). Wrong-repo discovery (`tjcages/obi` Gmail) corrected.
-- [ ] Optional: land “Cursor for context” enrichment into Socials manifesto (owner confirm)
-- [ ] Call pack ✅ v1 after owner confirms enrichment decision + cold rubric re-read
+- [x] Optional: land “Cursor for context” enrichment — **owner confirmed**; paste pending in Socials (`dogfood/obi-cursor-enrichment-PASTE.md`)
+- [ ] Call pack ✅ v1 after Socials paste + Linear re-sync + cold rubric re-read
 ---
 
 ## 12. Relationship to other skills

@@ -29,7 +29,7 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 - Pack templates: north-star · inventory-audit · behavior-contracts
 
 **Next (do this now)**
-1. Owner: confirm or reject Cursor-for-context manifesto enrichment (see `constitution-first/dogfood/obi-reanchor-2026-07-21.md`)
+1. Paste Cursor enrichment into Socials `docs/manifesto.md` (see `constitution-first/dogfood/obi-cursor-enrichment-PASTE.md`) → re-sync Linear
 2. Merge keyframe [PR #1](https://github.com/tjcages/keyframe/pull/1) + skills [PR #6](https://github.com/tjcages/skills/pull/6)
 3. Product accept-gate outside Obi/Tasks; multi-kit behavior-contracts install
 4. Hold 🚀 skills.sh until more packs hit ✅ v1

@@ -6,7 +6,7 @@ Extracted from Socials/Obi's manifesto governance (constitution → SCOPE → ro
 
 ## Status
 
-**v0.1.0 — drafting + dogfood.** Tools solid (keyframe 12/14, skills 13/14). Product: Obi manifesto re-anchor **14/14** (drift audit; no rewrite). Optional Cursor-metaphor enrichment awaits owner confirm. Not 🚀 yet.
+**v0.1.0 — drafting + dogfood.** Tools solid (keyframe 12/14, skills 13/14). Product: Obi manifesto re-anchor **14/14**. Cursor-metaphor enrichment **confirmed** — paste into Socials (see `dogfood/obi-cursor-enrichment-PASTE.md`). Not 🚀 yet.
 
 ## Skills
 
