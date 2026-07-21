@@ -1,6 +1,6 @@
 # Accept-Gated AI Methodology
 
-**Version:** 0.1.0 — extracted from Socials/Obi (`docs/manifesto.md` Parts VI, XI, XII + Creed) and the `atom_proposals` / EditProposal substrate; dogfooded against Tasks agent rules (OFF-183 / OFF-174 / OFF-187 / OFF-189), 2026-07-21
+**Version:** 0.2.0 — extracted from Socials/Obi (`docs/manifesto.md` Parts VI, XI, XII + Creed) and the `atom_proposals` / EditProposal substrate; dogfooded against Tasks agent rules (OFF-183 / OFF-174 / OFF-187 / OFF-189) + Obi Phase 3 accept-gated path (inventory/roadmap), 2026-07-21
 
 > **What this is.** How to make **write-access AI** trustworthy — the doctrine that every AI mutation is proposed, diffed, accept-gated, reversible, proportional, and allowed to be a no-op.
 >
@@ -108,6 +108,31 @@ Obi’s early substrate gated **edits** to existing atoms (`proposeAtomEdit`). *
 
 If the product already has two stores (edit-proposals vs new-thing opportunities), union them in one inbox (`listProposals` pattern). Do not make the user learn two triage systems.
 
+### 3.5 Conflict UX (beyond HTTP 409)
+
+Stale refuse is necessary but not sufficient. When accept fails because `before` drifted:
+
+1. **Show the three-way state** — proposed-after · current-now · original-before (at least current vs proposed).
+2. **Offer re-base, not blind force** — “Update proposal to current” (recompute diff) or “Dismiss.” Never “Overwrite anyway” as the default.
+3. **Multi-device** — proposals are server rows; clients subscribe/refetch. Local optimistic accept must reconcile to server refuse. Last-write-wins on the *proposal status* only after a successful apply; the source-of-truth record stays conflict-checked.
+4. **Partial multi-field** — if one field conflicts and others don’t, accept the clean fields only when the product can say so out loud; otherwise refuse the whole proposal (safer default).
+
+### 3.6 Confidence & volume
+
+Two knobs, different owners:
+
+| Knob | Owner | Job |
+|---|---|---|
+| **Model confidence** | Agent / scoring | Rank or suppress low-signal proposals before they hit the inbox |
+| **User volume threshold** | Settings | Cap how many proposals surface per day / per pass |
+
+Rules:
+
+- Confidence never bypasses the accept-gate.
+- Below threshold → **don’t propose** (willing to do nothing), don’t silently apply.
+- User threshold defaults conservative; raising it is opt-in.
+- Log suppressions for audit, not for guilt-tripping the user.
+
 ---
 
 ## 4. Agent tool registry rules (CRUD with a gate)
@@ -119,13 +144,27 @@ When the agent gets verbs beyond “answer,” treat the registry as a **trust s
 | Read / cite | Free |
 | Create (user-initiated, explicit ask) | May apply immediately **if** undo is mandatory and visible (§6) |
 | Create (agent-initiated / proactive) | Proposal / suggestion lane — not the primary list |
-| Update existing user content | **Propose + diff** unless user is mid-turn and confirming an explicit edit request |
+| Update existing user content | **Propose + diff**, except §4.1 interactive apply |
 | Delete / archive | Blocked until undo exists; prefer propose or confirm |
 | Batch / overnight | Always proposals; quiet-by-default; proportional |
 
 **Owner rule from Tasks (OFF-183):** full CRUD is allowed only when each mutation threads a real undo path, and multi-action turns are first-class (not a single nullable `action` field that drops half the verbs on the floor).
 
 **Never ship delete to the agent before delete is reversible** (OFF-174 prerequisite pattern).
+
+### 4.1 Interactive apply rule (chat / voice)
+
+**Hard rule.** Apply+undo *without* a proposal card is allowed only when **all** of these are true:
+
+1. **User-explicit this turn** — the user asked for this exact mutation (“rename X to Y”, “mark milk done”, “add buy eggs”), not a vague “clean this up.”
+2. **Narrow scope** — ≤3 fields on ≤5 records; no overnight/batch; no “fix everything.”
+3. **Undo armed** — the mutation path offers undo from itself (§6) before the turn ends.
+4. **Authored content respect** — if rewriting user prose beyond a surgical replace they dictated, use a proposal + diff instead.
+5. **Confirm when ambiguous** — if target match is unclear (two tasks named “milk”), ask; do not guess-apply.
+
+Otherwise: **propose**. Proactive, overnight, multi-record “improvements,” and any delete stay gated or confirmed.
+
+Install this rule into product agent instructions via the [agent-trust template](./agent-trust.template.md).
 
 ---
 
@@ -187,6 +226,8 @@ Overnight / batch passes (Obi’s rethink): **quiet-by-default**; output = accep
 | Over-eager overnight rewrite | Creed #7 violation | Proportional rethink → proposals only |
 | Unnamed enrichment exceptions | Doctrine decays | §5 — declare or gate |
 | Read-only chatbot forced through this pack | Ceremony without value | §1 skip |
+| Force-overwrite on stale accept | Clobbers concurrent human edits | §3.5 re-base or dismiss |
+| Confidence used to skip the gate | High score ≠ consent | §3.6 |
 
 ---
 
@@ -233,19 +274,21 @@ Score 0 / 1 / 2. Max 16. **≥12 and no load-bearing 0 on #1–#5** = accept-gat
 
 ## 12. Open gaps
 
-- [ ] Template: `docs/agent-trust.md` stub vs creed lines inline in North Star
-- [ ] Hard rule for interactive chat: when is “user just asked to rename X” allowed to apply+undo without a proposal card?
-- [ ] Cross-device proposal sync / conflict UX beyond HTTP 409
-- [ ] Confidence thresholds — product setting vs model score
-- [ ] Relationship to coding-agents (Cursor/Claude) file edits — sibling concern; this pack is **product** write-access AI first
-- [ ] Socials source tree not mounted in cloud dogfood env — re-verify §10 against live `atom_proposals` + EditProposal UI when socials is available
+- [x] Template: `shared/agent-trust.template.md` — install into `docs/agent-trust.md` or fold creed lines into North Star (v0.2)
+- [x] Interactive apply hard rule — §4.1 (v0.2)
+- [x] Conflict UX beyond 409 — §3.5 (v0.2)
+- [x] Confidence vs volume thresholds — §3.6 (v0.2)
+- [x] Coding-agent boundary — §13 (v0.2): product data writes here; repo/file agents stay on `agent-worktrees` + human PR review
+- [ ] Live Socials checkout — re-verify EditProposal UI pixels + every direct AI write in `atom.server.ts` when tree is mounted
+- [ ] Second independent Product dogfood outside Obi/Tasks family (v1 exit)
+- [ ] Partial multi-field accept — product examples beyond “refuse whole proposal”
 
 ---
 
 ## 13. Relationship to other skills
 
-- **constitution-first** — owns where the creed / decision checklist lives. This pack *fills* the “agent rules / accept-gated?” chapter.
+- **constitution-first** — owns where the creed / decision checklist lives. This pack *fills* the “agent rules / accept-gated?” chapter; use [agent-trust.template.md](./agent-trust.template.md) as the installable slice.
 - **linear-methodology** — track the gaps the audit files; does not define trust doctrine.
 - **behavior-contracts** — platform parity for how accept/diff/undo *feel* on iOS vs web.
 - **lossless-migration** — when re-pointing old AI engines into one registry, inventory every write site first.
-- **agent-worktrees** — parallel coding agents; orthogonal (repo isolation ≠ product accept-gate).
+- **agent-worktrees** — parallel **coding** agents on a git repo. Orthogonal: worktree isolation ≠ product accept-gate. Coding agents still need human review (PR/diff) before landing shared `main`; do not stretch this pack’s proposal tables onto source files unless the product *is* a document store.

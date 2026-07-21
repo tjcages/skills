@@ -38,6 +38,32 @@
 
 **Next dogfood (blocked on access):** live Socials checkout — score EditProposal UI + enumerate every `propose*` / direct AI write in `atom.server.ts` against §10.
 
+## 2026-07-21 — Obi Phase 3 accept-gated path (second dogfood, docs)
+
+**Evidence:** Linear [Step-Zero Inventory Audit](https://linear.app/off-brand-studio/document/step-zero-inventory-audit-b4f1eb4d2943) + [Migration Roadmap](https://linear.app/off-brand-studio/document/migration-roadmap-effbf53b4f6f) (repo trees still private). Phase 3e claims accept-gated edit shipped (`atom_proposals` + morning-inbox UI); roadmap doctrine: “Optimistic everywhere, accept-gated for Obi.”
+
+**Rubric (Obi IN-loop path as documented):** **14/16**
+
+| # | Score | Note |
+|---|---|---|
+| 1 Thesis in-repo | 2 | Creed #5–#7, #9 + Part VI in manifesto |
+| 2 Proposal substrate | 2 | `atom_proposals` + unioned listProposals |
+| 3 Diff visible in UI | 2 | Edge-pull diff / morning triage (shipped Phase 3e) |
+| 4 Stale/conflict | 2 | Refuse stale / 409 (OFF-32); §3.5 still light on three-way UI |
+| 5 Undo/changelog | 2 | Changelog facet + `editedBy: "ai"` |
+| 6 Quiet + proportional | 2 | Part VI quiet laws; overnight → proposals (OFF-36) |
+| 7 Create vs edit lanes | 1 | opportunities + atom_proposals both “Obi proposes”; create-todo suggestions still Tasks gap |
+| 8 Exceptions declared | 1 | categorize/enrichment still not a named exception list in-repo agent-trust doc |
+
+**Pass threshold met for the Obi accept-gated *edit* path** (≥12, no 0 on #1–#5). Tasks expansion still fails #7/#8 (first dogfood).
+
+**Friction → v0.2 methodology same day:**
+
+1. Roadmap line “Optimistic everywhere, accept-gated for Obi” → clarified as §4.1 interactive vs §3 proposals (optimistic local UX ≠ ungated AI authorship).
+2. Needed installable slice → `agent-trust.template.md`.
+3. 409 alone underspecified for humans → §3.5 conflict UX.
+4. OFF-189 confidence control → §3.6 model vs user knobs.
+
 ## 2026-07-21 — Manifesto extraction notes (Parts VI / XII)
 
 Pulled into §0–§2 / §7 without copying product vocabulary as universal law:

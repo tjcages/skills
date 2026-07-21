@@ -17,10 +17,11 @@ Adapted from [i-have-adhd](https://github.com/ayghri/i-have-adhd). Do not requir
 
 ## Pack-specific
 
+- Distinguish **interactive apply** (§4.1: user-explicit, narrow, undo armed) from **proactive proposals**.
+- Offer the **agent-trust template** when installing into a product (“copy to docs/agent-trust.md?”).
+- Block **delete/archive agent verbs** until undo exists — say that in one line.
 - Prefer **audit findings** over rewriting product code unless the user asked for a code change.
 - Say **“willing to do nothing”** when the right agent output is silence — don’t invent proposals to look helpful.
-- Block **delete/archive agent verbs** until undo exists — say that in one line.
-- Distinguish **user-explicit apply+undo** (chat: “rename X to Y”) from **proactive proposals** (overnight / suggestions).
 
 ## Pre-send check
 

@@ -6,9 +6,12 @@ Extracted from Socials/Obi manifesto Parts VI + XI + XII (Creed) and the `atom_p
 
 ## Status
 
-**v0.1.0 — drafting + dogfood.** Not published to skills.sh yet.
+**v0.2.0 — drafting + dogfood.** Not published to skills.sh yet.
 
-Dogfood: Tasks agent rules (OFF-183 / OFF-174 / OFF-187 / OFF-189) + Linear-mirrored manifesto. Live Socials UI audit still open (private tree).
+Dogfood:
+
+1. Tasks agent rules → **9/16** (gaps on create lanes + exceptions)
+2. Obi Phase 3 accept-gated path (inventory/roadmap) → **14/16**
 
 ## Skills
 
@@ -22,8 +25,10 @@ Dogfood: Tasks agent rules (OFF-183 / OFF-174 / OFF-187 / OFF-189) + Linear-mirr
 ln -sfn "$(pwd)/accept-gated-ai/skills/accept-gated-ai" ~/.claude/skills/accept-gated-ai
 ln -sfn "$(pwd)/accept-gated-ai/shared/METHODOLOGY.md" ~/.claude/skills/accept-gated-ai/METHODOLOGY.md
 ln -sfn "$(pwd)/accept-gated-ai/shared/RESPONSE.md" ~/.claude/skills/accept-gated-ai/RESPONSE.md
-# same for ~/.cursor/skills/
+ln -sfn "$(pwd)/accept-gated-ai/shared/agent-trust.template.md" ~/.claude/skills/accept-gated-ai/agent-trust.template.md
 ```
+
+Copy `shared/agent-trust.template.md` → product `docs/agent-trust.md` when installing into an app.
 
 ## License
 
