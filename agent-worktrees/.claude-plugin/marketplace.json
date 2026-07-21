@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "plugins": [
+    {
+      "name": "agent-worktrees",
+      "description": "Isolate parallel AI agents on one git repo via worktrees, shared env, and land-from-main.",
+      "source": {
+        "type": "github",
+        "repo": "tjcages/agent-worktrees-skill"
+      }
+    }
+  ]
+}

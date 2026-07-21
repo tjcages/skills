@@ -29,10 +29,10 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 - Pack templates: north-star · inventory-audit · behavior-contracts
 
 **Next (do this now)**
-1. Re-sync Linear [The Manifesto](https://linear.app/off-brand-studio/document/the-manifesto-b2413f5b87dd) from Socials if not done
-2. Merge keyframe [PR #1](https://github.com/tjcages/keyframe/pull/1) + skills [PR #6](https://github.com/tjcages/skills/pull/6)
-3. Rotate remaining 🔁: accept-gated Product · behavior-contracts multi-kit · lossless Product depth
-4. Hold 🚀 skills.sh until more packs hit ✅ v1 (now: linear-methodology + agent-worktrees + constitution-first)
+1. Publish v1 skills to offbr.co — follow [`docs/PUBLISH-offbr.md`](./docs/PUBLISH-offbr.md) (GitHub repos + rust/off-brand D1)
+2. Re-sync Linear The Manifesto from Socials if not done
+3. Merge keyframe [PR #1](https://github.com/tjcages/keyframe/pull/1) + skills [PR #6](https://github.com/tjcages/skills/pull/6)
+4. Hold remaining 🔁 packs (accept-gated · lossless · behavior-contracts) off offbr until ✅ v1
 
 **Later**
 5. Publish packs that reach ✅ v1

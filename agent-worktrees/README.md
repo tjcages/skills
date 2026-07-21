@@ -6,9 +6,9 @@ Extracted from Socials/Obi's multi-agent protocol. Methodology-first (not just `
 
 ## Status
 
-**✅ v1.0.0** — dogfooded on visual-cursor + skills monorepo install (12/12). Not 🚀 published to skills.sh yet.
-
-Keyframe apply patch (bot lacks push): [`dogfood/APPLY-keyframe.md`](./dogfood/APPLY-keyframe.md).
+**✅ v1.0.0** — ready for testing publish to offbr.co.  
+Install (once GitHub repo exists): `npx skills add tjcages/agent-worktrees-skill -g -a '*' -y`  
+Owner publish steps: [`../docs/PUBLISH-offbr.md`](../docs/PUBLISH-offbr.md)
 
 ## Skills
 
@@ -16,14 +16,11 @@ Keyframe apply patch (bot lacks push): [`dogfood/APPLY-keyframe.md`](./dogfood/A
 |-------|-----|
 | `agent-worktrees` | Set up / run the isolation protocol |
 
-## Dogfood targets
+## Dogfood
 
-1. `visual-cursor` — empty-share success
-2. `socials` — Workers share symlinks (extraction source)
-3. `keyframe` — smoke + patch ready to apply
-4. **`skills` monorepo** — full install ≥10/12 (v1 gate)
+visual-cursor · skills monorepo (12/12) · keyframe [PR #1](https://github.com/tjcages/keyframe/pull/1)
 
-## Install (local)
+## Install (from monorepo, while drafting)
 
 ```bash
 ln -sfn "$(pwd)/agent-worktrees/skills/agent-worktrees" ~/.claude/skills/agent-worktrees
@@ -31,8 +28,6 @@ ln -sfn "$(pwd)/agent-worktrees/shared/METHODOLOGY.md" ~/.claude/skills/agent-wo
 ln -sfn "$(pwd)/agent-worktrees/shared/RESPONSE.md" ~/.claude/skills/agent-worktrees/RESPONSE.md
 ```
 
-This monorepo already ships root `scripts/worktree.sh` + `worktree.share` + CLAUDE/AGENTS sections.
-
 ## License
 
-MIT (intended; LICENSE pending first publish)
+MIT — see [LICENSE](./LICENSE)

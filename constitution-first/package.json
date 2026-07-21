@@ -1,0 +1,33 @@
+{
+  "name": "constitution-first",
+  "version": "1.0.0",
+  "description": "Give a product a constitution before the feature pile invents one.",
+  "type": "module",
+  "license": "MIT",
+  "author": "tjcages",
+  "homepage": "https://offbr.co/skills/constitution-first",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjcages/constitution-first-skill.git"
+  },
+  "keywords": [
+    "agent-skills",
+    "agentskills",
+    "constitution",
+    "north-star",
+    "cursor",
+    "claude-code",
+    "methodology"
+  ],
+  "files": [
+    "skills",
+    "shared",
+    ".claude-plugin",
+    "README.md",
+    "INSTALL.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
