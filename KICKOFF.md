@@ -14,6 +14,7 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 1. `linear-methodology/` — already shipped pack, moved into this monorepo
 2. `agent-worktrees/` — v0.1 methodology + `scripts/worktree.sh`; dogfooded on `visual-cursor` + `socials`
 3. `constitution-first/` — v0.1 methodology; dogfooded by writing `keyframe/docs/north-star.md` (rubric 12/14)
+<<<<<<< HEAD
 4. `accept-gated-ai/` — v0.1 methodology + SKILL + RESPONSE + EXAMPLES; dogfooded against Tasks agent rules (OFF-183/174/187/189) + Linear-mirrored manifesto Parts VI/XI/XII (OFF-266)
 
 **Next (do this now)**
@@ -23,6 +24,17 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 **Then**
 3. `lossless-migration` ← `socials/docs/inventory-audit.md` + migration-roadmap doctrines
 4. `behavior-contracts` ← manifesto Part IX + macos-convergence parity matrix
+=======
+4. `accept-gated-ai/` — v0.2 on branch `cursor/accept-gated-ai-v01-2b41` (OFF-266/268)
+5. `lossless-migration/` — v0.1 methodology; dogfooded by re-scoring Obi inventory audit (16/16) — OFF-269
+
+**Next (do this now)**
+1. Optional: live Socials checkout re-verify for packs 3–4
+2. **Pack 5: `behavior-contracts`** ← manifesto Part IX + macos-convergence parity matrix
+
+**Then**
+3. Publish polish / skills.sh when packs stabilize
+>>>>>>> 25559db (feat: draft lossless-migration v0.1 methodology + dogfood)
 
 ## How these skills work (do not confuse layers)
 
