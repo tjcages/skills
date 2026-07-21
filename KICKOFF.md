@@ -29,10 +29,9 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 - Pack templates: north-star · inventory-audit · behavior-contracts
 
 **Next (do this now)**
-1. Publish v1 skills to offbr.co — follow [`docs/PUBLISH-offbr.md`](./docs/PUBLISH-offbr.md) (GitHub repos + rust/off-brand D1)
-2. Re-sync Linear The Manifesto from Socials if not done
-3. Merge keyframe [PR #1](https://github.com/tjcages/keyframe/pull/1) + skills [PR #6](https://github.com/tjcages/skills/pull/6)
-4. Hold remaining 🔁 packs (accept-gated · lossless · behavior-contracts) off offbr until ✅ v1
+1. Add D1 rows in rust/off-brand for `agent-worktrees` + `constitution-first` (install path already works; offbr pages still 404)
+2. Merge keyframe [PR #1](https://github.com/tjcages/keyframe/pull/1) + skills [PR #6](https://github.com/tjcages/skills/pull/6)
+3. Hold remaining 🔁 packs off offbr until ✅ v1
 
 **Later**
 5. Publish packs that reach ✅ v1

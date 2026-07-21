@@ -6,9 +6,9 @@ Extracted from Socials/Obi's multi-agent protocol. Methodology-first (not just `
 
 ## Status
 
-**✅ v1.0.0** — ready for testing publish to offbr.co.  
-Install (once GitHub repo exists): `npx skills add tjcages/agent-worktrees-skill -g -a '*' -y`  
-Owner publish steps: [`../docs/PUBLISH-offbr.md`](../docs/PUBLISH-offbr.md)
+**✅ v1.0.0** — installable.  
+`npx skills add tjcages/agent-worktrees-skill -g -a '*' -y`  
+Site D1 (offbr.co): still owner — https://offbr.co/skills/agent-worktrees is **404** until rust/off-brand row lands. See [`../docs/PUBLISH-offbr.md`](../docs/PUBLISH-offbr.md).
 
 ## Skills
 
