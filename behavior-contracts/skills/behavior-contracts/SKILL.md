@@ -30,7 +30,7 @@ Per form: name · verbs (≤12) · invariants · kit owners · 90/10 · one pari
 
 ### 4. Install (§3)
 
-Constitution chapter and/or `docs/behavior-contracts.md`, linked from agent instructions.
+Constitution chapter and/or `docs/behavior-contracts.md`, linked from agent instructions. Start from [behavior-contracts.template.md](./behavior-contracts.template.md) if helpful.
 
 ### 5. Drift audit (§6)
 

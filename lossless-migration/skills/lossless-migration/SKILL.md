@@ -29,7 +29,7 @@ Data · endpoints · engines · UI · primitives · one-offs. Breadth before dee
 
 ### 4. Tag every row (§3–§4.2)
 
-One primary destination tag + one-line mapping. Escalate unknowns — no silent skips.
+One primary destination tag + one-line mapping. Escalate unknowns — no silent skips. Optional blank: [inventory-audit.template.md](./inventory-audit.template.md).
 
 ### 5. Verdict + GAP/RETIRE (§4.3–§4.4)
 
