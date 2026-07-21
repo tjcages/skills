@@ -60,7 +60,7 @@
 **Friction absorbed (v0.2):**
 1. `worktree.share` existence must short-circuit defaults.
 2. New worktrees don't inherit uncommitted `scripts/` — install to main *before* branching, or copy into the worktree for bootstrap tests.
-3. keyframe public tree has no `docs/north-star.md` (constitution-first dogfood may still be local-only) — noted for that pack's 🔁 backlog.
+3. keyframe public tree has no `docs/north-star.md` (manifesto dogfood may still be local-only) — noted for that pack's 🔁 backlog.
 
 **v1 gate for agent-worktrees:** still need one target with protocol **installed** (dimensions 3+5) on a non-Socials repo scoring ≥10. keyframe is the candidate — install pass next.
 

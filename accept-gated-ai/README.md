@@ -2,7 +2,7 @@
 
 **Write-access AI is only trustworthy if every edit is diffed, accept-gated, reversible, proportional, and willing to do nothing.**
 
-Extracted from Socials/Obi manifesto Parts VI + XI + XII (Creed) and the `atom_proposals` / EditProposal substrate. Complements `constitution-first` (where the creed lives) by teaching how to **enforce write-trust** when an agent can mutate user data.
+Extracted from Socials/Obi manifesto Parts VI + XI + XII (Creed) and the `atom_proposals` / EditProposal substrate. Complements `manifesto` (where the creed lives) by teaching how to **enforce write-trust** when an agent can mutate user data.
 
 ## Status
 

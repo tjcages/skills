@@ -4,7 +4,7 @@
 
 > **What this is.** How to re-architecture or reframe an existing product **without losing behavior** — inventory every table/endpoint/engine/component, map each to a named destination, delete only when the replacement is live and zero-caller.
 >
-> **The differentiator.** Most migrations start coding. This one starts with a **proof document**: “zero regressions” is a table you can read, not a hope. Companion to `constitution-first` (the *why*) and the phased roadmap (the *when*).
+> **The differentiator.** Most migrations start coding. This one starts with a **proof document**: “zero regressions” is a table you can read, not a hope. Companion to `manifesto` (the *why*) and the phased roadmap (the *when*).
 >
 > **Target user.** Anyone rewriting, consolidating engines, or “just cleaning up” a non-trivial codebase that users already trust.
 
@@ -29,12 +29,12 @@ Obi’s headline finding generalizes: **most “rewrites” are reframes** (~80%
 
 | Signal | Move |
 |---|---|
-| Green-field product, nothing to preserve | Skip. Use `constitution-first` + build. |
+| Green-field product, nothing to preserve | Skip. Use `manifesto` + build. |
 | Disposable prototype, no users | Skip or light README note. |
 | Existing users / data / behaviors you must keep | **This pack.** |
 | “Big bang rewrite in a new repo” urged | Stop — run the audit first; usually it’s reframe-in-place. |
 
-If a constitution does not exist yet, run `constitution-first` **before** inventing destinations — the audit maps *to* the model the constitution names.
+If a manifesto does not exist yet, run `manifesto` **before** inventing destinations — the audit maps *to* the model the manifesto names.
 
 ---
 
@@ -42,11 +42,11 @@ If a constitution does not exist yet, run `constitution-first` **before** invent
 
 | Doc | Job | Skill |
 |---|---|---|
-| **Constitution** | What’s true (doors, creed, model) | `constitution-first` |
+| **Constitution** | What’s true (doors, creed, model) | `manifesto` |
 | **Inventory audit** | What’s built → destination proof | **this pack** |
 | **Migration roadmap** | Phased plan Linear will mirror | this pack §7 + `linear-setup` |
 
-**Conflict rule:** constitution > audit destinations > roadmap sequencing > tickets. If the roadmap wants to drop a behavior the audit marked keep, the roadmap is wrong.
+**Conflict rule:** manifesto > audit destinations > roadmap sequencing > tickets. If the roadmap wants to drop a behavior the audit marked keep, the roadmap is wrong.
 
 ---
 
@@ -107,7 +107,7 @@ End the audit with a verdict table:
 | GAP (net-new) | | Constitution requires; build |
 | RETIRE | | Drop on purpose after replacement |
 
-If “rewrite from scratch” still feels necessary after this table, the audit failed or the constitution is wrong — fix those, don’t start a parallel app.
+If “rewrite from scratch” still feels necessary after this table, the audit failed or the manifesto is wrong — fix those, don’t start a parallel app.
 
 ### 4.4 Prove gaps and retires
 
@@ -220,7 +220,7 @@ Score 0 / 1 / 2. Max 16. **≥12 and no load-bearing 0 on #1–#5** = ready to e
 
 ## 12. Relationship to other skills
 
-- **constitution-first** — required input; destinations are constitution doors.
+- **manifesto** — required input; destinations are manifesto doors.
 - **accept-gated-ai** — when consolidated engines write user data.
 - **behavior-contracts** — multi-platform parity during/after re-point phases.
 - **linear-setup** — milestones mirror roadmap phases 1:1.

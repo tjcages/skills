@@ -9,7 +9,7 @@ Paste this whole file to a **local** agent with access to the private **rust/off
 List two new skills on https://offbr.co/skills next to Linear Methodology:
 
 1. https://offbr.co/skills/agent-worktrees  
-2. https://offbr.co/skills/constitution-first  
+2. https://offbr.co/skills/manifesto  
 
 Both GitHub skill repos + `npx skills add` installs already work. **Only the site D1 rows (and deploy) are missing** — pages currently **404**.
 
@@ -28,7 +28,7 @@ Both GitHub skill repos + `npx skills add` installs already work. **Only the sit
 | Pack | GitHub | Install |
 |------|--------|---------|
 | agent-worktrees | https://github.com/tjcages/agent-worktrees-skill | `npx skills add tjcages/agent-worktrees-skill -g -a '*' -y` |
-| constitution-first | https://github.com/tjcages/constitution-first-skill | `npx skills add tjcages/constitution-first-skill -g -a '*' -y` |
+| manifesto | https://github.com/tjcages/manifesto-skill | `npx skills add tjcages/manifesto-skill -g -a '*' -y` |
 
 ### Observed live page fields (linear-methodology)
 
@@ -65,26 +65,26 @@ Mirror this shape in D1 / admin UI — **discover the real table/schema from rus
 | published | yes / listed on `/skills` |
 | preview | copy Linear Methodology treatment or a simple placeholder; set R2 `preview_key` if required |
 
-### constitution-first
+### manifesto
 
 | Field (logical) | Value |
 |-----------------|--------|
-| slug | `constitution-first` |
-| name | `Constitution-first` |
+| slug | `manifesto` |
+| name | `Manifesto` |
 | kind | `Skill` |
 | version | `1.0.0` |
 | handle | `@tjcages` |
-| github / codeRepository | `https://github.com/tjcages/constitution-first-skill` |
-| install command | `npx skills add tjcages/constitution-first-skill -g -a '*' -y` |
-| homepage / url | `https://offbr.co/skills/constitution-first` |
-| description / blurb | Give a product a constitution before the feature pile invents one. |
+| github / codeRepository | `https://github.com/tjcages/manifesto-skill` |
+| install command | `npx skills add tjcages/manifesto-skill -g -a '*' -y` |
+| homepage / url | `https://offbr.co/skills/manifesto` |
+| description / blurb | Give a product a manifesto before the feature pile invents one. |
 | published | yes / listed on `/skills` |
 | preview | same approach as above |
 
 3. Deploy rust/off-brand (whatever the repo’s normal path is — wrangler deploy / CI).
 4. Verify (must all pass):
    - `curl -sI https://offbr.co/skills/agent-worktrees \| head -1` → **200**
-   - `curl -sI https://offbr.co/skills/constitution-first \| head -1` → **200**
+   - `curl -sI https://offbr.co/skills/manifesto \| head -1` → **200**
    - https://offbr.co/skills lists **both** next to Linear Methodology
    - Detail pages show install command + GitHub link
 5. Report back: D1 table name, row ids/slugs, deploy commit/URL, and any schema quirks.
@@ -98,4 +98,4 @@ Mirror this shape in D1 / admin UI — **discover the real table/schema from rus
 
 ## Done when
 
-https://offbr.co/skills/agent-worktrees and https://offbr.co/skills/constitution-first return **200** and appear on https://offbr.co/skills.
+https://offbr.co/skills/agent-worktrees and https://offbr.co/skills/manifesto return **200** and appear on https://offbr.co/skills.

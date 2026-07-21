@@ -26,8 +26,8 @@ Each folder is one **pack** (router skill + methodology + shared docs), same sha
 | Pack | Phase | Version | Detail |
 |------|-------|---------|--------|
 | [`linear-methodology/`](./linear-methodology) | 🚀 Published | 1.x | Only pack at ship quality |
-| [`agent-worktrees/`](./agent-worktrees) | ✅ v1 · install live | 1.0.0 | `npx skills add tjcages/agent-worktrees-skill` — offbr.co D1 🧱 |
-| [`constitution-first/`](./constitution-first) | ✅ v1 · install live | 1.0.0 | `npx skills add tjcages/constitution-first-skill` — offbr.co D1 🧱 |
+| [`agent-worktrees/`](./agent-worktrees) | 🚀 v1.0.0 | 1.0.0 | https://offbr.co/skills/agent-worktrees |
+| [`manifesto/`](./manifesto) | 🚀 v1.0.0 | 1.0.0 | https://offbr.co/skills/manifesto |
 | [`accept-gated-ai/`](./accept-gated-ai) | 🔁 | v0.2 | Tasks 9 · Obi 14 · visual-cursor 10 · skills agent-trust installed |
 | [`lossless-migration/`](./lossless-migration) | 🔁 | v0.1 | Obi 16 · visual-cursor 12 · skills publish audit 14 |
 | [`behavior-contracts/`](./behavior-contracts) | 🔁 | v0.1 | Issues 8 · visual-cursor draft 10 · template shipped |

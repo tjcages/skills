@@ -108,4 +108,4 @@ Pulled into §0–§2 / §7 without copying product vocabulary as universal law:
 
 ## 2026-07-21 — skills monorepo agent-trust install
 
-Installed `docs/agent-trust.md`: declares product accept-gate **N/A**, coding-agent PR/diff as the gate, points at `agent-trust.template.md` for real products. Complements constitution install same day.
+Installed `docs/agent-trust.md`: declares product accept-gate **N/A**, coding-agent PR/diff as the gate, points at `agent-trust.template.md` for real products. Complements manifesto install same day.

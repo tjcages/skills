@@ -12,11 +12,11 @@
 |---|---|---|---|
 | `linear-methodology/` | ENTITY | Already 🚀 — keep as reference pack shape | live |
 | `agent-worktrees/` | ENTITY | ✅ v1 — publish when install paths announced | ready |
-| `constitution-first/` | ENTITY | Hold 🚀 until Product 🔁 write | drafting |
+| `manifesto/` | ENTITY | Hold 🚀 until Product 🔁 write | drafting |
 | `accept-gated-ai/` | ENTITY | Hold until Product dogfood outside Obi/Tasks | drafting |
 | `lossless-migration/` | ENTITY | Hold until deeper Product audit | drafting |
 | `behavior-contracts/` | ENTITY | Hold until multi-kit install | drafting |
-| `docs/north-star.md` | FACET | Monorepo constitution | live |
+| `docs/north-star.md` | FACET | Monorepo North Star | live |
 | `docs/agent-trust.md` | FACET | Coding-agent boundary | live |
 | `KICKOFF.md` / `README.md` | VIEW | Agent entry + status board | live |
 | `scripts/worktree.sh` | INFRA | Worktree helper | live |

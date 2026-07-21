@@ -174,7 +174,7 @@ Some products write AI fields without a human accept — e.g. Obi’s `categoriz
 
 Rules for exceptions:
 
-1. **Name them in the constitution / agent rules** — silent enrichment is not “also fine.”
+1. **Name them in the manifesto / agent rules** — silent enrichment is not “also fine.”
 2. Restrict exceptions to **derived annotations** the user does not treat as their words (tags, embeddings, routing guesses) — never body/title the user authored.
 3. Prefer **soft** derived fields: displayable as “Obi thinks…” and easy to override.
 4. If an exception starts shaping what the user *believes is true* in the primary list, **promote it to a proposal**.
@@ -268,7 +268,7 @@ Score 0 / 1 / 2. Max 16. **≥12 and no load-bearing 0 on #1–#5** = accept-gat
 2. Walk §9 by hand. Score §10. Log in EXAMPLES.md same day.
 3. Second dogfood (v1 exit): one Product with overnight proposals, one Tool/agent with interactive CRUD+undo.
 
-**Exit criteria for v1:** two dogfoods, rubric usable without undocumented judgment, clear handoff note to product constitution (`constitution-first` owns where the creed lives; this pack owns the write-trust chapter).
+**Exit criteria for v1:** two dogfoods, rubric usable without undocumented judgment, clear handoff note to product manifesto (`manifesto` owns where the creed lives; this pack owns the write-trust chapter).
 
 ---
 
@@ -289,7 +289,7 @@ Score 0 / 1 / 2. Max 16. **≥12 and no load-bearing 0 on #1–#5** = accept-gat
 
 ## 13. Relationship to other skills
 
-- **constitution-first** — owns where the creed / decision checklist lives. This pack *fills* the “agent rules / accept-gated?” chapter; use [agent-trust.template.md](./agent-trust.template.md) as the installable slice.
+- **manifesto** — owns where the creed / decision checklist lives. This pack *fills* the “agent rules / accept-gated?” chapter; use [agent-trust.template.md](./agent-trust.template.md) as the installable slice.
 - **linear-methodology** — track the gaps the audit files; does not define trust doctrine.
 - **behavior-contracts** — platform parity for how accept/diff/undo *feel* on iOS vs web.
 - **lossless-migration** — when re-pointing old AI engines into one registry, inventory every write site first.

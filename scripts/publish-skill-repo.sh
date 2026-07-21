@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 # Push a v1 pack from this monorepo to a standalone public *-skill GitHub repo.
 # Usage: bash scripts/publish-skill-repo.sh agent-worktrees
-#        bash scripts/publish-skill-repo.sh constitution-first
+#        bash scripts/publish-skill-repo.sh manifesto
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-PACK="${1:?pack folder name required (agent-worktrees|constitution-first)}"
+PACK="${1:?pack folder name required (agent-worktrees|manifesto)}"
 REPO_NAME="${PACK}-skill"
 SRC="$ROOT/$PACK"
 STAGING="$(mktemp -d)/$REPO_NAME"
 
 case "$PACK" in
-  agent-worktrees|constitution-first) ;;
+  agent-worktrees|manifesto) ;;
   *)
-    echo "Only ✅ v1 packs for testing: agent-worktrees, constitution-first" >&2
+    echo "Only ✅ v1 packs for testing: agent-worktrees, manifesto" >&2
     echo "Not ready: accept-gated-ai, lossless-migration, behavior-contracts (still v0.x)" >&2
     exit 1
     ;;

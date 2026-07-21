@@ -7,7 +7,7 @@
 
 | Floor | Owns | Lives where |
 |---|---|---|
-| WHAT | Domain forms + behavior contracts | This doc / constitution |
+| WHAT | Domain forms + behavior contracts | This doc / manifesto |
 | HOW | Presentation per platform | iOS kit / web DS / macOS shell / … |
 
 ## Contracts

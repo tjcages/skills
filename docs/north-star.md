@@ -10,7 +10,7 @@ A monorepo of **methodology-first Agent Skills** — extracted from real builds 
 
 ## Who for
 
-Builders and agents (Cursor / Claude Code) who need reusable *judgment frames* — not one-off prompt dumps — for Linear discipline, worktrees, constitutions, accept-gated AI, lossless migration, and behavior contracts.
+Builders and agents (Cursor / Claude Code) who need reusable *judgment frames* — not one-off prompt dumps — for Linear discipline, worktrees, manifestos, accept-gated AI, lossless migration, and behavior contracts.
 
 ## Non-negotiables
 

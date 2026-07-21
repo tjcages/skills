@@ -45,7 +45,7 @@ Rubric ≥12/16, no load-bearing 0 on #1–#5. Log friction in EXAMPLES.md same 
 
 ### 7. Hand off
 
-Creed home → `constitution-first`. Gaps → Linear. Gate UX parity → `behavior-contracts`.
+Creed home → `manifesto`. Gaps → Linear. Gate UX parity → `behavior-contracts`.
 
 ## Sub-flows
 
@@ -59,5 +59,5 @@ Creed home → `constitution-first`. Gaps → Linear. Gate UX parity → `behavi
 
 ## Out of scope
 
-Full manifesto (`constitution-first`). Migration inventories (`lossless-migration`).
+Full manifesto (`manifesto`). Migration inventories (`lossless-migration`).
 Coding-agent worktrees (`agent-worktrees`). Building Socials UI in this pack’s name.

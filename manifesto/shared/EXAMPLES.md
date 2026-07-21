@@ -1,4 +1,4 @@
-# EXAMPLES — constitution-first dogfood
+# EXAMPLES — manifesto dogfood
 
 ## 2026-07-21 — keyframe (Tool / React animation library)
 
@@ -7,9 +7,9 @@
 - Has `CLAUDE.md` / `AGENTS.md` — **Linear tracking only**, no product theory
 - No `docs/manifesto.md`, no Creed, no non-negotiables, no decision checklist
 
-**Size call:** Tool / library shipping publicly → lightweight constitution (≤1 page), not a 12-part manifesto.
+**Size call:** Tool / library shipping publicly → lightweight manifesto (≤1 page), not a 12-part manifesto.
 
-**README-as-North-Star?** Thin. Enough for `linear-setup` Gate 2 historically, but constitution-first should flag **"fine but thin"** — pitch exists; who-for / non-negotiables / out-of-scope / philosophical-done do not.
+**README-as-North-Star?** Thin. Enough for `linear-setup` Gate 2 historically, but manifesto should flag **"fine but thin"** — pitch exists; who-for / non-negotiables / out-of-scope / philosophical-done do not.
 
 **Rubric (before any write):** 4/14
 - #1 North Star findable: 1 (README only)
@@ -23,12 +23,12 @@
 **Next action for dogfood (needs user consent):** ask the 6 anchoring questions, then draft `docs/north-star.md` (≤1 page) — do **not** invent answers.
 
 **Friction absorbed:**
-1. Distinguish **Linear-ready** (README ok) from **constitution-ready** (rubric ≥10). keyframe is the former, not the latter.
+1. Distinguish **Linear-ready** (README ok) from **manifesto-ready** (rubric ≥10). keyframe is the former, not the latter.
 2. CLAUDE.md that only contains Linear protocol is not a North Star — don't confuse tracking discipline with product theory.
 
 ## 2026-07-21 — keyframe write (owner answers → `docs/north-star.md`)
 
-Owner answered all 6 anchoring questions. Drafted lightweight Tool constitution:
+Owner answered all 6 anchoring questions. Drafted lightweight Tool manifesto:
 
 - Path: `/Users/ty/Workspace/keyframe/docs/north-star.md`
 - Wired into `CLAUDE.md` + `AGENTS.md` (read-first + conflict rule + checklist pointer)
@@ -53,9 +53,9 @@ Owner answered all 6 anchoring questions. Drafted lightweight Tool constitution:
 - README: pitch + stack + setup — **no** who-for / non-negotiables / out-of-scope / philosophical-done
 - No `docs/manifesto.md`, `docs/north-star.md`, `CLAUDE.md`, `AGENTS.md`, Creed, or decision checklist
 
-**Size call:** Product (auth, chat, sandbox tool, hosted Worker) → **full constitution** (§3), not the ≤1-page Tool form.
+**Size call:** Product (auth, chat, sandbox tool, hosted Worker) → **full manifesto** (§3), not the ≤1-page Tool form.
 
-**README-as-North-Star?** No. Pitch only → **Linear-ready? No** (no agent instructions either). **Constitution-ready? No.**
+**README-as-North-Star?** No. Pitch only → **Linear-ready? No** (no agent instructions either). **Manifesto-ready? No.**
 
 **Rubric (before any write):** **3/14**
 
@@ -69,7 +69,7 @@ Owner answered all 6 anchoring questions. Drafted lightweight Tool constitution:
 | 6 Companions | 0 | Product shape will want plan; none present |
 | 7 Drift cadence | 0 | — |
 
-**Next action (needs owner answers — do not invent):** ask the 6 anchoring questions (§2), then draft full constitution + wire conflict rule into agent instructions.
+**Next action (needs owner answers — do not invent):** ask the 6 anchoring questions (§2), then draft full manifesto + wire conflict rule into agent instructions.
 
 **Friction:** Product dogfood without owner present stops at discovery + rubric. Logging the stop is the dogfood — inventing a manifesto fails the skill.
 
@@ -100,7 +100,7 @@ Owner answered all 6 anchoring questions. Drafted lightweight Tool constitution:
 
 ## 2026-07-21 — Obi Product re-anchor (owner answers) — 🔁
 
-**Correction:** public `tjcages/obi` (Gmail Chat) was the wrong target. Real Obi constitution lives in Socials + Linear [The Manifesto](https://linear.app/off-brand-studio/document/the-manifesto-b2413f5b87dd).
+**Correction:** public `tjcages/obi` (Gmail Chat) was the wrong target. Real Obi manifesto lives in Socials + Linear [The Manifesto](https://linear.app/off-brand-studio/document/the-manifesto-b2413f5b87dd).
 
 **§1 call:** good North Star **already exists** → do **not** rewrite from the six answers. Run drift audit instead.
 

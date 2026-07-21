@@ -50,7 +50,7 @@ _~X% reframe / consolidate / GAP / RETIRE — say it upfront._
 
 ## GAP list
 
-| Gap | Why constitution needs it | Status |
+| Gap | Why manifesto needs it | Status |
 |---|---|---|
 | | | |
 

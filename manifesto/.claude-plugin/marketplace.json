@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "plugins": [
+    {
+      "name": "manifesto",
+      "description": "Author and govern a product North Star (manifesto) before the feature pile invents one.",
+      "source": {
+        "type": "github",
+        "repo": "tjcages/manifesto-skill"
+      }
+    }
+  ]
+}

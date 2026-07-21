@@ -2,7 +2,7 @@
 
 **Source of truth:** Linear [The Manifesto](https://linear.app/off-brand-studio/document/the-manifesto-b2413f5b87dd) (mirrors `socials/docs/manifesto.md`). Repo tree private in this env — Linear mirror used.
 
-**Method:** constitution-first §1 — good constitution already exists → **do not rewrite**. Run §6 drift audit against fresh owner answers to the six anchoring questions.
+**Method:** manifesto §1 — good manifesto already exists → **do not rewrite**. Run §6 drift audit against fresh owner answers to the six anchoring questions.
 
 ---
 
@@ -56,7 +56,7 @@ Owner approved. Paste instructions: [`obi-cursor-enrichment-PASTE.md`](./obi-cur
 | 6 Companions | 2 | Inventory audit + roadmap exist (Linear) |
 | 7 Drift cadence | 2 | This audit at re-anchor |
 
-**Pass.** Product-shaped 🔁 dogfood for `constitution-first` satisfied via existing constitution + owner re-anchor (not a competing draft).
+**Pass.** Product-shaped 🔁 dogfood for `manifesto` satisfied via existing manifesto + owner re-anchor (not a competing draft).
 
 ---
 

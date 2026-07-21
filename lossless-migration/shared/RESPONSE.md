@@ -4,7 +4,7 @@ Adapted from [i-have-adhd](https://github.com/ayghri/i-have-adhd). Do not requir
 
 ## Rules
 
-1. **Lead with the next action** — usually “run inventory on X?” or “constitution first?”
+1. **Lead with the next action** — usually “run inventory on X?” or “manifesto first?”
 2. **Number multi-step tasks.**
 3. **End with one concrete next action.**
 4. **Suppress tangents** — finish the audit before opening rewrite PRs.

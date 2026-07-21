@@ -36,7 +36,7 @@ They compose: the form says *what*; the kit says *how it shows up*. Neither dupl
 | “Parity” tickets already piling up | Audit with §7; you are late but salvageable. |
 | Want one shared React Native / Compose codebase | Orthogonal — shared code ≠ contract; still write promises. |
 
-If no constitution names forms/primitives, run `constitution-first` first (or a thin WHAT registry). Contracts need nouns to hang on.
+If no manifesto names forms/primitives, run `manifesto` first (or a thin WHAT registry). Contracts need nouns to hang on.
 
 ---
 
@@ -67,7 +67,7 @@ Example — **to-do row:**
 
 Prefer one of:
 
-1. **In the constitution** — Part IX-style: each form gets a one-line contract (Obi pattern).
+1. **In the manifesto** — Part IX-style: each form gets a one-line contract (Obi pattern).
 2. **`docs/behavior-contracts.md`** — table of form → verbs → owning kit files → drift notes.
 3. **Per-primitive doc** next to the kit — only if the index in (1) or (2) still lists them.
 
@@ -170,7 +170,7 @@ Score 0 / 1 / 2. Max 16. **≥12 and no load-bearing 0 on #1–#5** = contract-r
 
 ## 11. Relationship to other skills
 
-- **constitution-first** — owns WHAT registry / where contracts may live.
+- **manifesto** — owns WHAT registry / where contracts may live.
 - **lossless-migration** — Phase “platforms together” + primitive mapping tags.
 - **accept-gated-ai** — accept/diff/undo are verbs that belong on AI-proposal contracts.
 - **behavior-contracts** (this) — HOW parity promises; not visual QA.

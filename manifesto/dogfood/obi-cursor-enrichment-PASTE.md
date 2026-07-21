@@ -1,6 +1,6 @@
 # Paste into Socials `docs/manifesto.md` (owner)
 
-**Confirmed:** 2026-07-21 · constitution-first re-anchor  
+**Confirmed:** 2026-07-21 · manifesto re-anchor  
 **Landed:** ✅ owner pasted into Socials (2026-07-21)
 
 **Where:** Part I — The Premise, after the **Who this is for** paragraph (before Part II — The River).

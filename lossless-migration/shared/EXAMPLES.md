@@ -8,7 +8,7 @@
 
 | # | Score | Note |
 |---|---|---|
-| 1 Constitution exists | 2 | Manifesto mirrored; doors named |
+| 1 Manifesto exists | 2 | Manifesto mirrored; doors named |
 | 2 Full inventory buckets | 2 | Data, endpoints, engines, components, retires |
 | 3 Every row tagged | 2 | Legend applied throughout |
 | 4 GAP list explicit | 2 | §5 nine gaps with live status |
@@ -30,7 +30,7 @@
 
 ## 2026-07-21 — Methodology self-check vs Tasks split
 
-Tasks extracted from Obi without a fresh inventory-audit doc in Linear. **Score if we pretended Tasks had no audit: 2/16** (constitution partial, no destination tables).
+Tasks extracted from Obi without a fresh inventory-audit doc in Linear. **Score if we pretended Tasks had no audit: 2/16** (manifesto partial, no destination tables).
 
 **Lesson:** product splits inherit loss risk — run a thin audit at split time (which tables/endpoints/UI move vs stay shared) or accept unnamed RETIRE risk. Folded as anti-pattern “parallel new app” reminder in §8.
 
@@ -62,7 +62,7 @@ Tasks extracted from Obi without a fresh inventory-audit doc in Linear. **Score 
 
 | # | Score | Note |
 |---|---|---|
-| 1 Constitution exists | 1 | README-as-North-Star; no full constitution |
+| 1 Manifesto exists | 1 | README-as-North-Star; no full manifesto |
 | 2 Full inventory buckets | 2 | Modules + example + release infra |
 | 3 Every row tagged | 2 | Legend applied |
 | 4 GAP list explicit | 2 | Empty GAP = explicit |
@@ -73,7 +73,7 @@ Tasks extracted from Obi without a fresh inventory-audit doc in Linear. **Score 
 
 **Phases (sketch):** 0 keep monolith green · 1 extract agent package behind same `cursorAgent()` API · 2 point overlay at package · 3 RETIRE in-tree duplicate only at zero callers.
 
-**Friction:** Tool libraries still benefit from destination tags before “extract middleware” PRs. Rubric #1/#8 stay soft without constitution — don’t invent one mid-audit.
+**Friction:** Tool libraries still benefit from destination tags before “extract middleware” PRs. Rubric #1/#8 stay soft without manifesto — don’t invent one mid-audit.
 
 ## 2026-07-21 — skills monorepo publish inventory — 🔁
 

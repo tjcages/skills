@@ -1,4 +1,4 @@
-# North Star / constitution template
+# North Star / manifesto template
 
 > Copy to `docs/north-star.md` (Tool) or `docs/manifesto.md` (Product).
 > Fill from owner answers to the six anchoring questions — **do not invent**.
@@ -33,7 +33,7 @@ _
 
 ## Conflict rule
 
-**Constitution > SCOPE/state > roadmap > tickets > vibes.**
+**Manifesto > SCOPE/state > roadmap > tickets > vibes.**
 
 ## Decision checklist
 

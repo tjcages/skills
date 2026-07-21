@@ -22,7 +22,7 @@ One platform forever → skip. Second surface or parity pile-up → continue.
 
 ### 2. WHAT/HOW clear? (§0)
 
-Domain forms vs kit presentation. No WHAT nouns → `constitution-first` first.
+Domain forms vs kit presentation. No WHAT nouns → `manifesto` first.
 
 ### 3. Author contracts (§4)
 

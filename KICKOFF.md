@@ -19,7 +19,7 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 **Merged / in-tree**
 1. 🚀 `linear-methodology/` — shipped
 2. ✅ `agent-worktrees/` — **v1.0.0** (skills 12/12; keyframe PR: https://github.com/tjcages/keyframe/pull/1)
-3. ✅ `constitution-first/` — **v1.0.0** (keyframe + skills + Obi; Cursor enrichment pasted into Socials)
+3. ✅ `manifesto/` — **v1.0.0** (keyframe + skills + Obi; Cursor enrichment pasted into Socials)
 4. 🔁 `accept-gated-ai/` — + visual-cursor + skills `docs/agent-trust.md`
 5. 🔁 `lossless-migration/` — + visual-cursor + skills publish inventory
 6. 🔁 `behavior-contracts/` — + visual-cursor draft + template
@@ -29,7 +29,7 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 - Pack templates: north-star · inventory-audit · behavior-contracts
 
 **Next (do this now)**
-1. Add D1 rows in rust/off-brand for `agent-worktrees` + `constitution-first` (install path already works; offbr pages still 404)
+1. Packs live on offbr: agent-worktrees + manifesto. Mark 🚀 when preview art lands.
 2. Merge keyframe [PR #1](https://github.com/tjcages/keyframe/pull/1) + skills [PR #6](https://github.com/tjcages/skills/pull/6)
 3. Hold remaining 🔁 packs off offbr until ✅ v1
 
@@ -40,8 +40,8 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 
 | Layer | What | Example |
 |-------|------|---------|
-| **Skill pack** | Reusable methodology for agents | `constitution-first/` |
-| **Product North Star** | One app’s constitution (skill *output*) | `keyframe/docs/north-star.md` |
+| **Skill pack** | Reusable methodology for agents | `manifesto/` |
+| **Product North Star** | One app’s North Star (skill *output*) | `keyframe/docs/north-star.md` |
 
 A pack teaches *how*. A north-star doc is *one result* of running that pack on a product.
 

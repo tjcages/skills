@@ -1,17 +1,17 @@
 ---
-name: constitution-first
+name: manifesto
 version: 1.0.0
 description: >-
-  Author and govern a product North Star (constitution) that every feature is
+  Author and govern a product North Star (manifesto) that every feature is
   judged against — premise, non-negotiables, creed, decision checklist, conflict
   rule. Use when starting a non-trivial product/tool, when agents disagree about
-  what the product is, when the user asks for a manifesto / constitution / north
-  star / principles doc, before linear-setup on a project with no theory doc, or
-  when running a drift audit against an existing constitution. NOT for ticket
-  CRUD or disposable weekend scripts.
+  what the product is, when the user asks for a manifesto / north star /
+  principles doc, before linear-setup on a project with no theory doc, or when
+  running a drift audit against an existing manifesto. NOT for ticket CRUD or
+  disposable weekend scripts.
 ---
 
-# Constitution-first
+# Manifesto
 
 Chat: [RESPONSE.md](./RESPONSE.md). Full method: [METHODOLOGY.md](./METHODOLOGY.md).
 
@@ -29,7 +29,7 @@ Toy → skip. Tool → ≤1 page. Product → full form (§3) + companions as ne
 
 Pitch, who-for, non-negotiables, out-of-scope, philosophical done, broken pattern. **Confirm before writing files.**
 
-### 4. Write the constitution (§3)
+### 4. Write the manifesto (§3)
 
 Theory, not feature list. End with Creed + decision checklist. Optional: start from [north-star.template.md](./north-star.template.md).
 
@@ -39,7 +39,7 @@ Proof for migrations → hand to `lossless-migration`. Plan for phases → hand 
 
 ### 6. Install the checklist (§5)
 
-Link constitution from always-loaded agent instructions. State the conflict rule (§7).
+Link the North Star from always-loaded agent instructions. State the conflict rule (§7).
 
 ### 7. Done check (§9)
 
@@ -49,8 +49,8 @@ Rubric ≥10/14, no load-bearing zeros on #1–#4.
 
 | Ask | Skill |
 |---|---|
-| Write / bootstrap a constitution | `constitution-write` (same pack — follow §2–§5 here until split hardens) |
-| Drift audit / health vs creed | `constitution-audit` (§6) |
+| Write / bootstrap a manifesto | `manifesto-write` (same pack — follow §2–§5 here until split hardens) |
+| Drift audit / health vs creed | `manifesto-audit` (§6) |
 
 ## Out of scope
 

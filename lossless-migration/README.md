@@ -2,7 +2,7 @@
 
 **Inventory every behavior → name destination → delete only when replacement is live + zero callers.**
 
-Extracted from Socials/Obi’s inventory-audit + migration-roadmap doctrines. Complements `constitution-first` (destinations need a model) and feeds `linear-setup` (phases → milestones).
+Extracted from Socials/Obi’s inventory-audit + migration-roadmap doctrines. Complements `manifesto` (destinations need a model) and feeds `linear-setup` (phases → milestones).
 
 ## Status
 
