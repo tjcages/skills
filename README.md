@@ -26,7 +26,7 @@ Each folder is one **pack** (router skill + methodology + shared docs), same sha
 | Pack | Phase | Version | Detail |
 |------|-------|---------|--------|
 | [`linear-methodology/`](./linear-methodology) | 🚀 Published | 1.x | Only pack at ship quality |
-| [`agent-worktrees/`](./agent-worktrees) | ✅ v1 | 1.0.0 | Skills 12/12; keyframe apply local, push 🧱 |
+| [`agent-worktrees/`](./agent-worktrees) | ✅ v1 | 1.0.0 | Skills 12/12; keyframe PR open: [keyframe#1](https://github.com/tjcages/keyframe/pull/1) |
 | [`constitution-first/`](./constitution-first) | 🔁 → near ✅ | v0.1 | keyframe 12 · skills 13 · Obi manifesto re-anchor 14 |
 | [`accept-gated-ai/`](./accept-gated-ai) | 🔁 | v0.2 | Tasks 9 · Obi 14 · visual-cursor 10 · skills agent-trust installed |
 | [`lossless-migration/`](./lossless-migration) | 🔁 | v0.1 | Obi 16 · visual-cursor 12 · skills publish audit 14 |

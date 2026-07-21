@@ -18,7 +18,7 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 
 **Merged / in-tree**
 1. 🚀 `linear-methodology/` — shipped
-2. ✅ `agent-worktrees/` — **v1.0.0** (skills 12/12; keyframe applied locally, push 403)
+2. ✅ `agent-worktrees/` — **v1.0.0** (skills 12/12; keyframe PR: https://github.com/tjcages/keyframe/pull/1)
 3. 🔁 `constitution-first/` — keyframe + skills installs; Obi Product re-anchor **14/14** (manifesto exists; Cursor-metaphor enrichment pending confirm)
 4. 🔁 `accept-gated-ai/` — + visual-cursor + skills `docs/agent-trust.md`
 5. 🔁 `lossless-migration/` — + visual-cursor + skills publish inventory
@@ -30,7 +30,7 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 
 **Next (do this now)**
 1. Owner: confirm or reject Cursor-for-context manifesto enrichment (see `constitution-first/dogfood/obi-reanchor-2026-07-21.md`)
-2. Owner: `bash agent-worktrees/dogfood/PUSH-keyframe.sh /path/to/keyframe`
+2. Merge keyframe [PR #1](https://github.com/tjcages/keyframe/pull/1) + skills [PR #6](https://github.com/tjcages/skills/pull/6)
 3. Product accept-gate outside Obi/Tasks; multi-kit behavior-contracts install
 4. Hold 🚀 skills.sh until more packs hit ✅ v1
 

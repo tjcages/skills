@@ -104,3 +104,9 @@
 **Blocked:** `git push` → 403 `Permission denied to cursor[bot]`. `viewerPermission` empty on `tjcages/keyframe`.
 
 **Rubric if landed:** would be **12/12** (same shape as skills install — empty share + protocol in CLAUDE/AGENTS). Until push/merge, keyframe remote remains without protocol.
+
+## 2026-07-21 — keyframe push succeeded (owner)
+
+Owner ran `git am` + push from local machine. Branch `cursor/agent-worktrees-install-2b41` on `tjcages/keyframe` · PR: https://github.com/tjcages/keyframe/pull/1
+
+**Rubric once merged:** **12/12** (script + empty share + protocol in CLAUDE/AGENTS + status line).
