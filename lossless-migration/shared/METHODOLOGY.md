@@ -214,7 +214,8 @@ Score 0 / 1 / 2. Max 16. **≥12 and no load-bearing 0 on #1–#5** = ready to e
 - [ ] How aggressive to force reframe when leadership wants a green-field rewrite
 - [ ] Data backfill / dual-read windows — mention vs full online-migration guide
 - [ ] Live Socials tree re-verify when mounted
-
+- [x] Non-Obi authored inventory slice — visual-cursor agent-extract **12/16** (2026-07-21)
+- [ ] Full Product roadmap + audit outside Obi family (v1 exit still wants Product depth)
 ---
 
 ## 12. Relationship to other skills
