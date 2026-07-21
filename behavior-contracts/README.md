@@ -8,7 +8,7 @@ Extracted from Socials/Obi manifesto Part IX + web↔iOS/macOS parity practice.
 
 **v0.1.0 — drafting + dogfood.** Not published to skills.sh yet.
 
-Dogfood: Obi lightbox drift + Tasks-macOS composer hole (issue evidence) → rubric **8/16**.
+Dogfood: Obi/Tasks issue evidence **8/16** + visual-cursor contracts draft in `dogfood/` **10/16** (single kit prep).
 
 ## Skills
 

@@ -92,3 +92,15 @@
 | 6 Smoke this session | 2 | Full path exercised |
 
 **v1 exit:** two independent non-Socials dogfoods — visual-cursor (package / empty share) + skills (full install ≥10). Socials remains source validation. Keyframe patch pending human apply (nice-to-have, not blocking).
+
+## 2026-07-21 — keyframe `git apply` (local) + push blocked
+
+**Done in cloud env:**
+
+1. `git apply` / commit on `/tmp/keyframe` → branch `cursor/agent-worktrees-install-2b41` @ `9ff0c43`
+2. Smoke on install tip: setup → `ok: nothing to share` → teardown (worktree + branch deleted)
+3. Refreshed `dogfood/keyframe-install.patch` + added `PUSH-keyframe.sh`
+
+**Blocked:** `git push` → 403 `Permission denied to cursor[bot]`. `viewerPermission` empty on `tjcages/keyframe`.
+
+**Rubric if landed:** would be **12/12** (same shape as skills install — empty share + protocol in CLAUDE/AGENTS). Until push/merge, keyframe remote remains without protocol.

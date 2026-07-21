@@ -1,1 +1,1 @@
-/Users/ty/Workspace/agent-worktrees-skill/shared/METHODOLOGY.md
+../../shared/METHODOLOGY.md

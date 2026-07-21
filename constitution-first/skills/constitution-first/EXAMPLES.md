@@ -1,1 +1,1 @@
-/Users/ty/Workspace/constitution-first-skill/shared/EXAMPLES.md
+../../shared/EXAMPLES.md

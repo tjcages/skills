@@ -1,1 +1,1 @@
-/Users/ty/Workspace/constitution-first-skill/shared/RESPONSE.md
+../../shared/RESPONSE.md

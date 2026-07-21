@@ -6,7 +6,7 @@ Extracted from Socials/Obi's manifesto governance (constitution → SCOPE → ro
 
 ## Status
 
-**v0.1.0 — drafting + dogfood.** Not published to skills.sh yet.
+**v0.1.0 — drafting + dogfood.** Tool solid (keyframe). Product discovery logged (`obi` Gmail Chat, 3/14 — waiting owner answers). Not published.
 
 ## Skills
 
@@ -16,8 +16,8 @@ Extracted from Socials/Obi's manifesto governance (constitution → SCOPE → ro
 
 ## Dogfood targets
 
-1. `keyframe` (in progress)
-2. TBD Product-shaped second target
+1. `keyframe` — Tool write → 12/14 (solid)
+2. `obi` (Gmail Chat) — Product discovery → 3/14; need owner anchoring answers for write
 
 ## Install (local, while drafting)
 

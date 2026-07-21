@@ -44,3 +44,31 @@ Owner answered all 6 anchoring questions. Drafted lightweight Tool constitution:
 - #7 Drift cadence: 0 (not yet stated in-repo — acceptable for v0; suggest at next milestone close)
 
 **Pass threshold met** (≥10, no load-bearing 0 on #1–#4).
+
+## 2026-07-21 — obi / Gmail Chat (Product-shaped) — 🔁 discovery only
+
+**Repo:** public `tjcages/obi` (Gmail Chat via inbox.dog — OAuth + Cloudflare Agents + Durable Objects). Multi-surface Product, not a Tool library.
+
+**Discovery (§1):**
+- README: pitch + stack + setup — **no** who-for / non-negotiables / out-of-scope / philosophical-done
+- No `docs/manifesto.md`, `docs/north-star.md`, `CLAUDE.md`, `AGENTS.md`, Creed, or decision checklist
+
+**Size call:** Product (auth, chat, sandbox tool, hosted Worker) → **full constitution** (§3), not the ≤1-page Tool form.
+
+**README-as-North-Star?** No. Pitch only → **Linear-ready? No** (no agent instructions either). **Constitution-ready? No.**
+
+**Rubric (before any write):** **3/14**
+
+| # | Score | Note |
+|---|---|---|
+| 1 North Star findable | 0 | README pitch only |
+| 2 Pitch + who-for + non-negotiables | 1 | Pitch only |
+| 3 Conflict rule | 0 | — |
+| 4 Decision checklist | 0 | — |
+| 5 Size-calibrated | 2 | Correctly not overbuilt yet (absence ≠ wrong size) |
+| 6 Companions | 0 | Product shape will want plan; none present |
+| 7 Drift cadence | 0 | — |
+
+**Next action (needs owner answers — do not invent):** ask the 6 anchoring questions (§2), then draft full constitution + wire conflict rule into agent instructions.
+
+**Friction:** Product dogfood without owner present stops at discovery + rubric. Logging the stop is the dogfood — inventing a manifesto fails the skill.

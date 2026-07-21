@@ -18,19 +18,20 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 
 **Merged / in-tree**
 1. 🚀 `linear-methodology/` — shipped
-2. ✅ `agent-worktrees/` — **v1.0.0** (skills install 12/12; keyframe patch in `dogfood/`)
-3. 🧪 `constitution-first/` — v0.1 Tool dogfood (keyframe)
-4. 🧪 `accept-gated-ai/` — v0.2 (Tasks + Obi docs)
-5. 🧪 `lossless-migration/` — v0.1 (Obi audit docs)
-6. 🧪 `behavior-contracts/` — v0.1 (issue evidence)
+2. ✅ `agent-worktrees/` — **v1.0.0** (skills 12/12; keyframe applied locally, push 403)
+3. 🧪 `constitution-first/` — Tool solid; Product discovery on `obi` (3/14)
+4. 🔁 `accept-gated-ai/` — + visual-cursor live **10/16**
+5. 🔁 `lossless-migration/` — + visual-cursor inventory slice **12/16**
+6. 🔁 `behavior-contracts/` — + visual-cursor contracts draft **10/16**
 
 **Next (do this now)**
-1. Rotate 🔁 second dogfoods: constitution Product · accept-gated live UI · lossless non-Obi · behavior contracts in-repo
-2. Optional: apply `agent-worktrees/dogfood/keyframe-install.patch` on keyframe (human — bot 403)
-3. Hold 🚀 skills.sh until more packs hit ✅ v1
+1. Owner: `bash agent-worktrees/dogfood/PUSH-keyframe.sh /path/to/keyframe`
+2. Owner answers for constitution on `obi` (6 anchoring Qs) → write full form
+3. Product accept-gate outside Obi/Tasks; install behavior contracts into a real product tree
+4. Hold 🚀 skills.sh until more packs hit ✅ v1
 
 **Later**
-4. Publish packs that reach ✅ v1
+5. Publish packs that reach ✅ v1
 
 ## How these skills work (do not confuse layers)
 
@@ -67,6 +68,8 @@ A pack teaches *how*. A north-star doc is *one result* of running that pack on a
 - [OFF-266](https://linear.app/off-brand-studio/issue/OFF-266/draft-accept-gated-ai-v01) / [OFF-268](https://linear.app/off-brand-studio/issue/OFF-268/polish-accept-gated-ai-v02) — Done
 - [OFF-269](https://linear.app/off-brand-studio/issue/OFF-269/draft-lossless-migration-v01) — Done
 - [OFF-271](https://linear.app/off-brand-studio/issue/OFF-271/draft-behavior-contracts-v01) — Done
+
+**Note:** Linear free issue limit hit — comment on existing Done issues for dogfood evidence; cannot open new tickets until upgraded.
 
 ## Install for local dogfood while drafting
 

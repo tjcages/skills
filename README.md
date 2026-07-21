@@ -24,11 +24,11 @@ Each folder is one **pack** (router skill + methodology + shared docs), same sha
 | Pack | Phase | Version | Detail |
 |------|-------|---------|--------|
 | [`linear-methodology/`](./linear-methodology) | 🚀 Published | 1.x | Only pack at ship quality |
-| [`agent-worktrees/`](./agent-worktrees) | ✅ v1 | 1.0.0 | Installed on skills monorepo (12/12). Keyframe patch ready (bot 403). Not 🚀 skills.sh yet |
-| [`constitution-first/`](./constitution-first) | 🧪 Solid (Tool only) | v0.1 | keyframe north-star wrote (may be local-only on remote); needs Product-shaped 🔁 |
-| [`accept-gated-ai/`](./accept-gated-ai) | 🧪 Thin→Solid mix | v0.2 | Tasks 9/16 + Obi docs 14/16; 🧱 live Socials UI |
-| [`lossless-migration/`](./lossless-migration) | 🧪 Thin (source docs) | v0.1 | Obi audit re-score 16/16; needs non-Obi 🔁 |
-| [`behavior-contracts/`](./behavior-contracts) | 🧪 Thin (issue evidence) | v0.1 | 8/16; needs live kit paths / in-repo contracts doc |
+| [`agent-worktrees/`](./agent-worktrees) | ✅ v1 | 1.0.0 | Skills install 12/12. Keyframe applied locally; **push 403** — run `dogfood/PUSH-keyframe.sh` |
+| [`constitution-first/`](./constitution-first) | 🧪 Solid Tool · 🔁 Product discovery | v0.1 | keyframe 12/14; `obi` Product 3/14 (needs owner answers) |
+| [`accept-gated-ai/`](./accept-gated-ai) | 🔁 Tool solid · Product thin | v0.2 | Tasks 9/16 · Obi docs 14/16 · visual-cursor 10/16 |
+| [`lossless-migration/`](./lossless-migration) | 🔁 Thin→Solid mix | v0.1 | Obi 16/16 · visual-cursor slice 12/16 |
+| [`behavior-contracts/`](./behavior-contracts) | 🔁 Thin→Solid mix | v0.1 | Issues 8/16 · visual-cursor contracts draft 10/16 |
 
 ## Pack shape (every folder)
 

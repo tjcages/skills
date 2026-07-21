@@ -1,1 +1,1 @@
-/Users/ty/Workspace/agent-worktrees-skill/shared/RESPONSE.md
+../../shared/RESPONSE.md

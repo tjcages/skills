@@ -8,7 +8,7 @@ Extracted from Socials/Obi’s inventory-audit + migration-roadmap doctrines. Co
 
 **v0.1.0 — drafting + dogfood.** Not published to skills.sh yet.
 
-Dogfood: re-scored Obi’s published inventory audit via Linear mirror → **16/16** (extraction source). Fresh third-repo audit still open for v1.
+Dogfood: Obi audit **16/16** (source) + visual-cursor module inventory slice **12/16** (non-Obi). Full Product roadmap still open for v1.
 
 ## Skills
 

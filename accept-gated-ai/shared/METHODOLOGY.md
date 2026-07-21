@@ -280,8 +280,10 @@ Score 0 / 1 / 2. Max 16. **≥12 and no load-bearing 0 on #1–#5** = accept-gat
 - [x] Confidence vs volume thresholds — §3.6 (v0.2)
 - [x] Coding-agent boundary — §13 (v0.2): product data writes here; repo/file agents stay on `agent-worktrees` + human PR review
 - [ ] Live Socials checkout — re-verify EditProposal UI pixels + every direct AI write in `atom.server.ts` when tree is mounted
-- [ ] Second independent Product dogfood outside Obi/Tasks family (v1 exit)
+- [x] Independent Tool dogfood outside Obi/Tasks — visual-cursor apply+undo scored **10/16** (zeros on #3/#4) — 2026-07-21
+- [ ] Second independent **Product** dogfood outside Obi/Tasks family (v1 exit still needs Product, not only Tool)
 - [ ] Partial multi-field accept — product examples beyond “refuse whole proposal”
+- [x] Coding-agent “apply + undo” vs proposal accept — named in EXAMPLES; keep §13 boundary
 
 ---
 
@@ -292,3 +294,4 @@ Score 0 / 1 / 2. Max 16. **≥12 and no load-bearing 0 on #1–#5** = accept-gat
 - **behavior-contracts** — platform parity for how accept/diff/undo *feel* on iOS vs web.
 - **lossless-migration** — when re-pointing old AI engines into one registry, inventory every write site first.
 - **agent-worktrees** — parallel **coding** agents on a git repo. Orthogonal: worktree isolation ≠ product accept-gate. Coding agents still need human review (PR/diff) before landing shared `main`; do not stretch this pack’s proposal tables onto source files unless the product *is* a document store.
+- **visual-cursor-shaped tools** — interactive **apply + undo** (auto-land + ⌘Z) scores well on undo/proportionality and poorly on pre-land diff + stale refusal. Count as Tool dogfood; do not treat as Product accept-gate pass.
