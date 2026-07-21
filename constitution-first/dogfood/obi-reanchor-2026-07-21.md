@@ -40,7 +40,7 @@ Owner approved. Paste instructions: [`obi-cursor-enrichment-PASTE.md`](./obi-cur
 
 **Conflict rule remains:** manifesto > SCOPE > roadmap > tickets.
 
-**Land status:** 🧱 cloud bot cannot write Socials. Owner pastes into `socials/docs/manifesto.md` Part I, then re-syncs Linear mirror.
+**Land status:** ✅ Owner pasted into Socials `docs/manifesto.md` Part I (2026-07-21). Re-sync Linear mirror if not already done (repo file wins).
 
 ---
 
@@ -62,4 +62,4 @@ Owner approved. Paste instructions: [`obi-cursor-enrichment-PASTE.md`](./obi-cur
 
 ## Install note
 
-Cloud bot cannot write `socials/docs/manifesto.md`. Owner paste = ship for this enrichment. After paste + Linear re-sync, mark complete in EXAMPLES.
+✅ Owner pasted into Socials `docs/manifesto.md` (2026-07-21). Re-sync Linear [The Manifesto](https://linear.app/off-brand-studio/document/the-manifesto-b2413f5b87dd) from repo if not already.

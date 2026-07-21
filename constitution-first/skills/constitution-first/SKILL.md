@@ -1,6 +1,6 @@
 ---
 name: constitution-first
-version: 0.1.0
+version: 1.0.0
 description: >-
   Author and govern a product North Star (constitution) that every feature is
   judged against — premise, non-negotiables, creed, decision checklist, conflict

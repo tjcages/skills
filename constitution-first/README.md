@@ -6,7 +6,13 @@ Extracted from Socials/Obi's manifesto governance (constitution → SCOPE → ro
 
 ## Status
 
-**v0.1.0 — drafting + dogfood.** Tools solid (keyframe 12/14, skills 13/14). Product: Obi manifesto re-anchor **14/14**. Cursor-metaphor enrichment **confirmed** — paste into Socials (see `dogfood/obi-cursor-enrichment-PASTE.md`). Not 🚀 yet.
+**✅ v1.0.0** — two Tool dogfoods + Product re-anchor/enrichment. Not 🚀 skills.sh yet (LICENSE / install paths).
+
+| Target | Score |
+|--------|-------|
+| keyframe (Tool write) | 12/14 |
+| skills monorepo (Tool install) | 13/14 |
+| Obi (Product manifesto + re-anchor + Cursor enrichment) | 14/14 |
 
 ## Skills
 
@@ -18,14 +24,18 @@ Extracted from Socials/Obi's manifesto governance (constitution → SCOPE → ro
 
 1. `keyframe` — Tool write → 12/14
 2. `skills` monorepo — Tool install → 13/14
-3. Obi (Socials / Linear manifesto) — Product re-anchor + drift → 14/14
-## Install (local, while drafting)
+3. Obi (Socials) — Product re-anchor + enrichment landed → 14/14
+
+## Install (local)
 
 ```bash
-ln -sfn /Users/ty/Workspace/constitution-first-skill/skills/constitution-first ~/.claude/skills/constitution-first
-ln -sfn /Users/ty/Workspace/constitution-first-skill/shared/METHODOLOGY.md ~/.claude/skills/constitution-first/METHODOLOGY.md
-ln -sfn /Users/ty/Workspace/constitution-first-skill/shared/RESPONSE.md ~/.claude/skills/constitution-first/RESPONSE.md
+ln -sfn "$(pwd)/constitution-first/skills/constitution-first" ~/.claude/skills/constitution-first
+ln -sfn "$(pwd)/constitution-first/shared/METHODOLOGY.md" ~/.claude/skills/constitution-first/METHODOLOGY.md
+ln -sfn "$(pwd)/constitution-first/shared/RESPONSE.md" ~/.claude/skills/constitution-first/RESPONSE.md
+# same for ~/.cursor/skills/
 ```
+
+Template: `shared/north-star.template.md`
 
 ## License
 

@@ -1,6 +1,6 @@
 # Product Constitution Methodology
 
-**Version:** 0.1.0 — extracted from Socials/Obi (`docs/manifesto.md` + the manifesto→SCOPE→roadmap trio), 2026-07-21
+**Version:** 1.0.0 — extracted from Socials/Obi (`docs/manifesto.md` + the manifesto→SCOPE→roadmap trio); dogfooded Tool (keyframe, skills) + Product (Obi re-anchor + Cursor enrichment), 2026-07-21
 
 > **What this is.** How to give a product a **constitution** — a North Star doc every feature is judged against — before (or while) tracking and building. The missing theory that stops the loop: build → ship → hate how it feels → rebuild.
 >
@@ -184,8 +184,9 @@ Score 0 / 1 / 2. Max 14. **≥10 and no load-bearing 0 on #1–#4** = constituti
 - [x] Accept-gated AI chapter: point at sibling + `docs/agent-trust.md` (skills monorepo install)
 - [x] Second Tool install dogfood — skills monorepo north-star **13/14** (2026-07-21)
 - [x] Product dogfood — Obi manifesto exists; owner re-anchor + drift audit **14/14** (2026-07-21). Wrong-repo discovery (`tjcages/obi` Gmail) corrected.
-- [x] Optional: land “Cursor for context” enrichment — **owner confirmed**; paste pending in Socials (`dogfood/obi-cursor-enrichment-PASTE.md`)
-- [ ] Call pack ✅ v1 after Socials paste + Linear re-sync + cold rubric re-read
+- [x] Optional: land “Cursor for context” enrichment — **owner confirmed + pasted into Socials** (2026-07-21)
+- [x] Call pack ✅ v1 — Tool×2 + Product re-anchor/enrichment (2026-07-21)
+- [ ] 🚀 skills.sh publish (separate; LICENSE + install URLs)
 ---
 
 ## 12. Relationship to other skills

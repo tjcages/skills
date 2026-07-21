@@ -106,8 +106,8 @@ Owner answered all 6 anchoring questions. Drafted lightweight Tool constitution:
 
 **Owner answers** → see [`dogfood/obi-reanchor-2026-07-21.md`](../dogfood/obi-reanchor-2026-07-21.md).
 
-**Drift result:** align on pitch / who / non-negotiables / out-of-scope / broken pattern. **Enrichment CONFIRMED:** “Cursor for information & context” — paste at [`dogfood/obi-cursor-enrichment-PASTE.md`](../dogfood/obi-cursor-enrichment-PASTE.md) (Socials SoT; bot 🧱).
+**Drift result:** align on pitch / who / non-negotiables / out-of-scope / broken pattern. **Enrichment LANDED** in Socials manifesto (owner paste 2026-07-21). Paste receipt: [`dogfood/obi-cursor-enrichment-PASTE.md`](../dogfood/obi-cursor-enrichment-PASTE.md).
 
 **Rubric (existing manifesto): 14/14** — Product 🔁 satisfied.
 
-**v1 gate for constitution-first:** Tool dogfoods (keyframe + skills) + Product (Obi manifesto + re-anchor) → methodology usable cold. Remaining: optional manifesto enrichment land in Socials; keep pack at v0.1 until owner confirms enrichment / no further friction.
+**v1 exit:** Tool dogfoods (keyframe 12/14 + skills 13/14) + Product (Obi manifesto + re-anchor + enrichment landed) → pack called **✅ v1.0.0**. Hold 🚀 skills.sh until install paths announced.

@@ -19,7 +19,7 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 **Merged / in-tree**
 1. 🚀 `linear-methodology/` — shipped
 2. ✅ `agent-worktrees/` — **v1.0.0** (skills 12/12; keyframe PR: https://github.com/tjcages/keyframe/pull/1)
-3. 🔁 `constitution-first/` — keyframe + skills installs; Obi Product re-anchor **14/14** (manifesto exists; Cursor-metaphor enrichment pending confirm)
+3. ✅ `constitution-first/` — **v1.0.0** (keyframe + skills + Obi; Cursor enrichment pasted into Socials)
 4. 🔁 `accept-gated-ai/` — + visual-cursor + skills `docs/agent-trust.md`
 5. 🔁 `lossless-migration/` — + visual-cursor + skills publish inventory
 6. 🔁 `behavior-contracts/` — + visual-cursor draft + template
@@ -29,10 +29,10 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 - Pack templates: north-star · inventory-audit · behavior-contracts
 
 **Next (do this now)**
-1. Paste Cursor enrichment into Socials `docs/manifesto.md` (see `constitution-first/dogfood/obi-cursor-enrichment-PASTE.md`) → re-sync Linear
+1. Re-sync Linear [The Manifesto](https://linear.app/off-brand-studio/document/the-manifesto-b2413f5b87dd) from Socials if not done
 2. Merge keyframe [PR #1](https://github.com/tjcages/keyframe/pull/1) + skills [PR #6](https://github.com/tjcages/skills/pull/6)
-3. Product accept-gate outside Obi/Tasks; multi-kit behavior-contracts install
-4. Hold 🚀 skills.sh until more packs hit ✅ v1
+3. Rotate remaining 🔁: accept-gated Product · behavior-contracts multi-kit · lossless Product depth
+4. Hold 🚀 skills.sh until more packs hit ✅ v1 (now: linear-methodology + agent-worktrees + constitution-first)
 
 **Later**
 5. Publish packs that reach ✅ v1
