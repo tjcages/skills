@@ -25,7 +25,7 @@
 | 2 Who | **Align** | Manifesto: many projects, violent context-switch, forgetful. Same person. |
 | 3 Non-negotiables | **Align** | Maps to Creed #4 (capture), #5–#7 (quiet / ask / rethink), curated ingestion (Part VIII), surfacing from reservoir. Accept-gate not listed in answer #3 but is load-bearing in Creed #6 — keep; don’t drop. |
 | 4 Out of scope | **Align (strong)** | Part I: social-media *reflex* for capture, **not** a social network. Not an email client. |
-| 5 Philosophical done | **Enrichment CONFIRMED** | Owner said yes 2026-07-21. Paste file: [`obi-cursor-enrichment-PASTE.md`](./obi-cursor-enrichment-PASTE.md). Land in Socials repo (SoT), then re-sync Linear. |
+| 5 Philosophical done | **Enrichment LANDED** | Owner pasted into Socials 2026-07-21. See [`obi-cursor-enrichment-PASTE.md`](./obi-cursor-enrichment-PASTE.md). Re-sync Linear if needed. |
 | 6 Broken pattern | **Align** | Part I: tools make *you* do the brain’s work (Notion librarian). Opinionated organize *or* habit→schema fit = asymmetry + Obi filing. |
 
 **Overall:** no Creed-breaking drift. One optional conscious edit: elevate the **Cursor-for-context** interface metaphor into Premise / philosophical done.
