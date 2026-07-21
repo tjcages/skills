@@ -12,7 +12,7 @@
 |---|---|---|---|
 | `linear-methodology/` | ENTITY | Already 🚀 — keep as reference pack shape | live |
 | `agent-worktrees/` | ENTITY | ✅ v1 — publish when install paths announced | ready |
-| `manifesto/` | ENTITY | Hold 🚀 until Product 🔁 write | drafting |
+| `manifesto/` | ENTITY | Live on offbr.co | live |
 | `accept-gated-ai/` | ENTITY | Hold until Product dogfood outside Obi/Tasks | drafting |
 | `lossless-migration/` | ENTITY | Hold until deeper Product audit | drafting |
 | `behavior-contracts/` | ENTITY | Hold until multi-kit install | drafting |
