@@ -97,3 +97,17 @@ Owner answered all 6 anchoring questions. Drafted lightweight Tool constitution:
 | 7 Drift cadence | 1 | Stated; not yet run as ritual |
 
 **Pass.** This is a second Tool-shaped install (keyframe was first). Product write on `obi` still blocked on owner answers for v1’s Product requirement in §10.
+
+## 2026-07-21 — Obi Product re-anchor (owner answers) — 🔁
+
+**Correction:** public `tjcages/obi` (Gmail Chat) was the wrong target. Real Obi constitution lives in Socials + Linear [The Manifesto](https://linear.app/off-brand-studio/document/the-manifesto-b2413f5b87dd).
+
+**§1 call:** good North Star **already exists** → do **not** rewrite from the six answers. Run drift audit instead.
+
+**Owner answers** → see [`dogfood/obi-reanchor-2026-07-21.md`](../dogfood/obi-reanchor-2026-07-21.md).
+
+**Drift result:** align on pitch / who / non-negotiables / out-of-scope / broken pattern. **One enrichment candidate:** “Cursor for information & context” as philosophical done (owner confirm before Socials edit).
+
+**Rubric (existing manifesto): 14/14** — Product 🔁 satisfied.
+
+**v1 gate for constitution-first:** Tool dogfoods (keyframe + skills) + Product (Obi manifesto + re-anchor) → methodology usable cold. Remaining: optional manifesto enrichment land in Socials; keep pack at v0.1 until owner confirms enrichment / no further friction.

@@ -6,7 +6,7 @@ Extracted from Socials/Obi's manifesto governance (constitution → SCOPE → ro
 
 ## Status
 
-**v0.1.0 — drafting + dogfood.** Tools solid (keyframe 12/14, skills monorepo 13/14). Product discovery (`obi` 3/14) waiting owner answers. Template: `shared/north-star.template.md`.
+**v0.1.0 — drafting + dogfood.** Tools solid (keyframe 12/14, skills 13/14). Product: Obi manifesto re-anchor **14/14** (drift audit; no rewrite). Optional Cursor-metaphor enrichment awaits owner confirm. Not 🚀 yet.
 
 ## Skills
 
@@ -18,7 +18,7 @@ Extracted from Socials/Obi's manifesto governance (constitution → SCOPE → ro
 
 1. `keyframe` — Tool write → 12/14
 2. `skills` monorepo — Tool install → 13/14
-3. `obi` (Gmail Chat) — Product discovery → 3/14; need owner anchoring answers
+3. Obi (Socials / Linear manifesto) — Product re-anchor + drift → 14/14
 ## Install (local, while drafting)
 
 ```bash
