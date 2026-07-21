@@ -18,19 +18,18 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 
 **Merged / in-tree**
 1. 🚀 `linear-methodology/` — shipped
-2. 🧪 `agent-worktrees/` — v0.1 (OFF-256 still In Progress)
-3. 🧪 `constitution-first/` — v0.1 (keyframe Tool dogfood)
-4. 🧪 `accept-gated-ai/` — v0.2 (Tasks 9/16 + Obi docs 14/16)
-5. 🧪 `lossless-migration/` — v0.1 (Obi audit re-score 16/16; source dogfood)
-6. 🧪 `behavior-contracts/` — v0.1 (lightbox + Tasks-macOS dogfood → 8/16) — OFF-271
+2. 🔁 `agent-worktrees/` — v0.2 (keyframe smoke; install pass still open) — OFF-256/273
+3. 🧪 `constitution-first/` — v0.1 Tool dogfood (keyframe)
+4. 🧪 `accept-gated-ai/` — v0.2 (Tasks + Obi docs)
+5. 🧪 `lossless-migration/` — v0.1 (Obi audit docs)
+6. 🧪 `behavior-contracts/` — v0.1 (issue evidence)
 
 **Next (do this now)**
-1. **Slow down** — second dogfoods on independent repos before any ✅ v1 claims
-2. Live Socials checkout re-verify (accept-gate UI, inventory paths, kit files)
-3. Optional: close OFF-256 agent-worktrees polish
+1. **Finish agent-worktrees → ✅ v1** — install protocol into keyframe (or another public repo) and re-score ≥10/12
+2. Then rotate 🔁 second dogfoods: constitution Product · accept-gated live UI · lossless non-Obi · behavior contracts in-repo
 
 **Later**
-4. Publish / skills.sh only at ✅ v1
+3. Publish / skills.sh only at ✅ v1
 
 ## How these skills work (do not confuse layers)
 
@@ -61,11 +60,12 @@ A pack teaches *how*. A north-star doc is *one result* of running that pack on a
 
 ## Linear issues
 
-- [OFF-256](https://linear.app/off-brand-studio/issue/OFF-256/draft-agent-worktrees-v01) — agent-worktrees (In Progress)
+- [OFF-256](https://linear.app/off-brand-studio/issue/OFF-256/draft-agent-worktrees-v01) — agent-worktrees draft
+- [OFF-273](https://linear.app/off-brand-studio/issue/OFF-273/agent-worktrees-v02-polish-keyframe-dogfood) — v0.2 polish + keyframe dogfood
 - [OFF-257](https://linear.app/off-brand-studio/issue/OFF-257/draft-constitution-first-v01) — Done
 - [OFF-266](https://linear.app/off-brand-studio/issue/OFF-266/draft-accept-gated-ai-v01) / [OFF-268](https://linear.app/off-brand-studio/issue/OFF-268/polish-accept-gated-ai-v02) — Done
 - [OFF-269](https://linear.app/off-brand-studio/issue/OFF-269/draft-lossless-migration-v01) — Done
-- [OFF-271](https://linear.app/off-brand-studio/issue/OFF-271/draft-behavior-contracts-v01) — behavior-contracts v0.1
+- [OFF-271](https://linear.app/off-brand-studio/issue/OFF-271/draft-behavior-contracts-v01) — Done
 
 ## Install for local dogfood while drafting
 

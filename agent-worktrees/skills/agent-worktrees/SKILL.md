@@ -1,6 +1,6 @@
 ---
 name: agent-worktrees
-version: 0.1.0
+version: 0.2.0
 description: >-
   Isolate parallel AI agents on one git repo via branch+worktree, shared env
   symlinks, auto-ported previews, status lines, claims, and a land-from-main
@@ -41,14 +41,15 @@ Own auto-ported server. Declare `<branch> · <task>`. End every message with:
 
 `🔌 <branch> · <one-line task> · <preview URL>`
 
-### 6. Land from main (§2.6)
+### 6. Land + teardown (§2.6–2.7)
 
 ```bash
 bash scripts/worktree.sh land <branch>
 git push origin main
+bash scripts/worktree.sh teardown ../<repo>-<slug> <branch>
 ```
 
-Clear the claim. Stop the preview.
+Clear the claim. Stop the preview before teardown.
 
 ### 7. Done check (§6)
 
@@ -56,7 +57,7 @@ Rubric ≥10/12, no zeros.
 
 ## Install into a repo
 
-See METHODOLOGY §4. Copy `scripts/worktree.sh` from this pack; write the six-step protocol into agent instructions; smoke-test once.
+See METHODOLOGY §4. Prefer existing repo `scripts/worktree.sh`; else copy from this pack. Optional `worktree.share`. Write the six-step protocol into agent instructions; smoke-test once.
 
 ## Out of scope
 

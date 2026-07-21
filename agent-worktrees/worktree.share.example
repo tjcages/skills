@@ -1,0 +1,13 @@
+# Optional share-list config for `scripts/worktree.sh`
+#
+# Place at repo root as `worktree.share`.
+# Whitespace / newline separated paths relative to the main tree.
+# Comments (#) and blank lines ignored.
+#
+# If this file exists — even with zero items — defaults are NOT used.
+# That lets pure libraries declare "nothing to share" on purpose.
+#
+# Examples:
+#   .dev.vars
+#   .wrangler
+#   .env.local

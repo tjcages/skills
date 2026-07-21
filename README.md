@@ -10,23 +10,25 @@ Each folder is one **pack** (router skill + methodology + shared docs), same sha
 |-------|---------|
 | 📝 Stub | Folder exists, thesis only |
 | ✍️ Draft | METHODOLOGY + SKILL written |
-| 🧪 Dogfood | Scored against a real target; friction in EXAMPLES |
-| 🔁 2nd dogfood | Different repo than extraction source (required for **v1**) |
-| ✅ v1 | Two dogfoods + rubric usable without undocumented judgment |
+| 🧪 Thin dogfood | Scored, but docs/Linear-only or incomplete install |
+| 🧪 Solid dogfood | Live repo smoke; rubric near pass; friction folded |
+| 🔁 2nd dogfood | Independent non-extraction-source target (required for **v1**) |
+| 🧱 Blocked | Waiting on access (e.g. private Socials tree) or product install consent |
+| ✅ v1 | Two solid dogfoods + rubric usable cold |
 | 🚀 Published | skills.sh / install paths announced |
 
-**Right now we are mostly in ✍️/🧪 — not ✅ v1 and not 🚀.** Thin dogfood (docs / Linear mirrors) counts for v0.x learning, not for calling a pack done.
+**v0.x = drafted + first dogfood. Not complete. Not publish-ready.**
 
 ## Packs
 
-| Pack | Phase | Version | What's missing for v1 |
-|------|-------|---------|------------------------|
-| [`linear-methodology/`](./linear-methodology) | 🚀 | 1.x shipped | — |
-| [`agent-worktrees/`](./agent-worktrees) | 🧪 | v0.1 | 2nd stack dogfood; OFF-256 still open |
-| [`constitution-first/`](./constitution-first) | 🧪 | v0.1 | 2nd Product-shaped dogfood (keyframe was Tool) |
-| [`accept-gated-ai/`](./accept-gated-ai) | 🧪 | v0.2 | Live Socials UI audit; Tasks still 9/16 |
-| [`lossless-migration/`](./lossless-migration) | 🧪 | v0.1 | Fresh audit on a *non-Obi* repo |
-| [`behavior-contracts/`](./behavior-contracts) | 🧪 | v0.1 | Live kit path audit; install contracts doc in a product |
+| Pack | Phase | Version | Detail |
+|------|-------|---------|--------|
+| [`linear-methodology/`](./linear-methodology) | 🚀 Published | 1.x | Only pack at ship quality |
+| [`agent-worktrees/`](./agent-worktrees) | 🔁 Nearly — needs install pass | v0.2 | visual-cursor + socials + keyframe smoke; still missing protocol install on a non-Socials repo (≥10/12) |
+| [`constitution-first/`](./constitution-first) | 🧪 Solid (Tool only) | v0.1 | keyframe north-star wrote (may be local-only on remote); needs Product-shaped 🔁 |
+| [`accept-gated-ai/`](./accept-gated-ai) | 🧪 Thin→Solid mix | v0.2 | Tasks 9/16 + Obi docs 14/16; 🧱 live Socials UI |
+| [`lossless-migration/`](./lossless-migration) | 🧪 Thin (source docs) | v0.1 | Obi audit re-score 16/16; needs non-Obi 🔁 |
+| [`behavior-contracts/`](./behavior-contracts) | 🧪 Thin (issue evidence) | v0.1 | 8/16; needs live kit paths / in-repo contracts doc |
 
 ## Pack shape (every folder)
 

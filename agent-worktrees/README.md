@@ -6,28 +6,29 @@ Extracted from Socials/Obi's multi-agent protocol. Methodology-first (not just `
 
 ## Status
 
-**v0.1.0 — drafting + dogfood.** Not published to skills.sh yet.
+**v0.2.0 — 🔁 nearly.** Script polished (`worktree.share`, `teardown`). Dogfoods: visual-cursor, socials, keyframe smoke. Not ✅ v1 until a non-Socials repo has the protocol *installed* and scores ≥10/12.
 
 ## Skills
 
 | Skill | Job |
 |-------|-----|
-| `agent-worktrees` | Set up / run the six-step isolation protocol |
+| `agent-worktrees` | Set up / run the isolation protocol |
 
 ## Dogfood targets
 
-1. `visual-cursor` (in progress)
-2. TBD second stack
+1. `visual-cursor` — empty-share success
+2. `socials` — Workers share symlinks (extraction source)
+3. `keyframe` — 🔁 smoke + `worktree.share` bugfix (install pass still open)
 
 ## Install (local, while drafting)
 
 ```bash
-ln -sfn /Users/ty/Workspace/agent-worktrees-skill/skills/agent-worktrees ~/.claude/skills/agent-worktrees
-ln -sfn /Users/ty/Workspace/agent-worktrees-skill/shared/METHODOLOGY.md ~/.claude/skills/agent-worktrees/METHODOLOGY.md
-ln -sfn /Users/ty/Workspace/agent-worktrees-skill/shared/RESPONSE.md ~/.claude/skills/agent-worktrees/RESPONSE.md
+ln -sfn "$(pwd)/agent-worktrees/skills/agent-worktrees" ~/.claude/skills/agent-worktrees
+ln -sfn "$(pwd)/agent-worktrees/shared/METHODOLOGY.md" ~/.claude/skills/agent-worktrees/METHODOLOGY.md
+ln -sfn "$(pwd)/agent-worktrees/shared/RESPONSE.md" ~/.claude/skills/agent-worktrees/RESPONSE.md
 ```
 
-Copy `scripts/worktree.sh` into the target repo's `scripts/`.
+Copy `scripts/worktree.sh` into the target repo (or keep theirs). Optional: `worktree.share` from `worktree.share.example`.
 
 ## License
 

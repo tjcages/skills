@@ -1,6 +1,6 @@
 # Agent Worktrees Methodology
 
-**Version:** 0.1.0 — extracted from Socials/Obi (`CLAUDE.md` + `scripts/worktree.sh`), 2026-07-21
+**Version:** 0.2.0 — extracted from Socials/Obi (`CLAUDE.md` + `scripts/worktree.sh`), 2026-07-21; polished after keyframe dogfood
 
 > **What this is.** How multiple AI agents work the same git repo without clobbering each other's files, env, or preview servers.
 >
@@ -52,16 +52,15 @@ One-time per worktree:
 bash scripts/worktree.sh setup
 ```
 
-The script **symlinks** main-tree local secrets/data into the worktree (never copies). Reference default share list for a Cloudflare Workers + D1 app: `.dev.vars`, `.wrangler`.
+The script **symlinks** main-tree local secrets/data into the worktree (never copies).
 
-**Generalize per stack.** The share list is repo-config, not hardcoded forever:
+**Share list resolution (first match wins):**
 
-| Stack | Typical share targets |
-|---|---|
-| Cloudflare Workers + D1 | `.dev.vars`, `.wrangler` |
-| Next / Node with `.env` | `.env`, `.env.local` (if safe) |
-| Swift / Xcode | DerivedData stays local; share signing only if intentional |
-| Package with no local DB | Often nothing to share — `setup` is a no-op |
+1. `WORKTREE_SHARE="a b c"` env
+2. Repo-root `worktree.share` file (see `worktree.share.example`) — **if the file exists, defaults are skipped** (empty/comment-only = intentional nothing-to-share)
+3. Default: `.dev.vars` `.wrangler` `.env` `.env.local`
+
+**Prefer the repo-local `scripts/worktree.sh`** when the product already ships one; the pack script is bootstrap. Don't overwrite a tighter product share list without reading it.
 
 **Why symlink, not copy:** reseeding / re-login / re-pasting keys per agent is the failure mode this kills. One vault, many trees.
 
@@ -98,6 +97,16 @@ git push origin main
 
 Keep `main` as the canonical preview tree. Land finished work promptly — other agents (and devices that follow `main`) stay current.
 
+### 2.7 Teardown when done
+
+From the **main** tree:
+
+```bash
+bash scripts/worktree.sh teardown ../<repo>-<slug> <branch>
+```
+
+Removes the worktree directory and optionally deletes the local branch. Stop your preview server first — the script does not hunt ports.
+
 ---
 
 ## 3. Script contract (`worktree.sh`)
@@ -106,12 +115,13 @@ Minimum viable interface every adopting repo should ship (or install from this p
 
 | Command | Runs from | Behavior |
 |---|---|---|
-| `setup` | worktree | Symlink configured share targets from main → here. No-op if already main. |
+| `setup` | worktree | Symlink configured share targets from main → here. No-op if already main. Empty share = success. |
 | `land <branch>` | main tree only | `git switch main` → ff-pull → `merge --no-ff <branch>`. Surface conflicts; never force. |
+| `teardown <path> [branch]` | main tree only | `git worktree remove` + optional `branch -D` + prune |
 
 Detect main via `git rev-parse --path-format=absolute --git-common-dir`.
 
-Optional later: `claim`, `status`, `teardown` (remove worktree + stop port). Don't invent them until dogfood asks for them.
+Optional later: `claim`, `status`. Don't invent them until dogfood asks for them.
 
 ---
 
@@ -171,12 +181,14 @@ Before calling the skill "done":
 ## 8. Open gaps
 
 - [x] Empty share list is success, not failure — fixed 2026-07-21 (visual-cursor dogfood)
-- [ ] Config file for share list (`worktree.share`) vs editing the script
-- [ ] Prefer repo-local `scripts/worktree.sh` when present; pack script is bootstrap only
+- [x] `worktree.share` config file — added v0.2 (keyframe dogfood)
+- [x] Prefer repo-local `scripts/worktree.sh` when present — documented §2.2 / §4 (v0.2)
+- [x] `teardown` helper — added v0.2
+- [x] Comment-only `worktree.share` must not fall through to defaults — fixed v0.2 (keyframe)
 - [ ] Claim surface that works across Cursor + Claude Code without a shared memory product
-- [ ] `teardown` helper (stop port + `git worktree remove`)
 - [ ] Windows path behavior (symlink privileges)
 - [ ] Interaction with Cursor's native worktree / cloud-agent isolation — detect and defer
+- [ ] Auto-stop preview ports on teardown
 
 ---
 
