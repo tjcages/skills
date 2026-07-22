@@ -6,6 +6,9 @@ Monorepo of **methodology-first Agent Skills** — extracted from real builds (e
 
 Each folder is one **pack** (router skill + methodology + shared docs), same shape as `linear-methodology`.
 
+All owned skill source belongs in this repository as a direct pack subfolder.
+Do not create sibling `*-skill` repositories in `/Users/ty/Workspace`.
+
 ## Lifecycle (read this)
 
 | Phase | Meaning |

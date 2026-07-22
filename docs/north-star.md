@@ -20,12 +20,17 @@ Builders and agents (Cursor / Claude Code) who need reusable *judgment frames* �
 4. **One folder per pack** — mirror `linear-methodology/` layout (`shared/` + `skills/`).
 5. **Socials is reference only** — never land skill source of truth back into Socials.
 
+## Repository boundary
+
+All owned skill packs live as direct subfolders of this monorepo. Standalone
+`*-skill` sibling repositories are not alternate sources of truth; publishing
+may target separate remotes, but authoring and local installs point here.
+
 ## Out of scope
 
 - Shipping Socials / Tasks product UI under this repo’s name
 - Silently rewriting Creed / North Stars of other products without owner answers
 - Calling a pack “complete” or 🚀 published at v0.x
-- Deleting sibling Workspace skill folders until installs point here
 
 ## Philosophical done
 

@@ -74,6 +74,9 @@ A pack teaches *how*. A north-star doc is *one result* of running that pack on a
 
 **Note:** Linear free issue limit hit — comment on existing Done issues for dogfood evidence; cannot open new tickets until upgraded.
 
+All owned skill packs live under this monorepo. Do not create top-level `*-skill`
+siblings in `/Users/ty/Workspace`; add a direct pack folder here instead.
+
 ## Install for local dogfood while drafting
 
 ```bash
@@ -86,7 +89,6 @@ ln -sfn "$(pwd)/behavior-contracts/shared/RESPONSE.md" ~/.claude/skills/behavior
 ## Out of scope for this session
 
 - Republishing linear-methodology to skills.sh (separate; keep install paths working)
-- Deleting old sibling Workspace folders until installs point at this monorepo
 - Building Socials UI/feature PRs — packs are *methodology*
 
 ## First message checklist
