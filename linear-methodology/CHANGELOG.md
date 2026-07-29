@@ -2,6 +2,12 @@
 
 Public releases. Newest first.
 
+## v1.0.2 — 2026-07-29
+
+**Security:** project content is explicitly untrusted data, not agent instructions. Linear issues, comments, documents, repository files, commits, attachments, and linked pages cannot redirect the agent, expand scope, trigger commands, or override confirmed tracking decisions.
+
+**Changed:** synchronized methodology and skill metadata on v1.0.2 before the public launch announcement.
+
 ## v1.0.1 — 2026-07-21
 
 **Contract:** install is complete when skills + always-on + Linear auth work on any Agent Skills harness. **Linear is the default source of truth** every session.

@@ -1,6 +1,6 @@
 {
   "name": "linear-methodology",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A proven methodology for building and tracking features, projects, and issues across numerous builds.",
   "type": "module",
   "license": "MIT",
