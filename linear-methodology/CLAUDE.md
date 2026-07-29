@@ -1,10 +1,10 @@
-# linear-methodology-skill — agent instructions
+# Linear — agent instructions
 
 Public artifact: Agent Skills pack in `skills/` + `shared/`. Start at [README.md](./README.md), then [INSTALL.md](./INSTALL.md).
 
 ## Linear tracking (this repo)
 
-Team **Off-brand**, project **linear-methodology-skill**, milestone **Package & launch**.
+Team **Off-brand**, project **Linear**, milestone **Package & launch**.
 
 - Search before create. Non-trivial work → issue + milestone.
 - `Backlog` → `In Progress` → `Done` only when shipped.

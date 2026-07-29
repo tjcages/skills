@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Installs the linear-tracking skill pack + file-based always-on snippets.
-// Prefer: npx skills add tjcages/linear-methodology-skill -g -a '*' -y
+// Prefer: npx skills add tjcages/linear -g -a '*' -y
 // Then (Cursor): say "finish linear-tracking install"
 
 import {
@@ -115,5 +115,5 @@ console.log(`\nCursor User Rules cannot be written from this CLI.`);
 console.log(`Next (one sentence in Cursor Agent chat):`);
 console.log(`  finish linear-tracking install`);
 console.log(`That writes the Cursor always-on rule and checks Linear auth (Automation optional).`);
-console.log(`\nOr: npx skills add tjcages/linear-methodology-skill -g -a '*' -y`);
+console.log(`\nOr: npx skills add tjcages/linear -g -a '*' -y`);
 console.log(`Then the same finish sentence. Full steps: INSTALL.md`);
