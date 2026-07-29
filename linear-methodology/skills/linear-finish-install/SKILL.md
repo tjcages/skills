@@ -1,6 +1,6 @@
 ---
 name: linear-finish-install
-version: 1.0.1
+version: 1.0.2
 description: >-
   Finish Linear tracking pack install after skills are present: write always-on
   rules (Linear = default source of truth every session) and verify Linear MCP
