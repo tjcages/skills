@@ -1,4 +1,4 @@
-# Linear Methodology
+# Linear
 
 **A proven methodology for building and tracking features, projects, and issues across numerous builds.**
 
@@ -7,7 +7,7 @@
 **1.** Paste:
 
 ```bash
-npx skills add tjcages/linear-methodology-skill -g -a '*' -y
+npx skills add tjcages/linear -g -a '*' -y
 ```
 
 **2.** In Agent chat:
@@ -22,7 +22,7 @@ That writes always-on rules (Linear = default source of truth) and checks Linear
 
 | Skill | Job |
 |-------|-----|
-| `linear-methodology` | Alias → setup (also the pack name on skills.sh) |
+| `linear-methodology` | Primary methodology and router |
 | `linear-setup` | Bootstrap / extend tracking |
 | `linear-sync` | Audit / rescue existing boards |
 | `linear-monitor` | Health check + Automation recipe |

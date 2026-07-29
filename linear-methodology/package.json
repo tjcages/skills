@@ -8,7 +8,7 @@
   "homepage": "https://offbr.co/skills/linear-methodology",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tjcages/linear-methodology-skill.git"
+    "url": "git+https://github.com/tjcages/linear.git"
   },
   "keywords": [
     "linear",

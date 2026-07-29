@@ -13,12 +13,12 @@ Always-on text: [shared/ALWAYS_ON.md](./shared/ALWAYS_ON.md)
 ### Step 1 — Install the skills (~30 sec)
 
 ```bash
-npx skills add tjcages/linear-methodology-skill -g -a '*' -y
+npx skills add tjcages/linear -g -a '*' -y
 ```
 
 This installs `linear-setup`, `linear-sync`, `linear-monitor`, `linear-discipline`, `linear-finish-install`, and `linear-methodology`.
 
-`npx github:tjcages/linear-methodology-skill` also **auto-writes** the always-on block into:
+`npx github:tjcages/linear` also **auto-writes** the always-on block into:
 
 - `~/.claude/CLAUDE.md`
 - `~/.codex/AGENTS.md`
@@ -85,8 +85,8 @@ Remove the User Rule / ALWAYS_ON markers. Disable Automation if you created one.
 ## Claude Code plugin (optional)
 
 ```
-/plugin marketplace add tjcages/linear-methodology-skill
-/plugin install linear-methodology@linear-methodology-skill
+/plugin marketplace add tjcages/linear
+/plugin install linear-methodology@linear
 ```
 
 Still run Step 2 (or ensure `~/.claude/CLAUDE.md` has the always-on block + Linear auth).
