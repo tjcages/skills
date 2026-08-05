@@ -22,7 +22,7 @@ One platform forever → skip. Second surface or parity pile-up → continue.
 
 ### 2. WHAT/HOW clear? (§0)
 
-Domain forms vs kit presentation. No WHAT nouns → `constitution-first` first.
+Domain forms vs kit presentation. No WHAT nouns → `manifesto` first.
 
 ### 3. Author contracts (§4)
 
@@ -30,7 +30,7 @@ Per form: name · verbs (≤12) · invariants · kit owners · 90/10 · one pari
 
 ### 4. Install (§3)
 
-Constitution chapter and/or `docs/behavior-contracts.md`, linked from agent instructions.
+Constitution chapter and/or `docs/behavior-contracts.md`, linked from agent instructions. Start from [behavior-contracts.template.md](./behavior-contracts.template.md) if helpful.
 
 ### 5. Drift audit (§6)
 

@@ -1,0 +1,8 @@
+{
+  "name": "manifesto",
+  "description": "Author and govern a product North Star (manifesto) before the feature pile invents one.",
+  "version": "1.0.0",
+  "author": {
+    "name": "tjcages"
+  }
+}

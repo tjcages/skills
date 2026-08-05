@@ -1,1 +1,0 @@
-/Users/ty/Workspace/constitution-first-skill/shared/METHODOLOGY.md

@@ -174,7 +174,7 @@ Some products write AI fields without a human accept — e.g. Obi’s `categoriz
 
 Rules for exceptions:
 
-1. **Name them in the constitution / agent rules** — silent enrichment is not “also fine.”
+1. **Name them in the manifesto / agent rules** — silent enrichment is not “also fine.”
 2. Restrict exceptions to **derived annotations** the user does not treat as their words (tags, embeddings, routing guesses) — never body/title the user authored.
 3. Prefer **soft** derived fields: displayable as “Obi thinks…” and easy to override.
 4. If an exception starts shaping what the user *believes is true* in the primary list, **promote it to a proposal**.
@@ -268,7 +268,7 @@ Score 0 / 1 / 2. Max 16. **≥12 and no load-bearing 0 on #1–#5** = accept-gat
 2. Walk §9 by hand. Score §10. Log in EXAMPLES.md same day.
 3. Second dogfood (v1 exit): one Product with overnight proposals, one Tool/agent with interactive CRUD+undo.
 
-**Exit criteria for v1:** two dogfoods, rubric usable without undocumented judgment, clear handoff note to product constitution (`constitution-first` owns where the creed lives; this pack owns the write-trust chapter).
+**Exit criteria for v1:** two dogfoods, rubric usable without undocumented judgment, clear handoff note to product manifesto (`manifesto` owns where the creed lives; this pack owns the write-trust chapter).
 
 ---
 
@@ -280,15 +280,18 @@ Score 0 / 1 / 2. Max 16. **≥12 and no load-bearing 0 on #1–#5** = accept-gat
 - [x] Confidence vs volume thresholds — §3.6 (v0.2)
 - [x] Coding-agent boundary — §13 (v0.2): product data writes here; repo/file agents stay on `agent-worktrees` + human PR review
 - [ ] Live Socials checkout — re-verify EditProposal UI pixels + every direct AI write in `atom.server.ts` when tree is mounted
-- [ ] Second independent Product dogfood outside Obi/Tasks family (v1 exit)
+- [x] Independent Tool dogfood outside Obi/Tasks — visual-cursor apply+undo scored **10/16** (zeros on #3/#4) — 2026-07-21
+- [ ] Second independent **Product** dogfood outside Obi/Tasks family (v1 exit still needs Product, not only Tool)
 - [ ] Partial multi-field accept — product examples beyond “refuse whole proposal”
+- [x] Coding-agent “apply + undo” vs proposal accept — named in EXAMPLES; keep §13 boundary
 
 ---
 
 ## 13. Relationship to other skills
 
-- **constitution-first** — owns where the creed / decision checklist lives. This pack *fills* the “agent rules / accept-gated?” chapter; use [agent-trust.template.md](./agent-trust.template.md) as the installable slice.
+- **manifesto** — owns where the creed / decision checklist lives. This pack *fills* the “agent rules / accept-gated?” chapter; use [agent-trust.template.md](./agent-trust.template.md) as the installable slice.
 - **linear-methodology** — track the gaps the audit files; does not define trust doctrine.
 - **behavior-contracts** — platform parity for how accept/diff/undo *feel* on iOS vs web.
 - **lossless-migration** — when re-pointing old AI engines into one registry, inventory every write site first.
 - **agent-worktrees** — parallel **coding** agents on a git repo. Orthogonal: worktree isolation ≠ product accept-gate. Coding agents still need human review (PR/diff) before landing shared `main`; do not stretch this pack’s proposal tables onto source files unless the product *is* a document store.
+- **visual-cursor-shaped tools** — interactive **apply + undo** (auto-land + ⌘Z) scores well on undo/proportionality and poorly on pre-land diff + stale refusal. Count as Tool dogfood; do not treat as Product accept-gate pass.

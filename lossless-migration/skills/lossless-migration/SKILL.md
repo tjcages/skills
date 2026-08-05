@@ -17,7 +17,7 @@ Chat: [RESPONSE.md](./RESPONSE.md). Full method: [METHODOLOGY.md](./METHODOLOGY.
 
 ### 1. Migration or skip? (§1)
 
-Green-field / toy → skip. Existing users/behaviors → continue. No constitution → hand to `constitution-first` first.
+Green-field / toy → skip. Existing users/behaviors → continue. No manifesto → hand to `manifesto` first.
 
 ### 2. Wire the trio (§2)
 
@@ -29,7 +29,7 @@ Data · endpoints · engines · UI · primitives · one-offs. Breadth before dee
 
 ### 4. Tag every row (§3–§4.2)
 
-One primary destination tag + one-line mapping. Escalate unknowns — no silent skips.
+One primary destination tag + one-line mapping. Escalate unknowns — no silent skips. Optional blank: [inventory-audit.template.md](./inventory-audit.template.md).
 
 ### 5. Verdict + GAP/RETIRE (§4.3–§4.4)
 
@@ -49,4 +49,4 @@ Phases → `linear-setup`. Agent writes → `accept-gated-ai`. Multi-platform pa
 
 ## Out of scope
 
-Authoring the product creed (`constitution-first`). Accept-gate UX detail (`accept-gated-ai`). Coding worktree isolation (`agent-worktrees`).
+Authoring the product creed (`manifesto`). Accept-gate UX detail (`accept-gated-ai`). Coding worktree isolation (`agent-worktrees`).

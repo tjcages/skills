@@ -1,0 +1,35 @@
+{
+  "name": "agent-worktrees",
+  "version": "1.0.0",
+  "description": "Isolate parallel AI agents on one git repo — without reseeding, port fights, or silent clobbers.",
+  "type": "module",
+  "license": "MIT",
+  "author": "tjcages",
+  "homepage": "https://offbr.co/skills/agent-worktrees",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjcages/agent-worktrees-skill.git"
+  },
+  "keywords": [
+    "agent-skills",
+    "agentskills",
+    "worktrees",
+    "cursor",
+    "claude-code",
+    "parallel-agents",
+    "methodology"
+  ],
+  "files": [
+    "skills",
+    "shared",
+    "scripts",
+    ".claude-plugin",
+    "README.md",
+    "INSTALL.md",
+    "LICENSE",
+    "worktree.share.example"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}

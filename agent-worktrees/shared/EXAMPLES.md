@@ -60,7 +60,7 @@
 **Friction absorbed (v0.2):**
 1. `worktree.share` existence must short-circuit defaults.
 2. New worktrees don't inherit uncommitted `scripts/` — install to main *before* branching, or copy into the worktree for bootstrap tests.
-3. keyframe public tree has no `docs/north-star.md` (constitution-first dogfood may still be local-only) — noted for that pack's 🔁 backlog.
+3. keyframe public tree has no `docs/north-star.md` (manifesto dogfood may still be local-only) — noted for that pack's 🔁 backlog.
 
 **v1 gate for agent-worktrees:** still need one target with protocol **installed** (dimensions 3+5) on a non-Socials repo scoring ≥10. keyframe is the candidate — install pass next.
 
@@ -92,3 +92,21 @@
 | 6 Smoke this session | 2 | Full path exercised |
 
 **v1 exit:** two independent non-Socials dogfoods — visual-cursor (package / empty share) + skills (full install ≥10). Socials remains source validation. Keyframe patch pending human apply (nice-to-have, not blocking).
+
+## 2026-07-21 — keyframe `git apply` (local) + push blocked
+
+**Done in cloud env:**
+
+1. `git apply` / commit on `/tmp/keyframe` → branch `cursor/agent-worktrees-install-2b41` @ `9ff0c43`
+2. Smoke on install tip: setup → `ok: nothing to share` → teardown (worktree + branch deleted)
+3. Refreshed `dogfood/keyframe-install.patch` + added `PUSH-keyframe.sh`
+
+**Blocked:** `git push` → 403 `Permission denied to cursor[bot]`. `viewerPermission` empty on `tjcages/keyframe`.
+
+**Rubric if landed:** would be **12/12** (same shape as skills install — empty share + protocol in CLAUDE/AGENTS). Until push/merge, keyframe remote remains without protocol.
+
+## 2026-07-21 — keyframe push succeeded (owner)
+
+Owner ran `git am` + push from local machine. Branch `cursor/agent-worktrees-install-2b41` on `tjcages/keyframe` · PR: https://github.com/tjcages/keyframe/pull/1
+
+**Rubric once merged:** **12/12** (script + empty share + protocol in CLAUDE/AGENTS + status line).

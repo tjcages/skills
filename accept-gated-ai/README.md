@@ -2,7 +2,7 @@
 
 **Write-access AI is only trustworthy if every edit is diffed, accept-gated, reversible, proportional, and willing to do nothing.**
 
-Extracted from Socials/Obi manifesto Parts VI + XI + XII (Creed) and the `atom_proposals` / EditProposal substrate. Complements `constitution-first` (where the creed lives) by teaching how to **enforce write-trust** when an agent can mutate user data.
+Extracted from Socials/Obi manifesto Parts VI + XI + XII (Creed) and the `atom_proposals` / EditProposal substrate. Complements `manifesto` (where the creed lives) by teaching how to **enforce write-trust** when an agent can mutate user data.
 
 ## Status
 
@@ -12,7 +12,8 @@ Dogfood:
 
 1. Tasks agent rules → **9/16** (gaps on create lanes + exceptions)
 2. Obi Phase 3 accept-gated path (inventory/roadmap) → **14/16**
-
+3. visual-cursor live Tool → **10/16** (apply+undo; zeros on pre-diff + stale)
+4. skills monorepo → `docs/agent-trust.md` installed (coding-agent boundary)
 ## Skills
 
 | Skill | Job |

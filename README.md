@@ -2,7 +2,12 @@
 
 Monorepo of **methodology-first Agent Skills** — extracted from real builds (especially Socials/Obi), dogfooded, then packaged.
 
+**North Star:** [`docs/north-star.md`](./docs/north-star.md) · **Agent trust:** [`docs/agent-trust.md`](./docs/agent-trust.md) · **Publish inventory:** [`docs/inventory-audit.md`](./docs/inventory-audit.md)
+
 Each folder is one **pack** (router skill + methodology + shared docs), same shape as `linear-methodology`.
+
+All owned skill source belongs in this repository as a direct pack subfolder.
+Do not create sibling `*-skill` repositories in `/Users/ty/Workspace`.
 
 ## Lifecycle (read this)
 
@@ -24,18 +29,18 @@ Each folder is one **pack** (router skill + methodology + shared docs), same sha
 | Pack | Phase | Version | Detail |
 |------|-------|---------|--------|
 | [`linear-methodology/`](./linear-methodology) | 🚀 Published | 1.x | Only pack at ship quality |
-| [`agent-worktrees/`](./agent-worktrees) | ✅ v1 | 1.0.0 | Installed on skills monorepo (12/12). Keyframe patch ready (bot 403). Not 🚀 skills.sh yet |
-| [`constitution-first/`](./constitution-first) | 🧪 Solid (Tool only) | v0.1 | keyframe north-star wrote (may be local-only on remote); needs Product-shaped 🔁 |
-| [`accept-gated-ai/`](./accept-gated-ai) | 🧪 Thin→Solid mix | v0.2 | Tasks 9/16 + Obi docs 14/16; 🧱 live Socials UI |
-| [`lossless-migration/`](./lossless-migration) | 🧪 Thin (source docs) | v0.1 | Obi audit re-score 16/16; needs non-Obi 🔁 |
-| [`behavior-contracts/`](./behavior-contracts) | 🧪 Thin (issue evidence) | v0.1 | 8/16; needs live kit paths / in-repo contracts doc |
+| [`agent-worktrees/`](./agent-worktrees) | 🚀 v1.0.0 | 1.0.0 | https://offbr.co/skills/agent-worktrees |
+| [`manifesto/`](./manifesto) | 🚀 v1.0.0 | 1.0.0 | https://offbr.co/skills/manifesto |
+| [`accept-gated-ai/`](./accept-gated-ai) | 🔁 | v0.2 | Tasks 9 · Obi 14 · visual-cursor 10 · skills agent-trust installed |
+| [`lossless-migration/`](./lossless-migration) | 🔁 | v0.1 | Obi 16 · visual-cursor 12 · skills publish audit 14 |
+| [`behavior-contracts/`](./behavior-contracts) | 🔁 | v0.1 | Issues 8 · visual-cursor draft 10 · template shipped |
 
 ## Pack shape (every folder)
 
 ```
 <pack>/
   README.md
-  shared/           # METHODOLOGY.md, RESPONSE.md, EXAMPLES.md, …
+  shared/           # METHODOLOGY.md, RESPONSE.md, EXAMPLES.md, templates…
   skills/<name>/    # SKILL.md (+ symlinks to shared)
   scripts/          # optional
 ```

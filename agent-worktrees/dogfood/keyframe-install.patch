@@ -1,6 +1,6 @@
-From f9e9c122e10c00ea5dba8923c72878588531c71c Mon Sep 17 00:00:00 2001
+From 9ff0c437a1c130ebd876206eb4094e0f79df1f03 Mon Sep 17 00:00:00 2001
 From: Cursor Agent <cursoragent@cursor.com>
-Date: Tue, 21 Jul 2026 21:09:32 +0000
+Date: Tue, 21 Jul 2026 21:11:40 +0000
 Subject: [PATCH] chore: install agent-worktrees protocol
 
 Add worktree.sh, empty worktree.share, and parallel-agent section to

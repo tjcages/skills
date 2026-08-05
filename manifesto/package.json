@@ -1,0 +1,33 @@
+{
+  "name": "manifesto",
+  "version": "1.0.0",
+  "description": "Give a product a manifesto before the feature pile invents one.",
+  "type": "module",
+  "license": "MIT",
+  "author": "tjcages",
+  "homepage": "https://offbr.co/skills/manifesto",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjcages/manifesto-skill.git"
+  },
+  "keywords": [
+    "agent-skills",
+    "agentskills",
+    "manifesto",
+    "north-star",
+    "cursor",
+    "claude-code",
+    "methodology"
+  ],
+  "files": [
+    "skills",
+    "shared",
+    ".claude-plugin",
+    "README.md",
+    "INSTALL.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}

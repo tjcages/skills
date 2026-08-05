@@ -1,10 +1,10 @@
-# Product Constitution Methodology
+# Product Manifesto Methodology
 
-**Version:** 0.1.0 — extracted from Socials/Obi (`docs/manifesto.md` + the manifesto→SCOPE→roadmap trio), 2026-07-21
+**Version:** 1.0.0 — extracted from Socials/Obi (`docs/manifesto.md` + the manifesto→SCOPE→roadmap trio); dogfooded Tool (keyframe, skills) + Product (Obi re-anchor + Cursor enrichment), 2026-07-21
 
-> **What this is.** How to give a product a **constitution** — a North Star doc every feature is judged against — before (or while) tracking and building. The missing theory that stops the loop: build → ship → hate how it feels → rebuild.
+> **What this is.** How to give a product a **manifesto** — a North Star doc every feature is judged against — before (or while) tracking and building. The missing theory that stops the loop: build → ship → hate how it feels → rebuild.
 >
-> **The differentiator.** READMEs describe what exists. Roadmaps describe what happens next. A constitution describes **what's true regardless of what's built yet**. Linear-methodology already *consumes* a North Star; this skill teaches how to **author and govern** one.
+> **The differentiator.** READMEs describe what exists. Roadmaps describe what happens next. A manifesto describes **what's true regardless of what's built yet**. Linear-methodology already *consumes* a North Star; this skill teaches how to **author and govern** one.
 >
 > **Target user.** Anyone building a non-trivial product/tool with AI agents that otherwise invent structure from vibes.
 
@@ -12,13 +12,13 @@
 
 ## 0. Core thesis
 
-**Tracking and features without a shared theory of the product decay into a pile nobody trusts.** The fix is not a better ticket template — it's anchoring every later decision to a constitution:
+**Tracking and features without a shared theory of the product decay into a pile nobody trusts.** The fix is not a better ticket template — it's anchoring every later decision to a manifesto:
 
-1. **Constitution** — what's true (premise, model, non-negotiables, creed)
+1. **Manifesto** — what's true (premise, model, non-negotiables, creed)
 2. **Proof / state** — what's built today (SCOPE / inventory)
 3. **Plan** — what happens next (phased roadmap)
 
-**When they conflict, the constitution wins** and the other docs get corrected — never the other way around.
+**When they conflict, the manifesto wins** and the other docs get corrected — never the other way around.
 
 Calibrate weight to project size. A weekend script does not need a 12-part manifesto. A multi-platform product does.
 
@@ -34,15 +34,15 @@ Search before writing:
 
 **If a good one exists** — say so out loud ("README-as-North-Star is enough"). Do not rewrite it. Offer a **drift audit** (§6) or a lightweight **decision checklist** install (§5) instead.
 
-**If README is fine but thin** (pitch only; no who-for / non-negotiables / out-of-scope) — say **"Linear-ready, not constitution-ready"** in one line. Offer the lightweight Tool page (§1 table). Don't silently pass the rubric, and don't rewrite the README into a manifesto without consent.
+**If README is fine but thin** (pitch only; no who-for / non-negotiables / out-of-scope) — say **"Linear-ready, not manifesto-ready"** in one line. Offer the lightweight Tool page (§1 table). Don't silently pass the rubric, and don't rewrite the README into a manifesto without consent.
 
 **If nothing exists** — fork by size:
 
 | Shape | Move |
 |---|---|
 | Disposable / weekend script | Skip. Say so. One-sentence pitch in README is enough. |
-| Tool / library shipping publicly | Lightweight constitution (≤1 page): pitch, who-for, 3–5 non-negotiables, out-of-scope. |
-| Product (multi-surface, long life) | Full constitution (§3) + consider proof + plan companions (§4). |
+| Tool / library shipping publicly | Lightweight manifesto (≤1 page): pitch, who-for, 3–5 non-negotiables, out-of-scope. |
+| Product (multi-surface, long life) | Full manifesto (§3) + consider proof + plan companions (§4). |
 
 Never silently skip on a substantial product. Never force a heavyweight doc on a toy.
 
@@ -59,13 +59,13 @@ When no North Star exists and the project warrants one, ask — then write from 
 5. **What "done" philosophically means** — not a date; the feeling of finished
 6. **The broken pattern this replaces** — the loop you're ending (optional but sharp)
 
-These are product questions. (Linear-methodology's "why track in Linear?" is a *tracking* meta-goal — adjacent, not the same. Hand off to `linear-setup` after the constitution exists.)
+These are product questions. (Linear-methodology's "why track in Linear?" is a *tracking* meta-goal — adjacent, not the same. Hand off to `linear-setup` after the manifesto exists.)
 
 ---
 
-## 3. Constitution shape (full form)
+## 3. Manifesto shape (full form)
 
-A working constitution usually has:
+A working manifesto usually has:
 
 | Part | Job |
 |---|---|
@@ -92,15 +92,15 @@ A working constitution usually has:
 | **State / SCOPE** | Any long-running build | What's built, file map, conventions — *current reality* |
 | **Plan / roadmap** | Phased work ahead | Phases that Linear milestones will mirror 1:1 |
 
-Not every project needs all three. Constitution is closest to mandatory for non-trivial work. Proof is mandatory for lossless migrations (sibling: `lossless-migration`). Plan is mandatory before `linear-setup` invents milestones.
+Not every project needs all three. Manifesto is closest to mandatory for non-trivial work. Proof is mandatory for lossless migrations (sibling: `lossless-migration`). Plan is mandatory before `linear-setup` invents milestones.
 
 ---
 
 ## 5. Decision checklist (install into agent instructions)
 
-Once a constitution exists, add a short always-on ritual:
+Once a manifesto exists, add a short always-on ritual:
 
-> Before designing or building a feature, answer the constitution's decision checklist. If any answer breaks a Creed line, the idea isn't ready — or it isn't ours.
+> Before designing or building a feature, answer the manifesto's decision checklist. If any answer breaks a Creed line, the idea isn't ready — or it isn't ours.
 
 Obi's six (adapt, don't copy blindly):
 
@@ -119,9 +119,9 @@ Cadence: at phase/milestone boundaries (not arbitrary calendar dates).
 
 Procedure:
 
-1. Re-read the constitution.
+1. Re-read the manifesto.
 2. Walk what shipped since the last audit.
-3. Answer explicitly: still serving the thesis? Scope creep with no home? Should the constitution *deliberately* evolve (rare, conscious edit) or should the built thing correct back?
+3. Answer explicitly: still serving the thesis? Scope creep with no home? Should the manifesto *deliberately* evolve (rare, conscious edit) or should the built thing correct back?
 4. Land findings as tracked issues + a status note — an audit nobody acts on is just a document.
 
 Proactively *suggest* a drift audit when a phase closes.
@@ -130,7 +130,7 @@ Proactively *suggest* a drift audit when a phase closes.
 
 ## 7. Conflict rule (non-negotiable)
 
-**Constitution > SCOPE/state > roadmap > tickets > vibes.**
+**Manifesto > SCOPE/state > roadmap > tickets > vibes.**
 
 When SCOPE and the manifesto disagree, fix SCOPE. When a ticket proposes something that breaks the Creed, change the ticket or reject the idea — do not quietly patch the Creed to match the ticket.
 
@@ -141,7 +141,7 @@ When SCOPE and the manifesto disagree, fix SCOPE. When a ticket proposes somethi
 | Symptom | Why it's bad | Fix |
 |---|---|---|
 | Feature list posing as vision | Ages instantly; no judgment power | Rewrite as premise + non-negotiables |
-| Constitution that restates the roadmap | Two plans drift | Strip dates/phases; keep laws |
+| Manifesto that restates the roadmap | Two plans drift | Strip dates/phases; keep laws |
 | Silent rewrite of the Creed mid-build | Loses the whole point | Conscious edit + say why |
 | Skipping the doc on a real product | Agents invent theory per session | §2 questions → lightweight page |
 | Forcing a manifesto on a toy | Overhead kills trust in the method | Skip; say so (§1) |
@@ -151,13 +151,13 @@ When SCOPE and the manifesto disagree, fix SCOPE. When a ticket proposes somethi
 
 ## 9. Readiness rubric
 
-Score 0 / 1 / 2. Max 14. **≥10 and no load-bearing 0 on #1–#4** = constitution-ready.
+Score 0 / 1 / 2. Max 14. **≥10 and no load-bearing 0 on #1–#4** = manifesto-ready.
 
 | # | Dimension | 2 = |
 |---|---|---|
 | 1 | North Star exists and is findable | Linked from agent instructions |
 | 2 | Pitch + who-for + non-negotiables | Answerable in <2 min |
-| 3 | Conflict rule stated | Constitution wins, written down |
+| 3 | Conflict rule stated | Manifesto wins, written down |
 | 4 | Decision checklist installable | Agents can run it on a new idea |
 | 5 | Size-calibrated | Not over/under-built for the project |
 | 6 | Companions present if needed | Proof/plan only when shape demands |
@@ -172,22 +172,26 @@ Score 0 / 1 / 2. Max 14. **≥10 and no load-bearing 0 on #1–#4** = constituti
 3. Score §9. Log friction in EXAMPLES.md same day.
 4. Second dogfood: one Product-shaped, one Tool-shaped.
 
-**Exit criteria for v1:** two dogfoods, rubric usable without undocumented judgment, clean handoff note to `linear-setup` ("constitution exists → derive milestones from plan").
+**Exit criteria for v1:** two dogfoods, rubric usable without undocumented judgment, clean handoff note to `linear-setup` ("manifesto exists → derive milestones from plan").
 
 ---
 
 ## 11. Open gaps
 
-- [ ] Template file (`docs/manifesto.template.md`) vs questions-only flow
-- [x] How aggressive when README is "fine but thin" — **flag it**: Linear-ready ≠ constitution-ready; offer lightweight Tool page, don't silently pass (keyframe dogfood 2026-07-21)
+- [x] Template file (`shared/north-star.template.md`) — 2026-07-21
+- [x] How aggressive when README is "fine but thin" — **flag it**: Linear-ready ≠ manifesto-ready; offer lightweight Tool page, don't silently pass (keyframe dogfood 2026-07-21)
 - [ ] Relationship to `to-prd` / `grill-with-docs` — compose, don't compete
-- [ ] Accept-gated AI chapter: inline summary vs hard dependency on sibling skill
-
+- [x] Accept-gated AI chapter: point at sibling + `docs/agent-trust.md` (skills monorepo install)
+- [x] Second Tool install dogfood — skills monorepo north-star **13/14** (2026-07-21)
+- [x] Product dogfood — Obi manifesto exists; owner re-anchor + drift audit **14/14** (2026-07-21). Wrong-repo discovery (`tjcages/obi` Gmail) corrected.
+- [x] Optional: land “Cursor for context” enrichment — **owner confirmed + pasted into Socials** (2026-07-21)
+- [x] Call pack ✅ v1 — Tool×2 + Product re-anchor/enrichment (2026-07-21)
+- [ ] 🚀 skills.sh publish (separate; LICENSE + install URLs)
 ---
 
 ## 12. Relationship to other skills
 
-- **linear-setup** — consumes the North Star; does not author the product theory. Run constitution-first *before* or *as Gate 2* of setup.
+- **linear-setup** — consumes the North Star; does not author the product theory. Run `manifesto` *before* or *as Gate 2* of setup.
 - **lossless-migration** — owns the proof/inventory companion when rewriting in place.
 - **accept-gated-ai** — owns the agent-trust chapter when the product has write-access AI.
-- **traces** — progress log is the visual changelog; constitution is the judgment frame. Both stay.
+- **traces** — progress log is the visual changelog; manifesto is the judgment frame. Both stay.

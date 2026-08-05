@@ -18,26 +18,30 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 
 **Merged / in-tree**
 1. 🚀 `linear-methodology/` — shipped
-2. ✅ `agent-worktrees/` — **v1.0.0** (skills install 12/12; keyframe patch in `dogfood/`)
-3. 🧪 `constitution-first/` — v0.1 Tool dogfood (keyframe)
-4. 🧪 `accept-gated-ai/` — v0.2 (Tasks + Obi docs)
-5. 🧪 `lossless-migration/` — v0.1 (Obi audit docs)
-6. 🧪 `behavior-contracts/` — v0.1 (issue evidence)
+2. ✅ `agent-worktrees/` — **v1.0.0** (skills 12/12; keyframe PR: https://github.com/tjcages/keyframe/pull/1)
+3. ✅ `manifesto/` — **v1.0.0** (keyframe + skills + Obi; Cursor enrichment pasted into Socials)
+4. 🔁 `accept-gated-ai/` — + visual-cursor + skills `docs/agent-trust.md`
+5. 🔁 `lossless-migration/` — + visual-cursor + skills publish inventory
+6. 🔁 `behavior-contracts/` — + visual-cursor draft + template
+
+**Also installed in this monorepo**
+- `docs/north-star.md` · `docs/agent-trust.md` · `docs/inventory-audit.md`
+- Pack templates: north-star · inventory-audit · behavior-contracts
 
 **Next (do this now)**
-1. Rotate 🔁 second dogfoods: constitution Product · accept-gated live UI · lossless non-Obi · behavior contracts in-repo
-2. Optional: apply `agent-worktrees/dogfood/keyframe-install.patch` on keyframe (human — bot 403)
-3. Hold 🚀 skills.sh until more packs hit ✅ v1
+1. Packs live on offbr: agent-worktrees + manifesto. Mark 🚀 when preview art lands.
+2. Merge keyframe [PR #1](https://github.com/tjcages/keyframe/pull/1) + skills [PR #6](https://github.com/tjcages/skills/pull/6)
+3. Hold remaining 🔁 packs off offbr until ✅ v1
 
 **Later**
-4. Publish packs that reach ✅ v1
+5. Publish packs that reach ✅ v1
 
 ## How these skills work (do not confuse layers)
 
 | Layer | What | Example |
 |-------|------|---------|
-| **Skill pack** | Reusable methodology for agents | `constitution-first/` |
-| **Product North Star** | One app’s constitution (skill *output*) | `keyframe/docs/north-star.md` |
+| **Skill pack** | Reusable methodology for agents | `manifesto/` |
+| **Product North Star** | One app’s North Star (skill *output*) | `keyframe/docs/north-star.md` |
 
 A pack teaches *how*. A north-star doc is *one result* of running that pack on a product.
 
@@ -68,6 +72,11 @@ A pack teaches *how*. A north-star doc is *one result* of running that pack on a
 - [OFF-269](https://linear.app/off-brand-studio/issue/OFF-269/draft-lossless-migration-v01) — Done
 - [OFF-271](https://linear.app/off-brand-studio/issue/OFF-271/draft-behavior-contracts-v01) — Done
 
+**Note:** Linear free issue limit hit — comment on existing Done issues for dogfood evidence; cannot open new tickets until upgraded.
+
+All owned skill packs live under this monorepo. Do not create top-level `*-skill`
+siblings in `/Users/ty/Workspace`; add a direct pack folder here instead.
+
 ## Install for local dogfood while drafting
 
 ```bash
@@ -80,7 +89,6 @@ ln -sfn "$(pwd)/behavior-contracts/shared/RESPONSE.md" ~/.claude/skills/behavior
 ## Out of scope for this session
 
 - Republishing linear-methodology to skills.sh (separate; keep install paths working)
-- Deleting old sibling Workspace folders until installs point at this monorepo
 - Building Socials UI/feature PRs — packs are *methodology*
 
 ## First message checklist

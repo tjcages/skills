@@ -1,0 +1,8 @@
+{
+  "name": "agent-worktrees",
+  "description": "Isolate parallel AI agents on one git repo via worktrees, shared env, and land-from-main.",
+  "version": "1.0.0",
+  "author": {
+    "name": "tjcages"
+  }
+}

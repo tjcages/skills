@@ -71,3 +71,41 @@ Pulled into §0–§2 / §7 without copying product vocabulary as universal law:
 - Part VI: one engine · quiet · always asks · interrogates (don’t inflate)
 - Part XI: re-routing accept-gated + non-destructive
 - Creed #5–#7, #9: quiet multiplayer · always ask · rethought not reorganized · lovable if AI did nothing
+
+## 2026-07-21 — visual-cursor (Tool / coding-agent write path) — 🔁 independent
+
+**Context:** Public `tjcages/visual-cursor`. Live source audited (`src/agent.ts`, `src/client.tsx`, README). Independent of Obi/Tasks family — Interactive apply + undo, not overnight proposals.
+
+**Write-site map:**
+
+| Site | Class |
+|---|---|
+| `POST /__agent` → Cursor Agent edits files | Auto-applies after turn; HMR reflects |
+| Syntax check on changed files | Auto-revert whole turn if parse broken |
+| `POST /__undo` / `/__redo` (⌘Z / ⌘⇧Z) | Restores git-snapshot before/after |
+| Loopback + same-origin guards | Hard refuse remote/CSRF (unless `allowRemote`) |
+
+**Rubric: 10/16**
+
+| # | Score | Note |
+|---|---|---|
+| 1 Thesis in-repo | 1 | README documents undo/syntax/security; no five-laws creed block |
+| 2 Proposal substrate | 1 | Apply-then-undo, not pending→accept/dismiss + per-field diff |
+| 3 Diff visible in UI | 0 | No before/after panel before land — user sees HMR after |
+| 4 Stale/conflict | 0 | No stale-`before` refuse; last turn wins |
+| 5 Undo/changelog | 2 | `git stash create` snaps + undo/redo stacks |
+| 6 Quiet + proportional | 2 | Single-file scope; empty turn surfaces error, not fake success |
+| 7 Create vs edit lanes | 2 | File edits only; no inventing product rows |
+| 8 Exceptions declared | 2 | Localhost-only + CSRF refusal documented loudly |
+
+**Load-bearing zeros:** #3, #4 → not accept-gate-ready by *product* proposal standards. Strong **coding-agent** pattern (§13): reversible auto-apply ≠ accept-gated authorship UI.
+
+**Friction absorbed same day:**
+
+1. Name the pattern: **apply + undo** is §4.1-adjacent for *devtool* agents; still fails #3/#4 unless a pre-land diff accept exists.
+2. Auto-revert on syntax is a safety net, not an accept gate — user never chose “accept.”
+3. Scoring a Tool coding agent against Product proposal rubric is valid for v1 “independent target” — don’t inflate to pass by redefining #2–#4.
+
+## 2026-07-21 — skills monorepo agent-trust install
+
+Installed `docs/agent-trust.md`: declares product accept-gate **N/A**, coding-agent PR/diff as the gate, points at `agent-trust.template.md` for real products. Complements manifesto install same day.

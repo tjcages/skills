@@ -55,3 +55,30 @@ Safer reference — parity work that *did* follow a shared shape.
 3. Screenshot parity would have missed “cannot create a task at all.”
 
 **Next dogfood:** live kit path walk when Socials is mounted; or install `docs/behavior-contracts.md` on Tasks with composer + row verbs.
+
+## 2026-07-21 — visual-cursor in-repo contracts draft (🔁 prep)
+
+**Context:** Single-kit Tool today. Authored contracts *before* a hypothetical second surface (webview). File: `behavior-contracts/dogfood/visual-cursor-contracts.md`.
+
+**Contracts:** stamp/locate · composer · agent turn · key setup — verbs testable from README + source.
+
+**Rubric (prep / single kit): 10/16**
+
+| # | Score | Note |
+|---|---|---|
+| 1 WHAT/HOW split | 2 | Stated in dogfood doc |
+| 2 Contracts for load-bearing forms | 2 | Four contracts |
+| 3 Verbs testable | 2 | Checklist form |
+| 4 Kit owners linked | 1 | Vite/React paths named; not in product tree |
+| 5 No silent forks | 2 | One kit only |
+| 6 Drift audit this phase | 1 | Table in dogfood doc |
+| 7 Multi-platform ship rule | 0 | N/A until surface #2 — scored 0 load-bearing for multi-platform claim |
+| 8 Sparkle rule | 1 | Theme tokens exist; not contract-linked |
+
+**Load-bearing for multi-platform v1:** still need contracts **installed in a product repo** + ≥2 kits. This pass proves the pack can author installable contracts from a live Tool tree.
+
+**Friction:** Don’t force multi-platform ship rule on single-kit Tools — §1 skip still wins; contracts are optional prep.
+
+## 2026-07-21 — template install
+
+Added `shared/behavior-contracts.template.md` (+ skill symlink). Closes open gap for copy-paste install into product `docs/behavior-contracts.md`.
