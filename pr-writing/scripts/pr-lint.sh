@@ -52,7 +52,7 @@ if [ -n "${body//[[:space:]]/}" ]; then
   fence=0; ln=2
   while IFS= read -r l; do
     ln=$((ln + 1))
-    case $l in '```'*) fence=$((1 - fence)); continue ;; esac
+    case ${l#"${l%%[![:space:]]*}"} in '```'*) fence=$((1 - fence)); continue ;; esac
     [ "$fence" -eq 1 ] && continue
     case $l in *http://*|*https://*) continue ;; esac
     [ "${#l}" -gt 72 ] && err "line $ln is ${#l} chars (wrap at 72)"
@@ -61,10 +61,12 @@ else
   warn "no body — acceptable only for a truly self-evident one-liner"
 fi
 
-# §4 — banned words
+# §4 — banned words. Strip fenced blocks and inline `code` spans first:
+# quoting a bad message as an example is legal.
+prose=$(printf '%s\n' "$msg" | awk '/^[ \t]*```/{f=!f; next} !f' | sed 's/`[^`]*`//g')
 for w in simply just easily obviously please leverage utilize "in order to" \
          "under the hood" "out of the box" "low-hanging fruit" "we " "This PR"; do
-  printf '%s' "$msg" | grep -qiF -- "$w" && err "banned word/phrase: '$w'"
+  printf '%s' "$prose" | grep -qiF -- "$w" && err "banned word/phrase: '$w'"
 done
 
 [ "$fail" -eq 0 ] && printf '  ✓ passes pr-writing rules\n'
