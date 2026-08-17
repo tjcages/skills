@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 2,
+  "root": {
+    "agentId": "root",
+    "identity": "user-facing-root"
+  },
+  "target": {
+    "outcome": "Replace with the user-visible outcome",
+    "definitionOfDone": [
+      "Replace with an observable completion condition"
+    ],
+    "nonNegotiables": [],
+    "scope": {
+      "in": [],
+      "out": []
+    },
+    "authority": {
+      "allowed": [],
+      "ownerOnly": []
+    }
+  },
+  "readiness": {
+    "criteria": [
+      {
+        "id": "product-outcome",
+        "description": "The defined product outcome is verified",
+        "required": true,
+        "status": "pending",
+        "revision": "",
+        "evidence": [],
+        "deferredByUser": false
+      },
+      {
+        "id": "repository-verification",
+        "description": "Repository-defined verification passes on the integrated revision",
+        "required": true,
+        "status": "pending",
+        "revision": "",
+        "evidence": [],
+        "deferredByUser": false
+      }
+    ]
+  },
+  "criticalPath": {
+    "nextGate": "Finish discovery and contract the first workstream",
+    "blockedPaths": [],
+    "remainingAuthorizedPaths": [
+      "discovery",
+      "product implementation",
+      "repository verification"
+    ]
+  },
+  "workstreams": [
+    {
+      "id": "replace-me",
+      "role": "Replace with a bounded role",
+      "objective": "Replace with one checkable objective",
+      "why": "Replace with its contribution to the target",
+      "owner": "root",
+      "authoritativeInputs": [
+        "Replace with authoritative input"
+      ],
+      "dependencies": [],
+      "writeClaims": [],
+      "forbidden": [
+        "work outside the stated objective"
+      ],
+      "expectedOutput": "Replace with the expected artifact or evidence",
+      "stopConditions": [
+        "target or ownership changes"
+      ],
+      "maySpawn": false,
+      "requiresUserAuthority": false,
+      "requiredEvidence": [],
+      "evidence": [],
+      "reliedOn": true,
+      "verifiedRevision": "",
+      "state": "candidate",
+      "transitions": [
+        {
+          "state": "candidate",
+          "by": "root"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "applicable": true,
+    "readinessCriterionId": "repository-verification",
+    "revision": "uncommitted-initial-state",
+    "sources": [
+      "Replace with inspected repository instructions"
+    ],
+    "localChecks": [
+      {
+        "name": "replace with required repository check",
+        "command": "replace with exact command",
+        "required": true,
+        "status": "pending",
+        "revision": "",
+        "evidence": "",
+        "waivedByUser": false
+      }
+    ],
+    "prChecks": [],
+    "noPrChecksReason": "Replace after checking installed PR verification",
+    "notApplicableReason": ""
+  },
+  "program": {
+    "status": "in-progress",
+    "readinessDeclaredBy": null,
+    "integratedChecks": [
+      {
+        "name": "replace with integrated workflow check",
+        "status": "pending",
+        "revision": "",
+        "evidence": ""
+      }
+    ],
+    "delivery": {
+      "status": "pending",
+      "revision": "",
+      "artifacts": [],
+      "notApplicableReason": ""
+    },
+    "blockers": [],
+    "userApprovalEvidence": []
+  }
+}
