@@ -11,7 +11,7 @@ description: >-
 
 # Orchestrator
 
-Read [METHODOLOGY.md](./METHODOLOGY.md) and [RESPONSE.md](./RESPONSE.md) completely before acting. Read [WORKER-CONTRACT.md](./WORKER-CONTRACT.md) before delegating and [READINESS.md](./READINESS.md) before claiming a milestone or completion.
+Read [METHODOLOGY.md](./references/METHODOLOGY.md) and [RESPONSE.md](./references/RESPONSE.md) completely before acting. Read [WORKER-CONTRACT.md](./references/WORKER-CONTRACT.md) and [LEDGER.md](./references/LEDGER.md) before delegating. Read [READINESS.md](./references/READINESS.md) before claiming a milestone or completion.
 
 ## Creed
 
@@ -29,7 +29,7 @@ Orchestrate only when at least two independent, checkable workstreams materially
 
 ### 3. Establish the target ledger
 
-Write the outcome, definition of done, non-negotiables, authority, gaps, dependencies, critical path, and delivery artifacts. Persist it for long or compaction-prone runs.
+Create a machine-readable target ledger from `examples/ledger.example.json`. Record outcome, readiness, authority, dependencies, critical path, workstream transitions, acceptance, and delivery. Validate it with `node scripts/validate-ledger.mjs <ledger.json>` before delegating and after every wave.
 
 ### 4. Map seams before writers
 
@@ -37,7 +37,7 @@ Use read-only discovery first. Identify shared files, contracts, schemas, and in
 
 ### 5. Contract every assignment
 
-Use [WORKER-CONTRACT.md](./WORKER-CONTRACT.md). Name objective, authoritative inputs, owned files/systems, forbidden seams, evidence, stop conditions, and report format. Workers do not own readiness.
+Use [WORKER-CONTRACT.md](./references/WORKER-CONTRACT.md). Name objective, authoritative inputs, owned files/systems, forbidden seams, evidence, stop conditions, and report format. Workers do not own readiness.
 
 ### 6. Direct one useful wave
 
@@ -57,7 +57,7 @@ Verify authoritative combined state, update the ledger from accepted evidence, a
 
 ### 10. Apply the completion gate
 
-Use [READINESS.md](./READINESS.md). Claim done only when required outcomes are verified, relied-on work was challenged, integrated checks pass, delivery artifacts exist, and no active worker can invalidate readiness.
+Use [READINESS.md](./references/READINESS.md). Re-run the ledger validator. Claim done only when required outcomes are verified, relied-on work was challenged, integrated checks pass, delivery artifacts exist, and no active worker can invalidate readiness.
 
 ## Non-negotiables
 
@@ -71,4 +71,4 @@ Use [READINESS.md](./READINESS.md). Claim done only when required outcomes are v
 
 ## Status contract
 
-Every update follows [RESPONSE.md](./RESPONSE.md): state, root action, material worker state, newly accepted evidence, and the next observable gate.
+Every update follows [RESPONSE.md](./references/RESPONSE.md): state, root action, material worker state, newly accepted evidence, and the next observable gate.

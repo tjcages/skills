@@ -1,0 +1,14 @@
+{
+  "name": "orchestrator-skill-pack",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Root-owned, evidence-gated multi-agent orchestration skill.",
+  "type": "module",
+  "scripts": {
+    "sync:skill-assets": "node scripts/sync-skill-assets.mjs",
+    "check:skill-assets": "node scripts/sync-skill-assets.mjs --check",
+    "test": "node evals/conformance.test.mjs",
+    "check": "node scripts/verify.mjs"
+  },
+  "license": "UNLICENSED"
+}

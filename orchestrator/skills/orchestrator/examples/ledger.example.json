@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "root": {
+    "agentId": "root",
+    "identity": "user-facing-root"
+  },
+  "target": {
+    "outcome": "Deliver the integrated account settings workflow",
+    "nonNegotiables": [
+      "Root alone declares readiness",
+      "Production deployment remains owner-only"
+    ],
+    "scope": {
+      "in": ["settings UI", "settings API", "integrated verification"],
+      "out": ["production deployment"]
+    },
+    "authority": {
+      "allowed": ["edit repository", "run local checks"],
+      "ownerOnly": ["merge", "production deployment"]
+    }
+  },
+  "readiness": {
+    "criteria": [
+      {
+        "id": "ui-flow",
+        "description": "User can update settings through the UI",
+        "required": true,
+        "status": "verified",
+        "evidence": ["browser test: settings-update"],
+        "deferredByUser": false
+      },
+      {
+        "id": "api-contract",
+        "description": "API validates and persists supported settings",
+        "required": true,
+        "status": "verified",
+        "evidence": ["integration test: settings-api"],
+        "deferredByUser": false
+      }
+    ]
+  },
+  "criticalPath": {
+    "nextGate": "User reviews the delivered pull request",
+    "blockedPaths": [],
+    "remainingAuthorizedPaths": []
+  },
+  "workstreams": [
+    {
+      "id": "settings-ui",
+      "role": "Settings UI implementer",
+      "objective": "Implement the settings form against the settled API contract",
+      "why": "The user workflow cannot be ready without the settings form",
+      "owner": "worker-ui",
+      "authoritativeInputs": ["settled settings API contract", "existing settings UI conventions"],
+      "dependencies": [],
+      "writeClaims": ["src/settings/ui"],
+      "forbidden": ["settings API", "merge", "production deployment"],
+      "expectedOutput": "Settings form implementation with focused evidence",
+      "stopConditions": ["API contract differs from the supplied input", "write claim overlaps another worker"],
+      "maySpawn": false,
+      "requiresUserAuthority": false,
+      "requiredEvidence": ["focused component tests", "browser workflow evidence"],
+      "evidence": ["component tests passed", "browser test: settings-update"],
+      "reliedOn": true,
+      "state": "done",
+      "transitions": [
+        { "state": "candidate", "by": "root" },
+        { "state": "scoped", "by": "root" },
+        { "state": "assigned", "by": "root" },
+        { "state": "active", "by": "worker-ui" },
+        { "state": "submitted", "by": "worker-ui" },
+        { "state": "challenged", "by": "root" },
+        { "state": "integrated", "by": "root" },
+        { "state": "verified", "by": "root" },
+        { "state": "done", "by": "root" }
+      ],
+      "acceptance": {
+        "reviewedBy": "root",
+        "scope": "pass",
+        "truth": "pass",
+        "evidenceQuality": "pass",
+        "interactionSafety": "pass",
+        "residualRisk": "acceptable",
+        "decision": "accept"
+      }
+    },
+    {
+      "id": "settings-api",
+      "role": "Settings API implementer",
+      "objective": "Implement and verify the settings API contract",
+      "why": "The UI requires a validated persistence contract",
+      "owner": "worker-api",
+      "authoritativeInputs": ["settled settings API contract", "existing persistence conventions"],
+      "dependencies": [],
+      "writeClaims": ["src/settings/api"],
+      "forbidden": ["settings UI", "merge", "production deployment"],
+      "expectedOutput": "Settings API implementation with contract and persistence evidence",
+      "stopConditions": ["persistence schema requires an unapproved change", "write claim overlaps another worker"],
+      "maySpawn": false,
+      "requiresUserAuthority": false,
+      "requiredEvidence": ["contract tests", "persistence integration test"],
+      "evidence": ["contract tests passed", "integration test: settings-api"],
+      "reliedOn": true,
+      "state": "done",
+      "transitions": [
+        { "state": "candidate", "by": "root" },
+        { "state": "scoped", "by": "root" },
+        { "state": "assigned", "by": "root" },
+        { "state": "active", "by": "worker-api" },
+        { "state": "submitted", "by": "worker-api" },
+        { "state": "challenged", "by": "root" },
+        { "state": "integrated", "by": "root" },
+        { "state": "verified", "by": "root" },
+        { "state": "done", "by": "root" }
+      ],
+      "acceptance": {
+        "reviewedBy": "root",
+        "scope": "pass",
+        "truth": "pass",
+        "evidenceQuality": "pass",
+        "interactionSafety": "pass",
+        "residualRisk": "acceptable",
+        "decision": "accept"
+      }
+    }
+  ],
+  "program": {
+    "status": "done",
+    "readinessDeclaredBy": "root",
+    "integratedChecks": [
+      {
+        "name": "account settings workflow",
+        "status": "passed",
+        "evidence": "browser test and API persistence check passed together"
+      }
+    ],
+    "delivery": {
+      "status": "delivered",
+      "artifacts": ["https://example.test/pull/123"],
+      "notApplicableReason": ""
+    },
+    "limitations": ["Production deployment remains owner-only and out of scope"],
+    "blockers": [],
+    "userApprovalEvidence": []
+  }
+}

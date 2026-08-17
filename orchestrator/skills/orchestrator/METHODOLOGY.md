@@ -1,1 +1,0 @@
-../../shared/METHODOLOGY.md

@@ -6,7 +6,7 @@ Extracted from Ty's recurring “orchestrator” commands and the behavior of th
 
 ## Status
 
-**✍️ v0.1 draft** — research-derived and structurally validated. No live dogfood yet. Do not call this v1 or production-proven.
+**✍️ v0.1 draft** — research-derived with executable ledger conformance. No live dogfood yet. Do not call this v1 or production-proven.
 
 ## Skill
 
@@ -26,6 +26,28 @@ Extracted from Ty's recurring “orchestrator” commands and the behavior of th
 - `shared/RESPONSE.md` — compact user-facing progress contract
 - `shared/EVALS.md` — trigger, behavior, and regression evaluations
 - `shared/EXAMPLES.md` — research provenance and future dogfood log
+- `src/validate-ledger.mjs` — deterministic root-ownership and readiness validator
+- `evals/conformance.test.mjs` — positive and negative conformance fixtures
+- `scripts/sync-skill-assets.mjs` — canonical-source synchronization and drift check
+- `scripts/verify.mjs` — one-command pack verification
+
+## Verify
+
+```bash
+node orchestrator/scripts/verify.mjs
+```
+
+`shared/`, `src/`, and `examples/` are canonical. Run `node orchestrator/scripts/sync-skill-assets.mjs` after changing them. CI rejects drift between canonical sources and the self-contained installed skill.
+
+## Install
+
+The distributable unit is `skills/orchestrator/`; it contains every runtime reference, script, and example without links outside the directory.
+
+```bash
+npx skills add tjcages/skills --skill orchestrator
+```
+
+For local development, copy or link the entire `orchestrator/skills/orchestrator` directory. Do not install only `SKILL.md`. To upgrade an existing copy, compare local modifications before replacement; the ledger format is versioned with `schemaVersion`.
 
 ## Release gate
 
@@ -39,3 +61,4 @@ Extracted from Ty's recurring “orchestrator” commands and the behavior of th
 
 - [`../research/orchestrator-conversations.md`](../research/orchestrator-conversations.md)
 - [`../research/orchestrator-skill-contract.md`](../research/orchestrator-skill-contract.md)
+- [`../research/orchestrator-quality-bar.md`](../research/orchestrator-quality-bar.md)

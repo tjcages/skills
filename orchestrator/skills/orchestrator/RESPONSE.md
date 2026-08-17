@@ -1,1 +1,0 @@
-../../shared/RESPONSE.md

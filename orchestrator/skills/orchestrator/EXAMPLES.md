@@ -1,1 +1,0 @@
-../../shared/EXAMPLES.md
