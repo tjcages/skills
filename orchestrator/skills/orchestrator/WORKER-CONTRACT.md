@@ -1,0 +1,1 @@
+../../shared/WORKER-CONTRACT.md
