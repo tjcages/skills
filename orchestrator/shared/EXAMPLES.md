@@ -31,7 +31,7 @@ Quality traits adopted into this pack:
 1. canonical sources synchronized into a self-contained installed skill;
 2. deterministic drift detection instead of trusting duplicated assets;
 3. positive and negative executable conformance cases;
-4. one verification command exercised by path-scoped CI;
+4. one local verification command covering the complete pack;
 5. explicit installation, upgrade, source-of-truth, and lifecycle boundaries.
 
 Domain-specific Oxlint rules and vendoring behavior were not copied. For orchestrator, executable enforcement applies to ledger consistency; live dogfood must still prove agent behavior and real-world evidence quality.

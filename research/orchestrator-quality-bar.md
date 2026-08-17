@@ -8,7 +8,7 @@
 
 ## Finding
 
-Anti-slop's quality comes from the complete delivery system around its skill, not from prompt length. Its agent instructions sit beside canonical implementation source, bundled runtime assets, a safe deterministic installer, focused positive and negative tests, asset-drift checks, one verification command, CI, and explicit installation and maintenance documentation.
+Anti-slop's quality comes from the complete delivery system around its skill, not from prompt length. Its agent instructions sit beside canonical implementation source, bundled runtime assets, a safe deterministic installer, focused positive and negative tests, asset-drift checks, one verification command, and explicit installation and maintenance documentation.
 
 The orchestrator skill is behavioral rather than an Oxlint installer, so the domain mechanics do not transfer directly. The quality standard does.
 
@@ -22,7 +22,6 @@ The orchestrator skill is behavioral rather than an Oxlint installer, so the dom
 | Deterministic rules | Machine-readable target ledger validator |
 | Valid/invalid RuleTester cases | Positive and negative conformance fixtures |
 | `pnpm check` | `node orchestrator/scripts/verify.mjs` |
-| Path-scoped CI | `.github/workflows/orchestrator.yml` |
 | Install/migration README | Install, upgrade, source-of-truth, and lifecycle guidance |
 
 ## Non-transferable parts
@@ -53,6 +52,6 @@ Those remain live-dogfood requirements. The pack stays at ✍️ draft until two
 - [ ] Every enforceable invariant has a negative conformance case.
 - [ ] Every allowed recovery path has a positive conformance case.
 - [ ] One command validates metadata, links, assets, fixtures, and example ledger.
-- [ ] CI runs that command for every relevant change.
+- [ ] The local verification command covers every relevant invariant.
 - [ ] README states install, upgrade, authority, proof, and lifecycle boundaries.
 - [ ] Live dogfood remains separate from structural conformance.

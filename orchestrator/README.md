@@ -37,7 +37,7 @@ Extracted from Ty's recurring “orchestrator” commands and the behavior of th
 node orchestrator/scripts/verify.mjs
 ```
 
-`shared/`, `src/`, and `examples/` are canonical. Run `node orchestrator/scripts/sync-skill-assets.mjs` after changing them. CI rejects drift between canonical sources and the self-contained installed skill.
+`shared/`, `src/`, and `examples/` are canonical. Run `node orchestrator/scripts/sync-skill-assets.mjs` after changing them. The local verification command rejects drift between canonical sources and the self-contained installed skill.
 
 ## Install
 

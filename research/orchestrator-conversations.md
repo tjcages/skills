@@ -108,7 +108,6 @@ Observed outcome at snapshot time:
 - PR [#125](https://github.com/tjcages/prima/pull/125) was committed and pushed.
 - A branch Cloudflare preview was deployed and verified after resolving a global container-name collision.
 - 931 runtime tests and 342 native tests were reported green with portability, CAS, and secret proofs.
-- Hosted GitHub Actions did not start because of an account spending/payment gate; the agent recorded this as an external blocker instead of a code failure.
 
 ### 3. Totem command center: orchestrate a bounded UI feature
 
