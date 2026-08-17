@@ -47,10 +47,10 @@ The orchestrator does not install or require a hosted verification mechanism. It
 The distributable unit is `skills/orchestrator/`; it contains every runtime reference, script, and example without links outside the directory.
 
 ```bash
-npx skills add tjcages/skills --skill orchestrator
+npx skills add https://github.com/tjcages/skills --skill orchestrator --global --yes
 ```
 
-The repository install command becomes authoritative after the orchestrator branch merges to the default branch. Before then, review or copy the complete `orchestrator/skills/orchestrator` directory from PR #10. Do not install only `SKILL.md`. To upgrade an existing copy, compare local modifications before replacement and run the bundled v1→v2 ledger migration before resuming active programs.
+The skill is listed at [skills.sh/tjcages/skills/orchestrator](https://skills.sh/tjcages/skills/orchestrator). The command installs it globally under the exact skill name `orchestrator`. Do not install only `SKILL.md`. To upgrade an existing copy, compare local modifications before replacement and run the bundled v1→v2 ledger migration before resuming active programs.
 
 ## Release gate
 
