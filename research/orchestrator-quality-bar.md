@@ -33,6 +33,8 @@ The orchestrator skill is behavioral rather than an Oxlint installer, so the dom
 
 Orchestrator instead validates the state that can be represented mechanically: identity, ownership, transitions, evidence fields, dependency integrity, write claims, authority gates, blockers, integration checks, and completion conditions.
 
+The pack's own conformance gate is local. This does not displace target-repository verification: the orchestrator must discover and honor installed local and PR checks without creating, requiring, weakening, or bypassing that infrastructure.
+
 ## Proof boundary
 
 The conformance harness can prove that a ledger is internally consistent. It cannot prove that:

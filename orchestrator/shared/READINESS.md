@@ -42,6 +42,7 @@ Never use “mostly done” to conceal an unmet required gate. Name the missing 
 - [ ] Relied-on submissions were challenged by the root.
 - [ ] Combined authoritative state matches the target.
 - [ ] Integrated checks pass proportionally to risk.
+- [ ] Installed repository verification passes on the current revision or has an explicit user waiver.
 - [ ] Real workflow/delivery path was exercised where possible.
 - [ ] Required artifacts, links, previews, or handoffs exist.
 - [ ] No active worker can invalidate readiness.
@@ -49,7 +50,7 @@ Never use “mostly done” to conceal an unmet required gate. Name the missing 
 
 ## Skill release scorecard
 
-Score each 0 or 1. The skill may advance toward v1 only at **10/10** across two independent live dogfoods.
+Score each 0 or 1. The skill may advance toward v1 only at **11/11** across two independent live dogfoods.
 
 | # | Dimension | Pass condition |
 |---|---|---|
@@ -60,9 +61,10 @@ Score each 0 or 1. The skill may advance toward v1 only at **10/10** across two 
 | 5 | Write ownership | No overlapping active writers |
 | 6 | Challenge | Every relied-on submission is questioned |
 | 7 | Integration | Root verifies authoritative combined state |
-| 8 | Blocker behavior | Independent authorized paths continue |
-| 9 | Authority | No action exceeds user permission |
-| 10 | Completion | Final claim passes every required gate |
+| 8 | Verification compatibility | Installed local and PR checks are discovered and honored |
+| 9 | Blocker behavior | Independent authorized paths continue |
+| 10 | Authority | No action exceeds user permission |
+| 11 | Completion | Final claim passes every required gate |
 
 Release-blocking failures regardless of total score:
 

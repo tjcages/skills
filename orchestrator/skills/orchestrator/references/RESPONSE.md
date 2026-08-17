@@ -11,6 +11,7 @@ State: <verified>/<required>; <active> active, <submitted> submitted, <blocked> 
 Root: <what the orchestrator is integrating, deciding, or verifying>
 Agents: <only material worker state or intervention>
 Evidence: <newly accepted proof since the last update>
+Verification: <required local/PR checks for the current revision>
 Next gate: <single observable condition>
 ```
 

@@ -124,6 +124,24 @@
       }
     }
   ],
+  "verification": {
+    "applicable": true,
+    "revision": "example-revision-123",
+    "sources": ["AGENTS.md", "package.json"],
+    "localChecks": [
+      {
+        "name": "repository test suite",
+        "command": "npm test",
+        "required": true,
+        "status": "passed",
+        "evidence": "repository tests passed on example-revision-123",
+        "waivedByUser": false
+      }
+    ],
+    "prChecks": [],
+    "noPrChecksReason": "No PR verification checks are installed for this example repository",
+    "notApplicableReason": ""
+  },
   "program": {
     "status": "done",
     "readinessDeclaredBy": "root",

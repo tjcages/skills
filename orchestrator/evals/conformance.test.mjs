@@ -38,6 +38,24 @@ const cases = [
     valid: true,
   },
   {
+    name: "accepts installed PR verification that passed on the current revision",
+    ledger: (() => {
+      const ledger = copy();
+      ledger.verification.prChecks = [
+        {
+          name: "required repository check",
+          required: true,
+          status: "passed",
+          evidence: "provider reports pass for example-revision-123",
+          waivedByUser: false,
+        },
+      ];
+      ledger.verification.noPrChecksReason = "";
+      return ledger;
+    })(),
+    valid: true,
+  },
+  {
     name: "accepts one blocked path while another authorized path advances",
     ledger: (() => {
       const ledger = copy();
@@ -70,6 +88,34 @@ const cases = [
       return ledger;
     })(),
     valid: true,
+  },
+  {
+    name: "rejects completion while a required local repository test is failing",
+    ledger: (() => {
+      const ledger = copy();
+      ledger.verification.localChecks[0].status = "failed";
+      ledger.verification.localChecks[0].evidence = "test output reports one failing integration test";
+      return ledger;
+    })(),
+    codes: ["verification-required-check"],
+  },
+  {
+    name: "rejects completion while an installed required PR check is pending",
+    ledger: (() => {
+      const ledger = copy();
+      ledger.verification.prChecks = [
+        {
+          name: "required repository check",
+          required: true,
+          status: "pending",
+          evidence: "",
+          waivedByUser: false,
+        },
+      ];
+      ledger.verification.noPrChecksReason = "";
+      return ledger;
+    })(),
+    codes: ["verification-required-check"],
   },
   {
     name: "rejects a root readiness declaration while work is in progress",

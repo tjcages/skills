@@ -110,6 +110,31 @@ function checkDependencyCycles(workstreams, errors) {
   for (const item of workstreams) visit(item.id, []);
 }
 
+function validateVerificationCheck(check, path, errors, { local }) {
+  if (!object(check) || !text(check.name)) {
+    add(errors, "verification-check-shape", path, "Verification check requires a name.");
+    return;
+  }
+  if (local && !text(check.command)) {
+    add(errors, "verification-check-command", `${path}.command`, "Local verification check requires its exact command.");
+  }
+  if (typeof check.required !== "boolean") {
+    add(errors, "verification-check-required", `${path}.required`, "Verification check required must be boolean.");
+  }
+  if (!["pending", "passed", "failed", "unavailable", "waived"].includes(check.status)) {
+    add(errors, "verification-check-status", `${path}.status`, "Unknown verification check status.");
+  }
+  if (check.status === "passed" && !text(check.evidence)) {
+    add(errors, "verification-check-evidence", `${path}.evidence`, "Passed verification check requires evidence.");
+  }
+  if (["failed", "unavailable"].includes(check.status) && !text(check.evidence)) {
+    add(errors, "verification-check-evidence", `${path}.evidence`, `${check.status} verification check requires diagnostic evidence.`);
+  }
+  if (check.status === "waived" && (check.waivedByUser !== true || !text(check.evidence))) {
+    add(errors, "verification-check-waiver", path, "Waived verification check requires user waiver evidence.");
+  }
+}
+
 export function validateLedger(ledger) {
   const errors = [];
   if (!object(ledger)) {
@@ -291,6 +316,37 @@ export function validateLedger(ledger) {
   }
   if (["not-ready", "in-progress", "blocked"].includes(program.status) && program.readinessDeclaredBy !== null && program.readinessDeclaredBy !== undefined) {
     add(errors, "premature-readiness", "program.readinessDeclaredBy", "Readiness cannot be declared while the program is not ready, in progress, or blocked.");
+  }
+
+  const verification = object(ledger.verification) ? ledger.verification : {};
+  if (typeof verification.applicable !== "boolean") {
+    add(errors, "verification-applicable", "verification.applicable", "Verification applicable must be boolean.");
+  } else if (verification.applicable === false) {
+    if (!text(verification.notApplicableReason)) {
+      add(errors, "verification-not-applicable", "verification.notApplicableReason", "Non-applicable verification requires a reason.");
+    }
+  } else {
+    if (!text(verification.revision)) add(errors, "verification-revision", "verification.revision", "Verification must identify the current revision or artifact state.");
+    if (!Array.isArray(verification.sources) || verification.sources.length === 0) {
+      add(errors, "verification-sources", "verification.sources", "Verification must record inspected repository sources.");
+    }
+    if (!Array.isArray(verification.localChecks) || !Array.isArray(verification.prChecks)) {
+      add(errors, "verification-check-arrays", "verification", "Verification requires localChecks and prChecks arrays.");
+    }
+    list(verification.localChecks).forEach((check, index) => validateVerificationCheck(check, `verification.localChecks[${index}]`, errors, { local: true }));
+    list(verification.prChecks).forEach((check, index) => validateVerificationCheck(check, `verification.prChecks[${index}]`, errors, { local: false }));
+    if (list(verification.prChecks).length === 0 && !text(verification.noPrChecksReason)) {
+      add(errors, "verification-pr-discovery", "verification.noPrChecksReason", "Record why no installed PR checks apply.");
+    }
+    if (program.status === "done") {
+      for (const [kind, checks] of [["local", list(verification.localChecks)], ["pr", list(verification.prChecks)]]) {
+        for (const check of checks.filter((item) => item?.required === true)) {
+          if (!["passed", "waived"].includes(check.status)) {
+            add(errors, "verification-required-check", `verification.${kind}Checks`, `Required check ${check.name ?? "unknown"} is ${check.status ?? "invalid"}.`);
+          }
+        }
+      }
+    }
   }
 
   const approvals = list(program.userApprovalEvidence);

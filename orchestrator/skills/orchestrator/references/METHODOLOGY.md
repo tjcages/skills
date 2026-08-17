@@ -120,7 +120,7 @@ Repeat until the completion gate passes or user authority is required.
 
 ### 7.1 Orient
 
-Inspect authoritative state: repository, tracker, live system, prior evidence, and active workers. Resolve target changes before directing more work.
+Inspect authoritative state: repository, tracker, live system, prior evidence, and active workers. Discover repository-defined verification from agent instructions, package scripts, hooks, pull-request settings, and existing required checks. Resolve target changes before directing more work.
 
 ### 7.2 Define readiness
 
@@ -158,11 +158,23 @@ Reproduce important checks where practical. Reject vague reports, screenshots wi
 
 The root resolves conflicts, reconciles terminology, orders changes, and verifies the combined system. Passing isolated worker checks does not prove integrated readiness.
 
-### 7.7 Recompute readiness
+### 7.7 Honor repository-defined verification
+
+The orchestrator does not create or require a hosted verification mechanism. When the repository already has local check commands, PR verification, merge gates, or release tests:
+
+1. record their source, required/optional status, and current revision in the ledger;
+2. run the exact required local commands after authoritative integration;
+3. inspect installed PR checks after the final pushed change using the repository's provider and tools;
+4. question failures from logs or evidence, fix in-scope causes, and distinguish product defects from external provider failures;
+5. keep required pending, failed, or unavailable checks out of **Done** unless the user explicitly waives that gate.
+
+Never create, delete, disable, weaken, bypass, or replace repository verification unless the user explicitly asks. Never treat a stale result from an older revision as evidence for the current one.
+
+### 7.8 Recompute readiness
 
 Update the ledger from accepted evidence. Select the next gate from dependencies and remaining risk, not from which worker is loudest or newest.
 
-### 7.8 Reset when coordination dominates
+### 7.9 Reset when coordination dominates
 
 If managing workers produces more chatter than accepted evidence, stop spawning. Harvest submitted work, terminate low-value paths, integrate what is useful, and rebuild the graph. Do not use an arbitrary worker-count threshold.
 
@@ -189,10 +201,11 @@ Do not claim readiness until all are true:
 2. Every relied-on worker submission was challenged by the root.
 3. Authoritative integrated state matches the target ledger.
 4. Proportional checks pass on the combined result.
-5. The actual user workflow or delivery path was exercised when possible.
-6. Required artifacts, links, handoffs, or previews exist.
-7. No unfinished active worker can change the readiness claim.
-8. Limitations and blocked owner-only gates are stated plainly.
+5. Required repository-defined local and PR verification passes on the current revision, or the user explicitly waives it.
+6. The actual user workflow or delivery path was exercised when possible.
+7. Required artifacts, links, handoffs, or previews exist.
+8. No unfinished active worker can change the readiness claim.
+9. Limitations and blocked owner-only gates are stated plainly.
 
 If one condition fails, report work in progress or blocked—not done.
 

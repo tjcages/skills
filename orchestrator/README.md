@@ -39,6 +39,8 @@ node orchestrator/scripts/verify.mjs
 
 `shared/`, `src/`, and `examples/` are canonical. Run `node orchestrator/scripts/sync-skill-assets.mjs` after changing them. The local verification command rejects drift between canonical sources and the self-contained installed skill.
 
+The orchestrator does not install or require a hosted verification mechanism. It discovers and honors any local checks, PR verification, merge gates, or release tests already defined by the target repository.
+
 ## Install
 
 The distributable unit is `skills/orchestrator/`; it contains every runtime reference, script, and example without links outside the directory.

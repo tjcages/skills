@@ -23,6 +23,7 @@ Run the same command after every assignment wave, target change, acceptance deci
 | `readiness.criteria` | Required conditions with verified or user-deferred evidence |
 | `criticalPath` | Observable next gate, blocked paths, and remaining authorized paths |
 | `workstreams` | Bounded ownership, dependencies, write claims, transitions, and acceptance |
+| `verification` | Current revision, repository-defined local checks, installed PR checks, and evidence |
 | `program` | Readiness owner, integrated checks, delivery, blockers, and approvals |
 
 ## Workstream rules
@@ -70,6 +71,37 @@ The deterministic validator rejects:
 6. completion without required criteria, root acceptance, integrated checks, or delivery evidence.
 
 The validator proves ledger consistency, not real-world truth. The root must still reproduce evidence and inspect authoritative integrated state.
+
+## Repository-defined verification
+
+The orchestrator does not require or install a PR verification system. It must adapt to one when the target repository already has it.
+
+Record:
+
+```json
+{
+  "verification": {
+    "applicable": true,
+    "revision": "current-commit-or-artifact-id",
+    "sources": ["AGENTS.md", "package.json", "repository PR settings"],
+    "localChecks": [
+      {
+        "name": "repository test suite",
+        "command": "npm test",
+        "required": true,
+        "status": "passed",
+        "evidence": "test output for current revision",
+        "waivedByUser": false
+      }
+    ],
+    "prChecks": [],
+    "noPrChecksReason": "No PR checks are installed",
+    "notApplicableReason": ""
+  }
+}
+```
+
+Use `pending`, `passed`, `failed`, `unavailable`, or `waived`. A required installed check must be `passed`, or `waived` with explicit user evidence, before program `done`. Results from an older revision do not count.
 
 ## State transitions
 
