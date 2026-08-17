@@ -1,6 +1,6 @@
 # Orchestrator methodology
 
-**Version:** 0.1 draft — research-derived; not yet live-dogfooded
+**Version:** 0.2 candidate — first live dogfood completed; hardened lifecycle awaits passing rerun and independent second dogfood
 
 ## 0. Core thesis
 
@@ -192,6 +192,8 @@ If managing workers produces more chatter than accepted evidence, stop spawning.
 | Worker disappears | Treat unverified work as absent; inspect artifacts before reassignment |
 
 “Do not stop” increases persistence, not authority. It does not permit unsafe writes, invented credentials, publishing, merging, or scope expansion.
+
+Treat every material target expansion as a new contract boundary. Freeze affected active work, restate the changed acceptance condition, re-evaluate dependencies and write claims, then explicitly supersede or re-contract affected assignments before they resume. Never append new scope to a completed workstream as if its earlier acceptance covered the change.
 
 ## 9. Completion gate
 

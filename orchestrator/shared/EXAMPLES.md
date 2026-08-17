@@ -20,7 +20,7 @@ Important correction supplied by Ty after the corpus review:
 
 That correction became the root identity gate, worker downgrade rule, Submitted→Challenged boundary, and completion gate in v0.1.
 
-**Dogfood status:** none. This is retrospective source evidence only.
+**Dogfood status:** retrospective evidence only. The first live dogfood is recorded below.
 
 ## 2026-08-17 — anti-slop quality benchmark (architecture evidence, not dogfood)
 
@@ -35,6 +35,26 @@ Quality traits adopted into this pack:
 5. explicit installation, upgrade, source-of-truth, and lifecycle boundaries.
 
 Domain-specific Oxlint rules and vendoring behavior were not copied. For orchestrator, executable enforcement applies to ledger consistency; live dogfood must still prove agent behavior and real-world evidence quality.
+
+## 2026-08-17 — Connect speaker partial frames (live dogfood 1)
+
+**Target:** [Cloudflare Connect PR #77](https://github.com/tjcages/cloudflare-connect-2026/pull/77), merged as `182d32b`. Two read-only audits mapped the current site and engine seams before one bounded writer implemented the speaker effect.
+
+**What worked:** root identity remained singular; write claims did not overlap; the root rejected an initial compositor that performed one full-canvas blit per mask fragment; the revision used one compound clip and one blit; integrated tests, browser checks, PR checks, deployed preview, and merge evidence were collected.
+
+**Score:** **8/11**. Passed root identity, dependency graph, worker contracts, write ownership, challenge, integration, blocker behavior, and authority. Failed target-ledger currency, verification compatibility, and completion.
+
+**Friction:**
+
+1. The 480-line hand-edited ledger drifted across related fields.
+2. `nextGate` said Complete while the program and root integration remained active.
+3. Passing evidence named final revision `6350c3b`, while structured verification remained on `0d814e2` and required local checks were unavailable.
+4. User-requested scope expansions were appended without an explicit re-contract event.
+5. The ledger entered product history and required a cleanup commit before review.
+
+**Methodology changes folded into v0.2:** cross-record completion invariants; exact revision fields on passing checks; a readiness criterion linked to verification; dependency readiness enforcement; atomic revision/check/reopen/complete commands; external or explicitly ignored ledger storage by default.
+
+**Remaining gap:** re-run on a new live revision to prove the hardened lifecycle, then complete an independent second dogfood with explicit target change and compaction recovery.
 
 ## Live dogfood template
 

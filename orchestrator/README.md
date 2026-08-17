@@ -6,7 +6,7 @@ Extracted from Ty's recurring “orchestrator” commands and the behavior of th
 
 ## Status
 
-**✍️ v0.1 draft** — research-derived with executable ledger conformance. No live dogfood yet. Do not call this v1 or production-proven.
+**🧪 v0.2 candidate** — one live Connect dogfood completed at 8/11; its ledger failures are now regression-tested. A second independent passing dogfood and a passing rerun remain required. Do not call this v1 or production-proven.
 
 ## Skill
 
@@ -27,6 +27,7 @@ Extracted from Ty's recurring “orchestrator” commands and the behavior of th
 - `shared/EVALS.md` — trigger, behavior, and regression evaluations
 - `shared/EXAMPLES.md` — research provenance and future dogfood log
 - `src/validate-ledger.mjs` — deterministic root-ownership and readiness validator
+- `src/ledger-state.mjs` — validated, atomic revision and completion lifecycle changes
 - `evals/conformance.test.mjs` — positive and negative conformance fixtures
 - `scripts/sync-skill-assets.mjs` — canonical-source synchronization and drift check
 - `scripts/verify.mjs` — one-command pack verification
@@ -49,14 +50,14 @@ The distributable unit is `skills/orchestrator/`; it contains every runtime refe
 npx skills add tjcages/skills --skill orchestrator
 ```
 
-For local development, copy or link the entire `orchestrator/skills/orchestrator` directory. Do not install only `SKILL.md`. To upgrade an existing copy, compare local modifications before replacement; the ledger format is versioned with `schemaVersion`.
+The repository install command becomes authoritative after the orchestrator branch merges to the default branch. Before then, review or copy the complete `orchestrator/skills/orchestrator` directory from PR #10. Do not install only `SKILL.md`. To upgrade an existing copy, compare local modifications before replacement and run the bundled v1→v2 ledger migration before resuming active programs.
 
 ## Release gate
 
-1. Run two independent live programs where parallel work materially helps.
-2. Include at least one rejected or corrected worker submission.
-3. Demonstrate resumption after context compaction from the persisted ledger.
-4. Score every release-blocking dimension in `READINESS.md` as passing.
+1. Re-run one live program with the hardened v0.2 ledger contract and score 11/11.
+2. Run a second independent program where parallel work materially helps.
+3. Demonstrate target-change handling and resumption after context compaction.
+4. Score every release-blocking dimension in `READINESS.md` as passing twice.
 5. Fold observed friction into the methodology before v1.
 
 ## Source research

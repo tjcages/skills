@@ -110,7 +110,7 @@ function checkDependencyCycles(workstreams, errors) {
   for (const item of workstreams) visit(item.id, []);
 }
 
-function validateVerificationCheck(check, path, errors, { local }) {
+function validateVerificationCheck(check, path, errors, { local, revision }) {
   if (!object(check) || !text(check.name)) {
     add(errors, "verification-check-shape", path, "Verification check requires a name.");
     return;
@@ -127,6 +127,9 @@ function validateVerificationCheck(check, path, errors, { local }) {
   if (check.status === "passed" && !text(check.evidence)) {
     add(errors, "verification-check-evidence", `${path}.evidence`, "Passed verification check requires evidence.");
   }
+  if (["passed", "waived"].includes(check.status) && check.revision !== revision) {
+    add(errors, "verification-check-revision", `${path}.revision`, `Verification evidence must match current revision ${revision}.`);
+  }
   if (["failed", "unavailable"].includes(check.status) && !text(check.evidence)) {
     add(errors, "verification-check-evidence", `${path}.evidence`, `${check.status} verification check requires diagnostic evidence.`);
   }
@@ -141,7 +144,7 @@ export function validateLedger(ledger) {
     add(errors, "ledger-type", "$", "Ledger must be a JSON object.");
     return errors;
   }
-  if (ledger.schemaVersion !== 1) add(errors, "schema-version", "schemaVersion", "schemaVersion must equal 1.");
+  if (ledger.schemaVersion !== 2) add(errors, "schema-version", "schemaVersion", "schemaVersion must equal 2; migrate v1 ledgers before continuing.");
 
   const root = object(ledger.root) ? ledger.root : {};
   if (!text(root.agentId)) add(errors, "root-id", "root.agentId", "Root agentId is required.");
@@ -152,6 +155,9 @@ export function validateLedger(ledger) {
 
   const target = object(ledger.target) ? ledger.target : {};
   if (!text(target.outcome)) add(errors, "target-outcome", "target.outcome", "Target outcome is required.");
+  if (!Array.isArray(target.definitionOfDone) || target.definitionOfDone.length === 0 || target.definitionOfDone.some((item) => !text(item))) {
+    add(errors, "target-definition-of-done", "target.definitionOfDone", "Target requires a non-empty definitionOfDone array.");
+  }
   if (!object(target.scope) || !Array.isArray(target.scope.in) || !Array.isArray(target.scope.out)) {
     add(errors, "target-scope", "target.scope", "Scope must contain in and out arrays.");
   }
@@ -288,6 +294,10 @@ export function validateLedger(ledger) {
   workstreams.forEach((item, index) => {
     for (const dependency of list(item.dependencies)) {
       if (!workstreamIds.has(dependency)) add(errors, "dependency-missing", `workstreams[${index}].dependencies`, `Unknown dependency ${dependency}.`);
+      const dependencyWorkstream = workstreams.find((candidate) => candidate?.id === dependency);
+      if (["assigned", "active", "submitted", "challenged", "integrated", "verified", "done"].includes(item.state) && dependencyWorkstream?.state !== "done") {
+        add(errors, "dependency-not-ready", `workstreams[${index}].dependencies`, `Dependency ${dependency} must be done before ${item.id} advances.`);
+      }
     }
   });
   checkDependencyCycles(workstreams, errors);
@@ -308,6 +318,7 @@ export function validateLedger(ledger) {
   }
 
   const program = object(ledger.program) ? ledger.program : {};
+  const approvals = list(program.userApprovalEvidence);
   if (!["not-ready", "in-progress", "blocked", "ready-for-review", "done"].includes(program.status)) {
     add(errors, "program-status", "program.status", "Unknown program status.");
   }
@@ -326,6 +337,11 @@ export function validateLedger(ledger) {
       add(errors, "verification-not-applicable", "verification.notApplicableReason", "Non-applicable verification requires a reason.");
     }
   } else {
+    const readinessCriterionId = verification.readinessCriterionId;
+    const readinessCriterion = criteria.find((criterion) => criterion?.id === readinessCriterionId);
+    if (!text(readinessCriterionId) || !readinessCriterion) {
+      add(errors, "verification-criterion", "verification.readinessCriterionId", "Verification must reference an existing readiness criterion.");
+    }
     if (!text(verification.revision)) add(errors, "verification-revision", "verification.revision", "Verification must identify the current revision or artifact state.");
     if (!Array.isArray(verification.sources) || verification.sources.length === 0) {
       add(errors, "verification-sources", "verification.sources", "Verification must record inspected repository sources.");
@@ -333,8 +349,14 @@ export function validateLedger(ledger) {
     if (!Array.isArray(verification.localChecks) || !Array.isArray(verification.prChecks)) {
       add(errors, "verification-check-arrays", "verification", "Verification requires localChecks and prChecks arrays.");
     }
-    list(verification.localChecks).forEach((check, index) => validateVerificationCheck(check, `verification.localChecks[${index}]`, errors, { local: true }));
-    list(verification.prChecks).forEach((check, index) => validateVerificationCheck(check, `verification.prChecks[${index}]`, errors, { local: false }));
+    list(verification.localChecks).forEach((check, index) => validateVerificationCheck(check, `verification.localChecks[${index}]`, errors, { local: true, revision: verification.revision }));
+    list(verification.prChecks).forEach((check, index) => validateVerificationCheck(check, `verification.prChecks[${index}]`, errors, { local: false, revision: verification.revision }));
+    for (const check of [...list(verification.localChecks), ...list(verification.prChecks)].filter((item) => item?.status === "waived")) {
+      const approval = approvals.find((entry) =>
+        entry?.verificationCheck === check.name && entry?.revision === verification.revision && text(entry?.evidence),
+      );
+      if (!approval) add(errors, "verification-waiver-authority", "program.userApprovalEvidence", `Waived check ${check.name} requires explicit user approval evidence for ${verification.revision}.`);
+    }
     if (list(verification.prChecks).length === 0 && !text(verification.noPrChecksReason)) {
       add(errors, "verification-pr-discovery", "verification.noPrChecksReason", "Record why no installed PR checks apply.");
     }
@@ -347,9 +369,18 @@ export function validateLedger(ledger) {
         }
       }
     }
+    if (readinessCriterion) {
+      const requiredChecks = [...list(verification.localChecks), ...list(verification.prChecks)].filter((item) => item?.required === true);
+      const verificationPasses = requiredChecks.every((check) => ["passed", "waived"].includes(check.status) && check.revision === verification.revision);
+      if (readinessCriterion.status === "verified" && !verificationPasses) {
+        add(errors, "verification-criterion-state", "readiness.criteria", `Criterion ${readinessCriterionId} cannot be verified while required checks are non-passing or stale.`);
+      }
+      if (verificationPasses && readinessCriterion.status === "pending") {
+        add(errors, "verification-criterion-stale", "readiness.criteria", `Criterion ${readinessCriterionId} is pending after all required checks passed.`);
+      }
+    }
   }
 
-  const approvals = list(program.userApprovalEvidence);
   workstreams.forEach((item, index) => {
     if (item.requiresUserAuthority === true && !["candidate", "scoped", "blocked", "stopped", "superseded"].includes(item.state)) {
       const approval = approvals.find((entry) => entry?.workstreamId === item.id && text(entry.evidence));
@@ -361,6 +392,19 @@ export function validateLedger(ledger) {
   if (!text(criticalPath.nextGate)) add(errors, "next-gate", "criticalPath.nextGate", "An observable next gate is required.");
   if (!Array.isArray(criticalPath.blockedPaths) || !Array.isArray(criticalPath.remainingAuthorizedPaths)) {
     add(errors, "critical-path-shape", "criticalPath", "Critical path requires blockedPaths and remainingAuthorizedPaths arrays.");
+  }
+  const completeGate = typeof criticalPath.nextGate === "string" && /^(complete|done)$/i.test(criticalPath.nextGate.trim());
+  if (completeGate && program.status !== "done") {
+    add(errors, "critical-path-complete-status", "criticalPath.nextGate", "A complete next gate requires program status done.");
+  }
+  if (completeGate && list(criticalPath.remainingAuthorizedPaths).length > 0) {
+    add(errors, "critical-path-complete-work", "criticalPath.remainingAuthorizedPaths", "A complete next gate cannot retain authorized work.");
+  }
+  if (completeGate && (list(criticalPath.blockedPaths).length > 0 || list(program.blockers).length > 0)) {
+    add(errors, "critical-path-complete-blockers", "criticalPath", "A complete next gate cannot retain blockers.");
+  }
+  if (program.status === "done" && !completeGate) {
+    add(errors, "done-next-gate", "criticalPath.nextGate", "Done programs must use Complete as the next gate.");
   }
   if (program.status === "blocked") {
     if (list(program.blockers).length === 0) add(errors, "blockers-empty", "program.blockers", "Blocked program requires a concrete blocker.");
@@ -390,6 +434,26 @@ export function validateLedger(ledger) {
       add(errors, "done-artifacts", "program.delivery", "Delivery requires artifacts or a not-applicable reason.");
     }
     if (list(program.blockers).length > 0) add(errors, "done-blockers", "program.blockers", "Done cannot retain blockers.");
+    if (verification.applicable === true) {
+      for (const criterion of criteria.filter((item) => item?.status === "verified")) {
+        if (criterion.revision !== verification.revision) {
+          add(errors, "done-criterion-revision", "readiness.criteria", `Criterion ${criterion.id ?? "unknown"} is not verified on ${verification.revision}.`);
+        }
+      }
+      for (const item of workstreams.filter((candidate) => candidate?.reliedOn === true)) {
+        if (item.verifiedRevision !== verification.revision) {
+          add(errors, "done-workstream-revision", "workstreams", `Workstream ${item.id ?? "unknown"} is not verified on ${verification.revision}.`);
+        }
+      }
+      for (const check of checks) {
+        if (check?.revision !== verification.revision) {
+          add(errors, "done-integrated-revision", "program.integratedChecks", `Integrated check ${check?.name ?? "unknown"} is not verified on ${verification.revision}.`);
+        }
+      }
+      if (delivery.revision !== verification.revision) {
+        add(errors, "done-delivery-revision", "program.delivery.revision", `Delivery is not verified on ${verification.revision}.`);
+      }
+    }
   }
 
   return errors;

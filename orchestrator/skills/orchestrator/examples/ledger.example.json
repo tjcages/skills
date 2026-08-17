@@ -1,11 +1,16 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "root": {
     "agentId": "root",
     "identity": "user-facing-root"
   },
   "target": {
     "outcome": "Deliver the integrated account settings workflow",
+    "definitionOfDone": [
+      "Settings update succeeds through the UI and persists through the API",
+      "Repository verification passes on the delivered revision",
+      "A reviewable delivery artifact exists"
+    ],
     "nonNegotiables": [
       "Root alone declares readiness",
       "Production deployment remains owner-only"
@@ -26,6 +31,7 @@
         "description": "User can update settings through the UI",
         "required": true,
         "status": "verified",
+        "revision": "example-revision-123",
         "evidence": ["browser test: settings-update"],
         "deferredByUser": false
       },
@@ -34,13 +40,23 @@
         "description": "API validates and persists supported settings",
         "required": true,
         "status": "verified",
+        "revision": "example-revision-123",
         "evidence": ["integration test: settings-api"],
+        "deferredByUser": false
+      },
+      {
+        "id": "repository-verification",
+        "description": "Repository-defined verification passes on the integrated revision",
+        "required": true,
+        "status": "verified",
+        "revision": "example-revision-123",
+        "evidence": ["repository tests passed on example-revision-123"],
         "deferredByUser": false
       }
     ]
   },
   "criticalPath": {
-    "nextGate": "User reviews the delivered pull request",
+    "nextGate": "Complete",
     "blockedPaths": [],
     "remainingAuthorizedPaths": []
   },
@@ -62,6 +78,7 @@
       "requiredEvidence": ["focused component tests", "browser workflow evidence"],
       "evidence": ["component tests passed", "browser test: settings-update"],
       "reliedOn": true,
+      "verifiedRevision": "example-revision-123",
       "state": "done",
       "transitions": [
         { "state": "candidate", "by": "root" },
@@ -101,6 +118,7 @@
       "requiredEvidence": ["contract tests", "persistence integration test"],
       "evidence": ["contract tests passed", "integration test: settings-api"],
       "reliedOn": true,
+      "verifiedRevision": "example-revision-123",
       "state": "done",
       "transitions": [
         { "state": "candidate", "by": "root" },
@@ -126,6 +144,7 @@
   ],
   "verification": {
     "applicable": true,
+    "readinessCriterionId": "repository-verification",
     "revision": "example-revision-123",
     "sources": ["AGENTS.md", "package.json"],
     "localChecks": [
@@ -134,6 +153,7 @@
         "command": "npm test",
         "required": true,
         "status": "passed",
+        "revision": "example-revision-123",
         "evidence": "repository tests passed on example-revision-123",
         "waivedByUser": false
       }
@@ -149,11 +169,13 @@
       {
         "name": "account settings workflow",
         "status": "passed",
+        "revision": "example-revision-123",
         "evidence": "browser test and API persistence check passed together"
       }
     ],
     "delivery": {
       "status": "delivered",
+      "revision": "example-revision-123",
       "artifacts": ["https://example.test/pull/123"],
       "notApplicableReason": ""
     },

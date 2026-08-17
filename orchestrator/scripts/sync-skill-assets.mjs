@@ -22,9 +22,13 @@ const mappings = [
     destination: join(skillRoot, "scripts/validate-ledger.mjs"),
   },
   {
-    source: join(packRoot, "examples/ledger.example.json"),
-    destination: join(skillRoot, "examples/ledger.example.json"),
+    source: join(packRoot, "src/ledger-state.mjs"),
+    destination: join(skillRoot, "scripts/ledger-state.mjs"),
   },
+  ...["ledger.example.json", "ledger.template.json"].map((name) => ({
+    source: join(packRoot, "examples", name),
+    destination: join(skillRoot, "examples", name),
+  })),
 ];
 
 function files(directory) {

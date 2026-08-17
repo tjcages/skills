@@ -39,12 +39,15 @@ Never use “mostly done” to conceal an unmet required gate. Name the missing 
 ## Completion checklist
 
 - [ ] Required outcomes are Verified or user-deferred.
+- [ ] Every verified outcome is bound to the current revision.
 - [ ] Relied-on submissions were challenged by the root.
+- [ ] Every relied-on workstream is re-attested on the current revision.
 - [ ] Combined authoritative state matches the target.
 - [ ] Integrated checks pass proportionally to risk.
 - [ ] Installed repository verification passes on the current revision or has an explicit user waiver.
 - [ ] Real workflow/delivery path was exercised where possible.
 - [ ] Required artifacts, links, previews, or handoffs exist.
+- [ ] Integrated checks and delivery evidence are bound to the current revision.
 - [ ] No active worker can invalidate readiness.
 - [ ] Limitations and owner-only gates are explicit.
 

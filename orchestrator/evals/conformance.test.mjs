@@ -46,6 +46,7 @@ const cases = [
           name: "required repository check",
           required: true,
           status: "passed",
+          revision: "example-revision-123",
           evidence: "provider reports pass for example-revision-123",
           waivedByUser: false,
         },
@@ -56,6 +57,48 @@ const cases = [
     valid: true,
   },
   {
+    name: "rejects a complete next gate while the program remains in progress",
+    ledger: (() => {
+      const ledger = copy();
+      ledger.program.status = "in-progress";
+      ledger.program.readinessDeclaredBy = null;
+      return ledger;
+    })(),
+    codes: ["critical-path-complete-status"],
+  },
+  {
+    name: "rejects a complete next gate while authorized work remains",
+    ledger: (() => {
+      const ledger = copy();
+      ledger.criticalPath.remainingAuthorizedPaths = ["finish integration"];
+      return ledger;
+    })(),
+    codes: ["critical-path-complete-work"],
+  },
+  {
+    name: "rejects verified repository readiness while a required check is unavailable",
+    ledger: (() => {
+      const ledger = copy();
+      ledger.program.status = "in-progress";
+      ledger.program.readinessDeclaredBy = null;
+      ledger.criticalPath.nextGate = "Restore the repository test wrapper";
+      ledger.verification.localChecks[0].status = "unavailable";
+      ledger.verification.localChecks[0].revision = "";
+      ledger.verification.localChecks[0].evidence = "required wrapper is unavailable";
+      return ledger;
+    })(),
+    codes: ["verification-criterion-state"],
+  },
+  {
+    name: "rejects passed verification evidence from a stale revision",
+    ledger: (() => {
+      const ledger = copy();
+      ledger.verification.localChecks[0].revision = "older-revision";
+      return ledger;
+    })(),
+    codes: ["verification-check-revision"],
+  },
+  {
     name: "accepts one blocked path while another authorized path advances",
     ledger: (() => {
       const ledger = copy();
@@ -64,11 +107,12 @@ const cases = [
       ledger.program.integratedChecks = [];
       ledger.program.delivery = { status: "pending", artifacts: [], notApplicableReason: "" };
       ledger.program.blockers = ["worker-one lacks deployment credentials"];
-      ledger.readiness.criteria = ledger.readiness.criteria.map((criterion) => ({
+      ledger.readiness.criteria = ledger.readiness.criteria.map((criterion) => criterion.id === ledger.verification.readinessCriterionId ? criterion : {
         ...criterion,
         status: "pending",
         evidence: [],
-      }));
+      });
+      ledger.criticalPath.nextGate = "Finish local verification while deployment remains blocked";
       ledger.criticalPath.blockedPaths = ["deployment"];
       ledger.criticalPath.remainingAuthorizedPaths = ["finish local verification"];
       ledger.workstreams = [
@@ -94,6 +138,7 @@ const cases = [
     ledger: (() => {
       const ledger = copy();
       ledger.verification.localChecks[0].status = "failed";
+      ledger.verification.localChecks[0].revision = "";
       ledger.verification.localChecks[0].evidence = "test output reports one failing integration test";
       return ledger;
     })(),
@@ -108,6 +153,7 @@ const cases = [
           name: "required repository check",
           required: true,
           status: "pending",
+          revision: "",
           evidence: "",
           waivedByUser: false,
         },
@@ -116,6 +162,16 @@ const cases = [
       return ledger;
     })(),
     codes: ["verification-required-check"],
+  },
+  {
+    name: "rejects a self-asserted verification waiver",
+    ledger: (() => {
+      const ledger = copy();
+      ledger.verification.localChecks[0].status = "waived";
+      ledger.verification.localChecks[0].evidence = "agent claims the user waived this check";
+      return ledger;
+    })(),
+    codes: ["verification-waiver-authority"],
   },
   {
     name: "rejects a root readiness declaration while work is in progress",
@@ -247,6 +303,20 @@ const cases = [
       return ledger;
     })(),
     codes: ["dependency-cycle"],
+  },
+  {
+    name: "rejects work advancing before its dependency is done",
+    ledger: (() => {
+      const ledger = copy();
+      ledger.program.status = "in-progress";
+      ledger.program.readinessDeclaredBy = null;
+      ledger.criticalPath.nextGate = "Finish the API before starting the UI";
+      ledger.workstreams[0] = activeClone(ledger.workstreams[0], { id: "settings-ui", owner: "worker-ui", claim: "src/settings/ui" });
+      ledger.workstreams[0].dependencies = ["settings-api"];
+      ledger.workstreams[1] = activeClone(ledger.workstreams[1], { id: "settings-api", owner: "worker-api", claim: "src/settings/api" });
+      return ledger;
+    })(),
+    codes: ["dependency-not-ready"],
   },
 ];
 

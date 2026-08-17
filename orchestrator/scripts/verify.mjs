@@ -1,12 +1,14 @@
 #!/usr/bin/env node
-import { existsSync, lstatSync, readFileSync, readdirSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { cpSync, existsSync, lstatSync, mkdtempSync, readFileSync, readdirSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 
 const packRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const skillRoot = resolve(packRoot, "skills/orchestrator");
 const skillFile = resolve(skillRoot, "SKILL.md");
+const agentFile = resolve(skillRoot, "agents/openai.yaml");
 
 function fail(message) {
   console.error(message);
@@ -45,8 +47,27 @@ for (const match of skill.matchAll(/\]\((\.\/[^)#]+)(?:#[^)]+)?\)/g)) {
 assertSelfContained(skillRoot);
 console.log("Skill metadata, line budget, and references are valid.");
 
+if (!existsSync(agentFile)) fail("agents/openai.yaml is missing.");
+const agentMetadata = readFileSync(agentFile, "utf8");
+for (const field of ["display_name", "short_description", "default_prompt"]) {
+  if (!new RegExp(`^\\s*${field}:\\s*\".+\"$`, "m").test(agentMetadata)) fail(`agents/openai.yaml is missing ${field}.`);
+}
+if (!agentMetadata.includes("$orchestrator")) fail("agents/openai.yaml default_prompt must mention $orchestrator.");
+console.log("Skill UI metadata is valid.");
+
 run("orchestrator/scripts/sync-skill-assets.mjs", "--check");
 run("orchestrator/evals/conformance.test.mjs");
+run("orchestrator/evals/ledger-state.test.mjs");
 run("orchestrator/src/validate-ledger.mjs", "orchestrator/examples/ledger.example.json");
+run("orchestrator/src/validate-ledger.mjs", "orchestrator/examples/ledger.template.json");
 run("orchestrator/skills/orchestrator/scripts/validate-ledger.mjs", "orchestrator/skills/orchestrator/examples/ledger.example.json");
+run("orchestrator/skills/orchestrator/scripts/validate-ledger.mjs", "orchestrator/skills/orchestrator/examples/ledger.template.json");
+const temporary = mkdtempSync(join(tmpdir(), "orchestrator-ledger-"));
+const portableLedger = join(temporary, "ledger.json");
+try {
+  cpSync(resolve(skillRoot, "examples/ledger.example.json"), portableLedger);
+  run("orchestrator/skills/orchestrator/scripts/ledger-state.mjs", "reopen", portableLedger, "Portable installed-script smoke test");
+} finally {
+  rmSync(temporary, { recursive: true, force: true });
+}
 console.log("Orchestrator verification passed.");

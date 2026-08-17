@@ -29,7 +29,7 @@ Orchestrate only when at least two independent, checkable workstreams materially
 
 ### 3. Establish the target ledger
 
-Create a machine-readable target ledger from `examples/ledger.example.json`. Record outcome, readiness, authority, dependencies, transitions, acceptance, delivery, and repository-defined verification. Validate it with `node scripts/validate-ledger.mjs <ledger.json>` before delegating and after every wave.
+Create a machine-readable target ledger from `examples/ledger.template.json`; use `ledger.example.json` only as a completed reference. Record outcome, readiness, authority, dependencies, transitions, acceptance, delivery, and repository-defined verification. Validate it before delegating and after every wave. Use `scripts/ledger-state.mjs` for revision, verification, reopen, and completion changes.
 
 ### 4. Map seams before writers
 
@@ -53,11 +53,11 @@ Keep results Submitted until the root checks scope, truth, evidence, interaction
 
 ### 9. Integrate and recompute
 
-Verify authoritative combined state. Discover and honor installed local and PR checks for the current revision without creating or weakening verification infrastructure. Update the ledger and choose the next dependency gate.
+Verify authoritative combined state. Discover and honor installed local and PR checks for the current revision without creating or weakening verification infrastructure. Stamp every new revision before recording checks; stale evidence cannot advance readiness.
 
 ### 10. Apply the completion gate
 
-Use [READINESS.md](./references/READINESS.md). Re-run the ledger validator. Claim done only when required outcomes are verified, relied-on work was challenged, integrated checks pass, delivery artifacts exist, and no active worker can invalidate readiness.
+Use [READINESS.md](./references/READINESS.md). Complete through `scripts/ledger-state.mjs complete`; it refuses contradictory state. Claim done only when every gate passes.
 
 ## Non-negotiables
 
