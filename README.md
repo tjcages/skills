@@ -29,6 +29,7 @@ Each folder is one **pack** (router skill + methodology + shared docs), same sha
 | [`accept-gated-ai/`](./accept-gated-ai) | 🧪 Thin→Solid mix | v0.2 | Tasks 9/16 + Obi docs 14/16; 🧱 live Socials UI |
 | [`lossless-migration/`](./lossless-migration) | 🧪 Thin (source docs) | v0.1 | Obi audit re-score 16/16; needs non-Obi 🔁 |
 | [`behavior-contracts/`](./behavior-contracts) | 🧪 Thin (issue evidence) | v0.1 | 8/16; needs live kit paths / in-repo contracts doc |
+| [`orchestrator/`](./orchestrator) | 🧪 Dogfood 1 | v0.2 candidate | Connect 8/11; hardened ledger needs one passing rerun + independent second dogfood |
 | [`pr-writing/`](./pr-writing) | ✍️ Draft | v0.1 | tpope + cbea.ms + ASD-STE100 + Google devdocs; `pr-lint.sh` smoke-tested, no rubric dogfood |
 
 ## Pack shape (every folder)

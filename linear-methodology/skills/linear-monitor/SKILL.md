@@ -1,6 +1,6 @@
 ---
 name: linear-monitor
-version: 1.0.1
+version: 1.0.2
 description: >-
   Health-check Linear projects for slipping dates, stale In Progress, and
   orphan issues. Use when the user asks for a Linear health check, atRisk

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orchestrator"
+  short_description: "Own multi-agent delivery through verified readiness"
+  default_prompt: "Use $orchestrator to coordinate this work as the sole owner of readiness, acceptance, integration, and delivery."

@@ -6,7 +6,7 @@
       "description": "A proven methodology for building and tracking features, projects, and issues in Linear.",
       "source": {
         "type": "github",
-        "repo": "tjcages/linear-methodology-skill"
+        "repo": "tjcages/linear"
       }
     }
   ]

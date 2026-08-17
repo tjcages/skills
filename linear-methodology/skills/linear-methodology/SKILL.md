@@ -1,6 +1,5 @@
 ---
 name: linear-methodology
-version: 1.0.1
 description: >-
   Proven methodology for building and tracking features, projects, and issues
   in Linear. Use when the user wants to set up Linear tracking, sync or audit a
@@ -11,16 +10,25 @@ description: >-
 
 # Linear Methodology
 
-Pack: `linear-setup` · `linear-sync` · `linear-monitor` · `linear-discipline` · `linear-finish-install`
+> Keep Linear useful by making it reflect the project, the repository, and the work actually happening.
 
-| Ask | Skill |
-|-----|-------|
-| Set up / backfill / track this project | `linear-setup` |
-| Sync / audit / rescue a board | `linear-sync` |
-| Health check / `/linear-monitor` | `linear-monitor` |
-| `finish linear-tracking install` | `linear-finish-install` |
-| Always-on close-the-loop | `linear-discipline` (user rule) |
+## What it does
 
-Chat: [RESPONSE.md](./RESPONSE.md). Auth: [AUTH.md](./AUTH.md). Method: [METHODOLOGY.md](./METHODOLOGY.md).
+- Anchors tracking to the project's North Star and real roadmap.
+- Sets up or repairs projects, milestones, issues, labels, and dependencies.
+- Reconciles Linear with repository evidence instead of trusting stale tickets.
+- Keeps active work current and closes the loop when work ships.
 
-Default for ambiguous “set up Linear tracking” phrasing: follow **`linear-setup`**.
+## How it works
+
+1. Read [RESPONSE.md](./RESPONSE.md) for concise, action-first chat.
+2. Read [AUTH.md](./AUTH.md), then verify Linear access before any call.
+3. Route the request:
+   - Set up, backfill, or start tracking → `linear-setup`
+   - Sync, audit, or rescue a board → `linear-sync`
+   - Check project health → `linear-monitor`
+   - Finish installation → `linear-finish-install`
+4. Apply `linear-discipline` throughout the session.
+5. Use [METHODOLOGY.md](./METHODOLOGY.md) when the routed skill needs deeper guidance.
+
+Default ambiguous requests like “set up Linear tracking” to `linear-setup`.
