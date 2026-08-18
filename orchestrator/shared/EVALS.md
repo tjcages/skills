@@ -62,7 +62,7 @@ The repository has required local tests and installed PR checks. Pass if the roo
 
 - No recursive orchestration.
 - No assignment without evidence requirements.
-- No overlapping active write claims.
+- No overlapping write claims before the root integrates, rejects, supersedes, or stops the holder.
 - No worker-controlled readiness transition.
 - No completion claim based only on isolated checks.
 - No program paralysis from a single-path blocker.

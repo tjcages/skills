@@ -29,7 +29,7 @@ Orchestrate only when at least two independent, checkable workstreams materially
 
 ### 3. Establish the target ledger
 
-Create a machine-readable target ledger from `examples/ledger.template.json`; use `ledger.example.json` only as a completed reference. Record outcome, readiness, authority, dependencies, transitions, acceptance, delivery, and repository-defined verification. Validate it before delegating and after every wave. Use `scripts/ledger-state.mjs` for revision, verification, reopen, and completion changes.
+Create a machine-readable target ledger from `examples/ledger.template.json`; use `ledger.example.json` only as a completed reference. Record outcome, readiness, authority, dependencies, transitions, acceptance, delivery, and repository-defined verification. Validate it before delegating and after every wave. Drive workstream, acceptance, revision, verification, reopen, and completion changes through `scripts/ledger-state.mjs`; do not hand-edit those fields.
 
 ### 4. Map seams before writers
 
