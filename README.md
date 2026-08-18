@@ -46,7 +46,10 @@ Mirror `linear-methodology/` when in doubt.
 
 ## Linear
 
-Team **Off-brand** · project **[extracted-skills](https://linear.app/off-brand-studio/project/extracted-skills-4d7c79e03387)**
+Team **Off-brand**. Each pack is its own `Tool` project. Do not file on [extracted-skills](https://linear.app/off-brand-studio/project/extracted-skills-4d7c79e03387) (Completed).
+
+- [Linear](https://linear.app/off-brand-studio/project/linear-9633010d001a)
+- [Orchestrator](https://linear.app/off-brand-studio/project/orchestrator-e850288469eb)
 
 ## Cloud kickoff
 

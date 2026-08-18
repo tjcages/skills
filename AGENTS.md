@@ -4,11 +4,15 @@
 
 ## Linear tracking (non-negotiable)
 
-Team **Off-brand** · project **[extracted-skills](https://linear.app/off-brand-studio/project/extracted-skills-4d7c79e03387)**.
+No factory. **[extracted-skills](https://linear.app/off-brand-studio/project/extracted-skills-4d7c79e03387) is Completed** — do not file there.
 
-Milestones = packs: `1 — agent-worktrees` · `2 — constitution-first` · `3 — accept-gated-ai` · `4 — lossless-migration` · `5 — behavior-contracts`.
+Each pack is its own Linear `Tool` project. If none exists, run `linear-setup` on that pack before non-trivial work (create project + `<pack>/CLAUDE.md`).
 
-- Search before create. Non-trivial work → issue + milestone.
+Live:
+- `linear-methodology/` → **[Linear](https://linear.app/off-brand-studio/project/linear-9633010d001a)**
+- `orchestrator/` → **[Orchestrator](https://linear.app/off-brand-studio/project/orchestrator-e850288469eb)**
+
+- Search before create. Non-trivial work → issue + milestone on **that pack’s project**.
 - `Backlog` → `In Progress` at start → `Done` when shipped (merged, dogfood logged).
 - Close the loop before session end.
 - Prefer Linear branch names.
