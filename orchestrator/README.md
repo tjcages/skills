@@ -1,8 +1,8 @@
 # Orchestrator
 
-**Delegate autonomy, not authority: one root agent owns multi-agent delivery from target definition through verified acceptance.**
+**One root agent owns multi-agent delivery from target definition through verified acceptance.**
 
-You write the target and keep the owner-only gates — merge, publish, deploy. The root agent owns everything between: decomposition, bounded worker contracts, challenge, integration, and the readiness claim. It returns to you only at the gates you kept. Extracted from Ty's recurring "orchestrator" commands and the behavior of the agents that executed them; the defining rule is not parallelism but sole accountability.
+You write the target and keep the owner-only gates — merge, publish, deploy. The root agent owns everything between: decomposition, bounded worker contracts, challenge, integration, and the readiness claim. It returns to you only at the gates you kept. Extracted from Ty's recurring "orchestrator" commands and the behavior of the agents that executed them; the defining rule is sole accountability for the whole target.
 
 ## Status
 
