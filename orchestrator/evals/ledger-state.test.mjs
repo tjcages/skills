@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 import {
+  acceptWorkstream,
+  addWorkstream,
   attestWorkstream,
   completeProgram,
   migrateV1,
@@ -13,6 +15,7 @@ import {
   reopenProgram,
   resolvePath,
   stampRevision,
+  transitionWorkstream,
 } from "../src/ledger-state.mjs";
 import { validateLedger } from "../src/validate-ledger.mjs";
 
@@ -101,4 +104,34 @@ reopenedAndReattested = resolvePath(reopenedAndReattested, "Apply requested revi
 const reclosed = completeProgram(reopenedAndReattested);
 assert.equal(reclosed.program.status, "done");
 
-console.log("Ledger lifecycle tests passed: 11/11");
+let staffed = reopenProgram(base, "Document the settings workflow");
+assert.throws(() => addWorkstream(staffed, JSON.stringify({ id: "settings-ui" })), /already exists/);
+staffed = addWorkstream(staffed, JSON.stringify({
+  id: "settings-docs",
+  role: "Settings docs writer",
+  objective: "Document the settings workflow",
+  why: "Delivery includes setup documentation",
+  owner: "worker-docs",
+  authoritativeInputs: ["delivered settings workflow"],
+  writeClaims: ["docs/settings"],
+  forbidden: ["src changes", "merge"],
+  expectedOutput: "settings documentation page",
+  stopConditions: ["target changes"],
+  requiredEvidence: ["rendered documentation"],
+  reliedOn: false,
+}));
+staffed = transitionWorkstream(staffed, "settings-docs", "scoped", "root");
+staffed = transitionWorkstream(staffed, "settings-docs", "assigned", "root");
+staffed = transitionWorkstream(staffed, "settings-docs", "active", "worker-docs");
+assert.throws(() => acceptWorkstream(staffed, "settings-docs", "premature"), /must be submitted/);
+staffed = transitionWorkstream(staffed, "settings-docs", "submitted", "worker-docs", "documentation rendered locally");
+assert.throws(() => transitionWorkstream(staffed, "settings-docs", "integrated", "root"), /transition-invalid/);
+assert.throws(() => transitionWorkstream(staffed, "settings-docs", "challenged", "worker-docs"), /transition-authority/);
+staffed = acceptWorkstream(staffed, "settings-docs", "root reproduced the rendered documentation");
+assert.equal(staffed.workstreams.at(-1).acceptance.reviewedBy, "root");
+staffed = transitionWorkstream(staffed, "settings-docs", "integrated", "root");
+staffed = transitionWorkstream(staffed, "settings-docs", "verified", "root");
+staffed = transitionWorkstream(staffed, "settings-docs", "done", "root");
+assert.deepEqual(validateLedger(staffed), []);
+
+console.log("Ledger lifecycle tests passed.");

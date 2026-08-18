@@ -14,9 +14,12 @@ node <skill-directory>/scripts/validate-ledger.mjs <ledger.json>
 
 Run the same command after every assignment wave, target change, acceptance decision, compaction recovery, and before any readiness claim. A non-zero exit blocks progression until the root repairs or explicitly supersedes the invalid state.
 
-Use the bundled lifecycle command for revision and completion changes instead of editing related fields independently:
+Use the bundled lifecycle command for workstream, revision, and completion changes instead of hand-editing related fields:
 
 ```bash
+node <skill-directory>/scripts/ledger-state.mjs add-workstream <ledger.json> '<workstream-json>'
+node <skill-directory>/scripts/ledger-state.mjs transition <ledger.json> <workstream-id> <state> <actor> ["<evidence>"]
+node <skill-directory>/scripts/ledger-state.mjs accept <ledger.json> <workstream-id> "<challenge evidence>"
 node <skill-directory>/scripts/ledger-state.mjs stamp-revision <ledger.json> <revision>
 node <skill-directory>/scripts/ledger-state.mjs record-check <ledger.json> local "<name>" passed <revision> "<evidence>"
 node <skill-directory>/scripts/ledger-state.mjs record-waiver <ledger.json> local "<name>" <revision> "<exact user approval>"
@@ -29,7 +32,7 @@ node <skill-directory>/scripts/ledger-state.mjs resolve-path <ledger.json> "<com
 node <skill-directory>/scripts/ledger-state.mjs complete <ledger.json>
 ```
 
-Updates are validated before an atomic write. `stamp-revision` invalidates repository checks plus product criteria, relied-on workstream attestations, integrated checks, and delivery state. `reopen` invalidates the product layers and creates explicit remaining work even when the revision has not changed. The four evidence-recording commands restore those layers only for the current revision. `record-waiver` preserves a separate user-approval record; ordinary check recording cannot create a waiver. `resolve-path` removes only an exact named path. `complete` never clears remaining work and refuses active work, blockers, stale evidence, missing delivery, or incomplete criteria.
+Updates are validated before an atomic write. `add-workstream` appends a candidate workstream with a root-owned transition history; contract fields come from the JSON argument. `transition` appends one state change and enforces actor authority, ordering, and evidence requirements; the optional final argument records evidence with the change. `accept` records the root acceptance object and moves a submitted workstream to challenged — a failed challenge is `transition <id> rejected <root> "<reason>"` instead. Re-contract after a target change by transitioning the stale workstream to `superseded` and adding its replacement with `add-workstream`. `stamp-revision` invalidates repository checks plus product criteria, relied-on workstream attestations, integrated checks, and delivery state. `reopen` invalidates the product layers and creates explicit remaining work even when the revision has not changed. The four evidence-recording commands restore those layers only for the current revision. `record-waiver` preserves a separate user-approval record; ordinary check recording cannot create a waiver. `resolve-path` removes only an exact named path. `complete` never clears remaining work and refuses active work, blockers, stale evidence, missing delivery, or incomplete criteria.
 
 Schema v2 links verification to readiness and records exact revisions. Upgrade a v1 ledger before using any other lifecycle command:
 
@@ -82,7 +85,7 @@ Each workstream records:
 }
 ```
 
-Use explicit path or `system:<name>` claims. Globs are rejected because overlap cannot be proven safely. The root records the acceptance object only after challenging a worker submission.
+Use explicit path or `system:<name>` claims. Globs are rejected because overlap cannot be proven safely, and overlap comparison is case-insensitive. A claim is held from `assigned` through `challenged` (including `blocked`); it releases only when the root integrates, rejects, supersedes, or stops the work, so a submitted-but-unintegrated diff still owns its paths. The root records the acceptance object only after challenging a worker submission.
 
 ## Validator guarantees
 

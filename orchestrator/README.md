@@ -27,7 +27,7 @@ Extracted from Ty's recurring “orchestrator” commands and the behavior of th
 - `shared/EVALS.md` — trigger, behavior, and regression evaluations
 - `shared/EXAMPLES.md` — research provenance and future dogfood log
 - `src/validate-ledger.mjs` — deterministic root-ownership and readiness validator
-- `src/ledger-state.mjs` — validated, atomic revision and completion lifecycle changes
+- `src/ledger-state.mjs` — validated, atomic workstream, revision, and completion lifecycle changes
 - `evals/conformance.test.mjs` — positive and negative conformance fixtures
 - `scripts/sync-skill-assets.mjs` — canonical-source synchronization and drift check
 - `scripts/verify.mjs` — one-command pack verification

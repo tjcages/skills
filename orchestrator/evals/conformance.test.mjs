@@ -236,6 +236,38 @@ const cases = [
     codes: ["write-claim-overlap"],
   },
   {
+    name: "rejects a submitted claim overlapping a newly active writer",
+    ledger: (() => {
+      const ledger = copy();
+      ledger.program.status = "in-progress";
+      ledger.program.readinessDeclaredBy = null;
+      const submitted = activeClone(ledger.workstreams[0], { id: "ui-first", owner: "worker-one", claim: "src/settings/ui" });
+      submitted.state = "submitted";
+      submitted.evidence = ["component tests passed"];
+      submitted.transitions = [...submitted.transitions, { state: "submitted", by: "worker-one" }];
+      ledger.workstreams = [
+        submitted,
+        activeClone(ledger.workstreams[1], { id: "ui-second", owner: "worker-two", claim: "src/settings/ui" }),
+      ];
+      return ledger;
+    })(),
+    codes: ["write-claim-overlap"],
+  },
+  {
+    name: "rejects write claims that differ only by letter case",
+    ledger: (() => {
+      const ledger = copy();
+      ledger.program.status = "in-progress";
+      ledger.program.readinessDeclaredBy = null;
+      ledger.workstreams = [
+        activeClone(ledger.workstreams[0], { id: "ui-one", owner: "worker-one", claim: "src/Settings" }),
+        activeClone(ledger.workstreams[1], { id: "ui-two", owner: "worker-two", claim: "src/settings/ui" }),
+      ];
+      return ledger;
+    })(),
+    codes: ["write-claim-overlap"],
+  },
+  {
     name: "rejects wildcard write ownership",
     ledger: (() => {
       const ledger = copy();

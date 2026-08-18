@@ -79,7 +79,7 @@ function add(errors, code, path, message) {
 }
 
 function normalizeClaim(claim) {
-  return claim.replaceAll("\\", "/").replace(/^\.\//, "").replace(/\/$/, "");
+  return claim.replaceAll("\\", "/").replace(/^\.\//, "").replace(/\/$/, "").toLowerCase();
 }
 
 function claimsOverlap(left, right) {
@@ -302,7 +302,10 @@ export function validateLedger(ledger) {
   });
   checkDependencyCycles(workstreams, errors);
 
-  const activeWriters = workstreams.filter((item) => ["assigned", "active"].includes(item.state));
+  // Claims are held until the root integrates, rejects, supersedes, or stops the
+  // work: a submitted-but-unintegrated diff still owns its paths.
+  const claimHoldStates = ["assigned", "active", "submitted", "challenged", "blocked"];
+  const activeWriters = workstreams.filter((item) => claimHoldStates.includes(item.state));
   for (let leftIndex = 0; leftIndex < activeWriters.length; leftIndex += 1) {
     for (let rightIndex = leftIndex + 1; rightIndex < activeWriters.length; rightIndex += 1) {
       const left = activeWriters[leftIndex];

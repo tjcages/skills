@@ -165,9 +165,9 @@ export function recordCheck(input, kind, name, status, revision, evidence) {
   const check = collection.find((item) => item.name === name);
   if (!check) throw new Error(`Unknown ${kind} check ${name}.`);
   check.status = status;
-  check.revision = ["passed", "waived"].includes(status) ? revision : "";
+  check.revision = status === "passed" ? revision : "";
   check.evidence = evidence;
-  check.waivedByUser = status === "waived";
+  check.waivedByUser = false;
   refreshVerificationCriterion(ledger);
   if (verificationCriterion(ledger)?.status === "verified") {
     ledger.criticalPath.remainingAuthorizedPaths = (ledger.criticalPath.remainingAuthorizedPaths ?? [])
@@ -236,6 +236,65 @@ export function recordDelivery(input, revision, artifact = "") {
   return ledger;
 }
 
+export function addWorkstream(input, definition) {
+  const parsed = typeof definition === "string" ? JSON.parse(definition) : definition;
+  if (parsed === null || typeof parsed !== "object" || Array.isArray(parsed)) throw new Error("Workstream definition must be a JSON object.");
+  if (!text(parsed.id)) throw new Error("Workstream id is required.");
+  const ledger = structuredClone(input);
+  if ((ledger.workstreams ?? []).some((item) => item.id === parsed.id)) throw new Error(`Workstream ${parsed.id} already exists.`);
+  ledger.workstreams.push({
+    maySpawn: false,
+    requiresUserAuthority: false,
+    reliedOn: true,
+    dependencies: [],
+    writeClaims: [],
+    requiredEvidence: [],
+    ...parsed,
+    evidence: [],
+    verifiedRevision: "",
+    state: "candidate",
+    transitions: [{ state: "candidate", by: ledger.root.agentId }],
+  });
+  assertValid(ledger);
+  return ledger;
+}
+
+export function transitionWorkstream(input, id, state, by, evidence) {
+  if (!text(id) || !text(state) || !text(by)) throw new Error("Workstream id, next state, and actor are required.");
+  const ledger = structuredClone(input);
+  const workstream = ledger.workstreams.find((item) => item.id === id);
+  if (!workstream) throw new Error(`Unknown workstream ${id}.`);
+  if (text(evidence)) workstream.evidence = [...new Set([...(workstream.evidence ?? []), evidence])];
+  workstream.state = state;
+  workstream.transitions = [...(workstream.transitions ?? []), { state, by }];
+  assertValid(ledger);
+  return ledger;
+}
+
+export function acceptWorkstream(input, id, evidence) {
+  if (!text(id) || !text(evidence)) throw new Error("Workstream id and challenge evidence are required.");
+  const ledger = structuredClone(input);
+  const workstream = ledger.workstreams.find((item) => item.id === id);
+  if (!workstream) throw new Error(`Unknown workstream ${id}.`);
+  if (workstream.state !== "submitted") throw new Error(`Workstream ${id} must be submitted before acceptance; it is ${workstream.state}.`);
+  // The validator only admits an all-pass acceptance record past Submitted; a
+  // failed challenge is `transition <id> rejected` with the reason as evidence.
+  workstream.acceptance = {
+    reviewedBy: ledger.root.agentId,
+    scope: "pass",
+    truth: "pass",
+    evidenceQuality: "pass",
+    interactionSafety: "pass",
+    residualRisk: "acceptable",
+    decision: "accept",
+    evidence,
+  };
+  workstream.state = "challenged";
+  workstream.transitions = [...(workstream.transitions ?? []), { state: "challenged", by: ledger.root.agentId }];
+  assertValid(ledger);
+  return ledger;
+}
+
 export function resolvePath(input, path) {
   if (!text(path)) throw new Error("Resolved path is required.");
   const ledger = structuredClone(input);
@@ -297,13 +356,16 @@ async function persist(file, ledger) {
 async function main() {
   const [command, file, ...args] = process.argv.slice(2);
   if (!command || !file) {
-    console.error("Usage: ledger-state.mjs <migrate-v1|stamp-revision|record-check|record-waiver|record-criterion|attest-workstream|record-integrated-check|record-delivery|resolve-path|complete|reopen> <ledger.json> [...args]");
+    console.error("Usage: ledger-state.mjs <migrate-v1|add-workstream|transition|accept|stamp-revision|record-check|record-waiver|record-criterion|attest-workstream|record-integrated-check|record-delivery|resolve-path|complete|reopen> <ledger.json> [...args]");
     process.exit(2);
   }
   try {
     const ledger = JSON.parse(await readFile(resolve(file), "utf8"));
     let next;
     if (command === "migrate-v1") next = migrateV1(ledger);
+    else if (command === "add-workstream") next = addWorkstream(ledger, args[0]);
+    else if (command === "transition") next = transitionWorkstream(ledger, args[0], args[1], args[2], args[3]);
+    else if (command === "accept") next = acceptWorkstream(ledger, args[0], args[1]);
     else if (command === "stamp-revision") next = stampRevision(ledger, args[0]);
     else if (command === "record-check") next = recordCheck(ledger, args[0], args[1], args[2], args[3], args[4]);
     else if (command === "record-waiver") next = recordWaiver(ledger, args[0], args[1], args[2], args[3]);
