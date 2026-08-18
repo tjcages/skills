@@ -1,5 +1,7 @@
 # Orchestrator
 
+![Orchestrator](./orchestrator.png)
+
 **Assign one agent as orchestrator. It spins up a team of agents and manages the complete build-out of your goal.**
 
 The orchestrator scopes the work, hands out assignments that cannot collide, reviews what each worker turns in, fits the pieces together, and proves the result before calling it done. The rule underneath all of it: one agent stays answerable for the whole thing. Extracted from Ty's recurring "orchestrator" commands and the behavior of the agents that executed them.
