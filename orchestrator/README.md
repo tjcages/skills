@@ -1,8 +1,8 @@
 # Orchestrator
 
-**Give one agent a goal. It runs the team and comes back when it's done.**
+**Assign one agent as orchestrator. It spins up a team of agents and manages the complete build-out of your goal.**
 
-You say what you want and which decisions stay yours — merging, publishing, deploying. The lead agent handles the rest: splitting the work, handing out assignments that cannot collide, questioning what each worker turns in, fitting the pieces together, and proving the result before calling it done. The rule underneath all of it: one agent stays answerable for the whole thing. Extracted from Ty's recurring "orchestrator" commands and the behavior of the agents that executed them.
+You set the goal and which decisions stay yours — merging, publishing, deploying. The orchestrator handles the rest: scoping the work, handing out assignments that cannot collide, reviewing what each worker turns in, fitting the pieces together, and proving the result before calling it done. The rule underneath all of it: one agent stays answerable for the whole thing. Extracted from Ty's recurring "orchestrator" commands and the behavior of the agents that executed them.
 
 ## Status
 
