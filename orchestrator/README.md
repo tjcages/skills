@@ -1,22 +1,20 @@
 # Orchestrator
 
-**Own complex multi-agent delivery from target definition through verified acceptance.**
+**Delegate autonomy, not authority: one root agent owns multi-agent delivery from target definition through verified acceptance.**
 
-Extracted from Ty's recurring “orchestrator” commands and the behavior of the agents that executed them. The defining rule is not parallelism: one root agent remains solely accountable for readiness, progression, challenge, integration, and final delivery.
+You write the target and keep the owner-only gates — merge, publish, deploy. The root agent owns everything between: decomposition, bounded worker contracts, challenge, integration, and the readiness claim. It returns to you only at the gates you kept. Extracted from Ty's recurring "orchestrator" commands and the behavior of the agents that executed them; the defining rule is not parallelism but sole accountability.
 
 ## Status
 
-**🧪 v0.2 candidate** — one live Connect dogfood completed at 8/11; its ledger failures are now regression-tested. A second independent passing dogfood and a passing rerun remain required. Do not call this v1 or production-proven.
-
-## Skill
-
-| Skill | Job |
-|---|---|
-| `orchestrator` | Run a root-owned, evidence-gated multi-agent program |
+**🧪 v0.2 candidate** — one live dogfood completed at 8/11; its ledger failures are regression-tested and the full workstream lifecycle is now CLI-driven. A second independent passing dogfood and a passing rerun remain required. Do not call this v1 or production-proven.
 
 ## Core creed
 
 > Delegation moves work, never accountability. Workers submit; the root accepts. Activity is not progress; accepted evidence is progress. Unverified is not done. A blocker limits one path, not the root's obligation to advance every other authorized path.
+
+## No overwrites
+
+The recurring failure of parallel agents is writers silently clobbering each other. The ledger makes ownership mechanical: every writer records explicit, glob-free, case-insensitive write claims, the validator rejects any overlap, and a claim is held from assignment until the root integrates, rejects, supersedes, or stops the work — a submitted-but-unintegrated diff still owns its paths.
 
 ## Pack contents
 
@@ -25,12 +23,11 @@ Extracted from Ty's recurring “orchestrator” commands and the behavior of th
 - `shared/READINESS.md` — target ledger, completion gate, and scorecard
 - `shared/RESPONSE.md` — compact user-facing progress contract
 - `shared/EVALS.md` — trigger, behavior, and regression evaluations
-- `shared/EXAMPLES.md` — research provenance and future dogfood log
+- `shared/EXAMPLES.md` — research provenance and dogfood log
 - `src/validate-ledger.mjs` — deterministic root-ownership and readiness validator
 - `src/ledger-state.mjs` — validated, atomic workstream, revision, and completion lifecycle changes
-- `evals/conformance.test.mjs` — positive and negative conformance fixtures
-- `scripts/sync-skill-assets.mjs` — canonical-source synchronization and drift check
-- `scripts/verify.mjs` — one-command pack verification
+- `evals/` — positive and negative conformance fixtures plus lifecycle tests
+- `scripts/verify.mjs` — one-command pack verification, including source↔install drift
 
 ## Verify
 
@@ -38,7 +35,7 @@ Extracted from Ty's recurring “orchestrator” commands and the behavior of th
 node orchestrator/scripts/verify.mjs
 ```
 
-`shared/`, `src/`, and `examples/` are canonical. Run `node orchestrator/scripts/sync-skill-assets.mjs` after changing them. The local verification command rejects drift between canonical sources and the self-contained installed skill.
+`shared/`, `src/`, and `examples/` are canonical. Run `node orchestrator/scripts/sync-skill-assets.mjs` after changing them; verification rejects drift between canonical sources and the self-contained installed skill.
 
 The orchestrator does not install or require a hosted verification mechanism. It discovers and honors any local checks, PR verification, merge gates, or release tests already defined by the target repository.
 
@@ -50,7 +47,13 @@ The distributable unit is `skills/orchestrator/`; it contains every runtime refe
 npx skills add https://github.com/tjcages/skills --skill orchestrator --global --yes
 ```
 
-The skill is listed at [skills.sh/tjcages/skills/orchestrator](https://skills.sh/tjcages/skills/orchestrator). The command installs it globally under the exact skill name `orchestrator`. Do not install only `SKILL.md`. To upgrade an existing copy, compare local modifications before replacement and run the bundled v1→v2 ledger migration before resuming active programs.
+The skill is listed at [skills.sh/tjcages/skills/orchestrator](https://skills.sh/tjcages/skills/orchestrator). Do not install only `SKILL.md`. To upgrade an existing copy, compare local modifications before replacement and run the bundled v1→v2 ledger migration before resuming active programs.
+
+## Composes with
+
+- [`agent-worktrees`](../agent-worktrees/) — write claims say who owns which paths; worktrees keep the writers physically isolated.
+- `linear-discipline` — the root closes the tracker loop as part of integration, not after delivery.
+- Cleanup passes (slop review, simplification) run as root-owned integration waves, never as worker side quests.
 
 ## Release gate
 
