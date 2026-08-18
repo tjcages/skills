@@ -59,16 +59,13 @@ A pack teaches *how*. A north-star doc is *one result* of running that pack on a
 - Worktrees origin: `socials/CLAUDE.md` “Parallel agents” + `socials/scripts/worktree.sh`
 - Skill-building style reference: `skills/linear-methodology/shared/METHODOLOGY.md`
 
-## Linear issues
+## Linear
 
-- [OFF-256](https://linear.app/off-brand-studio/issue/OFF-256/draft-agent-worktrees-v01) — agent-worktrees draft
-- [OFF-273](https://linear.app/off-brand-studio/issue/OFF-273/agent-worktrees-v02-polish-keyframe-dogfood) — v0.2 polish + keyframe dogfood
-- [OFF-257](https://linear.app/off-brand-studio/issue/OFF-257/draft-constitution-first-v01) — Done
-- [OFF-266](https://linear.app/off-brand-studio/issue/OFF-266/draft-accept-gated-ai-v01) / [OFF-268](https://linear.app/off-brand-studio/issue/OFF-268/polish-accept-gated-ai-v02) — Done
-- [OFF-269](https://linear.app/off-brand-studio/issue/OFF-269/draft-lossless-migration-v01) — Done
-- [OFF-271](https://linear.app/off-brand-studio/issue/OFF-271/draft-behavior-contracts-v01) — Done
-- [OFF-493](https://linear.app/off-brand-studio/issue/OFF-493/graduate-orchestrator-to-own-project) — orchestrator graduated to its own Linear project (Done)
-- [OFF-450](https://linear.app/off-brand-studio/issue/OFF-450/dogfood-orchestrator-v01-on-two-live-programs) — Orchestrator v1 dogfoods (In Progress)
+extracted-skills is **Completed**. Do not file there.
+
+Live projects:
+- [Linear](https://linear.app/off-brand-studio/project/linear-9633010d001a)
+- [Orchestrator](https://linear.app/off-brand-studio/project/orchestrator-e850288469eb) — open: [OFF-450](https://linear.app/off-brand-studio/issue/OFF-450/dogfood-orchestrator-v01-on-two-live-programs)
 
 ## Install for local dogfood while drafting
 

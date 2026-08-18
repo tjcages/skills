@@ -8,7 +8,7 @@ Team **Off-brand**, project **[Orchestrator](https://linear.app/off-brand-studio
 
 Milestones: `Extract & ship v0.2` (done) · `v1 dogfood` (current).
 
-- Search before create. Non-trivial work → issue + milestone on **Orchestrator**, not extracted-skills.
+- Search before create. Non-trivial work → issue + milestone on **Orchestrator**.
 - `Backlog` → `In Progress` → `Done` only when shipped.
 - Close the loop before session end.
 - Prefer Linear’s generated branch names.
