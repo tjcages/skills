@@ -6,7 +6,7 @@
 
 Team **Off-brand** · project **[extracted-skills](https://linear.app/off-brand-studio/project/extracted-skills-4d7c79e03387)**.
 
-Milestones = packs: `1 — agent-worktrees` · `2 — constitution-first` · `3 — accept-gated-ai` · `4 — lossless-migration` · `5 — behavior-contracts`.
+Milestones = packs: `0 — linear-methodology` · `1 — agent-worktrees` · `2 — manifesto` · `3 — accept-gated-ai` · `4 — lossless-migration` · `5 — behavior-contracts` · `6 — pr-writing` · `7 — orchestrator`.
 
 - Search before create. Non-trivial work → issue + milestone.
 - `Backlog` → `In Progress` at start → `Done` when shipped (merged, dogfood logged).

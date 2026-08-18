@@ -67,6 +67,8 @@ A pack teaches *how*. A north-star doc is *one result* of running that pack on a
 - [OFF-266](https://linear.app/off-brand-studio/issue/OFF-266/draft-accept-gated-ai-v01) / [OFF-268](https://linear.app/off-brand-studio/issue/OFF-268/polish-accept-gated-ai-v02) — Done
 - [OFF-269](https://linear.app/off-brand-studio/issue/OFF-269/draft-lossless-migration-v01) — Done
 - [OFF-271](https://linear.app/off-brand-studio/issue/OFF-271/draft-behavior-contracts-v01) — Done
+- [OFF-491](https://linear.app/off-brand-studio/issue/OFF-491/list-orchestrator-on-skillssh) — orchestrator listed on skills.sh (Done; not v1)
+- [OFF-450](https://linear.app/off-brand-studio/issue/OFF-450/dogfood-orchestrator-v01-on-two-live-programs) — orchestrator v1 dogfoods (In Progress)
 
 ## Install for local dogfood while drafting
 
