@@ -4,11 +4,15 @@
 
 ## Linear tracking (non-negotiable)
 
-Team **Off-brand** · project **[extracted-skills](https://linear.app/off-brand-studio/project/extracted-skills-4d7c79e03387)**.
+**Factory** (stub → extract → first dogfood): team **Off-brand** · project **[extracted-skills](https://linear.app/off-brand-studio/project/extracted-skills-4d7c79e03387)**. One milestone per ungraduated pack.
 
-Milestones = packs: `0 — linear-methodology` · `1 — agent-worktrees` · `2 — manifesto` · `3 — accept-gated-ai` · `4 — lossless-migration` · `5 — behavior-contracts` · `6 — pr-writing` · `7 — orchestrator`.
+**Graduate at 🚀** (skills.sh listing, or a named public install). Create a `Tool` project, move product issues, write `<pack>/CLAUDE.md` pointing at it. Factory keeps one Done stub linking out. After that, product work does **not** go on extracted-skills.
 
-- Search before create. Non-trivial work → issue + milestone.
+Graduated:
+- `linear-methodology/` → **[Linear](https://linear.app/off-brand-studio/project/linear-9633010d001a)**
+- `orchestrator/` → **[Orchestrator](https://linear.app/off-brand-studio/project/orchestrator-e850288469eb)**
+
+- Search before create. Non-trivial work → issue on the **pack’s project** if graduated, else extracted-skills + pack milestone.
 - `Backlog` → `In Progress` at start → `Done` when shipped (merged, dogfood logged).
 - Close the loop before session end.
 - Prefer Linear branch names.
