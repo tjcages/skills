@@ -53,7 +53,7 @@ The skill is listed at [skills.sh/tjcages/skills/orchestrator](https://skills.sh
 
 ## Composes with
 
-- [`agent-worktrees`](../agent-worktrees/) — write claims say who owns which paths; worktrees keep the writers physically isolated.
+- Isolated agent workspaces — write claims say who owns which paths; native worktrees keep writers physically isolated.
 - `linear-discipline` — the root closes the tracker loop as part of integration, not after delivery.
 - Cleanup passes (slop review, simplification) run as root-owned integration waves, never as worker side quests.
 
