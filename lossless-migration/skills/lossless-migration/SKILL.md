@@ -49,4 +49,4 @@ Phases → `linear-setup`. Agent writes → `accept-gated-ai`. Multi-platform pa
 
 ## Out of scope
 
-Authoring the product creed (`constitution-first`). Accept-gate UX detail (`accept-gated-ai`). Coding worktree isolation (`agent-worktrees`).
+Authoring the product creed (`constitution-first`). Accept-gate UX detail (`accept-gated-ai`). Coding-agent repository isolation.

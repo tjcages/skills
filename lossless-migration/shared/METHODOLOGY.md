@@ -223,4 +223,4 @@ Score 0 / 1 / 2. Max 16. **≥12 and no load-bearing 0 on #1–#5** = ready to e
 - **accept-gated-ai** — when consolidated engines write user data.
 - **behavior-contracts** — multi-platform parity during/after re-point phases.
 - **linear-setup** — milestones mirror roadmap phases 1:1.
-- **agent-worktrees** — parallel agents during migration still isolate git trees; does not replace the audit.
+- Parallel agents during migration still require repository isolation; isolation does not replace the audit.

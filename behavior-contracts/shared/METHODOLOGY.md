@@ -173,4 +173,3 @@ Score 0 / 1 / 2. Max 16. **≥12 and no load-bearing 0 on #1–#5** = contract-r
 - **lossless-migration** — Phase “platforms together” + primitive mapping tags.
 - **accept-gated-ai** — accept/diff/undo are verbs that belong on AI-proposal contracts.
 - **behavior-contracts** (this) — HOW parity promises; not visual QA.
-- **agent-worktrees** — orthogonal (repo isolation).

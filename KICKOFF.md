@@ -18,19 +18,17 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 
 **Merged / in-tree**
 1. 🚀 `linear-methodology/` — shipped
-2. ✅ `agent-worktrees/` — **v1.0.0** (skills install 12/12; keyframe patch in `dogfood/`)
-3. 🧪 `constitution-first/` — v0.1 Tool dogfood (keyframe)
-4. 🧪 `accept-gated-ai/` — v0.2 (Tasks + Obi docs)
-5. 🧪 `lossless-migration/` — v0.1 (Obi audit docs)
-6. 🧪 `behavior-contracts/` — v0.1 (issue evidence)
+2. 🧪 `constitution-first/` — v0.1 Tool dogfood (keyframe)
+3. 🧪 `accept-gated-ai/` — v0.2 (Tasks + Obi docs)
+4. 🧪 `lossless-migration/` — v0.1 (Obi audit docs)
+5. 🧪 `behavior-contracts/` — v0.1 (issue evidence)
 
 **Next (do this now)**
 1. Rotate 🔁 second dogfoods: constitution Product · accept-gated live UI · lossless non-Obi · behavior contracts in-repo
-2. Optional: apply `agent-worktrees/dogfood/keyframe-install.patch` on keyframe (human — bot 403)
-3. Hold 🚀 skills.sh until more packs hit ✅ v1
+2. Hold 🚀 skills.sh until more packs hit ✅ v1
 
 **Later**
-4. Publish packs that reach ✅ v1
+3. Publish packs that reach ✅ v1
 
 ## How these skills work (do not confuse layers)
 
@@ -56,7 +54,6 @@ A pack teaches *how*. A north-star doc is *one result* of running that pack on a
 - Creed / accept-gate: `socials/docs/manifesto.md` Parts VI, XI, XII
 - Inventory pattern: `socials/docs/inventory-audit.md`
 - Behavior contracts: manifesto Part IX + `docs/macos-convergence-plan.md` / web↔iOS kit drift
-- Worktrees origin: `socials/CLAUDE.md` “Parallel agents” + `socials/scripts/worktree.sh`
 - Skill-building style reference: `skills/linear-methodology/shared/METHODOLOGY.md`
 
 ## Linear

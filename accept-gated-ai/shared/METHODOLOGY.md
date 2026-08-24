@@ -278,7 +278,7 @@ Score 0 / 1 / 2. Max 16. **≥12 and no load-bearing 0 on #1–#5** = accept-gat
 - [x] Interactive apply hard rule — §4.1 (v0.2)
 - [x] Conflict UX beyond 409 — §3.5 (v0.2)
 - [x] Confidence vs volume thresholds — §3.6 (v0.2)
-- [x] Coding-agent boundary — §13 (v0.2): product data writes here; repo/file agents stay on `agent-worktrees` + human PR review
+- [x] Coding-agent boundary — §13 (v0.2): product data writes here; repo/file agents stay behind human PR review
 - [ ] Live Socials checkout — re-verify EditProposal UI pixels + every direct AI write in `atom.server.ts` when tree is mounted
 - [ ] Second independent Product dogfood outside Obi/Tasks family (v1 exit)
 - [ ] Partial multi-field accept — product examples beyond “refuse whole proposal”
@@ -291,4 +291,4 @@ Score 0 / 1 / 2. Max 16. **≥12 and no load-bearing 0 on #1–#5** = accept-gat
 - **linear-methodology** — track the gaps the audit files; does not define trust doctrine.
 - **behavior-contracts** — platform parity for how accept/diff/undo *feel* on iOS vs web.
 - **lossless-migration** — when re-pointing old AI engines into one registry, inventory every write site first.
-- **agent-worktrees** — parallel **coding** agents on a git repo. Orthogonal: worktree isolation ≠ product accept-gate. Coding agents still need human review (PR/diff) before landing shared `main`; do not stretch this pack’s proposal tables onto source files unless the product *is* a document store.
+- **Coding-agent isolation** is orthogonal: repository isolation ≠ product accept-gate. Coding agents still need human review (PR/diff) before landing shared code; do not stretch this pack’s proposal tables onto source files unless the product *is* a document store.

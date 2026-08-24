@@ -7,7 +7,7 @@ description: >-
   agent that creates/updates/deletes user data, when adding overnight/batch AI
   passes, when a product’s AI writes feel silent or over-eager, or when the user
   asks for accept-gates / EditProposal / proposal substrate / undo-before-delete.
-  NOT for read-only Q&A bots or coding-agent file isolation (see agent-worktrees).
+  NOT for read-only Q&A bots or coding-agent repository isolation.
 ---
 
 # Accept-gated AI
@@ -60,4 +60,4 @@ Creed home → `constitution-first`. Gaps → Linear. Gate UX parity → `behavi
 ## Out of scope
 
 Full manifesto (`constitution-first`). Migration inventories (`lossless-migration`).
-Coding-agent worktrees (`agent-worktrees`). Building Socials UI in this pack’s name.
+Coding-agent repository workflows. Building Socials UI in this pack’s name.
