@@ -37,7 +37,7 @@ Full method: [METHODOLOGY.md](./METHODOLOGY.md). Chat shape:
 Keep each update to at most three short items: completed evidence, current
 work, and next step or blocker. End with exactly one overall bar:
 
-```text
+```
 Performance rollout  [██████████████████░░] 90%
 ```
 

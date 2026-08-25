@@ -49,9 +49,10 @@ Each update contains no more than three concise items:
 2. What is active now.
 3. The next step or blocker.
 
-End with one 20-cell overall bar in a plain-text code block:
+End with one 20-cell overall bar in an unlabeled fenced code block. Do not add
+a language header or a copy control:
 
-```text
+```
 Performance rollout  [██████████████████░░] 90%
 ```
 

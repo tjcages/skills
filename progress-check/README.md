@@ -25,7 +25,7 @@ as `codex`, `claude-code`, or `cursor`.
 
 ## Example
 
-```text
+```
 Performance rollout  [██████████████████░░] 90%
 ```
 

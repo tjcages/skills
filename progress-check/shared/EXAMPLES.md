@@ -6,7 +6,7 @@
 2. API integration is active.
 3. Next: verify the deployed read path.
 
-```text
+```
 API rollout  [████████████░░░░░░░░] 60%
 ```
 
@@ -16,7 +16,7 @@ API rollout  [████████████░░░░░░░░] 60%
 2. Publishing is blocked because the registry session is not authenticated.
 3. Next: authorize the registry, then rerun the publish command.
 
-```text
+```
 Skill release  [████████████████░░░░] 80%
 ```
 
@@ -24,7 +24,7 @@ Skill release  [████████████████░░░░] 80
 
 1. The package is published and installable from both catalog routes.
 
-```text
+```
 Skill release  [████████████████████] 100%
 ```
 
