@@ -4,7 +4,7 @@ Sparse, evidence-based progress updates for long-running AI agent work.
 
 ## Status
 
-**v1.0.0 — published.** Codex and Claude Code behavior dogfoods pass; Cursor's
+**v1.0.1 — published.** Codex and Claude Code behavior dogfoods pass; Cursor's
 complete package install passes. Available on
 [skills.sh](https://skills.sh/tjcages/skills/progress-check) and
 [offbr.co](https://offbr.co/skills/progress-check).
@@ -28,7 +28,7 @@ as `codex`, `claude-code`, or `cursor`.
 
 ## Example
 
-    Performance rollout  [██████████████████░░] 90%
+`Performance rollout  [██████████████████░░] 90%`
 
 ## Source
 

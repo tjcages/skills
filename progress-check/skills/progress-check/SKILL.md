@@ -2,7 +2,7 @@
 name: progress-check
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 description: >-
   Give sparse, evidence-based progress updates for long-running agent tasks and
   projects. Use when work will take more than 15 minutes, spans multiple
@@ -35,10 +35,14 @@ Full method: [METHODOLOGY.md](./METHODOLOGY.md). Chat shape:
 5. Never repeat an unchanged bar or send a routine “still working” message.
 
 Keep each update to at most three short items: completed evidence, current
-work, and next step or blocker. End with exactly one overall bar as a
-four-space-indented Markdown code line. Do not use backtick fences:
+work, and next step or blocker. End with exactly one overall bar styled as
+inline code on its own line:
 
-    Performance rollout  [██████████████████░░] 90%
+`Performance rollout  [██████████████████░░] 90%`
+
+Use one pair of backticks for inline-code styling. Do not indent the line by
+four spaces and do not use a fenced code block; both create a separate block
+that interfaces may label or make copyable.
 
 - Replace the label with a short task-specific label.
 - Use 20 cells: `█` completed and `░` remaining.

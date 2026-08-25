@@ -6,7 +6,7 @@
 2. API integration is active.
 3. Next: verify the deployed read path.
 
-    API rollout  [████████████░░░░░░░░] 60%
+`API rollout  [████████████░░░░░░░░] 60%`
 
 ## Actionable blocker
 
@@ -14,13 +14,13 @@
 2. Publishing is blocked because the registry session is not authenticated.
 3. Next: authorize the registry, then rerun the publish command.
 
-    Skill release  [████████████████░░░░] 80%
+`Skill release  [████████████████░░░░] 80%`
 
 ## Completion
 
 1. The package is published and installable from both catalog routes.
 
-    Skill release  [████████████████████] 100%
+`Skill release  [████████████████████] 100%`
 
 ## Updates to suppress
 
@@ -42,9 +42,10 @@ Do not send any of these when no material state changed:
 - Fix: use `../../shared/*.md`, then require installed-reference read checks in
   both target directories before accepting a dogfood run.
 - Behavior friction: Codex dropped the requested fence, while Claude added a
-  disclaimer after the bar. Fenced blocks also exposed renderer chrome.
-- Fix: require one four-space-indented progress line as the final content, with
-  no backticks or text beneath it.
+  disclaimer after the bar. Fenced blocks exposed renderer chrome, and the
+  first four-space-indented fix still produced a copyable code block.
+- Fix: require one inline-code progress line as the final content, with one pair
+  of backticks, no indentation, no fence, and no text beneath it.
 - Result: Codex and Claude Code both loaded the copied skill and ended on the
-  correct 12/20, 60% indented bar. Cursor's project install also copied the
+  correct 12/20, 60% inline-code bar. Cursor's project install also copied the
   complete skill and all three references through its universal `.agents` path.

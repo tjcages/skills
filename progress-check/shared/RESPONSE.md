@@ -17,4 +17,4 @@
 2. Deployment verification is active.
 3. Next: confirm the preview route returns the new response shape.
 
-    Performance rollout  [██████████████████░░] 90%
+`Performance rollout  [██████████████████░░] 90%`

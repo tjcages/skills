@@ -1,6 +1,6 @@
 # Progress Check methodology
 
-**Version:** 1.0.0 — 2026-08-25
+**Version:** 1.0.1 — 2026-08-25
 
 ## 0. Core thesis
 
@@ -49,10 +49,13 @@ Each update contains no more than three concise items:
 2. What is active now.
 3. The next step or blocker.
 
-End with one 20-cell overall bar as a four-space-indented Markdown code line.
-Do not use backtick fences, a language header, or a copy control:
+End with one 20-cell overall bar styled as inline code on its own line:
 
-    Performance rollout  [██████████████████░░] 90%
+`Performance rollout  [██████████████████░░] 90%`
+
+Use one pair of backticks for inline-code styling. Do not indent the line by
+four spaces and do not use a fenced code block. Those forms create a separate
+code block that interfaces may label or make copyable.
 
 Use `█` for completed cells and `░` for remaining cells. Each cell represents
 5%. Round down to avoid overstating progress. Use 100% only when every required
