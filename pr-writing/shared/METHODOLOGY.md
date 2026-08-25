@@ -1,6 +1,6 @@
 # PR writing methodology
 
-**Version:** 0.1.0 — 2026-08-12
+**Version:** 1.0.0 — 2026-08-25
 
 > **What this is.** One enforceable style contract for every piece of prose git carries: commit subjects, commit bodies, PR titles, PR descriptions, squash messages, and release notes.
 >
@@ -198,3 +198,24 @@ Run against any existing message:
 | `Refactor for clarity` | Clarity for whom, and measured how? State the problem. |
 | Emoji in the subject | Breaks alignment in `--oneline`, terminals, and email. |
 | A wall of text at 200 columns | Unreadable in `git log`. Rule 6 exists for this. |
+
+---
+
+## 9. Dogfood rubric
+
+Score each dimension from 0 to 2. A dogfood passes at 13/16 with no zero in
+subject shape, reason, or verification.
+
+| Dimension | 2 = |
+|---|---|
+| Subject shape | Imperative, capitalized, no period, and 50 characters or fewer. |
+| Reason | The body states the prior problem and why this solution fits. |
+| Sentence control | Sentences follow the language contract without becoming stiff. |
+| Reviewability | A reviewer can scan the change without reading a work log. |
+| Verification | Steps name actions and concrete expected results. |
+| Risk | The body names the failure mode and rollback, or explains why risk is absent. |
+| History | The commit and PR describe one logical change in the same voice. |
+| Linter | `pr-lint.sh` passes the final commit message. |
+
+Record the score, the real artifact, and any friction in `EXAMPLES.md`. Two
+passing dogfoods in separate repositories are required before v1.

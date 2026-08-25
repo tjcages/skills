@@ -1,7 +1,8 @@
 ---
 name: pr-writing
+license: MIT
 metadata:
-  version: "0.1.0"
+  version: "1.0.0"
 description: >-
   Write or review clear commit messages, PR titles, and PR descriptions that
   explain what changed and why. Use before writing git history or when asked to

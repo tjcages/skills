@@ -12,6 +12,7 @@ Live:
 - `linear-methodology/` → **[Linear](https://linear.app/off-brand-studio/project/linear-9633010d001a)**
 - `orchestrator/` → **[Orchestrator](https://linear.app/off-brand-studio/project/orchestrator-e850288469eb)**
 - `progress-check/` → **[Progress Check](https://linear.app/off-brand-studio/project/progress-check-6b74524bd9fe)**
+- `pr-writing/` → **[PR Writing](https://linear.app/off-brand-studio/project/pr-writing-add8062c9094)**
 
 - Search before create. Non-trivial work → issue + milestone on **that pack’s project**.
 - `Backlog` → `In Progress` at start → `Done` when shipped (merged, dogfood logged).

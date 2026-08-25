@@ -132,3 +132,23 @@ e4f5g6h more wip
 i7j8k9l fix tests
 m0n1o2p address review comments
 ```
+
+---
+
+## 6. Dogfood evidence
+
+### 2026-08-25 — skills repository
+
+[PR #17](https://github.com/tjcages/skills/pull/17) simplified the skill's own
+public description. The final commit passed `pr-lint.sh`, and the PR body
+included the reason, verification steps, and risk.
+
+Score: 16/16. No new friction.
+
+### 2026-08-25 — offbr.co repository
+
+[PR #30](https://github.com/tjcages/offbr/pull/30) updated the public listing
+and production seed. The final commit passed `pr-lint.sh`, and the PR body made
+the deployment path and rollback clear.
+
+Score: 16/16. No new friction.

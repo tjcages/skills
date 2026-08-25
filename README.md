@@ -29,7 +29,7 @@ Each folder is one **pack** (router skill + methodology + shared docs), same sha
 | [`lossless-migration/`](./lossless-migration) | 🧪 Thin (source docs) | v0.1 | Obi audit re-score 16/16; needs non-Obi 🔁 |
 | [`behavior-contracts/`](./behavior-contracts) | 🧪 Thin (issue evidence) | v0.1 | 8/16; needs live kit paths / in-repo contracts doc |
 | [`orchestrator/`](./orchestrator) | 🧪 Dogfood 1 | v0.2 candidate | Connect 8/11; hardened ledger needs one passing rerun + independent second dogfood |
-| [`pr-writing/`](./pr-writing) | ✍️ Draft | v0.1 | tpope + cbea.ms + ASD-STE100 + Google devdocs; `pr-lint.sh` smoke-tested, no rubric dogfood |
+| [`pr-writing/`](./pr-writing) | 🚀 Published | 1.0.0 | [GitHub](./pr-writing) · [skills.sh](https://skills.sh/tjcages/skills/pr-writing) · [offbr.co](https://offbr.co/skills/pr-writing) |
 | [`progress-check/`](./progress-check) | 🚀 Published | 1.0.1 | [GitHub](./progress-check) · [skills.sh](https://skills.sh/tjcages/skills/progress-check) · [offbr.co](https://offbr.co/skills/progress-check) |
 
 ## Pack shape (every folder)
@@ -50,6 +50,7 @@ Team **Off-brand**. Each pack is its own `Tool` project. Do not file on [extract
 
 - [Linear](https://linear.app/off-brand-studio/project/linear-9633010d001a)
 - [Orchestrator](https://linear.app/off-brand-studio/project/orchestrator-e850288469eb)
+- [PR Writing](https://linear.app/off-brand-studio/project/pr-writing-add8062c9094)
 
 ## Cloud kickoff
 

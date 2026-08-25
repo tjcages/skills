@@ -15,7 +15,9 @@ The git essays fix the shape of a message and say nothing about the sentences in
 
 ## Status
 
-**v0.1.0 — ✍️ Draft.** Linter smoke-tested; no rubric dogfood yet. Not published to skills.sh.
+**v1.0.0 — published.** Two independent repository dogfoods pass the rubric.
+Available on [skills.sh](https://skills.sh/tjcages/skills/pr-writing) and
+[offbr.co](https://offbr.co/skills/pr-writing).
 
 ## Skills
 
@@ -42,14 +44,15 @@ Optional commit-msg hook:
 ln -sf ../../pr-writing/scripts/pr-lint.sh .git/hooks/commit-msg
 ```
 
-## Install (local, while drafting)
+## Install globally
 
 ```bash
-ln -sfn "$(pwd)/pr-writing/skills/pr-writing" ~/.claude/skills/pr-writing
+npx skills add tjcages/skills --skill pr-writing -g --agent '*'
 ```
 
-One link is enough. The shared docs are checked in as relative symlinks inside `skills/pr-writing/`, so they follow the skill wherever you link it.
+Install for one agent by replacing `'*'` with its Agent Skills identifier, such
+as `codex`, `claude-code`, or `cursor`.
 
 ## License
 
-MIT (intended; LICENSE pending first publish)
+[MIT](./LICENSE)
