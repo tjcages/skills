@@ -22,7 +22,7 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 3. 🧪 `accept-gated-ai/` — v0.2 (Tasks + Obi docs)
 4. 🧪 `lossless-migration/` — v0.1 (Obi audit docs)
 5. 🧪 `behavior-contracts/` — v0.1 (issue evidence)
-6. 🚀 `progress-check/` — v1.0.0 ([skills.sh](https://skills.sh/tjcages/skills/progress-check) · [offbr.co](https://offbr.co/skills/progress-check))
+6. 🚀 `progress-check/` — v1.0.1 ([skills.sh](https://skills.sh/tjcages/skills/progress-check) · [offbr.co](https://offbr.co/skills/progress-check))
 
 **Next (do this now)**
 1. Rotate 🔁 second dogfoods: constitution Product · accept-gated live UI · lossless non-Obi · behavior contracts in-repo
