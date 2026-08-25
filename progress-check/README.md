@@ -4,7 +4,8 @@ Sparse, evidence-based progress updates for long-running AI agent work.
 
 ## Status
 
-**v0.1.0 — drafting and dogfood.** Not published yet.
+**v1.0.0 — validated.** Codex and Claude Code behavior dogfoods pass; Cursor's
+complete package install passes. Ready to publish.
 
 ## What it changes
 
@@ -25,9 +26,7 @@ as `codex`, `claude-code`, or `cursor`.
 
 ## Example
 
-```
-Performance rollout  [██████████████████░░] 90%
-```
+    Performance rollout  [██████████████████░░] 90%
 
 ## Source
 

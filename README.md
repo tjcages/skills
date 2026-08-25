@@ -30,7 +30,7 @@ Each folder is one **pack** (router skill + methodology + shared docs), same sha
 | [`behavior-contracts/`](./behavior-contracts) | 🧪 Thin (issue evidence) | v0.1 | 8/16; needs live kit paths / in-repo contracts doc |
 | [`orchestrator/`](./orchestrator) | 🧪 Dogfood 1 | v0.2 candidate | Connect 8/11; hardened ledger needs one passing rerun + independent second dogfood |
 | [`pr-writing/`](./pr-writing) | ✍️ Draft | v0.1 | tpope + cbea.ms + ASD-STE100 + Google devdocs; `pr-lint.sh` smoke-tested, no rubric dogfood |
-| [`progress-check/`](./progress-check) | ✍️ Draft | v0.1 | Sparse milestone-based progress updates; cross-agent dogfood pending |
+| [`progress-check/`](./progress-check) | ✅ v1 | 1.0.0 | Codex + Claude behavior dogfood pass; Cursor install pass; ready to publish |
 
 ## Pack shape (every folder)
 

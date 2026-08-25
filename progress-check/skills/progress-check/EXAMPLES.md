@@ -1,1 +1,1 @@
-../../../shared/EXAMPLES.md
+../../shared/EXAMPLES.md

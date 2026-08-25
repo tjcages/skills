@@ -1,1 +1,1 @@
-../../../shared/RESPONSE.md
+../../shared/RESPONSE.md

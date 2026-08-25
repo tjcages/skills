@@ -1,6 +1,6 @@
 # Progress Check methodology
 
-**Version:** 0.1.0 — 2026-08-25
+**Version:** 1.0.0 — 2026-08-25
 
 ## 0. Core thesis
 
@@ -49,12 +49,10 @@ Each update contains no more than three concise items:
 2. What is active now.
 3. The next step or blocker.
 
-End with one 20-cell overall bar in an unlabeled fenced code block. Do not add
-a language header or a copy control:
+End with one 20-cell overall bar as a four-space-indented Markdown code line.
+Do not use backtick fences, a language header, or a copy control:
 
-```
-Performance rollout  [██████████████████░░] 90%
-```
+    Performance rollout  [██████████████████░░] 90%
 
 Use `█` for completed cells and `░` for remaining cells. Each cell represents
 5%. Round down to avoid overstating progress. Use 100% only when every required
@@ -63,6 +61,9 @@ gate is complete.
 Replace the label with a short task-specific label. Keep one overall bar even
 when the work has batches or subagents. Subtask bars appear only when the user
 asks for them. In coordinated work, the root agent owns the bar.
+
+The progress line is the final content. End immediately after it; do not add a
+note, recap, disclaimer, or closer beneath it.
 
 ## 5. Global installation
 

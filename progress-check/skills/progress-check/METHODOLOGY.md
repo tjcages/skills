@@ -1,1 +1,1 @@
-../../../shared/METHODOLOGY.md
+../../shared/METHODOLOGY.md

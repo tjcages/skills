@@ -2,7 +2,7 @@
 name: progress-check
 license: MIT
 metadata:
-  version: "0.1.0"
+  version: "1.0.0"
 description: >-
   Give sparse, evidence-based progress updates for long-running agent tasks and
   projects. Use when work will take more than 15 minutes, spans multiple
@@ -35,17 +35,18 @@ Full method: [METHODOLOGY.md](./METHODOLOGY.md). Chat shape:
 5. Never repeat an unchanged bar or send a routine “still working” message.
 
 Keep each update to at most three short items: completed evidence, current
-work, and next step or blocker. End with exactly one overall bar:
+work, and next step or blocker. End with exactly one overall bar as a
+four-space-indented Markdown code line. Do not use backtick fences:
 
-```
-Performance rollout  [██████████████████░░] 90%
-```
+    Performance rollout  [██████████████████░░] 90%
 
 - Replace the label with a short task-specific label.
 - Use 20 cells: `█` completed and `░` remaining.
 - Round down to the nearest 5% unless completion evidence supports 100%.
 - Show only the overall bar unless the user requests subtask bars.
 - In multi-agent work, only the coordinator shows the overall bar.
+- The progress line is the final content in the update. End immediately after
+  it with no note, recap, or closer.
 
 ## Install globally
 

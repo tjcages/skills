@@ -6,9 +6,7 @@
 2. API integration is active.
 3. Next: verify the deployed read path.
 
-```
-API rollout  [████████████░░░░░░░░] 60%
-```
+    API rollout  [████████████░░░░░░░░] 60%
 
 ## Actionable blocker
 
@@ -16,17 +14,13 @@ API rollout  [████████████░░░░░░░░] 60%
 2. Publishing is blocked because the registry session is not authenticated.
 3. Next: authorize the registry, then rerun the publish command.
 
-```
-Skill release  [████████████████░░░░] 80%
-```
+    Skill release  [████████████████░░░░] 80%
 
 ## Completion
 
 1. The package is published and installable from both catalog routes.
 
-```
-Skill release  [████████████████████] 100%
-```
+    Skill release  [████████████████████] 100%
 
 ## Updates to suppress
 
@@ -39,5 +33,18 @@ Do not send any of these when no material state changed:
 
 ## Dogfood log
 
-Add dated entries here. Record the target agent, install command, observed
-behavior, friction, and the methodology change that resulted.
+### 2026-08-25 — Codex and Claude Code install
+
+- Targets: clean temporary Codex and Claude Code projects.
+- Command: local `npx skills add` with `--copy` and each agent identifier.
+- Friction: the first run skipped all shared references because their relative
+  symlinks pointed one directory too high.
+- Fix: use `../../shared/*.md`, then require installed-reference read checks in
+  both target directories before accepting a dogfood run.
+- Behavior friction: Codex dropped the requested fence, while Claude added a
+  disclaimer after the bar. Fenced blocks also exposed renderer chrome.
+- Fix: require one four-space-indented progress line as the final content, with
+  no backticks or text beneath it.
+- Result: Codex and Claude Code both loaded the copied skill and ended on the
+  correct 12/20, 60% indented bar. Cursor's project install also copied the
+  complete skill and all three references through its universal `.agents` path.
