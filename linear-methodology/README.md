@@ -45,6 +45,7 @@ Or say: “Set up Linear tracking for this project.” · “Sync Linear” · �
 ## More
 
 - Site: [offbr.co/skills/linear-methodology](https://offbr.co/skills/linear-methodology)
+- Skills.sh: [linear-methodology](https://skills.sh/tjcages/skills/linear-methodology) · [linear-setup](https://skills.sh/tjcages/skills/linear-setup) · [linear-sync](https://skills.sh/tjcages/skills/linear-sync) · [linear-monitor](https://skills.sh/tjcages/skills/linear-monitor) · [linear-discipline](https://skills.sh/tjcages/skills/linear-discipline) · [linear-finish-install](https://skills.sh/tjcages/skills/linear-finish-install)
 - [INSTALL.md](./INSTALL.md) · [CHANGELOG.md](./CHANGELOG.md)
 
 ## License

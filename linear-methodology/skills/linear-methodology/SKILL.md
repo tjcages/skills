@@ -1,5 +1,8 @@
 ---
 name: linear-methodology
+license: MIT
+metadata:
+  version: "1.0.2"
 description: >-
   Proven methodology for building and tracking features, projects, and issues
   in Linear. Use when the user wants to set up Linear tracking, sync or audit a
