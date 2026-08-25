@@ -1,0 +1,4 @@
+interface:
+  display_name: "Progress Check"
+  short_description: "Install sparse progress updates across agents"
+  default_prompt: "Use $progress-check to install sparse milestone-based progress updates globally across my supported coding agents."
