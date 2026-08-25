@@ -4,8 +4,10 @@ Sparse, evidence-based progress updates for long-running AI agent work.
 
 ## Status
 
-**v1.0.0 — validated.** Codex and Claude Code behavior dogfoods pass; Cursor's
-complete package install passes. Ready to publish.
+**v1.0.0 — published.** Codex and Claude Code behavior dogfoods pass; Cursor's
+complete package install passes. Available on
+[skills.sh](https://skills.sh/tjcages/skills/progress-check) and
+[offbr.co](https://offbr.co/skills/progress-check).
 
 ## What it changes
 
