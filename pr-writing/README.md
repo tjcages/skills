@@ -1,6 +1,8 @@
 # PR writing
 
-**One style contract for everything git carries as prose.** Commit subjects, commit bodies, PR titles, PR descriptions, squash messages, release notes.
+Write clear commit messages and pull requests that explain what changed and why.
+
+PR Writing gives agents one consistent way to write git history that is easy to scan and review. Use it for commit messages, pull request titles and descriptions, squash messages, or release notes.
 
 Merges four sources and treats all of them as hard requirements:
 
