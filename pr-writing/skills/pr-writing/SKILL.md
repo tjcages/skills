@@ -1,13 +1,11 @@
 ---
 name: pr-writing
-version: 0.1.0
+metadata:
+  version: "0.1.0"
 description: >-
-  Hard style contract for commit messages, PR titles, and PR descriptions —
-  tpope + cbea.ms seven rules, ASD-STE100 Simplified Technical English, and the
-  Google developer documentation style guide. Use BEFORE writing any commit
-  message, PR title, PR body, `git commit -m`, `gh pr create`, merge/squash
-  message, or release note, and when asked to review or rewrite one. NOT for
-  code comments, chat replies, or docs pages.
+  Write or review clear commit messages, PR titles, and PR descriptions that
+  explain what changed and why. Use before writing git history or when asked to
+  improve it. Not for code comments, chat replies, or docs pages.
 ---
 
 # PR writing
