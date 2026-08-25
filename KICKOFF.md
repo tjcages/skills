@@ -17,7 +17,7 @@ Source of truth for *content inspiration*: `/Users/ty/Workspace/socials` (read-o
 ## State (2026-07-21)
 
 **Merged / in-tree**
-1. 🚀 `linear-methodology/` — shipped
+1. 🚀 `linear-methodology/` — v1.0.2 ([skills.sh](https://skills.sh/tjcages/skills/linear-methodology) · [offbr.co](https://offbr.co/skills/linear-methodology))
 2. 🧪 `constitution-first/` — v0.1 Tool dogfood (keyframe)
 3. 🧪 `accept-gated-ai/` — v0.2 (Tasks + Obi docs)
 4. 🧪 `lossless-migration/` — v0.1 (Obi audit docs)
