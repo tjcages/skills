@@ -1,56 +1,29 @@
-# iOS Apple-Quality Harness
+# ios-apple-quality
 
-Auto-apply Apple-level design for native iOS / SwiftUI work — Liquid Glass, HIG, accessibility, Mobbin taste calibration, and device proof (Coot / Revyl).
+Agent skill pack: measured iOS craft encyclopedia + visual gate so designs/code match Apple-quality admin UI (Linear / Totem-class).
 
-Composes open skills (HIG, Liquid Glass, SwiftUI craft) into a **repo bootstrap + path-scoped Cursor skill + AGENTS.md contract** so agents hit the same bar every time.
+**Version:** 0.2.0-draft (post 2026-09-11 Figma verification failure).
 
-## Status
+## Layout
 
-**v0.1.0 — Draft.** Public in-repo, not announced. Not on skills.sh yet. Dogfood against a live iOS admin face-lift before publish.
+```
+skills/ios-apple-quality/   # thin router SKILL.md + METHODOLOGY + RESPONSE
+shared/CRAFT_SPEC.md        # R1–R110 measured rules
+shared/VISUAL_GATE.md       # R100–R110 quick load
+shared/IPAD_CRAFT.md
+shared/CORPUS.md
+shared/GAPS.md
+shared/STRATEGY.md
+shared/RECIPES/             # list, detail, floating-tab, composer, inset-grouped
+templates/AGENTS.md
+scripts/
+```
 
-## Skills
-
-| Skill | Job |
-|-------|-----|
-| `ios-apple-quality` | Enforce Apple-quality UI + tool harness on iOS / SwiftUI work |
-
-## Install (local / later)
-
-Upstream agent skills (once, on the Mac):
+## Install
 
 ```bash
-bash ios-apple-quality/scripts/install-skills.sh
+./scripts/install-skills.sh
+./scripts/bootstrap-repo.sh /path/to/app
 ```
 
-Drop the harness into a repo:
-
-```bash
-bash ios-apple-quality/scripts/bootstrap-repo.sh /path/to/YourIOSApp
-```
-
-When ready to announce:
-
-```bash
-npx skills add tjcages/skills --skill ios-apple-quality -g --agent cursor
-```
-
-## Pack shape
-
-```
-ios-apple-quality/
-  README.md
-  LICENSE
-  shared/           # METHODOLOGY.md, RESPONSE.md
-  skills/ios-apple-quality/SKILL.md
-  scripts/          # install-skills.sh, bootstrap-repo.sh
-  templates/        # AGENTS.md snippet
-```
-
-## Non-goals (v0)
-
-- Announcing on skills.sh / offbr.co
-- Claiming v1 without two solid dogfoods
-
-## License
-
-[MIT](./LICENSE)
+Agents must load CRAFT_SPEC + VISUAL_GATE before inventing or showing UI. Hard forbids: emoji chrome, vertical docks, title-only sparse rows.

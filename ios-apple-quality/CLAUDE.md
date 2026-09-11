@@ -1,5 +1,9 @@
 # ios-apple-quality
 
-Draft pack. Read `skills/ios-apple-quality/SKILL.md` and `shared/METHODOLOGY.md` before changing iOS UI guidance.
+Draft pack **0.2.0-draft**. Before changing iOS UI guidance or inventing screens:
 
-Status: v0.1.0 Draft — public repo, not announced.
+1. `skills/ios-apple-quality/SKILL.md`
+2. `shared/CRAFT_SPEC.md` + `shared/VISUAL_GATE.md` (mandatory)
+3. `shared/RECIPES/` for Totem admin surfaces
+
+Hard forbids: emoji chrome, vertical docks, title-only sparse rows, present-without-screenshot-QA.
