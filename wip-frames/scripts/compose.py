@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 from collections import deque
 from pathlib import Path
@@ -49,6 +50,69 @@ STATUS_BAR_ASSET = Path(__file__).resolve().parent / "assets" / "ios18-statusbar
 APPLE_THUMB = (0, 0, 0, 90)
 APPLE_THUMB_W = 6
 APPLE_INSET = 3
+
+STATUS_OPACITY = 0.50
+
+# Theme tokens agents may change. Everything else is locked.
+THEME_KEYS = (
+    "mat", "dot", "title", "title_size", "pad", "gap",
+    "status_opacity", "pill", "desktop_radius",
+)
+
+
+def parse_hex(value: str) -> tuple[int, int, int, int]:
+    s = str(value).strip().lstrip("#")
+    if len(s) == 3:
+        s = "".join(c * 2 for c in s)
+    if len(s) != 6:
+        raise SystemExit(f"bad hex color: {value}")
+    return (int(s[0:2], 16), int(s[2:4], 16), int(s[4:6], 16), 255)
+
+
+def apply_theme(data: dict) -> None:
+    """Apply allowed theme tokens. Unknown keys are ignored."""
+    global BG, DOT, TITLE_COLOR, TITLE_SIZE, PAD, GAP, STATUS_OPACITY, PILL, DESKTOP_RADIUS
+    unknown = [k for k in data if k not in THEME_KEYS]
+    if unknown:
+        print("ignored theme keys:", ", ".join(unknown))
+    if "mat" in data:
+        BG = parse_hex(data["mat"])
+    if "dot" in data:
+        DOT = parse_hex(data["dot"])
+    if "title" in data:
+        TITLE_COLOR = parse_hex(data["title"])
+    if "title_size" in data:
+        TITLE_SIZE = max(12, int(data["title_size"]))
+    if "pad" in data:
+        PAD = max(PAD_FLOOR, int(data["pad"]))
+    if "gap" in data:
+        GAP = max(GAP_FLOOR, int(data["gap"]))
+    if "status_opacity" in data:
+        STATUS_OPACITY = min(1.0, max(0.1, float(data["status_opacity"])))
+    if "desktop_radius" in data:
+        DESKTOP_RADIUS = max(4, int(data["desktop_radius"]))
+    pill = data.get("pill", "mat")
+    PILL = BG if str(pill).strip().lower() in {"", "mat", "match"} else parse_hex(str(pill))
+
+
+def load_theme_file(path: Path) -> dict:
+    data = json.loads(path.read_text())
+    if not isinstance(data, dict):
+        raise SystemExit(f"theme must be a JSON object: {path}")
+    return data
+
+
+def find_theme(explicit: Path | None) -> Path | None:
+    if explicit:
+        if not explicit.exists():
+            raise SystemExit(f"theme not found: {explicit}")
+        return explicit
+    for name in ("wip-frames.theme.json", ".wip-frames.json"):
+        cand = Path(name)
+        if cand.exists():
+            return cand
+    return None
+
 
 
 def is_mobile(w: int, h: int) -> bool:
@@ -298,7 +362,7 @@ def overlay_kit_status_bar(im: Image.Image, pill_box: tuple[int, int, int, int] 
     y = int(round(pill_mid - content_mid))
     y = max(0, min(y, h - target_h))
     r, g, b, a = bar.split()
-    a = a.point(lambda v: int(v * 0.50))
+    a = a.point(lambda v: int(v * STATUS_OPACITY))
     bar = Image.merge("RGBA", (r, g, b, a))
     layer = Image.new("RGBA", im.size, (0, 0, 0, 0))
     layer.paste(bar, (0, y), bar)
@@ -445,13 +509,36 @@ def compose(
 def main() -> None:
     p = argparse.ArgumentParser(description="Compose a WIP approval board")
     p.add_argument("--out", required=True, type=Path)
-    p.add_argument("--pad", type=int, default=PAD)
-    p.add_argument("--gap", type=int, default=GAP)
+    p.add_argument("--theme", type=Path, default=None, help="JSON theme. Else wip-frames.theme.json or .wip-frames.json")
+    p.add_argument("--mat", default="", help="Override mat hex")
+    p.add_argument("--dot", default="", help="Override dot hex")
+    p.add_argument("--title-color", default="", help="Override title hex")
+    p.add_argument("--status-opacity", type=float, default=None)
+    p.add_argument("--pad", type=int, default=None)
+    p.add_argument("--gap", type=int, default=None)
     p.add_argument("--titles", default="", help="Comma-separated titles, else derived from filenames")
     p.add_argument("screens", nargs="+", type=Path)
     args = p.parse_args()
+    theme_path = find_theme(args.theme)
+    if theme_path:
+        apply_theme(load_theme_file(theme_path))
+    overrides = {}
+    if args.mat:
+        overrides["mat"] = args.mat
+    if args.dot:
+        overrides["dot"] = args.dot
+    if args.title_color:
+        overrides["title"] = args.title_color
+    if args.status_opacity is not None:
+        overrides["status_opacity"] = args.status_opacity
+    if args.pad is not None:
+        overrides["pad"] = args.pad
+    if args.gap is not None:
+        overrides["gap"] = args.gap
+    if overrides:
+        apply_theme(overrides)
     titles = [t.strip() for t in args.titles.split(",") if t.strip()] or None
-    path = compose(args.screens, args.out, pad=args.pad, gap=args.gap, titles=titles)
+    path = compose(args.screens, args.out, pad=PAD, gap=GAP, titles=titles)
     print(path)
 
 
