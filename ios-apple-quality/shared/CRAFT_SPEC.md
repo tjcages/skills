@@ -1124,3 +1124,14 @@ If a frame fails **dock horizontal**, **secondary-line**, or **emoji-chrome** ch
 ### R111. SF system fonts only (no custom UI typefaces)
 
 See `VISUAL_GATE.md` R111. Prefer `Font` text styles (R33); forbid Inter/custom for admin chrome/lists/detail. Figma must use SF Pro family. Cite R111 in PRs that touch typography.
+
+### R112. Liquid Glass on nav chrome + segment switchers (always)
+
+**Nav / toolbar header buttons:** On iOS 26+, **every** navigation-bar and toolbar control (back accessory, `+`, filter/`≡`, overflow `…`, circular menu, trailing capsules) uses **system Liquid Glass** — `.buttonStyle(.glass)` / `.glassProminent` or `.glassEffect` on the control — never opaque gray fills, hard blue squares, or solid white pills as the default chrome. Gate with `#available(iOS 26, *)` and fall back to `.ultraThinMaterial` / plain toolbar items on older OS.
+
+**Segment / text switchers (e.g. Deals | People):** Use a **small Liquid Glass** segmented control or glass capsule with an inner selected pill — same material family as system chrome, not `systemGray6` opaque track + solid white selected alone when glass is available. Selected state = glass prominence / filled inner segment; idle = transparent glass. One accent (R44) tints the **glyph or label**, not a opaque blue chrome block.
+
+**Still chrome-only (R45):** Never wash Liquid Glass across list rows, metadata islands, or content paper.
+
+**Evidence:** Tyler 2026-09-12 (Totem craft): glass on all nav-header buttons always; small glass variants for Deals/People. Kavsoft iOS 26 CustomGlassTabBar / native TabView search-role patterns for dock; apply same material language to header + segments.
+

@@ -35,7 +35,9 @@ Before showing **any** screen to the user, capture/export a full-frame screensho
 8. Icon weights/sizes match dock vs list roles — R106  
 9. Artboard caption cites **R#** + CORPUS refs — R108  
 10. At least **2–3 CORPUS** screens were pulled before inventing chrome — R109
-11. Typography is **SF system text styles only** (no Inter/custom UI fonts) — R111  
+11. Typography is **SF system text styles only** (no Inter/custom UI fonts) — R111
+12. Nav/toolbar buttons are Liquid Glass (iOS 26+) — R112
+13. Segment switchers use small glass variants — R112  
 
 If any item fails → fix, re-screenshot, re-check. **Never** ship the failing frame to the user (R110).
 
@@ -152,4 +154,11 @@ Admin / product UI uses **Apple system text styles** only (`Font.largeTitle`, `.
 **Figma/Paper:** set type to SF Pro / SF Compact / New York only; never Inter for Totem admin frames.
 
 **Evidence:** HIG Typography; R33 SF mapping; 2026-09-12 Tyler: “use Apple default fonts.”
+
+### R112. Liquid Glass nav buttons + small glass segments (always)
+
+See CRAFT_SPEC R112. Pre-show checklist add:
+
+12. Nav/toolbar header buttons are **Liquid Glass** (iOS 26+) — no opaque gray/blue chrome squares — R112  
+13. Deals/People (and similar) segments use **small glass** variants, not hard fills — R112
 
