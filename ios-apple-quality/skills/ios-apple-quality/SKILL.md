@@ -2,13 +2,13 @@
 name: ios-apple-quality
 license: MIT
 metadata:
-  version: "0.2.0-draft"
+  version: "0.2.1-draft"
   status: draft
 description: >-
   Use when building, designing, reviewing, or shipping native iOS/iPadOS/SwiftUI
   apps, inventing Figma/Paper chrome, adopting Liquid Glass, checking HIG,
   accessibility, or running device previews with Mobbin, Revyl, or Coot.
-  Enforces measured CRAFT_SPEC (R1–R112) + VISUAL_GATE — forbids emoji chrome,
+  Enforces measured CRAFT_SPEC (R1–R116) + VISUAL_GATE — forbids emoji chrome,
   vertical docks, and non-SF UI fonts.
 paths: "**/*.swift,**/*.xcworkspace/**,**/*.xcodeproj/**,**/Package.swift,**/Info.plist,**/*.xcstrings,**/*.stringsdict"
 ---
@@ -18,7 +18,8 @@ Measured encyclopedia: [../../shared/CRAFT_SPEC.md](../../shared/CRAFT_SPEC.md).
 Visual hard gate: [../../shared/VISUAL_GATE.md](../../shared/VISUAL_GATE.md).  
 Corpus: [../../shared/CORPUS.md](../../shared/CORPUS.md).  
 iPad: [../../shared/IPAD_CRAFT.md](../../shared/IPAD_CRAFT.md).  
-Recipes: [../../shared/RECIPES/](../../shared/RECIPES/).
+Recipes: [../../shared/RECIPES/](../../shared/RECIPES/).  
+Parts catalogue: [../../shared/PARTS.md](../../shared/PARTS.md).
 
 # iOS Apple-Quality Harness (0.2.0-draft)
 
@@ -33,10 +34,13 @@ Before inventing, redesigning, reviewing, or **showing** any screen:
 3. **`shared/IPAD_CRAFT.md`** — when regular width / iPad / `NavigationSplitView`.
 4. **`shared/CORPUS.md`** — pull **2–3** Mobbin screens in-archetype **before inventing chrome** (R109).
 5. **Matching recipe** under `shared/RECIPES/` (list, detail, floating-tab, composer, inset-grouped, …).
+6. **`shared/PARTS.md`** — compose from catalogue parts only (R116). New chrome needs user permission.
 
 Also keep: HIG / `swiftui-pro` / Liquid Glass / a11y skills as supporting layers — they do **not** replace CRAFT_SPEC.
 
 ## Hard forbids (instant reject)
+
+- **Freestyle chrome outside the parts catalogue** — must use AdminChrome / PARTS.md; new parts need user permission (R116).
 
 - **Emoji / emoji-like glyphs as chrome** (tabs, search, toolbar, segmented controls) — SF Symbols / vector only (R102).
 - **Vertical floating docks** / icon towers — dock MUST be **horizontal stadium**; tab cells fixed ~52–56×~40–44; selected = filled inner pill; detached search = **circle** same height baseline (R103).
@@ -45,6 +49,16 @@ Also keep: HIG / `swiftui-pro` / Liquid Glass / a11y skills as supporting layers
 - **Showing designs without screenshot self-QA** against VISUAL_GATE (R101, R110).
 - **Non-SF / custom UI fonts** (Inter, etc.) — SF system text styles only (R111).
 - **Opaque nav chrome / hard segment fills** when Liquid Glass is available — glass on all nav-header buttons; small glass segments (R112).
+
+
+## Component system (hard) — R116
+
+**Catalogue:** `shared/PARTS.md` (Totem: `AdminChrome/PARTS.md`).
+
+1. Agents **must assemble screens from existing catalogue parts** — no freestyle chrome.
+2. Creating a **new** chrome component requires **explicit user permission** first.
+3. New parts must match existing tokens / Liquid Glass / SF rules and be **added to the catalogue in the same PR**.
+4. Soft token drift = FAIL (VISUAL_GATE R114–R115).
 
 ## Liquid Glass rules
 

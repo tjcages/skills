@@ -162,3 +162,12 @@ See CRAFT_SPEC R112. Pre-show checklist add:
 12. Nav/toolbar header buttons are **Liquid Glass** (iOS 26+) — no opaque gray/blue chrome squares — R112  
 13. Deals/People (and similar) segments use **small glass** variants, not hard fills — R112
 
+
+### R116. Compose from parts catalogue — no freestyle chrome
+
+Agents and humans **must assemble UI from the project parts catalogue** (`shared/PARTS.md`; Totem: `AdminChrome/PARTS.md`).
+
+1. Prefer existing AdminChrome / catalogue components for docks, buttons, segments, rows, islands, composers, More menus, header clusters.
+2. **Do not invent new chrome** without **explicit user permission**.
+3. If permission is granted: one file per part, match tokens + Liquid Glass + SF rules, **add the part to PARTS.md in the same PR**.
+4. Freestyle chrome / duplicate dock implementations / Kavsoft popovers outside `MoreMenuMorph` = **FAIL**.
