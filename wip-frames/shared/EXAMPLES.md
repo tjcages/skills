@@ -40,3 +40,9 @@ That tints the mat. It does not authorize custom status icons, Inter, or a bezel
 | 1–3 mobiles | one row |
 | 4 mobiles | two boards (3 + 1) |
 | desktop + phone | refuse, split |
+
+## 5. Totem iOS admin
+
+Three phones from the Totem iOS admin app, composed with defaults:
+
+`examples/totem-ios-admin.png` — Today, Pipeline, Deal detail.

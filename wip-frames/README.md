@@ -29,6 +29,10 @@ Optional project theme: `wip-frames.theme.json` or `--theme path`. See [`scripts
 
 Needs Pillow. Status-bar asset lives at `scripts/assets/ios18-statusbar-alpha.png`.
 
+## Example
+
+Totem iOS admin, three phones: [`examples/totem-ios-admin.png`](./examples/totem-ios-admin.png).
+
 ## Source
 
 - Method: [`shared/METHODOLOGY.md`](./shared/METHODOLOGY.md)
