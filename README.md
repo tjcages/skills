@@ -31,6 +31,7 @@ Each folder is one **pack** (router skill + methodology + shared docs), same sha
 | [`orchestrator/`](./orchestrator) | 🧪 Dogfood 1 | v0.2 candidate | Connect 8/11; hardened ledger needs one passing rerun + independent second dogfood |
 | [`pr-writing/`](./pr-writing) | 🚀 Published | 1.0.0 | [GitHub](./pr-writing) · [skills.sh](https://skills.sh/tjcages/skills/pr-writing) · [offbr.co](https://offbr.co/skills/pr-writing) |
 | [`progress-check/`](./progress-check) | 🚀 Published | 1.0.1 | [GitHub](./progress-check) · [skills.sh](https://skills.sh/tjcages/skills/progress-check) · [offbr.co](https://offbr.co/skills/progress-check) |
+| [`wip-frames/`](./wip-frames) | 🧪 Thin dogfood | v0.1.0 | Approval boards: dotted `#F5F5F5` mat, 1 desktop or 3 mobiles, iOS 18 kit status bar at 50%. |
 | [`ios-apple-quality/`](./ios-apple-quality) | ✍️ Draft | v0.1.0 | Apple-quality iOS/SwiftUI harness (Liquid Glass, HIG, Mobbin, device proof). Public WIP — not announced. |
 
 ## Pack shape (every folder)
