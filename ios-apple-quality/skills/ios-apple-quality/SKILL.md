@@ -8,8 +8,8 @@ description: >-
   Use when building, designing, reviewing, or shipping native iOS/iPadOS/SwiftUI
   apps, inventing Figma/Paper chrome, adopting Liquid Glass, checking HIG,
   accessibility, or running device previews with Mobbin, Revyl, or Coot.
-  Enforces measured CRAFT_SPEC (R1–R110) + VISUAL_GATE — forbids emoji chrome
-  and vertical docks.
+  Enforces measured CRAFT_SPEC (R1–R111) + VISUAL_GATE — forbids emoji chrome,
+  vertical docks, and non-SF UI fonts.
 paths: "**/*.swift,**/*.xcworkspace/**,**/*.xcodeproj/**,**/Package.swift,**/Info.plist,**/*.xcstrings,**/*.stringsdict"
 ---
 
@@ -43,6 +43,7 @@ Also keep: HIG / `swiftui-pro` / Liquid Glass / a11y skills as supporting layers
 - **Title-only / wireframe-sparse rows** — every feed row needs avatar/thumb + title + secondary context + trailing meta (+ optional status) (R104–R105).
 - **Flat solid-hue avatar circles** — use photo, gradient, or branded artwork (R107).
 - **Showing designs without screenshot self-QA** against VISUAL_GATE (R101, R110).
+- **Non-SF / custom UI fonts** (Inter, etc.) — SF system text styles only (R111).
 
 ## Liquid Glass rules
 

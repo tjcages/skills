@@ -3,7 +3,7 @@
 **Load this file + `CRAFT_SPEC.md` before any UI invent / review / design / Figma / Paper / HTML / simulator show.**
 **Source of truth:** extracted from `CRAFT_SPEC.md` §R. If they diverge, CRAFT_SPEC wins — re-extract.
 
-**Hard-stop trio (instant reject):** (1) vertical dock (2) missing secondary line on feed rows (3) emoji / emoji-like chrome icons.
+**Hard-stop quartet (instant reject):** (1) vertical dock (2) missing secondary line on feed rows (3) emoji / emoji-like chrome icons (4) non-SF / custom UI fonts (Inter, etc.).
 
 **Good refs:** `ap300-integrate/today_idle.png`, `pipeline_list.png`, `pipeline_deal_detail.png`; `ap300-linear-refs/linear_inbox.jpg`, `linear_issue_detail.jpg`  
 **Fail refs (2026-09-11):** `totem-craft-figma/01-today.png`, `02-pipeline.png`, `03-deal-detail.png`
@@ -34,7 +34,8 @@ Before showing **any** screen to the user, capture/export a full-frame screensho
 7. Status bar is correct iPhone treatment **or omitted cleanly** — never broken fake dots/bars  
 8. Icon weights/sizes match dock vs list roles — R106  
 9. Artboard caption cites **R#** + CORPUS refs — R108  
-10. At least **2–3 CORPUS** screens were pulled before inventing chrome — R109  
+10. At least **2–3 CORPUS** screens were pulled before inventing chrome — R109
+11. Typography is **SF system text styles only** (no Inter/custom UI fonts) — R111  
 
 If any item fails → fix, re-screenshot, re-check. **Never** ship the failing frame to the user (R110).
 
@@ -138,3 +139,17 @@ If a frame fails **dock horizontal**, **secondary-line**, or **emoji-chrome** ch
 3. Emoji (or emoji-like) chrome icons  
 
 ---
+
+
+### R111. SF system fonts only (no custom UI typefaces)
+
+Admin / product UI uses **Apple system text styles** only (`Font.largeTitle`, `.title2`, `.headline`, `.body`, `.subheadline`, `.footnote`, `.caption`, …) so Dynamic Type and SF Pro / SF Compact tracking apply automatically.
+
+**Forbidden in chrome, lists, detail, sheets, docks:** Inter, Roboto, Geist, custom brand display fonts, hardcoded `Font.custom(...)` for UI chrome.
+
+**Allowed exceptions:** user-authored document canvas body (Notes-like) may use a reading face if product requires it — never for chrome/navigation/lists.
+
+**Figma/Paper:** set type to SF Pro / SF Compact / New York only; never Inter for Totem admin frames.
+
+**Evidence:** HIG Typography; R33 SF mapping; 2026-09-12 Tyler: “use Apple default fonts.”
+

@@ -1120,3 +1120,7 @@ If a frame fails **dock horizontal**, **secondary-line**, or **emoji-chrome** ch
 3. Emoji (or emoji-like) chrome icons  
 
 ---
+
+### R111. SF system fonts only (no custom UI typefaces)
+
+See `VISUAL_GATE.md` R111. Prefer `Font` text styles (R33); forbid Inter/custom for admin chrome/lists/detail. Figma must use SF Pro family. Cite R111 in PRs that touch typography.
