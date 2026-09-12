@@ -8,7 +8,7 @@ The board is the share format for in-progress screens.
 
 - One dotted mat. Defaults stay `#F5F5F5`.
 - One desktop, or up to three mobiles in a row.
-- Official Figma iOS 18 status bar at 50% opacity, centered on a mat-colored pill.
+- Official Figma iOS 18 status bar at 50% opacity, centered on a black pill at 10% opacity.
 - Left-aligned page titles (SF if present, else Arial).
 - Apple overlay scrollbars on desktop.
 - A project theme file may tint the mat. It cannot invent chrome.

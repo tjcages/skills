@@ -25,7 +25,7 @@ Default board stays `#F5F5F5`. A dark product may ship `wip-frames.theme.json`:
   "mat": "#111111",
   "dot": "#2A2A2A",
   "title": "#A3A3A3",
-  "pill": "mat",
+  "pill": "#0000001A",
   "status_opacity": 0.5
 }
 ```

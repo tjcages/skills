@@ -6,6 +6,6 @@
   "pad": 80,
   "gap": 32,
   "status_opacity": 0.5,
-  "pill": "mat",
+  "pill": "#0000001A",
   "desktop_radius": 16
 }

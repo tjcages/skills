@@ -32,8 +32,8 @@ PILL_H = 37
 PILL_Y = 11.5
 STATUS_H = 78
 PHONE_R = 47
-# Pill matches the mat, reads as a cutout.
-PILL = BG
+# Pill is black at 10% opacity. Status layer is lowest z — no covering plate.
+PILL = (0, 0, 0, 26)
 TITLE_COLOR = (0x6B, 0x6B, 0x6B, 255)
 TITLE_SIZE = 20
 TITLE_GAP = 8
@@ -64,6 +64,8 @@ def parse_hex(value: str) -> tuple[int, int, int, int]:
     s = str(value).strip().lstrip("#")
     if len(s) == 3:
         s = "".join(c * 2 for c in s)
+    if len(s) == 8:
+        return (int(s[0:2], 16), int(s[2:4], 16), int(s[4:6], 16), int(s[6:8], 16))
     if len(s) != 6:
         raise SystemExit(f"bad hex color: {value}")
     return (int(s[0:2], 16), int(s[2:4], 16), int(s[4:6], 16), 255)
@@ -91,8 +93,14 @@ def apply_theme(data: dict) -> None:
         STATUS_OPACITY = min(1.0, max(0.1, float(data["status_opacity"])))
     if "desktop_radius" in data:
         DESKTOP_RADIUS = max(4, int(data["desktop_radius"]))
-    pill = data.get("pill", "mat")
-    PILL = BG if str(pill).strip().lower() in {"", "mat", "match"} else parse_hex(str(pill))
+    if "pill" in data:
+        pill = str(data["pill"]).strip().lower()
+        if pill in {"", "mat", "match"}:
+            PILL = BG
+        elif pill in {"black10", "black30", "black"}:
+            PILL = (0, 0, 0, 26) if pill != "black30" else (0, 0, 0, 77)
+        else:
+            PILL = parse_hex(str(data["pill"]))
 
 
 def load_theme_file(path: Path) -> dict:
@@ -189,25 +197,9 @@ def apply_phone_mask(im: Image.Image) -> Image.Image:
     return out
 
 
-def blank_status_with_pill(im: Image.Image):
+def pill_geometry(im: Image.Image) -> tuple[int, int, int, int]:
     w, h = im.size
     scale = w / 390
-    status_h = max(36, round(STATUS_H * scale))
-    fill = (255, 255, 255, 255)
-    y_sample = min(h - 1, status_h + 8)
-    for x in range(w // 2 - 20, w // 2 + 20):
-        px = im.getpixel((max(0, min(w - 1, x)), y_sample))
-        if px[3] > 200:
-            fill = (px[0], px[1], px[2], 255)
-            break
-    overlay = Image.new("RGBA", im.size, (0, 0, 0, 0))
-    ImageDraw.Draw(overlay).rectangle((0, 0, w, status_h), fill=fill)
-    alpha = im.split()[-1]
-    band_mask = Image.new("L", im.size, 0)
-    ImageDraw.Draw(band_mask).rectangle((0, 0, w, status_h), fill=255)
-    overlay.putalpha(ImageChops.multiply(alpha, band_mask))
-    im.alpha_composite(overlay)
-
     pill_w = max(20, round(PILL_W * scale))
     pill_h = max(10, round(PILL_H * scale))
     top = 0
@@ -217,12 +209,41 @@ def blank_status_with_pill(im: Image.Image):
             break
     pill_y = top + round(PILL_Y * scale)
     pill_x = (w - pill_w) // 2
-    ImageDraw.Draw(im).rounded_rectangle(
-        (pill_x, pill_y, pill_x + pill_w, pill_y + pill_h),
-        radius=pill_h // 2,
+    return pill_x, pill_y, pill_w, pill_h
+
+
+def draw_pill_layer(size: tuple[int, int], box: tuple[int, int, int, int]) -> Image.Image:
+    layer = Image.new("RGBA", size, (0, 0, 0, 0))
+    x, y, w, h = box
+    ImageDraw.Draw(layer).rounded_rectangle(
+        (x, y, x + w, y + h),
+        radius=h // 2,
         fill=PILL,
     )
-    return im, (pill_x, pill_y, pill_w, pill_h)
+    return layer
+
+
+def punch_pill_hole(im: Image.Image, box: tuple[int, int, int, int]) -> Image.Image:
+    """Island is a cutout so the status layer (lowest z) shows through."""
+    x, y, w, h = box
+    hole = Image.new("L", im.size, 255)
+    ImageDraw.Draw(hole).rounded_rectangle((x, y, x + w, y + h), radius=h // 2, fill=0)
+    im.putalpha(ImageChops.multiply(im.split()[-1], hole))
+    return im
+
+
+def knockout_status_plate(bar: Image.Image) -> Image.Image:
+    """Drop the kit PNG's white plate. Keep time / cellular / wifi / battery only."""
+    bar = bar.convert("RGBA")
+    r, g, b, a = bar.split()
+    # Near-white plate → transparent. Ink stays.
+    plate = ImageChops.multiply(
+        ImageChops.multiply(r.point(lambda v: 255 if v >= 245 else 0),
+                            g.point(lambda v: 255 if v >= 245 else 0)),
+        b.point(lambda v: 255 if v >= 245 else 0),
+    )
+    a = ImageChops.subtract(a, plate)
+    return Image.merge("RGBA", (r, g, b, a))
 
 
 def _greyish(rgb: tuple[int, int, int]) -> bool:
@@ -340,7 +361,7 @@ def overlay_kit_status_bar(im: Image.Image, pill_box: tuple[int, int, int, int] 
     """Official Apple iOS kit Status Bar - iPhone, vertically centered on the pill."""
     if not STATUS_BAR_ASSET.exists():
         return im
-    bar = Image.open(STATUS_BAR_ASSET).convert("RGBA")
+    bar = knockout_status_plate(Image.open(STATUS_BAR_ASSET))
     target_w = im.width
     target_h = max(1, round(bar.height * (target_w / bar.width)))
     bar = bar.resize((target_w, target_h), Image.Resampling.LANCZOS)
@@ -366,8 +387,6 @@ def overlay_kit_status_bar(im: Image.Image, pill_box: tuple[int, int, int, int] 
     bar = Image.merge("RGBA", (r, g, b, a))
     layer = Image.new("RGBA", im.size, (0, 0, 0, 0))
     layer.paste(bar, (0, y), bar)
-    phone = im.split()[-1]
-    layer.putalpha(ImageChops.multiply(layer.split()[-1], phone))
     im.alpha_composite(layer)
     return im
 
@@ -376,9 +395,14 @@ def prepare_mobile(im: Image.Image) -> Image.Image:
     im = punch_corner_chrome(im)
     im = crop_opaque(im)
     im = apply_phone_mask(im)
-    im, pill_box = blank_status_with_pill(im)
-    im = overlay_kit_status_bar(im, pill_box)
-    return im
+    box = pill_geometry(im)
+    # Status is the lowest z-index: pill + kit first, content on top. No covering plate.
+    status = draw_pill_layer(im.size, box)
+    status = overlay_kit_status_bar(status, box)
+    status.putalpha(ImageChops.multiply(status.split()[-1], im.split()[-1]))
+    im = punch_pill_hole(im, box)
+    status.alpha_composite(im)
+    return status
 
 
 def prepare_desktop(im: Image.Image) -> Image.Image:

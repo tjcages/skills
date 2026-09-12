@@ -34,13 +34,13 @@ python3 scripts/compose.py --out /tmp/wip.png --titles "Today,Pipeline,Deal deta
 
 ## Locked
 
-Official iOS 18 kit status bar only. Kit icons at theme opacity (default 50%), centered on the pill. Punch Figma phone chrome. Apple overlay scrollbars. PNG, long edge ≤ 2400. No ribbons, watermarks, emoji, or fake bezels.
+Official iOS 18 kit status bar only. Status is the lowest z-index (no covering plate; island is a cutout). Kit icons at theme opacity (default 50%), centered on the pill. Punch Figma phone chrome. Apple overlay scrollbars. PNG, long edge ≤ 2400. No ribbons, watermarks, emoji, or fake bezels.
 
 ## Theme
 
 A project may tint the mat. Allowed keys: `mat`, `dot`, `title`, `title_size`, `pad`, `gap`, `status_opacity`, `pill`, `desktop_radius`.
 
-Defaults: mat `#F5F5F5`, dots `#D2D2D2`, titles 20px `#6B6B6B`, pad 80, gap 32, status 0.5, pill `mat`.
+Defaults: mat `#F5F5F5`, dots `#D2D2D2`, titles 20px `#6B6B6B`, pad 80, gap 32, status 0.5, pill `#0000001A` (black at 10%).
 
 Load order: `--theme path` → `wip-frames.theme.json` → `.wip-frames.json` → defaults. CLI flags win last.
 
