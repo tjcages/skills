@@ -1,0 +1,11 @@
+{
+  "mat": "#F5F5F5",
+  "dot": "#D2D2D2",
+  "title": "#6B6B6B",
+  "title_size": 20,
+  "pad": 80,
+  "gap": 32,
+  "status_opacity": 0.5,
+  "pill": "mat",
+  "desktop_radius": 16
+}
