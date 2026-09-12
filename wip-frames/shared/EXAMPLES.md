@@ -25,7 +25,7 @@ Default board stays `#F5F5F5`. A dark product may ship `wip-frames.theme.json`:
   "mat": "#111111",
   "dot": "#2A2A2A",
   "title": "#A3A3A3",
-  "pill": "mat",
+  "pill": "#0000001A",
   "status_opacity": 0.5
 }
 ```
@@ -40,3 +40,9 @@ That tints the mat. It does not authorize custom status icons, Inter, or a bezel
 | 1–3 mobiles | one row |
 | 4 mobiles | two boards (3 + 1) |
 | desktop + phone | refuse, split |
+
+## 5. Totem iOS admin
+
+Three phones from the Totem iOS admin app, composed with defaults:
+
+`examples/totem-ios-admin.png` — Today, Pipeline, Deal detail.

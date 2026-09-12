@@ -8,7 +8,7 @@ The board is the share format for in-progress screens.
 
 - One dotted mat. Defaults stay `#F5F5F5`.
 - One desktop, or up to three mobiles in a row.
-- Official Figma iOS 18 status bar at 50% opacity, centered on a mat-colored pill.
+- Official Figma iOS 18 status bar at 50% opacity, centered on a black pill at 10% opacity.
 - Left-aligned page titles (SF if present, else Arial).
 - Apple overlay scrollbars on desktop.
 - A project theme file may tint the mat. It cannot invent chrome.
@@ -28,6 +28,10 @@ python3 scripts/compose.py --out /tmp/wip.png --titles "Today,Pipeline,Deal deta
 Optional project theme: `wip-frames.theme.json` or `--theme path`. See [`scripts/theme.example.json`](./scripts/theme.example.json).
 
 Needs Pillow. Status-bar asset lives at `scripts/assets/ios18-statusbar-alpha.png`.
+
+## Example
+
+Totem iOS admin, three phones: [`examples/totem-ios-admin.png`](./examples/totem-ios-admin.png).
 
 ## Source
 

@@ -29,7 +29,9 @@ Agents cannot change these, including via theme:
 
 - Official Apple iOS 18 `Status Bar - iPhone` only. Cached at `scripts/assets/ios18-statusbar-alpha.png`.
 - Do not redraw time, cellular, wifi, or battery.
+- Status bar is the lowest z-index. No covering plate over content. Island is a cutout.
 - Kit icons at the theme opacity (default 50%), vertically centered on the pill.
+- Pill is black at 10% opacity unless the theme sets `pill`.
 - Punch Figma phone chrome. No fake bezels. No grey plate around a phone.
 - Apple overlay scrollbars on desktop: 6px capsule, ~35% black, 3px inset, no track.
 - PNG, long edge ≤ 2400px.
@@ -51,7 +53,7 @@ Allowed keys:
 | `pad` | `80` | Floor 64. |
 | `gap` | `32` | Floor 24. |
 | `status_opacity` | `0.5` | Kit icons only. Range 0.1–1.0. |
-| `pill` | `mat` | `mat` or a hex |
+| `pill` | `#0000001A` | black at 10%. `mat` to match the mat, or 6/8-digit hex |
 | `desktop_radius` | `16` | Desktop corners only |
 
 Load order: `--theme path` → `wip-frames.theme.json` → `.wip-frames.json` → defaults. CLI `--mat`, `--dot`, `--title-color`, `--status-opacity`, `--pad`, `--gap` win last.
