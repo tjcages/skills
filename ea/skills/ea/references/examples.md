@@ -37,3 +37,11 @@ A local catalogue query produces candidates. JEV can rank them; Astra checks the
 > Use EA to compare today’s source revisions with the last check. Flag changes that affect installation, supported providers, or safety limits. Keep unchanged entries quiet.
 
 The watcher fetches metadata. JEV classifies relevant diffs; Astra reviews updates before changing recommendations.
+
+## Focus a large review packet
+
+“Use EA to select comments relevant to this button fix. Keep all user requirements
+and unresolved feedback; preserve the full export.”
+
+Follow [comment selection](compaction.md). JEV selects optional record IDs; the
+supervisor verifies them. This does not enable Codex internal context compaction.
