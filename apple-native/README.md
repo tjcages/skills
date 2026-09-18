@@ -17,5 +17,5 @@ Examples:
 - “Audit this composer for interrupted sends and draft recovery.”
 
 Version 0.1.0: public retrieval verified; not a universal production certification.
-Supersedes `ios-apple-quality`. Remove the old installed skill and replace old bootstrap
-rules with `apple-native`, retaining intentional app-specific contracts.
+Use `apple-native` for new installations and repository instructions, retaining
+intentional app-specific contracts.
