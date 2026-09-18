@@ -2,7 +2,7 @@
 name: ea
 description: Route routine agent work to deterministic tools and bounded JEV decisions through the user’s preferred connection. Use when the user requests an executive assistant, EA, cheaper task delegation, or supervised computer-use assistance.
 metadata:
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 
 # EA — Executive Assistant
@@ -16,9 +16,12 @@ new computer access.
 
 Ask naturally; the agent handles the commands:
 
-- “Use EA to check these links and report only broken ones.”
-- “Use EA to find the best browser skill for this task.”
-- “Use EA to classify these errors; investigate only the important ones.”
+- “Check every external link on this page; return broken URLs and status codes.”
+- “Group this redacted build log; show the three failures to investigate first.”
+- “Check these recordings for missing files, wrong dimensions, and durations over 12 seconds.”
+
+See [practical examples](references/examples.md) for browser navigation, skill
+selection, recording preparation, and catalogue updates, with executor boundaries.
 
 Known checks run without JEV. Semantic choices use your existing JEV connection.
 For source monitoring, read [catalogue maintenance](references/maintenance.md).

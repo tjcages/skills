@@ -1,6 +1,6 @@
 # Evidence and release status
 
-Version 0.1.2 is a supervised decision assistant. It is not a proven unattended
+Version 0.2.1 is a supervised decision assistant. It is not a proven unattended
 computer operator and has no measured net Astra savings.
 
 Retained pilot evidence (before packaging):
