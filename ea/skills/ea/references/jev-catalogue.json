@@ -292,10 +292,10 @@
       "kind": "claude-plugin-and-library",
       "recommendation": "hold",
       "providers": "TypeSafe direct; custom asker interface",
-      "use_when": "Selectively retain tool calls/results during compaction",
+      "use_when": "Selectively retain tool calls/results during context compaction; see local compaction guide for comment relevance selection",
       "assessment": "High potential context savings, but high integration and information-loss risk.",
-      "verification": "README inspected; no transcript sent or hook installed.",
-      "limitations": "Claude Code-specific hook; sends conversation text/tool inputs. Not a Codex compaction control or lossless guarantee.",
+      "verification": "README, hooks/README.md and hooks/fast-jev.ts inspected at pinned commit; no transcript sent or hook installed.",
+      "limitations": "Claude Code early-access session.compact hook; default TypeSafe direct adapter, library custom asker. Sends conversation text/tool inputs, concurrent batches lack EA call cap. Not a Codex compaction control or lossless guarantee.",
       "source": "https://github.com/tamaratran/fast-jev-compaction",
       "source_commit": "e3f262a7f4d42bd8dd32ced30d26176f7cb545b0",
       "source_at_review": "https://github.com/tamaratran/fast-jev-compaction/tree/e3f262a7f4d42bd8dd32ced30d26176f7cb545b0",
@@ -307,7 +307,9 @@
       "skill_files": [],
       "installed_locally": false,
       "locally_tested": false,
-      "live_tested": false
+      "live_tested": false,
+      "local_guide": "references/compaction.md",
+      "reviewed_at": "2026-09-18T05:58:00Z"
     },
     {
       "id": "jev-router",

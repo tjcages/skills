@@ -25,6 +25,8 @@ selection, recording preparation, and catalogue updates, with executor boundarie
 
 Known checks run without JEV. Semantic choices use your existing JEV connection.
 For source monitoring, read [catalogue maintenance](references/maintenance.md).
+For comment selection or context compaction, read [compaction](references/compaction.md).
+JEV can select records for a host-owned packet; it cannot replace Codex compaction.
 
 ## Route before delegating
 

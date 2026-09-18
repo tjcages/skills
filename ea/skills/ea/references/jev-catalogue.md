@@ -42,8 +42,10 @@ router, compaction hook, or remote service has been activated.
 
 ## What stays on hold
 
-- **Fast Jev Compaction:** Claude Code hook with transcript exposure and information
-  retention tradeoffs. No access to Codex's internal compaction is implied.
+- **Fast Jev Compaction:** Claude Code hook and npm library, already catalogued.
+  Source re-reviewed on September 18; automatic installation remains on hold.
+  See [comment/context compaction](compaction.md) for supported hosts, transport
+  limits, and bounded comment selection that the current host can perform.
 - **Jev routers:** require a different CLI launch/configuration path. Do not change
   this task's model or credentials merely because a router recommends it.
 - **Jev Review:** scoring can guide investigation, but its repeated-review mandate
