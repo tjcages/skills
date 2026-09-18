@@ -9,6 +9,7 @@ No factory. **[extracted-skills](https://linear.app/off-brand-studio/project/ext
 Each pack is its own Linear `Tool` project. If none exists, run `linear-setup` on that pack before non-trivial work (create project + `<pack>/CLAUDE.md`).
 
 Live:
+- `ea/` → **[EA](https://linear.app/off-brand-studio/project/ea-87f16ed2ddd4)**
 - `linear-methodology/` → **[Linear](https://linear.app/off-brand-studio/project/linear-9633010d001a)**
 - `orchestrator/` → **[Orchestrator](https://linear.app/off-brand-studio/project/orchestrator-e850288469eb)**
 - `progress-check/` → **[Progress Check](https://linear.app/off-brand-studio/project/progress-check-6b74524bd9fe)**

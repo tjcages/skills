@@ -23,6 +23,7 @@ Each folder is one **pack** (router skill + methodology + shared docs), same sha
 
 | Pack | Phase | Version | Detail |
 |------|-------|---------|--------|
+| [`ea/`](./ea) | Supervised early access | 0.2.0 | [skills.sh](https://skills.sh/tjcages/skills/ea) · [offbr.co](https://offbr.co/skills/ea) |
 | [`linear-methodology/`](./linear-methodology) | 🚀 Published | 1.0.2 | [GitHub](./linear-methodology) · [skills.sh](https://skills.sh/tjcages/skills/linear-methodology) · [offbr.co](https://offbr.co/skills/linear-methodology) |
 | [`constitution-first/`](./constitution-first) | 🧪 Solid (Tool only) | v0.1 | keyframe north-star wrote (may be local-only on remote); needs Product-shaped 🔁 |
 | [`accept-gated-ai/`](./accept-gated-ai) | 🧪 Thin→Solid mix | v0.2 | Tasks 9/16 + Obi docs 14/16; 🧱 live Socials UI |
