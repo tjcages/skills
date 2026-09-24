@@ -88,6 +88,13 @@ element shares the same physics.
 hand-guessed coordinate. The staging skill owns the first file, the scenes
 skill owns the second.
 
+The template's 300–450 frame film and 75-frame shot caps suit a focused demo,
+not every launch. For a justified broader edit, add `"profile": { "mode":
+"launch", "minFilmFrames": 450, "maxFilmFrames": 750,
+"maxClipFrames": 110 }` beside `cuts` in `src/edit.json`. Set the limits to
+the actual story and reading holds. The launch mode allows repeated
+action/consequence pairs; it does not waive cut, coverage, or motion checks.
+
 ### Fonts and type scale
 
 Load the font the product actually uses and set both the family and the CSS
