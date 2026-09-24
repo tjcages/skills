@@ -36,11 +36,11 @@ wrong. A movement that eases properly and is *trimmed* before it lands is
 still a complete movement; you simply stop showing it. The pixels differ, and
 so does how it feels.
 
-## Easings
+## Editorial motion
 
-Nothing is ever linear, and nothing invents its own curve. Every easing lives
-in `camera.ts` as `EASE`, and every one is slow in and slow out to some
-degree, because that is what makes motion look like it obeys physics.
+The curves below apply to camera, titles, and accessory graphics. Primary UI
+uses the product's actual animation and timing; see [fidelity](fidelity.md).
+Never use a skill preset to replace a product transition.
 
 | Easing     | Curve                    | Use for                                              |
 | ---------- | ------------------------ | ---------------------------------------------------- |
@@ -109,11 +109,11 @@ interface film:
   four words, it is two shots.
 - **Timing.** Below.
 
-**Animate the feature, always.** The thing the film exists to show must move
-under its own power, not merely be arrived at by the camera. A camera pushing
-onto a static element is a photograph with a zoom. Give it an `attention()`
-pulse, a `flick()`, a `countUp()`, something. Every other element on screen
-should be animated too, but the feature is non-negotiable.
+**Show the feature acting.** The thing the film exists to show must change
+through its real interaction, not merely be arrived at by the camera. If the
+actual UI is static, show its real before/after or the real effect it has.
+Do not add a pulse, flick, or count-up to primary UI unless the product has it.
+Editorial elements may move around the product when they help the story.
 
 ## The cut
 
@@ -300,13 +300,12 @@ different: a glass surface's `backdropFilter` is a surface treatment and stays.
 
 ## The interaction
 
-One interaction per film. It has to be the one that proves the feature, and it
-has to be visible at the zoom tier you chose.
+Give each selected feature a legible interaction and result. A focused demo
+may need only one; a launch usually needs several distinct feature proofs.
 
 Good: a control being operated, a value changing because of it, a list
-re-sorting after a filter, a panel resolving to a result. Bad: typing a long
-string, anything requiring reading, anything where the change is off-screen,
-more than one interaction competing for one scene.
+re-sorting after a filter, a panel resolving to a result. Avoid a change that
+lands off-screen or multiple interactions competing within one short shot.
 
 Order matters. The camera arrives, then the element acts. An element that acts
 before the camera lands wastes the arrival, which was the setup for it.
@@ -319,12 +318,10 @@ the travel rather than before it.
 
 ## The cursor
 
-Product films have no cursor, with one exception: a launch film where a
-click, a drag or a typed prompt is itself the interaction. **Whenever a
-button or any other control is operated on screen, the click is performed
-by a shipped cursor from `cursors.tsx`.** Never an OS screenshot cursor,
-never a freshly drawn arrow, and never a press with no pointer at all,
-which reads as the interface glitching on its own.
+When the pointer explains a real click or drag, show it. In a captured product
+interaction, keep the recorded cursor when useful. In a rendered scene, the
+bundled `cursors.tsx` provides optional editorial pointers. The cursor or
+press effect must not change the product's actual response.
 
 ### Two styles, chosen by what the film needs
 
@@ -377,10 +374,10 @@ an argument against the product.
   `text` appears when the caret does. A cursor that changes early reads
   as prescient, late as broken.
 
-## Title cards, for launch films only
+## Title cards
 
-A walkthrough film stays wordless. A launch film may spend two or three
-large text titles between vignettes. Their recipe, from the product's own
+A demo may use a brief title if it helps orient the viewer. A launch may use
+short titles between vignettes. Their recipe, from the product's own
 face and the word-by-word rise to the reading-time maths that decides how
 long each one holds, lives in [text.md](text.md), or read
 `text.md` directly. Load it before writing any
@@ -402,15 +399,15 @@ focus ring is the single most common review catch.
 
 ## Hold the proof, in the chrome
 
-Whatever marks the result stays until the final fade. If the payoff travels
-1200px, a mark left in the scrolling content is 1200px off-screen by the time
-the film ends. Put the proof somewhere that does not scroll: a panel header, a
-status pill, a count.
+Hold the real result long enough to read. If it scrolls away, adjust the shot
+or cut sooner. Do not move or add a product status marker solely to manufacture
+a persistent payoff.
 
 ## Ending
 
-Pull back to `BASE`, hold the result, then fade to the canvas colour over the
-last 20 frames of the final scene. No title card, no logo, no fade to black.
+Hold a real product result or a deliberate brand moment long enough to read.
+Choose the ending to fit the story; do not require a pull-back or add a result
+marker that is absent from the product.
 
 ## Handing off
 

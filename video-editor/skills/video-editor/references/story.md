@@ -4,9 +4,9 @@ Inspect the product's docs, source, live UI, and available assets before writing
 
 ## Choose the film
 
-- **Focused demo:** one claim, one consequential interaction, one visible before/after. Keep it as short as that proof allows.
-- **Product launch:** one umbrella promise supported by a coherent few distinct features. A request such as “make a product launch video” selects this mode unless the brief clearly narrows it. Each selected feature gets a recognizable UI moment, an action, and its result. A slider shown from three angles is still one feature.
-- **Site or portfolio:** cover every part named by the brief. Record any deliberate omission. Use `PARTS`, shot `covers`, and `validateCoverage` to check explicit coverage.
+- **Product launch (default):** one umbrella promise supported by a coherent few distinct features. Choose this for an open-ended video request or an explicit launch brief. Each selected feature gets a recognizable UI moment, an action, and its result. A slider shown from three angles is still one feature.
+- **Focused demo:** choose this when the user says “demo” or names one feature without asking for a launch. Show that feature's actual interaction and before/after; keep it as short as the proof allows. An explicit launch request wins even when it centers one feature.
+- **Whole website:** a website may be the primary product in either mode. Cover the pages or sections named by the brief, and record deliberate omissions. Use `PARTS`, shot `covers`, and `validateCoverage` to check explicit coverage.
 
 The film should let a new viewer say what the product does and why the demonstrated change matters. Do not invent behavior, results, or speed. For a broad launch, do not reduce the product to one easy-to-animate control.
 
@@ -22,7 +22,7 @@ Use title cards as punctuation, not as labels around a static UI. Keep benefit-l
 
 ## Stage only what serves the story
 
-Use the product's own visual language. Import real inert components when practical; otherwise make faithful frame-driven presentational versions of the relevant pieces. Simplify density and copy for playback size, but never claim an action the product cannot perform. State continuity matters when two scenes show the same object. If a new feature uses another surface, make the handoff clear.
+Use the actual primary product UI and motion as defined in [fidelity](fidelity.md). Simplify the shot by cropping or isolating a real component, not by simplifying that component. Accessory context can be abstract. State continuity matters when two scenes show the same object. If a new feature uses another surface, make the handoff clear.
 
 Before rendering, write:
 
@@ -31,6 +31,7 @@ Film mode and audience:
 Umbrella claim or focused claim:
 Selected features and source evidence:
 Omitted features and why:
+Primary UI versus accessory context for each shot:
 Shot list with action, result, transition, and approximate reading hold:
 ```
 
