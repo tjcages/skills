@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Video editor</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="studio.mjs"></script>
+  </head>
+  <body>
+    <div id="panelRoot"></div>
+    <main id="engineHost" hidden class="editor">
+      <header class="app-bar">
+        <a href="/" class="brand">Video<span>editor</span></a
+        ><span class="divider"></span>
+        <div class="project-title">Current film <span>Video editor</span></div>
+        <div class="header-actions">
+          <button id="save" class="secondary" disabled>Save mix</button
+          ><button id="export" class="primary" disabled>Export MP4 ↗</button
+          ><a id="exportDownload" hidden download="video-with-sound.mp4"
+            >Download MP4</a
+          >
+        </div>
+      </header>
+      <div class="editing-area">
+        <section class="viewer" aria-label="Video preview">
+          <div class="panel-heading">
+            <span>Preview</span><span id="filmInfo">Loading film…</span>
+          </div>
+          <div class="stage">
+            <video id="video" muted playsinline preload="metadata"></video>
+          </div>
+          <div class="transport">
+            <label class="file secondary"
+              >Replace video<input id="videoFile" type="file" accept="video/*"
+            /></label>
+            <div class="playback">
+              <button id="back" aria-label="Go to start" title="Go to start">
+                ↤</button
+              ><button id="play" disabled>Play preview</button
+              ><button
+                id="loop"
+                aria-pressed="false"
+                title="Repeat video and audio"
+              >
+                Loop off
+              </button>
+            </div>
+            <output id="clock">0:00 / 0:00</output>
+          </div>
+        </section>
+        <aside class="inspector" aria-label="Track inspector">
+          <div class="tabs" role="tablist" aria-label="Audio tracks">
+            <button
+              id="musicTab"
+              role="tab"
+              aria-controls="musicPanel"
+              aria-selected="true"
+            >
+              ♫ Music</button
+            ><button
+              id="effectsTab"
+              role="tab"
+              aria-controls="effectsPanel"
+              aria-selected="false"
+            >
+              ✦ Sound effects
+            </button>
+          </div>
+          <section id="musicPanel" role="tabpanel" aria-labelledby="musicTab">
+            <div class="inspector-title">
+              <h1>Music</h1>
+              <span class="track-dot"></span>
+            </div>
+            <label class="import file"
+              >＋ Add music<input id="songFile" type="file" accept="audio/*"
+            /></label>
+            <button id="demo" class="text-button">Try a demo track</button>
+            <p id="songName" class="song-name">No music yet</p>
+            <p id="musicHint" class="muted">
+              Import a song to see its waveform and choose an excerpt.
+            </p>
+            <div class="control-block">
+              <label class="control-label" for="musicSpeed"
+                >Speed <output id="musicSpeedText">1.00×</output></label
+              ><input
+                id="musicSpeed"
+                type="range"
+                min="0.5"
+                max="2"
+                step="0.05"
+                value="1"
+              />
+              <div class="speed-presets" data-speed="musicSpeed">
+                <button data-value="0.5">0.5×</button
+                ><button data-value="1" aria-pressed="true">1×</button
+                ><button data-value="1.5">1.5×</button
+                ><button data-value="2">2×</button>
+              </div>
+              <p class="hint">Speed changes pitch. Video timing stays fixed.</p>
+            </div>
+            <fieldset id="controls" disabled>
+              <label class="control-label"
+                >Volume <output id="volumeText">80%</output
+                ><input
+                  id="volume"
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value="0.8"
+              /></label>
+              <div class="two">
+                <label
+                  >Fade in
+                  <span class="unit-input"
+                    ><input
+                      id="fadeIn"
+                      type="number"
+                      min="0"
+                      max="10"
+                      step="0.1"
+                      value="0.2"
+                    /><span>s</span></span
+                  ></label
+                ><label
+                  >Fade out
+                  <span class="unit-input"
+                    ><input
+                      id="fadeOut"
+                      type="number"
+                      min="0"
+                      max="10"
+                      step="0.1"
+                      value="0.8"
+                    /><span>s</span></span
+                  ></label
+                >
+              </div>
+            </fieldset>
+            <div class="excerpt">
+              <div class="control-label">
+                Source excerpt
+                <label class="inline-number"
+                  ><input
+                    id="startNumber"
+                    aria-label="Song starts at"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    value="0"
+                    disabled
+                  />s</label
+                >
+              </div>
+              <div class="wave-wrap">
+                <canvas
+                  id="wave"
+                  width="800"
+                  height="160"
+                  aria-label="Song waveform with selected excerpt"
+                ></canvas>
+                <div id="selection" aria-hidden="true"></div>
+              </div>
+              <input
+                id="start"
+                aria-label="Song excerpt start"
+                type="range"
+                min="0"
+                max="0"
+                step="0.000001"
+                value="0"
+                disabled
+              /><output id="range">Add music to choose an excerpt</output>
+              <p class="hint">Drag the waveform to choose a different part.</p>
+            </div>
+            <details class="advanced">
+              <summary>Beat alignment</summary>
+              <p id="analysis" class="muted">
+                Tempo is detected when you add music.
+              </p>
+              <div class="two">
+                <label
+                  >Source BPM<input
+                    id="bpm"
+                    type="number"
+                    min="30"
+                    max="300"
+                    step="0.1"
+                    value="120" /></label
+                ><label
+                  >First beat (s)<input
+                    id="firstBeat"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    value="0"
+                /></label>
+              </div>
+              <button id="snap" class="secondary">
+                Align beat to selected scene
+              </button>
+              <p id="tempo" class="hint">Suggested rhythm —</p>
+            </details>
+          </section>
+          <section
+            id="effectsPanel"
+            role="tabpanel"
+            aria-labelledby="effectsTab"
+            hidden
+          >
+            <div class="inspector-title">
+              <h1>Sound effects</h1>
+              <span id="cueCount" class="muted"></span>
+            </div>
+            <div class="two">
+              <label class="switch"
+                ><input
+                  id="effectsEnabled"
+                  type="checkbox"
+                  checked
+                />Enabled</label
+              ><button id="addCue" class="secondary">＋ Add at playhead</button>
+            </div>
+            <label class="control-label"
+              >Track volume<input
+                id="effectsVolume"
+                type="range"
+                min="0"
+                max="1"
+                value="0.8"
+                step="0.01"
+            /></label>
+            <div class="control-block">
+              <label class="control-label" for="effectsSpeed"
+                >Speed <output id="effectsSpeedText">1.00×</output></label
+              ><input
+                id="effectsSpeed"
+                type="range"
+                min="0.5"
+                max="2"
+                step="0.05"
+                value="1"
+              />
+              <div class="speed-presets" data-speed="effectsSpeed">
+                <button data-value="0.5">0.5×</button
+                ><button data-value="1" aria-pressed="true">1×</button
+                ><button data-value="1.5">1.5×</button
+                ><button data-value="2">2×</button>
+              </div>
+              <p class="hint">
+                Changes each sound’s speed and pitch. Cues stay on their frames.
+              </p>
+            </div>
+            <div id="cueInspector"></div>
+            <label class="search-label"
+              >Find a cue<input
+                id="cueSearch"
+                type="search"
+                placeholder="Search clicks, comments…"
+            /></label>
+            <div id="cueList" aria-label="Sound cues"></div>
+            <details class="advanced">
+              <summary>Cue settings</summary>
+              <button id="restoreCues" class="secondary">
+                Restore scene cues</button
+              ><label class="file secondary"
+                >Import cue sheet<input
+                  id="cueFile"
+                  type="file"
+                  accept=".json,application/json"
+              /></label>
+              <p class="hint">
+                Sounds by
+                <a
+                  href="https://cuelume-site.pages.dev/"
+                  target="_blank"
+                  rel="noopener"
+                  >Cuelume</a
+                >
+                · <a href="cuelume/LICENSE.txt" target="_blank">MIT</a>
+              </p>
+            </details>
+          </section>
+        </aside>
+      </div>
+      <section class="timeline" aria-label="Editing timeline">
+        <div class="timeline-toolbar">
+          <h2>Timeline</h2>
+          <span class="hint">Click to seek · select a sound to edit</span
+          ><span class="timeline-meta">30 fps</span>
+        </div>
+        <div class="timeline-grid">
+          <div class="track-label ruler-label">Time</div>
+          <div class="ruler-area">
+            <div id="ruler"></div>
+            <input
+              id="scrub"
+              aria-label="Video position"
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value="0"
+            />
+          </div>
+          <div class="track-label">
+            <span class="lane-icon video-icon">▣</span>
+            <div>Video<small>Scene clips</small></div>
+          </div>
+          <div class="lane video-lane">
+            <div id="cutList" aria-label="Select a cut to align"></div>
+            <i class="playhead"></i>
+          </div>
+          <button id="musicTrack" class="track-label">
+            <span class="lane-icon music-icon">♫</span>
+            <div>Music<small id="trackSongName">Add a track</small></div>
+          </button>
+          <div class="lane music-lane">
+            <canvas
+              id="musicWave"
+              width="1800"
+              height="100"
+              aria-label="Music excerpt on video timeline"
+            ></canvas
+            ><span id="musicEmpty">＋ Add music to your video</span
+            ><i class="playhead"></i>
+          </div>
+          <button id="effectsTrack" class="track-label">
+            <span class="lane-icon effects-icon">✦</span>
+            <div>Effects<small id="trackCueCount">Cuelume</small></div>
+          </button>
+          <div class="lane effects-lane">
+            <div id="cueTrack" aria-label="Effects timeline"></div>
+            <i class="playhead"></i>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <output id="saveState" aria-live="polite"
+          >Loading saved project…</output
+        >
+        <p id="status" role="status">Loading your project…</p>
+        <div>
+          <!-- EXPORT_EXAMPLE --><button id="help" class="text-button">
+            Export help
+          </button>
+        </div>
+      </footer>
+      <dialog id="exportHelp">
+        <div class="dialog-head">
+          <h2>Export your video</h2>
+          <button id="closeHelp" aria-label="Close export help">×</button>
+        </div>
+        <p>
+          Export MP4 combines your video, imported music and enabled sound
+          effects. Files stay on this device.
+        </p>
+        <p>
+          Browser export runs in real time. Keep the tab visible until it
+          finishes. If your browser cannot encode MP4, use the local studio or
+          this command:
+        </p>
+        <pre>
+node mix.mjs --video /path/film.mp4 --song /path/song.mp3 --mix /path/video-mix.json --out /path/final.mp4</pre
+        >
+        <p class="hint">
+          Requires FFmpeg. Use music you own or have licensed. Your imported
+          files stay on your device.
+        </p>
+      </dialog>
+    </main>
+    <dialog id="renderProgress" aria-label="Export video">
+      <p id="renderStatus">Preparing your video and audio…</p>
+      <p>Keep this tab visible until export finishes.</p>
+      <button id="cancelExport">Cancel export</button>
+    </dialog>
+  </body>
+</html>

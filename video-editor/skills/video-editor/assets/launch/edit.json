@@ -1,0 +1,12 @@
+{
+  "cuts": [
+    { "scene": "establish", "in": 4, "out": 42, "continuity": "momentum" },
+    { "scene": "sidebar", "in": 2, "out": 34, "continuity": "momentum" },
+    { "scene": "list", "in": 0, "out": 44, "continuity": "momentum" },
+    { "scene": "feature", "in": 0, "out": 40, "continuity": "momentum" },
+    { "scene": "interact", "in": 0, "out": 46, "continuity": "momentum" },
+    { "scene": "proof", "in": 0, "out": 36, "continuity": "momentum" },
+    { "scene": "travel", "in": 0, "out": 64, "continuity": "momentum" },
+    { "scene": "resolve", "in": 0, "out": 70, "continuity": "momentum" }
+  ]
+}

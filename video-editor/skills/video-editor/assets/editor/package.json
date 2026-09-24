@@ -1,0 +1,18 @@
+{
+  "name": "video-editor-skill-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node serve.mjs",
+    "test": "node --test *.test.mjs"
+  },
+  "dependencies": {
+    "@tjcages/panels": "0.1.0",
+    "cuelume": "0.2.2",
+    "esbuild": "0.25.12",
+    "node-web-audio-api": "2.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "engines": { "node": ">=22.12.0" }
+}
