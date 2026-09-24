@@ -1,11 +1,10 @@
 # Video editor pack
 
-- Source of truth: `shared/LAUNCH.md` and `shared/METHODOLOGY.md`; entrypoint: `skills/video-editor/SKILL.md`.
-- Keep the editor usable without a komo checkout or komo media.
-- Do not copy the separately purchased `product-video` skill or its assets into this pack.
+- Entrypoint: `skills/video-editor/SKILL.md`. The story, staging, scenes, text, and render guides are internal references of this one skill.
+- Keep the editor usable without a komo checkout or komo media. Replace the bundled placeholder stage with actual product evidence for a delivered film.
+- Product Video visual-production source and assets are included with author-authorized public MIT permission; preserve [NOTICE.md](NOTICE.md) attribution.
 - Keep generated audio, videos, browser caches, and `node_modules` out of Git.
-- The launch starter must render without the purchased `product-video` assets. Its demo surface is a scaffold, not a shippable product film.
-- Use the local editor's timing and effects checks for behavior changes. Dogfood on an independent film before calling this pack v1.
+- Use local timing/effects checks for sound-editor behavior changes and a scaffold render/QC for visual workflow changes. Dogfood on an independent film before calling this pack v1.
 
 ## Linear tracking
 

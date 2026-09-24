@@ -1,0 +1,21 @@
+@import 'tailwindcss';
+
+/* Filming from a codebase only, the staging skill's Part 1. Delete this whole
+   block when rebuilding from a URL or filming component vignettes.
+
+   1. The design system's tokens. This is often an internal source path such
+      as '../ui-pkg/src/styles/index.css', not a package export. Import the
+      file that actually declares the tokens. Without it there are no tokens
+      at all, in either wiring shape.
+   2. The product's component source, so Tailwind generates every class the
+      design system itself uses.
+   3. The consuming app's root font size, if it sets one. A design system
+      authored against `html { font-size: 13px }` renders 23% too large
+      without this, with no error and no obvious tell.
+   4. Any `@custom-variant` the components depend on, copied from the app's
+      Tailwind entry stylesheet. */
+
+/* @import '../ui-pkg/src/styles/index.css'; */
+/* @source '/absolute/path/to/product/packages/ui/src'; */
+/* html { font-size: 13px; } */
+/* @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); */

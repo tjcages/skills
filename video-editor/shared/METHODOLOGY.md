@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Put a repeatable soundtrack under the film created with [LAUNCH.md](LAUNCH.md) or any other existing video. The picture is the timing authority. The editor combines a music excerpt with frame-placed sound cues, then exports one complete MP4.
+Put a repeatable soundtrack under the film created with the [video-editor skill](../skills/video-editor/SKILL.md) or any other existing video. The picture is the timing authority. The editor combines a music excerpt with frame-placed sound cues, then exports one complete MP4.
 
 ## Editing order
 
