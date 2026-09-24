@@ -1,31 +1,29 @@
 # Product video staging
 
-Everything the camera films. The story skill has already decided the claim,
-the proof and the four beats. This skill builds only what those need.
+Everything the camera films. The story guide has chosen a launch by default or
+a focused demo for an explicit demo or single-feature brief. Read
+[fidelity](fidelity.md) first and classify every filmed surface.
 
-## Before anything: build less than you think
+## Preserve the featured product
 
-The story skill's simplification rule is the one that decides whether this
-works, so it is repeated here in the file where it gets broken:
-
-> **You are making an argument, not a screenshot.** Build only what the claim
-> touches, simpler and sparser than the real product, with shorter copy.
-> Changing the product to read better is correct. Inventing capability is not.
-
-A faithful reproduction of a dense product is illegible at the tiers that make
-a film exciting, and it costs three times as long to build. If you find
-yourself porting a fourth component that the claim never mentions, stop.
+Build only the surfaces the story needs, but keep the featured UI itself exact.
+Crop or isolate a real component to improve legibility. Do not change its
+geometry, styling, control design, or animation to fit a preferred shot. A
+background site, sample document, or title card can be abstract when it is
+accessory context. If the site itself is the film subject, it is primary UI.
 
 ## Where the product comes from
 
 | Situation                                    | What you do                          |
 | -------------------------------------------- | ------------------------------------ |
-| You have the codebase and can import from it  | Use its real components and tokens   |
-| You have only a URL, or a build you cannot run | Rebuild the one screen the claim needs |
-| The film announces a tool, a skill or a capability | Film component vignettes: Part 3 |
+| You have the codebase and can import from it | Use its real components and styles; verify the motion |
+| The runtime works but the components cannot render in Remotion | Record the actual product interaction |
+| You have only a URL | Record the live website or obtain approved captures |
+| The film announces a tool, a skill, or a capability | Film real component vignettes: Part 3 |
 
-In every case nothing is embedded, framed or screenshotted into the film: a
-product film is rendered, deterministically, from components you control.
+Recorded UI is valid primary footage. Keep its viewport, state, and interaction
+repeatable, and compare it with the source. Do not redraw it merely to keep
+every pixel inside a deterministic composition.
 
 ## Part 1: filming from a codebase
 
@@ -46,10 +44,9 @@ before writing any JSX:
 | Icons                                      | Read the feature file's imports, and check for a repo policy banning direct icon imports                 |
 | Domain copy                                | The feature's own strings, plus any `PRD.md`, `README` or fixture files. Real vocabulary, shortened      |
 
-Row three is the one that decides your plan, and it is worth doing before you
-get attached to reusing anything. If the feature's components are wired to
-application state, **rebuild a simplified version** rather than fighting it.
-That is the expected outcome, not a failure.
+Row three decides whether to import the feature directly, drive it in a test
+fixture, or record its real runtime. Application state or portals are reasons
+to choose a capture, not permission to invent a simplified control.
 
 **The root font size is often not beside the tokens.** A repo may pin
 `html { font-size: 13px }` in the app's Tailwind entry while the rem scale
@@ -136,14 +133,14 @@ as `src/styles/index.css`. Import the file that actually declares the tokens.
   woff2 through the symlink, or the CDN URL when the CDN allows any origin.
   A frame captured in a fallback face is a defect the still QC cannot see.
 
-### 3. Import, or rebuild
+### 3. Import, adapt, or record
 
 **Scan first, then read.** `node scan-wallclock.mjs app-pkg/src/components`
 lists every animation library import, spring, timer, clock read, portal,
-CSS animation, and app-state hook in the tree, file by file. Treat the list
-as the set of decisions to make: each finding is inert in the fixed state
-the film needs, or it is ported to `useCurrentFrame()`, or the component is
-rebuilt. The table of equivalents for a port:
+CSS animation, and app-state hook in the tree, file by file. Treat each
+finding as a decision to import, drive through an isolated fixture, port
+exactly, or record the live interaction. The following are implementation
+mechanisms for a verified port, not replacement motion presets:
 
 | In the product                       | In the film                                   |
 | ------------------------------------ | --------------------------------------------- |
@@ -163,9 +160,10 @@ rebuilt. The table of equivalents for a port:
 - A status dot rendering `animate-ping` is a CSS keyframe on wall-clock time
   and will flicker between frames.
 
-Import directly when the component is inert in a fixed state. **Rebuild a
-simplified version** when it portals, subscribes, holds state across frames,
-carries an `animate-` class, or is simply too dense for the frame.
+Import directly when the component renders accurately. When it portals,
+subscribes, holds state across frames, or relies on CSS animation, capture the
+real interaction or adapt its real component and verify the result. If an exact
+port is impractical, use footage; do not substitute a lookalike.
 
 `transition-*` alone is not a reason to rebuild. A CSS transition only fires
 when a property changes, and in a deterministic render nothing changes, so it
@@ -177,24 +175,21 @@ and is handed `72` renders full, silently.
 
 ### 4. Compose the stage
 
-- Real domain vocabulary, shortened. `Item 1` and `lorem ipsum` read as a
-  prototype instantly; so does a paragraph nobody can finish in one second.
-- **Size the content to the tier that films it.** A `CLOSE` frame is 873px
-  wide and a `MACRO` frame is 582px. A subject should fill roughly three
-  quarters of its frame. The web instinct of a 640px column leaves a close
-  shot two-thirds empty.
-- **Make every height explicit.** Variable-height content cannot be framed,
-  because the camera needs a coordinate. Fixed row heights, fixed card
-  heights, computed positions. This is the single most useful constraint when
-  the content is a transcript, a feed or anything else that grows.
+- Keep primary UI's meaningful labels and vocabulary. Shorten the editorial
+  copy around it, or select a real product state with less text.
+- **Size the frame around the content.** A `CLOSE` frame is 873px wide and a
+  `MACRO` frame is 582px. Choose a camera tier or crop that shows the real
+  component clearly; do not resize or redesign primary UI to fill the frame.
+- **Measure real geometry.** Use the product's actual row and card heights to
+  position the camera. A capture keeps its native layout; a port must not
+  impose fixed heights that change it.
 - Build depth only where the story travels through it, and remember that a
   scroll inside a panel that also has a header and a composer travels less
   than the content height suggests: it is content minus the visible region,
   not content minus the panel.
 - Show the product mid-use. States with history read as real.
-- Stagger entrances around the feature, not from index zero. A three frame
-  stagger across twenty six items puts the last one 78 frames in, past the end
-  of the scene.
+- Editorial entrances can be staggered around the feature; primary UI keeps
+  its own entrance timing.
 
 ### 5. Fit every subject to its frame
 
@@ -212,12 +207,11 @@ check its bounding box against the tier that films it, with 60px of clearance.
 
 Failures and their fixes, in order:
 
-1. **Resize the component to the frame.** Too wide and a close frame cuts its
-   text in half; too narrow and the shot is mostly empty surface.
-2. **Move it into the region the camera can reach.** Chrome pinned to a panel
-   edge is outside every close frame by definition.
-3. **Film it wider.** Last resort: the close tiers are where the film gets its
-   energy.
+1. **Choose another crop or tier.** Keep real control geometry intact.
+2. **Move the camera or captured viewport.** Do not move primary chrome to a
+   position the product never uses.
+3. **Film it wider or longer.** Legibility takes priority over a prescribed
+   close-up.
 
 Three symptoms that all mean this step was skipped: text cut mid-word at the
 frame edge, half a card in frame, and a large empty area on one side.
@@ -232,8 +226,8 @@ plan which edge gets cut.
 - Flat background in a colour one step away from the product's own surface. If
   the product's canvas and the panel are the same colour, the panel edge
   vanishes; pick a third level and treat it as chrome.
-- The panel is narrower than the canvas, for example 1520x880 centred in
-  1920x1080. Rounded corners, `overflow: hidden`, layered shadow.
+- A decorative frame may be narrower than the canvas. Match the real product
+  window when its frame or chrome is part of the featured UI.
 - **The panel is the whole app window** when the app puts its own chrome on
   its page canvas.
 - Absolutely positioned siblings paint in DOM order. A `z-50` copied from a
@@ -264,36 +258,17 @@ itself, and it has to scroll. Three numbers and one helper keep it honest:
 - **Frame with `sitePoint()`**, which turns site pixels at a scroll offset
   into canvas coordinates, so `frameOn` never sees a hand-typed number.
 
-The simplification rule still applies inside every part: fewer blocks per
-section, shorter copy, only the assets the claim needs. Two blocks per
-project instead of six is the usual cut.
+For a site that is the subject, preserve the real layout, visible blocks, copy
+that affects meaning, and native scrolling behavior. Select fewer sections or
+crop more tightly if the film needs to be shorter.
 
-## Part 2: rebuilding from a URL
+## Part 2: filming from a URL
 
-No codebase, or a build you cannot run. **Rebuild the one screen the claim
-needs**, in plain JSX and Tailwind.
-
-There is no design system to import, no tokens to resolve, and no package to
-alias. `style.css` is just `@import 'tailwindcss'`. That is the whole setup.
-
-Look at the site and take:
-
-- **The layout skeleton.** Where the nav sits, how the content column is
-  placed, the density of the whole thing.
-- **The type hierarchy.** Relative sizes and weights matter far more than the
-  exact family. Use a close web font.
-- **The spacing rhythm.** Generous or tight, and roughly what unit.
-- **The colours, as literal values.** Read them off the page and write them as
-  hex. No tokens, no theme layer, no ceremony.
-- **The vocabulary.** Real product words, shortened.
-
-Then apply every rule from Part 1 above: fixed heights, sized to the tier,
-edges in frame, one claim's worth of content and no more. Rebuilding is
-usually *faster* than wiring a codebase, and it is always more legible,
-because you build only what the film needs at the size it needs to be.
-
-The bar is not "indistinguishable from the site". The bar is "obviously that
-product, obviously that screen, and readable at `MACRO`".
+When the site is primary and no source is available, use browser capture of
+the actual page. Record the viewport, route, theme, and action for each shot.
+If the page cannot be accessed, ask for a working build or approved footage.
+Reconstruction from a URL is appropriate for accessory context or when the
+user explicitly authorizes an abstract interpretation of primary UI.
 
 ## Part 3: component vignettes
 
@@ -304,17 +279,13 @@ looks finished and feels flat, because every element on screen competes
 with the one the shot is about, and nothing is bold enough to carry a
 close-up.
 
-Throw away the workspace and film components one at a time:
+The workspace can be omitted when it is accessory. Film the real product
+components one at a time:
 
-- **One component per scene, dead centre,** on a flat canvas one step
-  darker than the component's surface. No panel, no sidebar, no header, no
-  chrome.
-- **The component is the animation.** Every vignette moves under its own
-  power. A static component with a camera push is a slide, not a shot.
-- **Bold beats faithful.** An element the product renders at 13px can fill
-  a MACRO frame. Let scale, spacing and weight serve the shot; the tokens,
-  faces and radii still come from the design system, so it stays
-  unmistakably the product's.
+- **One component per scene when useful.** Omit only accessory wrapper chrome.
+- **Show its native interaction.** Its own state change should carry the shot.
+- **Make it legible through framing.** Camera scale may enlarge the whole
+  component; its internal proportions, styles, and motion remain unchanged.
 - **Continuity is causal, not spatial.** The film never pulls back to an
   assembly shot, so the components never need to coexist on one surface.
   Each vignette is about what the previous one produced; that is the
@@ -324,7 +295,7 @@ Throw away the workspace and film components one at a time:
 - Entrances only in the scene that introduces a component, as everywhere
   else.
 
-Vignette shapes that carry a scene each:
+Possible vignette subjects, only when the product actually has them:
 
 | Vignette            | Its motion                                              |
 | ------------------- | ------------------------------------------------------- |
@@ -343,9 +314,10 @@ in [scenes.md](scenes.md); title cards and reading time in
 
 ## Filming a design system itself
 
-When the product is a component library there is no feature to film. Film its
-preview or documentation app: a page of real primitives in real states is the
-product, and one component's interaction is the interaction beat.
+When the product is a component library, its primitives and interactions are
+the primary UI. Film the actual components in recognizable states. A preview or
+documentation app can establish context but need not remain around every
+component vignette.
 
 **Dark mode will half-render if you try to flip it mid-film.** Most systems
 declare light tokens on `:root` and dark overrides on `[data-theme=dark]`,
@@ -357,9 +329,9 @@ together, or re-declare every derived token under your own nested selector.
 
 ## Handing off
 
-The stage is done when a single still at `BASE` looks like a screenshot
-someone would post, **and** a still at `MACRO` on the feature is legible and
-full. If either fails, no camera move will save it.
+The stage is ready when the featured UI matches its source at representative
+states and remains legible at the selected crop. If either fails, change the
+capture or framing before editing.
 
 Only then go to [scenes.md](scenes.md), or read
 `scenes.md` directly.

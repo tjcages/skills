@@ -1,7 +1,7 @@
 # Product video text
 
-Words on screen are spent, not decorated. A walkthrough film stays wordless;
-a launch film may spend two or three titles between vignettes. This skill
+Words on screen are spent, not decorated. A focused demo may stay wordless;
+a launch film may use brief title cards between feature proofs. This skill
 owns every word that does appear: the face it is set in, how it enters, and
 above all how long it holds, because text that is cut away mid-read is worse
 than no text at all.
@@ -25,14 +25,13 @@ that matter for text are:
   to about 1.3 instead of inventing a bigger font size. Text scenes share
   the film's camera system or they read as slides pasted in.
 
-## The copy: one line, on point
+## The copy: one idea, on point
 
-Every text scene carries **exactly one line**, and the line is a claim,
-concise enough to be read in one glance. Two to five words for a title,
-never more than eight for anything. If the message does not fit one line,
-that is not a longer line, it is more scenes; see the chaining section
-below. A second line sharing the screen with the first splits the eye and
-doubles the hold for half the effect.
+Give each title card one idea, concise enough to read at playback speed.
+Two to five words is a useful starting point. A line break can improve the
+composition; a second sentence or explanatory caption should earn its own
+reading time. Remove persistent labels that repeat the product name or narrate
+an action the UI already shows.
 
 ## The treatment
 
@@ -60,8 +59,8 @@ film:
   slower entrance is not more elegant, it is unreadable for longer.
 - **One treatment per film.** Every text scene reuses it; variety lives
   across films, not within one.
-- **A slow zoom drift runs every text scene,** so a momentum cut lands on
-  moving picture in both directions.
+- Keep the frame alive through type, product elements, or a deliberate camera
+  move. A repeated slow zoom is not a treatment by itself.
 - Entrances happen once, in the scene that introduces the line, as
   everywhere else in the bundle.
 
