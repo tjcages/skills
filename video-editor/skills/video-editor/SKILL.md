@@ -4,7 +4,6 @@ description: Make a product launch film by default, or a focused demo when reque
 license: MIT
 metadata:
   version: "0.5.0"
-  status: draft
 ---
 
 # Video editor
