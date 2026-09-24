@@ -33,7 +33,7 @@ Each folder is one **pack** (router skill + methodology + shared docs), same sha
 | [`pr-writing/`](./pr-writing) | 🚀 Published | 1.0.0 | [GitHub](./pr-writing) · [skills.sh](https://skills.sh/tjcages/skills/pr-writing) · [offbr.co](https://offbr.co/skills/pr-writing) |
 | [`progress-check/`](./progress-check) | 🚀 Published | 1.0.1 | [GitHub](./progress-check) · [skills.sh](https://skills.sh/tjcages/skills/progress-check) · [offbr.co](https://offbr.co/skills/progress-check) |
 | [`wip-frames/`](./wip-frames) | 🧪 Thin dogfood | v0.2.0 | Approval boards: dotted mat, 1 desktop or 3 mobiles, iOS 18 kit status bar. Theme tokens for project tint. |
-| [`video-editor/`](./video-editor) | ✍️ Draft | v0.1.0 | Local visual editor and Agent Skill for music, frame-placed effects, and MP4 export. |
+| [`video-editor/`](./video-editor) | ✍️ Draft | v0.2.0 | Product launch film workflow, Remotion starter, visual sound editor, and MP4 export. |
 | [`apple-native/`](./apple-native) | Public preview | 0.1.0 | Lightweight native iOS skill · [Catalogue](https://native.offbr.co) |
 
 ## Pack shape (every folder)

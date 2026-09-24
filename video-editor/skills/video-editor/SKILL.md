@@ -1,20 +1,19 @@
 ---
 name: video-editor
-description: Add music and frame-placed sound effects to an existing video with a local visual editor. Use when a rendered film needs soundtrack timing, beat alignment, cue editing, or MP4 export; this skill does not create or cut the picture.
+description: Plan, build, render, and soundtrack a product launch film. Use for product promo stories, frame-driven UI scenes, cut and cue timing, music, effects, and final MP4 export; includes a Remotion starter and local sound editor.
 license: MIT
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   status: draft
 ---
 
 # Video editor
 
-Use the bundled local editor in [assets/editor](assets/editor). Read [METHODOLOGY.md](../../shared/METHODOLOGY.md) for the editing decisions and [RESPONSE.md](../../shared/RESPONSE.md) for the handoff shape. The editor is a reusable extraction of the audio studio built for komo; no komo media or cue sheet is bundled.
+This one skill owns the whole film: launch story, product surface, shot timing, render, sound, and final export. Read [LAUNCH.md](../../shared/LAUNCH.md) for the visual film and [METHODOLOGY.md](../../shared/METHODOLOGY.md) for the soundtrack. Use [RESPONSE.md](../../shared/RESPONSE.md) for the handoff. The bundled assets are original reusable starters and the independently authored audio editor; no komo media, cue sheet, or purchased `product-video` skill files are bundled.
 
-1. Get the rendered video. If an edit uses scene-local cues, also get its cut map and cue sheet. Do not infer cue times from scene names alone.
-2. From `assets/editor`, run `npm install` and `npm start -- --video /absolute/film.mp4 --edit /absolute/edit.json --cues /absolute/cues.json`. Only `--video` is needed for a plain film, and the browser can import a video if it is omitted. Open the localhost URL printed by the server.
-3. Import a licensed song or use the synthetic demo. Set the excerpt, BPM estimate, beat alignment, speed, fades, and level. Add and audition sound cues at the playhead. Check each cut in playback.
-4. Save the mix JSON. Export MP4 in the local editor, or run `node mix.mjs --video /absolute/film.mp4 --song /absolute/song.wav --mix /absolute/video-mix.json --out /absolute/finished.mp4`. Omit `--song` for an effects-only mix with music disabled. Keep rendered media and the mix outside the skill source.
-5. Review the exported file from beginning to end, including the first frame, cuts, peaks, and ending. Report the exported path, recipe path, and any timing uncertainty.
+1. For a new launch film, write the claim, visible proof, product source, delivery format, and shot list using [LAUNCH.md](../../shared/LAUNCH.md). Use the product's existing render project or copy [assets/launch](assets/launch) into a standalone directory. Replace its labeled demo stage with the real product before delivery.
+2. Render and review the silent film. Keep scene IDs and frame trims in `edit.json`; mark visible events in a `cues.json` compatible with the bundled example. The rendered film is the timing authority.
+3. For sound, use [assets/editor](assets/editor): `npm ci`, then `npm start -- --video /absolute/film.mp4 --edit /absolute/edit.json --cues /absolute/cues.json`. The browser can also import a video with no command-line media. Import licensed music, align an excerpt, edit and audition cues, save the mix, and export MP4.
+4. Review the encoded MP4 through the last frame. Report the film, recipe, source project, and any unverified visual or audio detail. Keep rendered media outside the skill source.
 
-The visual editor changes soundtrack and cue timing. It does not move video cuts, time-stretch the source video, or grant rights to a song. A saved recipe references media; keep its song and film alongside it. The local server binds to `127.0.0.1` and runs FFmpeg for export. Node 22.12+, FFmpeg, and FFprobe are required for the full workflow.
+The visual editor changes soundtrack and cue timing; picture cuts live in the render project. A saved recipe references media, so keep its song and film alongside it. The local server binds to `127.0.0.1` and runs FFmpeg for export. Node 22.12+, FFmpeg, and FFprobe are required for the full workflow.

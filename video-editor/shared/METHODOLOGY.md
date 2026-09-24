@@ -1,8 +1,8 @@
-# Video editor methodology
+# Soundtrack methodology
 
 ## Purpose
 
-Put a repeatable soundtrack under an existing film. The picture is the timing authority. The editor combines a music excerpt with frame-placed sound cues, then exports one complete MP4. It is suited to product demos and short films whose picture has already been rendered.
+Put a repeatable soundtrack under the film created with [LAUNCH.md](LAUNCH.md) or any other existing video. The picture is the timing authority. The editor combines a music excerpt with frame-placed sound cues, then exports one complete MP4.
 
 ## Editing order
 

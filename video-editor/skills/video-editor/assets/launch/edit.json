@@ -1,0 +1,8 @@
+{
+  "cuts": [
+    { "scene": "context", "in": 0, "out": 75 },
+    { "scene": "tension", "in": 0, "out": 60 },
+    { "scene": "action", "in": 0, "out": 90 },
+    { "scene": "result", "in": 0, "out": 75 }
+  ]
+}

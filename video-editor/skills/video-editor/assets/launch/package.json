@@ -1,0 +1,26 @@
+{
+  "name": "video-editor-launch-starter",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node validate.mjs",
+    "studio": "npm run validate && remotion studio src/index.ts",
+    "render": "npm run validate && remotion render src/index.ts launch-film out/film.mp4 --codec h264",
+    "still": "npm run validate && remotion still src/index.ts",
+    "qc": "npm run validate && node qc.mjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.484",
+    "remotion": "4.0.484",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
+    "typescript": "5.9.2"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "fps": 30,
+  "cues": [
+    { "id": "action-press", "scene": "action", "frame": 44, "sound": "press", "volume": 0.5, "label": "Action" },
+    { "id": "result-arrival", "scene": "result", "frame": 24, "sound": "ready", "volume": 0.35, "label": "Result" }
+  ]
+}
