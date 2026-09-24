@@ -128,7 +128,9 @@ relates to the one before it.
 | ---------- | ----------------------------------------------------------------------- |
 | `momentum` | Outgoing is still travelling, incoming is already travelling. The default |
 | `match`    | A subject holds the same screen position while the framing changes       |
-| `impact`   | Deliberate discontinuity marking a new beat. Two per film, maximum       |
+| `impact`   | Deliberate discontinuity marking a new beat. Two per film, maximum. Still must change the picture |
+| `punch`    | Same surface, at least two tiers closer or wider. Emphasis, used rarely  |
+| `handoff`  | Invisible cut: outgoing ends on a designed frame the incoming starts from (see Transitions) |
 
 **Momentum is what makes a cut feel purposeful.** One shot is pushing in; the
 cut lands, and the next shot is already pushing in, faster. The eye never
@@ -148,8 +150,13 @@ Trim past the end of a movement and it throws, naming the frame to trim before.
 That error is the single most useful thing in this bundle: it is the difference
 between a cut that carries and a cut that lands on a corpse.
 
-### Two more things a scene declares
+### What else a scene declares
 
+- **`surface`**: the physical thing on screen (`panel`, `popover`, `page`,
+  `title`). Consecutive shots of one surface are one shot reframed; see
+  "The cut has to change the picture".
+- **`text`**: the line a text scene shows. The edit fails if its cut ends
+  before `readingFrames(text)`.
 - **`covers`**: the parts of the brief this shot covers, by the brief's own
   names. `validateCoverage(SCENES, cuts, PARTS)` fails when a part named in
   `PARTS` has no shot in the edit. A single-feature film leaves `PARTS`
@@ -182,50 +189,88 @@ point through it.
 
 ### The cut has to change the picture
 
-Momentum makes a cut feel intentional. **Variety is what makes it a cut at
-all.**
+Momentum makes a cut feel intentional. **A changed picture is what makes it a
+cut at all.**
 
-Two consecutive shots of the same subject at the same image size are a jump
-cut: the viewer cannot tell an edit from a dropped frame, and a film made of
-them feels random no matter how well the motion carries. This is the single
-most common way a product film fails, and it fails silently, because every
-individual shot looks fine.
+Cutting to a frame that looks basically the same, the same panel on the same
+page with a slightly different zoom, is the most common way a product film
+feels awkward. The viewer cannot tell an edit from a stutter, and every
+individual shot still looks fine. In the Panels dogfood, six of nine cuts were
+this, and the old checks passed all six (see `../../../dogfood/`).
 
-Across every cut, change at least one of:
+Across every cut, the picture must change in one of these ways:
 
-- **the image size**, by a whole tier, or
-- **the subject**, to a different part of the product
+- **A different surface.** Popover instead of panel, title instead of page,
+  a card instead of the list it came from.
+- **A visibly different state** of the same surface: dark after light, a new
+  row, a recoloured field. The change has to read in the first frame.
+- **A declared `punch`:** the same surface at least two tiers closer or wider
+  (BASE to CLOSE, PUSH to MACRO), used for emphasis, rarely.
 
-Each scene declares `tier` and `subject`, and `validateEdit` throws when
-neighbouring shots share both. Reach for a subject change when you can; a
-tier change on the same subject is a punch-in, which is legitimate but reads
-as emphasis, so it is worth spending on the feature rather than on filler.
+A smaller reframe of the same surface is not a cut. **Make it one continuous
+camera move inside one scene instead**; if two beats happen on the same
+surface, they are one shot. Record them as one take too (see
+[staging](staging.md)): a separate take reloads the page and loses UI-only
+state, such as an expanded row, which then visibly jumps across the cut.
 
-The tiers are 1.0, 1.5 and 2.2 precisely so a tier change is visible. Roughly
-1.5x is the smallest difference in image size that registers as a different
-shot. Tiers closer than that, say 1.8 against 2.0, produce cuts that look
-like a rendering glitch, and no amount of momentum rescues them.
+Three checks enforce this, because it fails silently:
 
-By default it checks clips between 15 and 75 frames, at least one interaction,
-varying clip lengths, and a total between 300 and 450 frames. A launch with
-several feature proofs or longer title holds can set the `profile` limits in
-`edit.json` as described in [render](render.md). Do not lengthen shots simply
-to fill a target duration.
+- Declare `surface` on every product scene. `validateEdit` rejects two
+  consecutive shots of one surface unless the cut is a `punch` of 2+ tiers
+  or a designed `handoff`. Subject names do not help, since renaming the
+  same panel "sliders" then "field" passes a subject check.
+- `qc.mjs` aligns the frames either side of every cut (`similarity.mjs`
+  searches zoom and offset) and warns when the incoming frame is the
+  outgoing picture again. Impact cuts are not exempt.
+- You read the in and out stills side by side. Cover the labels: if the two
+  thumbnails are the same shape, it is the same shot.
 
-### Rhythm
+### Rhythm: snappy by default
 
-Vary the clip lengths, and shorten them as the film approaches its payoff. Equal
-lengths read as a slideshow no matter how good each shot is. A useful shape:
-open long enough to orient, tighten through the middle, the shortest clips
-around the interaction, then a longer resolve that lets the viewer breathe.
+Vary the clip lengths, and shorten them as the film approaches its payoff.
+Equal lengths read as a slideshow no matter how good each shot is.
+
+Dead air is the other pacing failure: a pointer drifting toward a control, a
+settled result held a beat too long. Defaults that keep a launch snappy:
+
+| Moment | Frames at 30 fps |
+| --- | --- |
+| Pointer arriving at a control | 10-12 (record it entering near the target) |
+| Arrival to press | 2-4 |
+| Result hold before the cut | 12-20 |
+| Product clip in a launch | 30-60 |
+| Breadth montage glimpse | 8-14 |
+| Title card | its `readingFrames()` and no more |
+
+Trim each clip in to just before the action starts and out as soon as the
+result has read. When a recorded take has a long approach, speed the camera
+and trim; do not play the approach. A launch that runs past 25 s usually has
+dead air, not too many features.
 
 ### Transitions
 
-Start with cuts that carry shape, direction, action, or sound across the
-boundary. When the story calls for a designed reveal, animate it inside the
-scene so the transition is frame-driven and can be inspected. Avoid a generic
-dissolve between unrelated static screens; it rarely gives the viewer a reason
-to follow the next shot.
+Most cuts should be straight cuts that change the picture and carry motion.
+When a beat deserves a designed transition, it has to come out of the
+product: the colour that floods is the theme the user just picked, the wipe
+runs the way the slider moved, the element that grows is the one that was
+clicked. A generic dissolve or slide between unrelated screens gives the
+viewer no reason to follow.
+
+Scenes render as separate clips joined by concatenation, so nothing overlaps
+across a cut. A designed transition is therefore a **handoff**: the outgoing
+scene ends on a shared frame and the incoming scene starts from exactly that
+frame, and the edit marks the cut `continuity: 'handoff'`. `transitions.ts`
+has frame-driven pieces for the common ones:
+
+| Transition | Built from | Use when |
+| --- | --- | --- |
+| State flood | `flood()` grows the new theme or accent colour from the clicked control | A toggle changes the whole look; the next scene starts on that colour |
+| Directional wipe | `wipe()` in the gesture's direction | A before/after of the same surface, inside one scene |
+| Push through | `pushThrough()` scales the camera into a swatch or card until it fills the frame | The next scene is about what that element contains |
+| Element carry | An element ends at a fixed position; the next scene starts with it there | The same object moves to a new context, such as a pin to its row |
+
+Keep a film to two or three designed transitions. More turns the product
+into a showreel of effects.
 
 ## Focused-demo starter
 

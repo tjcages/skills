@@ -24,3 +24,11 @@ Config.setVideoImageFormat('jpeg')
 Config.setOverwriteOutput(true)
 Config.setCodec('h264')
 Config.setCrf(16)
+
+// Sandboxed machines often cannot download Remotion's Chrome. Point it at a
+// local headless Chromium (e.g. Playwright's) with REMOTION_CHROME.
+if (process.env.REMOTION_CHROME) Config.setBrowserExecutable(process.env.REMOTION_CHROME)
+
+// Recorded footage at 3x device pixels (4320x2430) decodes slowly enough to
+// starve the default 30 s delayRender budget, font loads included.
+Config.setDelayRenderTimeoutInMilliseconds(240000)

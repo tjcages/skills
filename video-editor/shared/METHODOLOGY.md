@@ -7,10 +7,16 @@ Put a repeatable soundtrack under the film created with the [video-editor skill]
 ## Editing order
 
 1. **Confirm the picture.** Use the exact film intended for delivery. A cut map is optional; when provided, its trimmed duration must match the film. If a different film is imported, review the cuts and cues again.
-2. **Set music.** Import a song you can use, select an excerpt long enough for `film duration × music speed`, and adjust volume and fades. Treat estimated BPM as a starting point: syncopation, intros, and half or double time can fool the analyzer.
+2. **Set music.** With no song supplied, generate an original, license-free bed: `node bed.mjs --film <seconds> --drop <seconds>` in the editor folder. Put the drop (the groove entering) on the film's first product reveal; the printed `start` lines it up. In the Panels dogfood this was the best-received part of the film. Otherwise import a song you can use, select an excerpt long enough for `film duration × music speed`, and adjust volume and fades. Treat estimated BPM as a starting point: syncopation, intros, and half or double time can fool the analyzer.
 3. **Place effects.** Put a sound at the visual event's frame. Audition click, arrival, typing, and confirmation cues against the picture. Keep small gestures quieter than decisive actions. Use the editor's sound replacement and undo controls when changing a family of cues.
 4. **Preview.** Play through cuts and the final tail. Looping helps audition but the export is one pass. Listen for masking, clipped peaks, missing cues, and sound that anticipates or lags the image.
 5. **Save and export.** Save the recipe, export the MP4, and play the exported artifact. The local exporter copies the video stream and encodes an AAC soundtrack; browser export re-encodes the picture. The final encoded file is the review authority.
+
+## Headless mixing, for agents that cannot listen
+
+`node render-mix.mjs --video film.mp4 --edit edit.json --cues cues.json --song bed.wav --start <s> --out final.mp4` builds the same v2 recipe the editor saves (written beside the output, so the visual editor can reopen it), exports through `mix.mjs`, and **reports every cue's peak against the music under it**, then masters to -14 LUFS with a -1.5 dBFS limiter, copying the picture.
+
+Measure because you cannot hear. The bundled Cuelume sounds are UI-quiet (peaks around -12 to -21 dBFS): at editor music volume 0.85 every cue sat 15-40 dB under the bed, and even at 0.3 the small press and release clicks were only 0-4 dB over it. The default music volume is 0.22 with cues near full; the report flags any cue under +4 dB. Raise small gestures to 0.8-1.0 rather than leaving them at the "quiet" levels the editor suggests for listening. A mix that measures well can still sound wrong, so a human listen through the final frame stays the last step.
 
 ## Inputs and durability
 

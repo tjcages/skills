@@ -2,6 +2,8 @@ import { execFileSync } from 'node:child_process'
 import { mkdirSync, readFileSync } from 'node:fs'
 import { inflateSync } from 'node:zlib'
 
+import { compareFrames, isSamePicture } from './similarity.mjs'
+
 /**
  * Renders the frames that matter and checks them for the defects that are
  * invisible in code and obvious in a picture: content clipped at the frame
@@ -23,7 +25,6 @@ const OUT_DIR = 'out/qc'
 const MARGIN = 60
 const MARGIN_FILL_LIMIT = 0.02
 const FLAT_BAND_LIMIT = 0.35
-const SAME_PICTURE_LIMIT = 2.5
 const COLOUR_TOLERANCE = 24
 
 const args = new Map(
@@ -155,16 +156,6 @@ function longestFlatBand(image) {
   return longest / image.height
 }
 
-function meanDifference(a, b) {
-  let sum = 0
-  let count = 0
-  for (let i = 0; i < a.pixels.length; i += 12) {
-    sum += Math.abs(a.pixels[i] - b.pixels[i])
-    count += 1
-  }
-  return sum / count
-}
-
 const cuts = JSON.parse(readFileSync(EDIT, 'utf8')).cuts
 mkdirSync(OUT_DIR, { recursive: true })
 const warnings = []
@@ -195,11 +186,16 @@ cuts.forEach((cut, index) => {
     }
   }
 
-  if (index > 0 && previousOut && cut.continuity !== 'impact') {
-    const difference = meanDifference(previousOut.image, frames[0][1])
-    if (difference < SAME_PICTURE_LIMIT) {
+  // A cut must change the picture. Pixel difference is fooled by a reframe
+  // (every pixel moves, the viewer sees the same shot), so the frames are
+  // aligned first; see similarity.mjs. Impact cuts are not exempt: a hard
+  // cut to the same surface reads as a glitch, not as emphasis. Only a
+  // declared `punch` (two or more tiers, checked by validateEdit) may.
+  if (index > 0 && previousOut && cut.continuity !== 'punch' && cut.continuity !== 'handoff') {
+    const same = compareFrames(previousOut.image, frames[0][1])
+    if (isSamePicture(same)) {
       warnings.push(
-        `${previousOut.scene} to ${cut.scene}: the frames either side of the cut are nearly identical (mean difference ${difference.toFixed(1)}), so it will read as a dropped frame rather than an edit. Change the tier or the subject.`
+        `${previousOut.scene} to ${cut.scene}: the incoming frame is the outgoing picture again, reframed about ${same.zoom.toFixed(2)}x (structure ${same.correlation.toFixed(2)}, colour distance ${same.colour.toFixed(0)}). A near-identical cut reads as a stutter. Make the two shots one continuous camera move, or cut to a different surface or a visibly changed state, or declare a "punch" of two or more tiers.`
       )
     }
   }

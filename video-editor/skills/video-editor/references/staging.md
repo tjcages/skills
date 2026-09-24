@@ -17,7 +17,7 @@ accessory context. If the site itself is the film subject, it is primary UI.
 | Situation                                    | What you do                          |
 | -------------------------------------------- | ------------------------------------ |
 | You have the codebase and can import from it | Use its real components and styles; verify the motion |
-| The runtime works but the components cannot render in Remotion | Record the actual product interaction |
+| The runtime works but the components cannot render in Remotion | Record the actual product interaction with `capture/record.mjs` (Part 1, Recording the live product) |
 | You have only a URL | Record the live website or obtain approved captures |
 | The film announces a tool, a skill, or a capability | Film real component vignettes: Part 3 |
 
@@ -172,6 +172,56 @@ primitive; treating that as disqualifying means rebuilding the whole library.
 
 Reading the component also catches its **API**: a ring that wants `0` to `1`
 and is handed `72` renders full, silently.
+
+### Recording the live product
+
+For most real interactive UI, recording beats porting: floating panels,
+popovers, drag physics, and springs are exactly what a port gets subtly
+wrong. `capture/record.mjs` (copied by the scaffold) films the running
+product faithfully at full resolution:
+
+1. **Build a capture fixture**, a small page that mounts the real
+   components with real props over whatever accessory context the story
+   needs (a canvas, sample data). Alias the product's source directly, as
+   the product's own playground does. Reproduce the host environment the
+   components expect: the Panels fixture needed the Tailwind-style button
+   reset its real hosts ship, or every button showed a browser-grey
+   background. Expose the state the next shot needs (`window.__state`) and
+   accept it back through the URL.
+2. **Script each take in `shots.mjs`**: pointer moves, `click()`, drags,
+   key presses, in CSS pixels and virtual milliseconds. **One take per
+   surface:** beats that happen on the same panel belong in one continuous
+   take, which the film frames with one camera move. Separate takes reload
+   the page and lose UI-only state such as an expanded row.
+3. **Record:** `node record.mjs <shot>`. Every clock the page reads is
+   slowed 30x together (performance.now, Date.now, rAF, timers,
+   Event.timeStamp, and CSS/WAAPI via CDP), input is replayed 30x slower, and
+   full-resolution screenshots are resampled to 30 fps of virtual time.
+   Output: `out/<shot>.mp4`, `<shot>.cursor.json` (the pointer path, drawn by
+   the film's `Cursor`), `<shot>.state.json`, and the frame of every press
+   for the cue sheet.
+4. **Film it** with `Footage` from `footage.tsx`: frame with `aim(track, x,
+   y, zoom)` from measured CSS geometry, never typed canvas numbers.
+
+Numbers from the Panels dogfood:
+
+| Setting | Value | Why |
+| --- | --- | --- |
+| Viewport | 1440x810 | Desktop layout, 16:9, UI large enough to read at PUSH |
+| `DSF` | `>= zoom * 1920 / viewport width`; 3 for CLOSE | Screenshots are the only full-resolution source; headless screencast is capped at CSS pixels |
+| `K` (slow-down) | 30 | ~3-10 captures per output frame; the recorder warns when a gap exceeds one frame |
+| Cost | ~3 min per 4 s take; 3x footage renders ~3-4 min per clip | Budget it; cut takes short |
+
+Not slowed by the patch: `<video>`, audio, Web Workers, and WebGL loops that
+read a clock the patch cannot reach. Compare those against the live product.
+A click scripted as instant down/up is invisible on film; `click()` holds
+70 ms and `Footage` holds the pressed cursor at least three frames.
+
+**When the product misbehaves on camera, film the truth and report it.**
+The Panels float panel opened top-left instead of docking right when it
+mounted collapsed; the film showed close-then-reopen, which docks correctly,
+and the bug went to the product's tracker. Never stage around a bug
+silently, and never fake the correct behaviour.
 
 ### 4. Compose the stage
 

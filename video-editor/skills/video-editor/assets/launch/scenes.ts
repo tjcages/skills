@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react'
 
 import { TIER_RANK, type Tier } from './camera'
+import { readingFrames } from './text'
 
 /**
  * What moves in a scene. There is deliberately no `static` option: a shot
@@ -12,6 +13,8 @@ export type SceneActivity =
   | 'travel'
   | 'reveal'
   | 'highlight'
+  /** A rapid real-product glimpse in a breadth montage; may run 8-14 frames. */
+  | 'montage'
 
 /**
  * Which of the four story beats this shot belongs to. A beat may span several
@@ -62,6 +65,19 @@ export type Scene = {
    * a jump cut, so this is what the variety check compares.
    */
   subject: string
+  /**
+   * The physical thing on screen: 'panel', 'page', 'popover', 'title'. Two
+   * consecutive shots of the same surface are one shot reframed, however the
+   * subjects are named, unless the cut is a declared `punch`. Declare it on
+   * every product shot; the variety check cannot see through renamed
+   * subjects without it, and qc.mjs checks the pixels either way.
+   */
+  surface?: string
+  /**
+   * The line a text scene shows. The edit fails if the cut ends before
+   * `readingFrames(text)`; no separate reading-hold call to forget.
+   */
+  text?: string
   motion: { from: number; to: number; tag: MotionTag }
   /**
    * Which parts of the brief this shot covers, by the names the brief uses.
@@ -88,9 +104,18 @@ export type Scene = {
  * changes around it. Use when both shots are settled on the same thing.
  *
  * `impact` is a deliberate discontinuity marking a new beat. Powerful and
- * expensive: two per film is the ceiling.
+ * expensive: two per film is the ceiling. It must still change the picture.
+ *
+ * `punch` is a deliberate jump in on the same surface: at least two tiers
+ * (BASE to CLOSE, PUSH to MACRO). Anything smaller reads as a stutter; make
+ * it one continuous camera move instead.
+ *
+ * `handoff` is an invisible cut: the outgoing scene ends on a designed shared
+ * frame (a colour flood, a shape, an element at a fixed position) and the
+ * incoming scene starts from that same frame. See the transitions in
+ * `transitions.ts`.
  */
-export type Continuity = 'momentum' | 'match' | 'impact'
+export type Continuity = 'momentum' | 'match' | 'impact' | 'punch' | 'handoff'
 
 export type Cut = {
   scene: string
@@ -100,6 +125,7 @@ export type Cut = {
 }
 
 const MIN_CLIP = 15
+const MIN_MONTAGE_CLIP = 8
 const MAX_CLIP = 75
 const MIN_FILM = 300
 const MAX_FILM = 450
@@ -154,11 +180,17 @@ export function validateEdit(scenes: Scene[], cuts: Cut[], profile: EditProfile 
         `${cut.scene}: trim ${cut.in}-${cut.out} falls outside its ${scene.duration} frames`
       )
     }
-    if (clipLength(cut) < MIN_CLIP) {
+    const minClip = scene.activity === 'montage' ? MIN_MONTAGE_CLIP : MIN_CLIP
+    if (clipLength(cut) < minClip) {
       problems.push(`${cut.scene}: ${clipLength(cut)} frames is too short to read`)
     }
     if (clipLength(cut) > maxClip) {
       problems.push(`${cut.scene}: ${clipLength(cut)} frames outstays its welcome`)
+    }
+    if (scene.text && clipLength(cut) < readingFrames(scene.text)) {
+      problems.push(
+        `${cut.scene}: holds "${scene.text}" for ${clipLength(cut)} frames but reading needs ${readingFrames(scene.text)}. Trim later or shorten the line.`
+      )
     }
 
     const previousCut = index > 0 ? cuts[index - 1] : undefined
@@ -170,6 +202,19 @@ export function validateEdit(scenes: Scene[], cuts: Cut[], profile: EditProfile 
         TIER_RANK[scene.tier] - TIER_RANK[previousScene.tier]
       )
 
+      const sameSurface =
+        previousScene.surface !== undefined && previousScene.surface === scene.surface
+      if (cut.continuity === 'punch') {
+        if (sizeChange < 2) {
+          problems.push(
+            `${previousScene.id} to ${scene.id}: a punch must jump at least two tiers (${previousScene.tier} to ${scene.tier} is ${sizeChange}). Smaller reframes of one surface read as a stutter; make them one camera move.`
+          )
+        }
+      } else if (sameSurface && cut.continuity !== 'handoff') {
+        problems.push(
+          `${previousScene.id} to ${scene.id}: both shots film the same surface "${scene.surface}", so the cut is a reframe of one picture. Merge them into one continuous camera move, cut to a different surface or a visibly changed state, or declare a "punch" of two or more tiers.`
+        )
+      }
       if (sameSubject && sizeChange === 0) {
         problems.push(
           `${previousScene.id} to ${scene.id}: same subject "${scene.subject}" at the same tier "${scene.tier}" is a jump cut. Change the image size by a tier, or point the shot at something else.`

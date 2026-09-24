@@ -92,11 +92,11 @@ The rules that follow:
 
 - **A scene with text is at least `readingFrames()` long, plus handles.**
   Author the scene longer and trim, as with every movement in the bundle.
-- **The cut may not land before the hold expires, and
-  `validateReadingHold()` proves it.** `validateEdit` checks motion
-  ranges, not reading, so call `validateReadingHold(scene, line, out - in)`
-  for every text scene in `edit.json`. It throws with the frame count the
-  line actually needs; do not cut text on feel.
+- **The cut may not land before the hold expires, and `validateEdit`
+  proves it.** Put the line in the scene's `text` field; the edit fails
+  with the frame count the line actually needs. (`validateReadingHold()`
+  remains for text that is not a scene's single line.) Do not cut text on
+  feel.
 - **Exits wait for the hold too.** A line that starts leaving while the
   viewer is still reading is the same failure with extra motion.
 
