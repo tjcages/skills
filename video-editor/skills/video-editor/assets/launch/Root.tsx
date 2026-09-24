@@ -3,7 +3,7 @@ import { Composition } from 'remotion'
 import { CANVAS } from './camera'
 import editFile from './edit.json'
 import { PARTS, SCENES } from './film'
-import { validateCoverage, validateEdit, type Cut } from './scenes'
+import { validateCoverage, validateEdit, type Cut, type EditProfile } from './scenes'
 
 /**
  * One composition per scene, so every shot can be previewed, QC'd and
@@ -13,7 +13,7 @@ import { validateCoverage, validateEdit, type Cut } from './scenes'
  * Validating here means a broken edit fails when you open the studio, not
  * after eight clips have rendered.
  */
-validateEdit(SCENES, editFile.cuts as Cut[])
+validateEdit(SCENES, editFile.cuts as Cut[], ('profile' in editFile ? editFile.profile : {}) as EditProfile)
 validateCoverage(SCENES, editFile.cuts as Cut[], PARTS)
 
 export function RemotionRoot() {

@@ -1,7 +1,7 @@
 # Product video staging
 
-Everything the camera films. The story skill has already decided the claim,
-the proof and the four beats. This skill builds only what those need.
+Everything the camera films. The story guide has chosen a focused demo or a
+launch with selected feature proofs. Build only the surfaces those proofs need.
 
 ## Before anything: build less than you think
 
@@ -21,7 +21,7 @@ yourself porting a fourth component that the claim never mentions, stop.
 | Situation                                    | What you do                          |
 | -------------------------------------------- | ------------------------------------ |
 | You have the codebase and can import from it  | Use its real components and tokens   |
-| You have only a URL, or a build you cannot run | Rebuild the one screen the claim needs |
+| You have only a URL, or a build you cannot run | Rebuild the surfaces the chosen proofs need |
 | The film announces a tool, a skill or a capability | Film component vignettes: Part 3 |
 
 In every case nothing is embedded, framed or screenshotted into the film: a
@@ -270,8 +270,8 @@ project instead of six is the usual cut.
 
 ## Part 2: rebuilding from a URL
 
-No codebase, or a build you cannot run. **Rebuild the one screen the claim
-needs**, in plain JSX and Tailwind.
+No codebase, or a build you cannot run. **Rebuild the smallest surfaces the
+chosen proofs need**, in plain JSX and Tailwind.
 
 There is no design system to import, no tokens to resolve, and no package to
 alias. `style.css` is just `@import 'tailwindcss'`. That is the whole setup.
@@ -288,7 +288,7 @@ Look at the site and take:
 - **The vocabulary.** Real product words, shortened.
 
 Then apply every rule from Part 1 above: fixed heights, sized to the tier,
-edges in frame, one claim's worth of content and no more. Rebuilding is
+edges in frame, only the content selected for the film. Rebuilding is
 usually *faster* than wiring a codebase, and it is always more legible,
 because you build only what the film needs at the size it needs to be.
 
@@ -307,8 +307,8 @@ close-up.
 Throw away the workspace and film components one at a time:
 
 - **One component per scene, dead centre,** on a flat canvas one step
-  darker than the component's surface. No panel, no sidebar, no header, no
-  chrome.
+  darker than the component's surface. Omit wrapper panels, sidebars, headers,
+  and chrome unless that very component is the product being demonstrated.
 - **The component is the animation.** Every vignette moves under its own
   power. A static component with a camera push is a slide, not a shot.
 - **Bold beats faithful.** An element the product renders at 13px can fill
@@ -343,9 +343,10 @@ in [scenes.md](scenes.md); title cards and reading time in
 
 ## Filming a design system itself
 
-When the product is a component library there is no feature to film. Film its
-preview or documentation app: a page of real primitives in real states is the
-product, and one component's interaction is the interaction beat.
+When the product is a component library, its primitives and interactions are
+the features. Film the real components or faithful presentational versions in
+recognizable states. A preview or documentation app can establish context, but
+need not remain around every component vignette.
 
 **Dark mode will half-render if you try to flip it mid-film.** Most systems
 declare light tokens on `:root` and dark overrides on `[data-theme=dark]`,

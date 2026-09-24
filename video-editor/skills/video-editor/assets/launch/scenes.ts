@@ -105,6 +105,13 @@ const MIN_FILM = 300
 const MAX_FILM = 450
 const MAX_IMPACT = 2
 
+export type EditProfile = {
+  mode?: 'focused' | 'launch'
+  minFilmFrames?: number
+  maxFilmFrames?: number
+  maxClipFrames?: number
+}
+
 export function clipLength(cut: Cut): number {
   return cut.out - cut.in
 }
@@ -121,9 +128,19 @@ function isMoving(scene: Scene, frame: number): boolean {
  * Fails loudly before anything renders. Every rule encodes a note a reviewer
  * would otherwise give you after watching the assembled film.
  */
-export function validateEdit(scenes: Scene[], cuts: Cut[]): Cut[] {
+export function validateEdit(scenes: Scene[], cuts: Cut[], profile: EditProfile = {}): Cut[] {
   const problems: string[] = []
   const byId = new Map(scenes.map(scene => [scene.id, scene]))
+  const maxClip = profile.maxClipFrames ?? MAX_CLIP
+  const minFilm = profile.minFilmFrames ?? MIN_FILM
+  const maxFilm = profile.maxFilmFrames ?? MAX_FILM
+  if (
+    ![maxClip, minFilm, maxFilm].every(Number.isInteger) ||
+    maxClip < MIN_CLIP || minFilm < MIN_CLIP || maxFilm < minFilm ||
+    (profile.mode !== undefined && !['focused', 'launch'].includes(profile.mode))
+  ) {
+    problems.push('invalid edit profile limits')
+  }
 
   cuts.forEach((cut, index) => {
     const scene = byId.get(cut.scene)
@@ -140,7 +157,7 @@ export function validateEdit(scenes: Scene[], cuts: Cut[]): Cut[] {
     if (clipLength(cut) < MIN_CLIP) {
       problems.push(`${cut.scene}: ${clipLength(cut)} frames is too short to read`)
     }
-    if (clipLength(cut) > MAX_CLIP) {
+    if (clipLength(cut) > maxClip) {
       problems.push(`${cut.scene}: ${clipLength(cut)} frames outstays its welcome`)
     }
 
@@ -196,7 +213,10 @@ export function validateEdit(scenes: Scene[], cuts: Cut[]): Cut[] {
     .map(cut => byId.get(cut.scene))
     .filter((scene): scene is Scene => Boolean(scene))
 
-  const missing = BEAT_ORDER.filter(beat => !inEdit.some(s => s.beat === beat))
+  const requiredBeats = profile.mode === 'launch'
+    ? BEAT_ORDER.filter(beat => beat !== 'tension')
+    : BEAT_ORDER
+  const missing = requiredBeats.filter(beat => !inEdit.some(s => s.beat === beat))
   if (missing.length > 0) {
     problems.push(
       `the edit has no ${missing.join(' and no ')} beat, so it is a tour rather than an argument`
@@ -206,7 +226,7 @@ export function validateEdit(scenes: Scene[], cuts: Cut[]): Cut[] {
   let highest = -1
   inEdit.forEach(scene => {
     const rank = BEAT_ORDER.indexOf(scene.beat)
-    if (rank < highest) {
+    if (profile.mode !== 'launch' && rank < highest) {
       problems.push(
         `${scene.id} is a "${scene.beat}" shot after a later beat, so the story runs backwards`
       )
@@ -241,8 +261,8 @@ export function validateEdit(scenes: Scene[], cuts: Cut[]): Cut[] {
   }
 
   const total = filmDuration(cuts)
-  if (total < MIN_FILM || total > MAX_FILM) {
-    problems.push(`film is ${total} frames, outside ${MIN_FILM} to ${MAX_FILM}`)
+  if (total < minFilm || total > maxFilm) {
+    problems.push(`film is ${total} frames, outside ${minFilm} to ${maxFilm}`)
   }
 
   if (problems.length > 0) {

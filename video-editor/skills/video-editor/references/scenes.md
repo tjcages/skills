@@ -8,7 +8,9 @@ Two tools, and they are not interchangeable:
 - **A cut** replaces the shot. The viewer re-orients, which costs a moment of
   attention and buys pace.
 
-Move to explain. Cut to accelerate.
+Move to explain. Cut to accelerate. A launch can use a match cut, color or
+shape bridge, or deliberate impact to connect different product capabilities;
+it need not travel through one continuous camera move.
 
 ## How this is built
 
@@ -204,9 +206,11 @@ The tiers are 1.0, 1.5 and 2.2 precisely so a tier change is visible. Roughly
 shot. Tiers closer than that, say 1.8 against 2.0, produce cuts that look
 like a rendering glitch, and no amount of momentum rescues them.
 
-Other rules it enforces: clips between 15 and 75 frames, at least one scene
-with `activity: 'interaction'`, clip lengths that vary, and a total between 300
-and 450 frames.
+By default it checks clips between 15 and 75 frames, at least one interaction,
+varying clip lengths, and a total between 300 and 450 frames. A launch with
+several feature proofs or longer title holds can set the `profile` limits in
+`edit.json` as described in [render](render.md). Do not lengthen shots simply
+to fill a target duration.
 
 ### Rhythm
 
@@ -215,16 +219,20 @@ lengths read as a slideshow no matter how good each shot is. A useful shape:
 open long enough to orient, tighten through the middle, the shortest clips
 around the interaction, then a longer resolve that lets the viewer breathe.
 
-### Crossfades
+### Transitions
 
-There are none, by design. The bundled ffmpeg has no `xfade` filter, hard cuts
-are what fast films are made of, and a dissolve between two shots of the same
-interface reads as a mistake. If you genuinely need one, that is a system
-ffmpeg and a re-encode, and it is almost never the right call.
+Start with cuts that carry shape, direction, action, or sound across the
+boundary. When the story calls for a designed reveal, animate it inside the
+scene so the transition is frame-driven and can be inspected. Avoid a generic
+dissolve between unrelated static screens; it rarely gives the viewer a reason
+to follow the next shot.
 
-## The default shot list
+## Focused-demo starter
 
-Eight scenes, about twelve seconds. Every scene moves, and every cut carries.
+The eight-scene scaffold illustrates camera and cut mechanics for a focused
+demo. Replace its story and stage for the actual product. A launch needs a
+feature inventory and its own shot list; do not preserve these eight subjects
+just because the scaffold ships them.
 
 | Scene       | Motion        | What happens                                 |
 | ----------- | ------------- | -------------------------------------------- |
@@ -248,11 +256,10 @@ Four tiers only, and these exact numbers, from `camera.ts`:
 | `CLOSE` | 2.2   | 873 x 491      | A component: a card, a row     |
 | `MACRO` | 3.3   | 582 x 327      | A control: a toggle, a field, a value |
 
-**The zoom arc runs inward.** Open at `BASE` so the viewer knows where they
-are, then film every following beat closer than the last, and pull back only
-once at the very end. **The feature is filmed at `CLOSE` or `MACRO`, never
-wider.** A film that stays at `PUSH` throughout is the most common way a product film
-ends up dull: everything is visible and nothing is exciting.
+For a focused demo, an inward zoom arc can orient once, move toward the
+interaction, and pull back for its result. A launch can alternate isolated
+components, wide visual outcomes, and titles. Film small interactions close
+enough to read. If every shot stays at one scale, the edit will feel flat.
 
 At `MACRO` a single control fills the screen. That shot is where a film stops
 looking like a screen recording. If you never reach `MACRO`, you have almost
