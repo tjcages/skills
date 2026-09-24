@@ -1,6 +1,6 @@
 # Video editor
 
-One Agent Skill for a focused product demo or a broader launch film: product discovery, feature selection, real-product staging, frame-driven scenes, creative review, music, effects, and final MP4 export. A request such as “make a product launch video” starts with product inspection and a feature inventory. Install [`skills/video-editor`](skills/video-editor); its production guides are internal references, not separate skills.
+One Agent Skill for a product launch film by default or a focused demo when the user requests a demo or one feature: product discovery, feature selection, real-product staging, scenes, creative review, music, effects, and final MP4 export. A whole website may be the product. Install [`skills/video-editor`](skills/video-editor); its production guides are internal references, not separate skills. The featured UI and native motion must be imported or captured from the actual product; accessory context may be abstracted.
 
 For a new film, follow the [skill](skills/video-editor/SKILL.md) and copy the bundled [Remotion assets](skills/video-editor/assets/launch) into a standalone work directory using the [render guide](skills/video-editor/references/render.md). The scaffold renders eight placeholder shots; replace them with truthful product evidence. The local [sound editor](skills/video-editor/assets/editor) is packaged as runnable UI, not material the model must load into context. It accepts the rendered MP4 and the same `edit.json` cut map. Node 22.12+, FFmpeg, and FFprobe are needed for native export.
 
@@ -8,4 +8,4 @@ Run `npx tsc --noEmit`, `node qc.mjs`, and `node build.mjs` in the copied film p
 
 The visual production material is adapted from the author-authorized MIT release of Product Video by [launchvideo.dev](https://launchvideo.dev/). See [NOTICE](NOTICE.md) for attribution. The sound editor and packaging are authored separately; Cuelume sound attribution is in the [methodology](shared/METHODOLOGY.md).
 
-Status: v0.4 draft. The `panels` launch-film dogfood exposed a creative failure in the first cut and drove the launch-specific story, pacing, and review rules. User acceptance of the replacement film remains open before v1.
+Status: v0.5 draft. The `panels` dogfood exposed both a weak launch story and an invented primary panel UI. The exported replacement is technical evidence only, not an accepted fidelity example. A new film using the real `panels` controls and motion remains open before v1.

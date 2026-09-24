@@ -5,17 +5,16 @@
 These break renders rather than merely look bad. Check them before every
 render.
 
-1. **Every movement comes from `useCurrentFrame()`.** No CSS transitions, no
-   CSS keyframes, no `setTimeout`, no `Math.random()`, no `Date.now()`. Anything
-   on wall-clock time renders as flicker, because frames are produced out of
-   order and in parallel.
-2. **Never render the product's interactive or self-animating components.**
-   Portals, spring libraries, and toast timers are wall-clock bound. Run
-   `node scan-wallclock.mjs app-pkg/src/components` before importing
-   anything: it lists every timer, spring, portal, and CSS animation in the
-   tree, so the import-or-rebuild decision is made from a list rather than
-   from what you happened to read. The staging skill explains what to do
-   with each finding.
+1. **Composited motion must be frame-driven.** In Remotion, avoid wall-clock
+   CSS transitions, keyframes, timers, randomness, and clock reads; frames
+   render out of order. This restriction does not prohibit recording the
+   product's actual runtime and using the captured footage.
+2. **Preserve primary UI motion.** Run
+   `node scan-wallclock.mjs app-pkg/src/components` before importing a
+   component into Remotion. If it relies on wall-clock animation, capture the
+   actual interaction or port the source motion exactly and verify it against
+   the product. Do not replace it with a generic skill preset. See
+   [fidelity](fidelity.md) and [staging](staging.md).
 3. **One React copy, at runtime and at the type level.** The webpack aliases in
    `../assets/launch/remotion.config.ts` handle the runtime. A linked design system also
    carries its own `@types/react`, and two unrelated React type trees make every
@@ -206,19 +205,21 @@ and size tradeoff, not lossless.
 
 ## Checklist
 
-- [ ] Source decided with the staging skill before scaffolding: codebase, URL, or vignettes
+- [ ] Primary UI and accessory context classified; provenance recorded for each primary shot
+- [ ] Source decided before scaffolding: product component, runtime capture, approved footage, or accessory illustration
 - [ ] Exact matching versions for `remotion` and every `@remotion/*` package
 - [ ] React aliases in `remotion.config.ts` and `paths` in `tsconfig.json`
 - [ ] `style.css` imported from `src/index.ts` before `registerRoot`
 - [ ] Root font size and any `@custom-variant` copied from the product
-- [ ] Stage built with the staging skill, not improvised
-- [ ] Every movement animated to completion, with handles, and trimmed later
+- [ ] Stage follows the real primary UI; no unapproved lookalike controls or animation
+- [ ] Editorial movements have usable handles; captured product motion keeps its native timing
 - [ ] Every cut carries momentum, proven by `validateEdit`
-- [ ] The feature itself animates, not just the camera onto it
+- [ ] Each selected feature shows its real interaction and result, not only a camera move
 - [ ] At least one scene with `activity: 'interaction'`
-- [ ] Every operated control shows a shipped cursor from `cursors.tsx`, one style per film
+- [ ] Any visible cursor or press matches the actual product interaction
 - [ ] One line per text scene, chained scenes for more, holds proven by `validateReadingHold`
 - [ ] Entrance animations only in the scene that introduces the content
-- [ ] No CSS transitions, timers, randomness, or wall-clock values anywhere, proven by `scan-wallclock.mjs` on every imported tree
+- [ ] No wall-clock motion inside Remotion-composited code; recorded real product footage is allowed
+- [ ] Primary states and motion compared side by side with the running product or source capture
 - [ ] Every part the brief names is covered by a shot, proven by `validateCoverage`
 - [ ] `node qc.mjs` passes, then one still per scene read before rendering
