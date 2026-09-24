@@ -15,8 +15,8 @@ if (existsSync(join(destination, 'package.json'))) {
 }
 
 const source = resolve(dirname(fileURLToPath(import.meta.url)), '../assets/launch')
-const rootFiles = ['package.json', 'remotion.config.ts', 'tsconfig.json', 'build.mjs', 'qc.mjs', 'similarity.mjs', 'scan-wallclock.mjs', '.gitignore']
-const sourceFiles = ['index.ts', 'Root.tsx', 'style.css', 'camera.ts', 'motion.ts', 'scenes.ts', 'edit.json', 'text.ts', 'cursors.tsx', 'site.ts', 'fonts.ts', 'footage.tsx', 'transitions.ts']
+const rootFiles = ['package.json', 'remotion.config.ts', 'tsconfig.json', 'build.mjs', 'qc.mjs', 'similarity.mjs', 'beats.mjs', 'montage.mjs', 'scan-wallclock.mjs', '.gitignore']
+const sourceFiles = ['index.ts', 'Root.tsx', 'style.css', 'camera.ts', 'motion.ts', 'scenes.ts', 'edit.json', 'text.ts', 'cursors.tsx', 'site.ts', 'fonts.ts', 'footage.tsx', 'transitions.ts', 'beats.ts', 'montage.tsx', 'montage.example.json']
 mkdirSync(join(destination, 'src'), { recursive: true })
 for (const file of rootFiles) cpSync(join(source, file), join(destination, file))
 for (const file of sourceFiles) cpSync(join(source, file), join(destination, 'src', file))

@@ -247,6 +247,52 @@ result has read. When a recorded take has a long approach, speed the camera
 and trim; do not play the approach. A launch that runs past 25 s usually has
 dead air, not too many features.
 
+### Cut on the music
+
+A cut that lands on the beat feels intended even when the viewer cannot
+say why; one that lands a few frames off feels loose. When the film has
+music, give the edit its grid and let the tools do the arithmetic:
+
+1. `node bed.mjs --film <s> --drop <s>` (in the editor) writes `bed.json`
+   next to the song: tempo, and the excerpt start that lands the drop.
+2. `node beats.mjs --bed <bed.json>` reports every cut's distance from the
+   grid (beats and off-beats by default); `--write` snaps each `out` by at
+   most 5 frames and saves the grid into `edit.json` as `"music"`.
+3. From then on `validateEdit` fails any cut more than 2 frames off the
+   grid, naming the frame, so a later trim cannot quietly fall off beat.
+
+Snapping only moves numbers. Re-run the studio or `tsc` and `qc.mjs`:
+`validateEdit` still has the last word on motion ranges and reading holds.
+The drop belongs on the first product reveal, not on a title.
+
+### Breadth montage
+
+The montage is how a launch shows breadth in seconds (see [story](story.md)):
+4-8 real capabilities, one glimpse each, cut every beat or half-beat.
+
+1. Record each capability's state change as a short take, or reuse frames
+   from hero takes.
+2. List the glimpses in `src/montage.json` (shape in `montage.tsx`, sample in
+   `montage.example.json`): clip, the clip frame where the change happens,
+   the point to frame, a tier zoom, and the surface on screen.
+3. `node montage.mjs --write` places them after the named scene with every
+   boundary on the grid, and checks that each glimpse fits its clip and that
+   neighbours show different surfaces.
+4. Add `...montageScenes(montage)` to `SCENES`. Each glimpse starts four
+   frames before its change and drifts in, so every cut lands on motion.
+
+Glimpses run 8-24 frames and are the one place a shot may be that short.
+They must still change the picture across every cut; qc checks them like any
+other.
+
+### Zoom is checked on screen, not declared
+
+A footage or stage scene built with `footageScene()` carries its camera, and
+`validateEdit` reads it: every camera target must sit within 10% of a tier
+(the Panels film's 1.12 and 1.16 drifts fail), and the punch and
+same-surface rules compare the zoom actually on screen at each cut, not the
+declared `tier`. Declare cameras this way whenever a scene moves a camera.
+
 ### Transitions
 
 Most cuts should be straight cuts that change the picture and carry motion.

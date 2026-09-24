@@ -240,4 +240,7 @@ and size tradeoff, not lossless.
 - [ ] Beats on the same surface recorded as one take and filmed as one camera move
 - [ ] Default launch beats covered (hook, first contact, core loop, heroes, breadth montage, differentiator, CTA) or their omission stated
 - [ ] No clip carries dead air: pointer approach under ~12 frames, result hold 12-20 frames
+- [ ] Camera scenes built with `footageScene()` (or a declared `camera`); every target on a tier
+- [ ] With music: `beats.mjs --write` run, `edit.json` carries `"music"`, every cut on the grid
+- [ ] Breadth montage built with `montage.mjs` when the launch covers more than its heroes
 - [ ] `node qc.mjs` passes, then one still per scene read before rendering

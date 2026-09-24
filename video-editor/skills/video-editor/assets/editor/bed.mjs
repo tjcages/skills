@@ -200,7 +200,13 @@ for (let i = 0; i < N; i++) {
   R[i] = (Math.tanh((R[i] / peak) * 1.3) / drive) * 0.84
 }
 writeFileSync(OUT, encodeWav([L, R], SR))
+// The grid the film cuts to (beats.mjs) and the excerpt start the mix uses.
+const sidecar = OUT.replace(/\.wav$/, "") + ".json"
+writeFileSync(
+  sidecar,
+  JSON.stringify({ bpm: BPM, phase: 0, start: START, drop: DROP, grooveAt: +(INTRO_BARS * BAR).toFixed(3), seconds: +(N / SR).toFixed(3) }, null, 2) + "\n",
+)
 console.log(
   `${OUT}: ${(N / SR).toFixed(1)} s at ${BPM} BPM, groove at ${(INTRO_BARS * BAR).toFixed(3)} s. ` +
-    `Use mix "start": ${START} so the drop lands at ${DROP} s of the film.`,
+    `Use mix "start": ${START} so the drop lands at ${DROP} s of the film. Grid saved to ${sidecar}.`,
 )

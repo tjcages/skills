@@ -26,7 +26,7 @@ The film should let a new viewer say what the product does and why the demonstra
 
 Twenty to thirty seconds is the default length. Snappy beats complete.
 
-The inventory has to cover the product's whole surface, not just the easiest part to film. Mark each capability **hero**, **montage**, or **omit** with a reason, list hero and montage items in `PARTS`, and let `validateCoverage` prove each appears. A launch that shows five features of a product with fifteen reads as a smaller product than it is; the montage exists so breadth costs seconds, not minutes. Montage glimpses are still real UI in a real state, and each must look different from its neighbours (see "The cut has to change the picture" in [scenes](scenes.md)).
+The inventory has to cover the product's whole surface, not just the easiest part to film. Mark each capability **hero**, **montage**, or **omit** with a reason, list hero and montage items in `PARTS`, and let `validateCoverage` prove each appears. A launch that shows five features of a product with fifteen reads as a smaller product than it is; the montage exists so breadth costs seconds, not minutes. `montage.mjs` builds it on the beat (see Breadth montage in [scenes](scenes.md)). Montage glimpses are still real UI in a real state, and each must look different from its neighbours (see "The cut has to change the picture" in [scenes](scenes.md)).
 
 Order the hero features so consecutive ones land on different surfaces or visibly different states. Two features demonstrated in the same panel at the same framing are one shot with two actions, filmed as a continuous camera move, not two shots.
 

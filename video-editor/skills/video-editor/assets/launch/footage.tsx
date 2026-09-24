@@ -2,6 +2,7 @@ import { AbsoluteFill, OffthreadVideo, staticFile, useCurrentFrame } from 'remot
 
 import { CANVAS, cameraAt, cameraTransform, frameOn, inside, type CameraMove, type CameraState } from './camera'
 import { CURSOR_BOX, CURSOR_TIP, Cursor, type CursorKind } from './cursors'
+import type { Scene } from './scenes'
 
 /**
  * Recorded primary UI under the film camera. Clips come from
@@ -18,21 +19,24 @@ export type CursorTrack = {
   samples: Sample[]
 }
 
-export function cssScale(track: CursorTrack): number {
-  return CANVAS.width / track.viewport.width
+/** Anything that knows the recording's CSS viewport: a cursor track, or `{ viewport }`. */
+export type Recording = { viewport: { width: number; height: number } }
+
+export function cssScale(recording: Recording): number {
+  return CANVAS.width / recording.viewport.width
 }
 
 /** A recorded CSS-pixel point in canvas coordinates. */
-export function css(track: CursorTrack, x: number, y: number) {
-  const k = cssScale(track)
+export function css(recording: Recording, x: number, y: number) {
+  const k = cssScale(recording)
   return { x: x * k, y: y * k }
 }
 
 const SCREEN = { left: 0, top: 0, width: CANVAS.width, height: CANVAS.height }
 
 /** Centre a recorded point at a zoom, clamped so the frame stays on screen. */
-export function aim(track: CursorTrack, x: number, y: number, scale: number): CameraState {
-  return frameOn(inside(css(track, x, y), scale, SCREEN), scale)
+export function aim(recording: Recording, x: number, y: number, scale: number): CameraState {
+  return frameOn(inside(css(recording, x, y), scale, SCREEN), scale)
 }
 
 /**
@@ -72,6 +76,7 @@ export function pointerAt(track: CursorTrack, frame: number) {
 export function Footage({
   clip,
   track,
+  viewport = { width: 1440, height: 810 },
   offset = 0,
   camera,
   moves = [],
@@ -79,7 +84,10 @@ export function Footage({
   background = '#000',
 }: {
   clip: string
-  track: CursorTrack
+  /** The recorded pointer; omit for a glimpse with no pointer. */
+  track?: CursorTrack
+  /** The recording's CSS viewport when there is no track. */
+  viewport?: { width: number; height: number }
   /** Footage frame shown on scene frame 0. */
   offset?: number
   camera: CameraState
@@ -90,8 +98,8 @@ export function Footage({
 }) {
   const frame = useCurrentFrame()
   const state = cameraAt(frame, camera, moves)
-  const k = cssScale(track)
-  const pointer = cursor ? pointerAt(track, frame + offset) : null
+  const k = cssScale(track ?? { viewport })
+  const pointer = cursor && track ? pointerAt(track, frame + offset) : null
   const size = 24 * k
   const tip = pointer ? CURSOR_TIP[pointer.kind] : undefined
   const unit = size / CURSOR_BOX
@@ -118,3 +126,37 @@ export function Footage({
     </AbsoluteFill>
   )
 }
+
+/**
+ * A footage shot as a Scene, with its camera declared once: the same data
+ * drives the render and lets `validateEdit` check the zoom on screen.
+ */
+export function footageScene(
+  spec: Omit<Scene, 'component' | 'camera'> & {
+    clip: string
+    track?: CursorTrack
+    viewport?: { width: number; height: number }
+    offset?: number
+    camera: CameraState
+    moves?: CameraMove[]
+    cursor?: boolean
+    background?: string
+  }
+): Scene {
+  const { clip, track, viewport, offset, camera, moves, cursor, background, ...scene } = spec
+  const Component = () => (
+    <Footage
+      clip={clip}
+      track={track}
+      viewport={viewport}
+      offset={offset}
+      camera={camera}
+      moves={moves}
+      cursor={cursor}
+      background={background}
+    />
+  )
+  Component.displayName = `Footage(${scene.id})`
+  return { ...scene, camera: { start: camera, moves }, component: Component }
+}
+
