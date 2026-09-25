@@ -14,6 +14,17 @@ let soundBank;
 export function installSoundBank(bank) {
   soundBank = bank;
 }
+// Designed sounds (sfx.mjs) beside the Cuelume bank: { name: Float32Array }
+// at SAMPLE_RATE, mono. A cue names them as "custom:<name>".
+let customSounds = {};
+export function installCustomSounds(sounds) {
+  customSounds = sounds;
+}
+const isCustom = (sound) => typeof sound === "string" && sound.startsWith("custom:");
+export const isKnownSound = (sound) =>
+  isCustom(sound)
+    ? Object.hasOwn(customSounds, sound.slice(7))
+    : Object.hasOwn(SOUNDS, canonicalSound(sound));
 export async function loadBrowserSounds() {
   const bank = {};
   await Promise.all(
@@ -78,7 +89,7 @@ export function validateEffects(mix) {
     if (
       typeof cue.label !== "string" ||
       cue.label.length > 120 ||
-      !Object.hasOwn(SOUNDS, canonicalSound(cue.sound))
+      !isKnownSound(cue.sound)
     )
       throw Error("Invalid cue label or sound.");
     if (
@@ -94,7 +105,9 @@ export function validateEffects(mix) {
 
 // Both audition and export consume the same rendered Cuelume samples.
 export function synthesize(sound, rate = SAMPLE_RATE) {
-  const source = soundBank?.[canonicalSound(sound)];
+  const source = isCustom(sound)
+    ? customSounds[sound.slice(7)]
+    : soundBank?.[canonicalSound(sound)];
   if (!source)
     throw Error("Cuelume sounds are unavailable. Reload the studio.");
   if (rate === SAMPLE_RATE) return source;

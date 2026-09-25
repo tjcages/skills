@@ -3,6 +3,7 @@ import { Composition } from 'remotion'
 import { CANVAS } from './camera'
 import editFile from './edit.json'
 import { PARTS, SCENES } from './film'
+import type { MusicGrid } from './beats'
 import { validateCoverage, validateEdit, type Cut, type EditProfile } from './scenes'
 
 /**
@@ -13,7 +14,12 @@ import { validateCoverage, validateEdit, type Cut, type EditProfile } from './sc
  * Validating here means a broken edit fails when you open the studio, not
  * after eight clips have rendered.
  */
-validateEdit(SCENES, editFile.cuts as Cut[], ('profile' in editFile ? editFile.profile : {}) as EditProfile)
+validateEdit(
+  SCENES,
+  editFile.cuts as Cut[],
+  ('profile' in editFile ? editFile.profile : {}) as EditProfile,
+  ('music' in editFile ? editFile.music : undefined) as MusicGrid | undefined
+)
 validateCoverage(SCENES, editFile.cuts as Cut[], PARTS)
 
 export function RemotionRoot() {

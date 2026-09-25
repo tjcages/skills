@@ -24,7 +24,13 @@ render.
 4. **Same exact version for every `remotion` and `@remotion/*` package,** with
    no `^`. Mixed versions fail at startup.
 
-## 2. Scaffold
+## 2. Preflight and scaffold
+
+Run `node scripts/preflight.mjs` from the installed skill first. It checks
+Node, FFmpeg, whether Remotion can download its Chrome, font CDN
+reachability, and Playwright, and prints the workaround for each. Sandboxed
+machines commonly block Remotion's Chrome download: set `REMOTION_CHROME` to
+a local headless Chromium; `remotion.config.ts` reads it.
 
 Work in a standalone directory, outside the product repository. From the installed `video-editor` skill, scaffold it with:
 
@@ -108,6 +114,13 @@ const { fontFamily } = loadFont()
 Apply `fontFamily` on the root element and, if the design system reads a
 variable such as `--font-sans`, set that to the same value so its utility
 classes resolve.
+
+**Prefer self-hosted fonts, always.** Load woff2 files from `public/` with
+`@remotion/fonts` (the product's own files, or `@fontsource/*` copies). A
+Google Fonts load that works in the studio can fail TLS inside the render
+browser behind a proxy, and a render waiting on a font that never arrives
+times out. Recorded footage decodes slowly enough to starve even a loading
+font, so the scaffold's config raises the delayRender timeout.
 
 **Skip this entirely if the design system self-hosts its font.** Many ship a
 woff2 and an `@font-face` in their own stylesheet, which webpack resolves
@@ -217,9 +230,17 @@ and size tradeoff, not lossless.
 - [ ] Each selected feature shows its real interaction and result, not only a camera move
 - [ ] At least one scene with `activity: 'interaction'`
 - [ ] Any visible cursor or press matches the actual product interaction
-- [ ] One line per text scene, chained scenes for more, holds proven by `validateReadingHold`
+- [ ] One line per text scene, chained scenes for more, holds proven by each scene's `text` field
 - [ ] Entrance animations only in the scene that introduces the content
 - [ ] No wall-clock motion inside Remotion-composited code; recorded real product footage is allowed
 - [ ] Primary states and motion compared side by side with the running product or source capture
 - [ ] Every part the brief names is covered by a shot, proven by `validateCoverage`
+- [ ] `node scripts/preflight.mjs` clean, or its workarounds applied
+- [ ] Every product scene declares `surface`; no cut reframes the same surface (qc's aligned-frame check passes)
+- [ ] Beats on the same surface recorded as one take and filmed as one camera move
+- [ ] Default launch beats covered (hook, first contact, core loop, heroes, breadth montage, differentiator, CTA) or their omission stated
+- [ ] No clip carries dead air: pointer approach under ~12 frames, result hold 12-20 frames
+- [ ] Camera scenes built with `footageScene()` (or a declared `camera`); every target on a tier
+- [ ] With music: `beats.mjs --write` run, `edit.json` carries `"music"`, every cut on the grid
+- [ ] Breadth montage built with `montage.mjs` when the launch covers more than its heroes
 - [ ] `node qc.mjs` passes, then one still per scene read before rendering

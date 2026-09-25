@@ -10,6 +10,26 @@ Inspect the product's docs, source, live UI, and available assets before writing
 
 The film should let a new viewer say what the product does and why the demonstrated change matters. Do not invent behavior, results, or speed. For a broad launch, do not reduce the product to one easy-to-animate control.
 
+## When the brief says nothing else
+
+"Make a launch video" is a complete brief. Cover these by default, in roughly this order, and say which ones you dropped and why:
+
+| Beat | What it shows | Typical length |
+| --- | --- | --- |
+| Hook | The umbrella promise, as a title or as the product's most striking state | 1.5-2.5 s |
+| First contact | How the product appears or is invoked, in its real entrance | 1-2 s |
+| Core loop | The primary interaction and its result, filmed close | 2-3 s |
+| Hero features | 3-4 distinct capabilities, each an action and a visible result on a *different surface or state* | 1.5-2.5 s each |
+| Breadth montage | 4-8 more real capabilities as 8-14 frame glimpses, each a changed state, cut on motion to the beat | 2-4 s total |
+| Differentiator | The claim a competitor cannot make (compiles out, zero config, speed), as a title or proof shot | 2 s |
+| Call to action | Install line, URL, or brand hold | 2-3 s |
+
+Twenty to thirty seconds is the default length. Snappy beats complete.
+
+The inventory has to cover the product's whole surface, not just the easiest part to film. Mark each capability **hero**, **montage**, or **omit** with a reason, list hero and montage items in `PARTS`, and let `validateCoverage` prove each appears. A launch that shows five features of a product with fifteen reads as a smaller product than it is; the montage exists so breadth costs seconds, not minutes. `montage.mjs` builds it on the beat (see Breadth montage in [scenes](scenes.md)). Montage glimpses are still real UI in a real state, and each must look different from its neighbours (see "The cut has to change the picture" in [scenes](scenes.md)).
+
+Order the hero features so consecutive ones land on different surfaces or visibly different states. Two features demonstrated in the same panel at the same framing are one shot with two actions, filmed as a continuous camera move, not two shots.
+
 ## Build a story, not a list
 
 Use context → tension → action → consequence as the spine. A focused demo can use the four beats once. A launch can repeat action/consequence for each selected feature and connect them through a benefit, shared visual motif, or state handoff. Show the state before it changes; the viewer needs something to anticipate. Hold the result long enough to read it.
@@ -29,8 +49,8 @@ Before rendering, write:
 ```text
 Film mode and audience:
 Umbrella claim or focused claim:
-Selected features and source evidence:
-Omitted features and why:
+Inventory: every capability, marked hero / montage / omit, with source and reason:
+Default beats covered (hook, first contact, core loop, heroes, montage, differentiator, CTA) and any dropped:
 Primary UI versus accessory context for each shot:
 Shot list with action, result, transition, and approximate reading hold:
 ```

@@ -136,7 +136,7 @@ function Establish() {
 function Sidebar() {
   return (
     <Shot
-      camera={at(SUBJECT.sidebar, ZOOM.PUSH * 0.86)}
+      camera={at(SUBJECT.sidebar, ZOOM.PUSH * 0.92)}
       moves={[
         { start: 0, duration: 40, to: push(SUBJECT.sidebar), ease: 'standard' },
       ]}
@@ -161,7 +161,7 @@ function List() {
 function Feature() {
   return (
     <Shot
-      camera={at(SUBJECT.feature, ZOOM.PUSH * 0.82)}
+      camera={at(SUBJECT.feature, ZOOM.PUSH * 0.92)}
       moves={[
         { start: 0, duration: 44, to: push(SUBJECT.feature), ease: 'standard' },
       ]}

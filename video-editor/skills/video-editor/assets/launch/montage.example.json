@@ -1,0 +1,11 @@
+{
+  "viewport": { "width": 1440, "height": 810 },
+  "beats": 1,
+  "after": "collection",
+  "glimpses": [
+    { "id": "library", "clip": "color", "at": 50, "x": 1150, "y": 560, "zoom": 1.5, "surface": "popover", "covers": "color library" },
+    { "id": "dark-page", "clip": "backdrop", "at": 44, "x": 720, "y": 405, "zoom": 1, "surface": "page", "covers": "themes" },
+    { "id": "new-row", "clip": "collection", "at": 48, "x": 1244, "y": 620, "zoom": 2.2, "surface": "ribbons", "covers": "collections" },
+    { "id": "dock", "clip": "float", "at": 70, "x": 300, "y": 400, "zoom": 1.5, "surface": "panel", "covers": "docking" }
+  ]
+}

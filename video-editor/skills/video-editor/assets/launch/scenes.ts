@@ -1,6 +1,8 @@
 import type { ComponentType } from 'react'
 
-import { TIER_RANK, type Tier } from './camera'
+import { TIER_RANK, ZOOM, cameraAt, type CameraMove, type CameraState, type Tier } from './camera'
+import { readingFrames } from './text'
+import { nearestGridLine, type MusicGrid } from './beats'
 
 /**
  * What moves in a scene. There is deliberately no `static` option: a shot
@@ -12,6 +14,8 @@ export type SceneActivity =
   | 'travel'
   | 'reveal'
   | 'highlight'
+  /** A rapid real-product glimpse in a breadth montage; may run 8-14 frames. */
+  | 'montage'
 
 /**
  * Which of the four story beats this shot belongs to. A beat may span several
@@ -62,6 +66,27 @@ export type Scene = {
    * a jump cut, so this is what the variety check compares.
    */
   subject: string
+  /**
+   * The physical thing on screen: 'panel', 'page', 'popover', 'title'. Two
+   * consecutive shots of the same surface are one shot reframed, however the
+   * subjects are named, unless the cut is a declared `punch`. Declare it on
+   * every product shot; the variety check cannot see through renamed
+   * subjects without it, and qc.mjs checks the pixels either way.
+   */
+  surface?: string
+  /**
+   * The line a text scene shows. The edit fails if the cut ends before
+   * `readingFrames(text)`; no separate reading-hold call to forget.
+   */
+  text?: string
+  /**
+   * The shot's camera, when the scene frames a stage or footage with
+   * `cameraAt`. With it, `validateEdit` checks the zoom actually on screen:
+   * every camera target must sit on a tier, and the punch and same-surface
+   * rules compare the real zoom at each cut rather than the declared `tier`.
+   * `footageScene()` in footage.tsx fills it in.
+   */
+  camera?: SceneCamera
   motion: { from: number; to: number; tag: MotionTag }
   /**
    * Which parts of the brief this shot covers, by the names the brief uses.
@@ -77,6 +102,45 @@ export type Scene = {
   component: ComponentType
 }
 
+export type SceneCamera = { start: CameraState; moves?: CameraMove[] }
+
+const TIERS = Object.keys(ZOOM) as Tier[]
+/** How far a camera target may sit from its tier: a drift, not a new size. */
+export const TIER_TOLERANCE = 0.1
+
+/** The tier whose zoom is nearest `scale`, measured as a ratio. */
+export function nearestTier(scale: number): Tier {
+  return TIERS.reduce((best, tier) =>
+    Math.abs(Math.log(scale / ZOOM[tier])) < Math.abs(Math.log(scale / ZOOM[best])) ? tier : best
+  )
+}
+
+/** The tier a scene is actually at on a frame: its camera if declared. */
+export function tierOnFrame(scene: Scene, frame: number): Tier {
+  if (!scene.camera) return scene.tier
+  return nearestTier(cameraAt(frame, scene.camera.start, scene.camera.moves ?? []).scale)
+}
+
+/**
+ * Camera targets between tiers are the drift the dogfood film had (1.12,
+ * 1.16): sizes too close to a tier to read as a new shot and too far to
+ * match it. Each target must be within TIER_TOLERANCE of a tier.
+ */
+function offTierTargets(scene: Scene): string[] {
+  if (!scene.camera) return []
+  const targets = [
+    { label: 'start', scale: scene.camera.start.scale },
+    ...(scene.camera.moves ?? []).map((move, i) => ({ label: `move ${i + 1}`, scale: move.to.scale })),
+  ]
+  return targets.flatMap(({ label, scale }) => {
+    const tier = nearestTier(scale)
+    const off = scale / ZOOM[tier] - 1
+    return Math.abs(off) > TIER_TOLERANCE
+      ? [`${scene.id}: camera ${label} zoom ${scale.toFixed(2)} is ${(off * 100).toFixed(0)}% off ${tier} (${ZOOM[tier]}). Use a tier, within ${TIER_TOLERANCE * 100}% for a drift.`]
+      : []
+  })
+}
+
 /**
  * How a cut relates the outgoing shot to the incoming one.
  *
@@ -88,9 +152,18 @@ export type Scene = {
  * changes around it. Use when both shots are settled on the same thing.
  *
  * `impact` is a deliberate discontinuity marking a new beat. Powerful and
- * expensive: two per film is the ceiling.
+ * expensive: two per film is the ceiling. It must still change the picture.
+ *
+ * `punch` is a deliberate jump in on the same surface: at least two tiers
+ * (BASE to CLOSE, PUSH to MACRO). Anything smaller reads as a stutter; make
+ * it one continuous camera move instead.
+ *
+ * `handoff` is an invisible cut: the outgoing scene ends on a designed shared
+ * frame (a colour flood, a shape, an element at a fixed position) and the
+ * incoming scene starts from that same frame. See the transitions in
+ * `transitions.ts`.
  */
-export type Continuity = 'momentum' | 'match' | 'impact'
+export type Continuity = 'momentum' | 'match' | 'impact' | 'punch' | 'handoff'
 
 export type Cut = {
   scene: string
@@ -100,6 +173,7 @@ export type Cut = {
 }
 
 const MIN_CLIP = 15
+const MIN_MONTAGE_CLIP = 8
 const MAX_CLIP = 75
 const MIN_FILM = 300
 const MAX_FILM = 450
@@ -128,7 +202,12 @@ function isMoving(scene: Scene, frame: number): boolean {
  * Fails loudly before anything renders. Every rule encodes a note a reviewer
  * would otherwise give you after watching the assembled film.
  */
-export function validateEdit(scenes: Scene[], cuts: Cut[], profile: EditProfile = {}): Cut[] {
+export function validateEdit(
+  scenes: Scene[],
+  cuts: Cut[],
+  profile: EditProfile = {},
+  music?: MusicGrid
+): Cut[] {
   const problems: string[] = []
   const byId = new Map(scenes.map(scene => [scene.id, scene]))
   const maxClip = profile.maxClipFrames ?? MAX_CLIP
@@ -154,11 +233,18 @@ export function validateEdit(scenes: Scene[], cuts: Cut[], profile: EditProfile 
         `${cut.scene}: trim ${cut.in}-${cut.out} falls outside its ${scene.duration} frames`
       )
     }
-    if (clipLength(cut) < MIN_CLIP) {
+    problems.push(...offTierTargets(scene))
+    const minClip = scene.activity === 'montage' ? MIN_MONTAGE_CLIP : MIN_CLIP
+    if (clipLength(cut) < minClip) {
       problems.push(`${cut.scene}: ${clipLength(cut)} frames is too short to read`)
     }
     if (clipLength(cut) > maxClip) {
       problems.push(`${cut.scene}: ${clipLength(cut)} frames outstays its welcome`)
+    }
+    if (scene.text && clipLength(cut) < readingFrames(scene.text)) {
+      problems.push(
+        `${cut.scene}: holds "${scene.text}" for ${clipLength(cut)} frames but reading needs ${readingFrames(scene.text)}. Trim later or shorten the line.`
+      )
     }
 
     const previousCut = index > 0 ? cuts[index - 1] : undefined
@@ -166,13 +252,28 @@ export function validateEdit(scenes: Scene[], cuts: Cut[], profile: EditProfile 
 
     if (previousScene) {
       const sameSubject = previousScene.subject === scene.subject
-      const sizeChange = Math.abs(
-        TIER_RANK[scene.tier] - TIER_RANK[previousScene.tier]
-      )
+      // The zoom on screen either side of the cut, from the cameras when
+      // declared, else the declared tiers.
+      const outgoingTier = tierOnFrame(previousScene, previousCut!.out - 1)
+      const incomingTier = tierOnFrame(scene, cut.in)
+      const sizeChange = Math.abs(TIER_RANK[incomingTier] - TIER_RANK[outgoingTier])
 
+      const sameSurface =
+        previousScene.surface !== undefined && previousScene.surface === scene.surface
+      if (cut.continuity === 'punch') {
+        if (sizeChange < 2) {
+          problems.push(
+            `${previousScene.id} to ${scene.id}: a punch must jump at least two tiers (${outgoingTier} to ${incomingTier} is ${sizeChange}). Smaller reframes of one surface read as a stutter; make them one camera move.`
+          )
+        }
+      } else if (sameSurface && cut.continuity !== 'handoff') {
+        problems.push(
+          `${previousScene.id} to ${scene.id}: both shots film the same surface "${scene.surface}", so the cut is a reframe of one picture. Merge them into one continuous camera move, cut to a different surface or a visibly changed state, or declare a "punch" of two or more tiers.`
+        )
+      }
       if (sameSubject && sizeChange === 0) {
         problems.push(
-          `${previousScene.id} to ${scene.id}: same subject "${scene.subject}" at the same tier "${scene.tier}" is a jump cut. Change the image size by a tier, or point the shot at something else.`
+          `${previousScene.id} to ${scene.id}: same subject "${scene.subject}" at the same tier "${incomingTier}" is a jump cut. Change the image size by a tier, or point the shot at something else.`
         )
       }
       if (
@@ -258,6 +359,22 @@ export function validateEdit(scenes: Scene[], cuts: Cut[], profile: EditProfile 
   const lengths = new Set(cuts.map(clipLength))
   if (cuts.length > 3 && lengths.size < 3) {
     problems.push('every clip is nearly the same length, which reads as a slideshow')
+  }
+
+  // Cuts on the music. Only when edit.json declares its grid; beats.mjs
+  // proposes the snapped trims.
+  if (music) {
+    const tolerance = music.tolerance ?? 2
+    let boundary = 0
+    cuts.slice(0, -1).forEach((cut, index) => {
+      boundary += clipLength(cut)
+      const { frame, offset } = nearestGridLine(music, boundary)
+      if (Math.abs(offset) > tolerance) {
+        problems.push(
+          `cut ${cut.scene} to ${cuts[index + 1].scene} at film frame ${boundary} is ${offset > 0 ? '+' : ''}${offset.toFixed(1)} frames off the music (nearest line ${frame.toFixed(1)}). Run node beats.mjs to snap it, within ${tolerance} frames.`
+        )
+      }
+    })
   }
 
   const total = filmDuration(cuts)

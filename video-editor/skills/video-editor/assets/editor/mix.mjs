@@ -5,6 +5,7 @@ import {
   readFileSync,
   writeFileSync,
   existsSync,
+  readdirSync,
   mkdtempSync,
   rmSync,
 } from "node:fs";
@@ -12,6 +13,7 @@ import { resolve, join } from "node:path";
 import { tmpdir } from "node:os";
 import { validateMix } from "./timing.mjs";
 import {
+  installCustomSounds,
   validateEffects,
   renderSoundtrack,
   encodeWav,
@@ -21,12 +23,12 @@ const args = process.argv.slice(2),
   options = {};
 for (let i = 0; i < args.length; i += 2) {
   if (
-    !["--video", "--song", "--mix", "--out"].includes(args[i]) ||
+    !["--video", "--song", "--mix", "--out", "--sounds"].includes(args[i]) ||
     !args[i + 1] ||
     args[i + 1].startsWith("--")
   )
     throw Error(
-      "Use --video film.mp4 [--song song.wav] --mix video-mix.json --out mixed.mp4",
+      "Use --video film.mp4 [--song song.wav] [--sounds designed-sounds/] --mix video-mix.json --out mixed.mp4",
     );
   options[args[i].slice(2)] = resolve(args[i + 1]);
 }
@@ -46,6 +48,19 @@ const video = probe(options.video),
   picture = video.streams.find((s) => s.codec_type === "video");
 if (!picture) throw Error("Expected a video stream.");
 const duration = Number(picture.duration || video.format.duration);
+// Designed sounds from sfx.mjs: every .wav in --sounds, cued as "custom:<name>".
+if (options.sounds) {
+  const sounds = {};
+  for (const file of readdirSync(options.sounds).filter((f) => f.endsWith(".wav"))) {
+    const raw = execFileSync(
+      "ffmpeg",
+      ["-v", "error", "-i", join(options.sounds, file), "-ac", "1", "-ar", String(SAMPLE_RATE), "-f", "f32le", "-"],
+      { maxBuffer: 64 * 1024 * 1024 },
+    );
+    sounds[file.slice(0, -4)] = new Float32Array(raw.buffer.slice(raw.byteOffset, raw.byteOffset + raw.byteLength));
+  }
+  installCustomSounds(sounds);
+}
 const mix = JSON.parse(readFileSync(options.mix, "utf8"));
 if (mix.version === 2) validateEffects(mix);
 let songDuration,
