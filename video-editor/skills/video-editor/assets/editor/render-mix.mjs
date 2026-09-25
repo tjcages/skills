@@ -3,7 +3,9 @@
 // agents that cannot listen and must measure instead.
 //
 //   node render-mix.mjs --video film.mp4 --edit edit.json --cues cues.json \
-//     --song bed.wav --start 0.456 --out film-with-sound.mp4
+//     --song bed.wav --start 0.456 [--sounds sounds/] --out film-with-sound.mp4
+//
+// --sounds: designed sounds from sfx.mjs, cued as "custom:<name>".
 //
 // Steps: build the v2 mix recipe (saved beside --out as .mix.json so the
 // visual editor can reopen it), export with mix.mjs, report every cue's
@@ -31,6 +33,7 @@ const edit = JSON.parse(readFileSync(arg("edit"), "utf8"))
 const sheet = JSON.parse(readFileSync(arg("cues"), "utf8"))
 const song = arg("song") ? resolve(arg("song")) : null
 const out = resolve(arg("out", "film-with-sound.mp4"))
+const sounds = arg("sounds") ? resolve(arg("sounds")) : null
 const MIN_CUE_OVER_BED = Number(arg("min-cue-db", 4))
 const LUFS = Number(arg("lufs", -14))
 
@@ -54,6 +57,34 @@ const mix = {
   effectsEnabled: true,
   musicEnabled: Boolean(song),
 }
+// Sound grammar (shared/SOUND-DESIGN.md): cues may carry a `role`. One role,
+// one sound, so the viewer learns what each sound means; small gestures stay
+// quieter than the results they cause; nothing crowds.
+const grammar = []
+const byRole = new Map()
+for (const cue of sheet.cues) {
+  if (!cue.role) continue
+  if (!byRole.has(cue.role)) byRole.set(cue.role, new Set())
+  byRole.get(cue.role).add(cue.sound)
+}
+for (const [role, used] of byRole) {
+  if (used.size > 1) grammar.push(`role "${role}" uses ${used.size} sounds (${[...used].join(", ")}); one role, one sound`)
+}
+// Role vocabulary: shared/SOUND-DESIGN.md. Gestures are the user's hand;
+// results are what the product did about it.
+const SMALL = new Set(["hover", "press", "release", "grab", "type", "tick"])
+const BIG = new Set(["open", "close", "add", "remove", "toggle-on", "toggle-off", "pick", "result", "success", "error", "reveal", "dock", "impact", "brand"])
+const small = sheet.cues.filter((cue) => SMALL.has(cue.role)).map((cue) => cue.volume)
+const big = sheet.cues.filter((cue) => BIG.has(cue.role)).map((cue) => cue.volume)
+if (small.length && big.length && Math.max(...small) > Math.min(...big)) {
+  grammar.push(`a small gesture cue (${Math.max(...small)}) is louder than a result cue (${Math.min(...big)}); keep the hierarchy`)
+}
+const timed = mix.effects.map((cue) => cue.frame).sort((a, b) => a - b)
+let crowded = 0
+for (let i = 2; i < timed.length; i++) if (timed[i] - timed[i - 2] < 6) crowded++
+if (crowded) grammar.push(`${crowded} place(s) with three cues inside 6 frames; that reads as clutter, not detail`)
+if (grammar.length) console.log(`sound grammar:\n${grammar.map((line) => `  - ${line}`).join("\n")}\n`)
+
 const recipe = out.replace(/\.mp4$/, "") + ".mix.json"
 writeFileSync(recipe, JSON.stringify(mix, null, 2))
 
@@ -63,6 +94,7 @@ const exportMix = (settings, file) => {
   writeFileSync(path, JSON.stringify(settings))
   const args = [join(here, "mix.mjs"), "--video", video, "--mix", path, "--out", join(temp, `${file}.mp4`)]
   if (settings.musicEnabled) args.push("--song", song)
+  if (sounds) args.push("--sounds", sounds)
   execFileSync(process.execPath, args, { stdio: ["ignore", "ignore", "inherit"] })
   return join(temp, `${file}.mp4`)
 }
@@ -103,19 +135,31 @@ try {
     }
   }
 
-  // Master: linear gain to the target, then a limiter at -1.5 dBFS.
-  const integrated = (() => {
-    const { stderr } = spawnSync("ffmpeg", ["-hide_banner", "-i", mixed, "-af", "ebur128", "-f", "null", "-"], { encoding: "utf8" })
+  // Master: linear gain to the target, then a limiter at -1.5 dBFS. A sample
+  // limiter misses inter-sample peaks, which sharp designed clicks produce
+  // under make-up gain, so measure true peak and pull back until it clears -1.
+  const measure = (file) => {
+    const { stderr } = spawnSync("ffmpeg", ["-hide_banner", "-i", file, "-af", "ebur128=peak=true", "-f", "null", "-"], { encoding: "utf8" })
     const summary = stderr.slice(stderr.lastIndexOf("Summary"))
-    return Number(summary.match(/I:\s+(-?[\d.]+) LUFS/)?.[1])
-  })()
-  const gain = +(LUFS - integrated).toFixed(2)
-  execFileSync("ffmpeg", [
-    "-v", "error", "-y", "-i", mixed, "-c:v", "copy",
-    "-af", `volume=${gain}dB,alimiter=limit=0.84:level=false`,
-    "-t", String(duration), "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out,
-  ])
-  console.log(`\n${out}: ${integrated} LUFS mix, ${gain >= 0 ? "+" : ""}${gain} dB to ${LUFS} LUFS; recipe ${recipe}`)
+    return {
+      lufs: Number(summary.match(/I:\s+(-?[\d.]+) LUFS/)?.[1]),
+      truePeak: Number(summary.match(/Peak:\s+(-?[\d.]+) dBFS/)?.[1]),
+    }
+  }
+  const integrated = measure(mixed).lufs
+  let gain = +(LUFS - integrated).toFixed(2)
+  for (let attempt = 0; attempt < 4; attempt++) {
+    execFileSync("ffmpeg", [
+      "-v", "error", "-y", "-i", mixed, "-c:v", "copy",
+      "-af", `volume=${gain}dB,alimiter=limit=0.84:level=false`,
+      "-t", String(duration), "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", out,
+    ])
+    const { truePeak } = measure(out)
+    if (!(truePeak > -1)) break
+    gain = +(gain - (truePeak + 1.5)).toFixed(2)
+  }
+  const final = measure(out)
+  console.log(`\n${out}: ${integrated} LUFS mix, ${gain >= 0 ? "+" : ""}${gain} dB → ${final.lufs} LUFS, true peak ${final.truePeak} dBTP; recipe ${recipe}`)
   console.log("Measured, not heard: listen once through the final frame before calling it done.")
 } finally {
   rmSync(temp, { recursive: true, force: true })

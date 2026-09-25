@@ -1,7 +1,7 @@
 // A listening report for an agent that cannot hear: what a listener would
 // notice in the finished film, measured.
 //
-//   node listen.mjs --video final.mp4 [--recipe final.mix.json] [--edit edit.json] [--out listen.png]
+//   node listen.mjs --video final.mp4 [--recipe final.mix.json] [--edit edit.json] [--sounds sounds/] [--out listen.png]
 //
 // Checks, each printed ok / warn:
 // - loudness and true peak against web delivery (-14 LUFS, <= -1 dBTP)
@@ -25,6 +25,8 @@ const video = resolve(arg("video"))
 const recipe = arg("recipe") ? JSON.parse(readFileSync(arg("recipe"), "utf8")) : null
 const edit = arg("edit") ? JSON.parse(readFileSync(arg("edit"), "utf8")) : null
 const out = resolve(arg("out", video.replace(/\.mp4$/, "") + ".listen.png"))
+// Designed sounds carry their own measured attack (sfx.mjs writes sounds.json).
+const designed = arg("sounds") ? JSON.parse(readFileSync(resolve(arg("sounds"), "sounds.json"), "utf8")) : {}
 const fps = recipe?.fps ?? 30
 
 // Time from start to 90% of peak for each bundled Cuelume sound, measured
@@ -116,6 +118,8 @@ if (recipe?.effects?.length) {
     if (last && cue.frame / fps - last.at(-1).frame / fps <= 0.12) last.push(cue)
     else groups.push([cue])
   }
+  const attackOf = (sound) =>
+    sound.startsWith("custom:") ? designed[sound.slice(7)]?.attackMs ?? 50 : ATTACK_MS[sound] ?? 50
   for (const group of groups) {
     const first = group[0].frame / fps
     const lastT = group.at(-1).frame / fps
@@ -131,13 +135,24 @@ if (recipe?.effects?.length) {
     }
     around.sort((x, y) => x - y)
     const typical = around.length ? around[Math.floor(around.length * 0.9)] : 1
-    const ratio = peak / Math.max(typical, 0.5)
+    const label = group.map((cue) => cue.label).join(" + ")
+    // A click stands out by its transient: 1.2x the typical onset nearby. A
+    // swell (whoosh, bloom) has no sharp onset, so it stands out by the level
+    // it adds over the half second before it: 2 dB or more.
+    const slowest = Math.max(...group.map((cue) => attackOf(cue.sound)))
+    let standsOut
+    if (slowest > 60) {
+      const lift = rms(first, lastT + slowest / 1000 + 0.1) - rms(Math.max(0, first - 0.45), first - 0.05)
+      standsOut = lift >= 2
+      if (!standsOut) masked.push(`${label} (swell adds ${lift.toFixed(1)} dB)`)
+    } else {
+      const ratio = peak / Math.max(typical, 0.5)
+      standsOut = ratio >= 1.2
+      if (!standsOut) masked.push(`${label} (${ratio.toFixed(2)}x the nearby transients)`)
+    }
     const heard = (at * HOP) / SR
     const offset = Math.min(...group.map((cue) => Math.abs(heard - cue.frame / fps))) * 1000
-    const label = group.map((cue) => cue.label).join(" + ")
-    const standsOut = ratio >= 1.2
-    if (!standsOut) masked.push(`${label} (${ratio.toFixed(2)}x)`)
-    const allowed = 50 + Math.max(...group.map((cue) => ATTACK_MS[cue.sound] ?? 50))
+    const allowed = 50 + Math.max(...group.map((cue) => attackOf(cue.sound)))
     if (standsOut && offset > allowed) late.push(`${label} (${offset.toFixed(0)} ms, allowed ${allowed})`)
     for (const cue of group) marks.push({ t: cue.frame / fps, colour: standsOut ? "orange" : "red" })
   }
