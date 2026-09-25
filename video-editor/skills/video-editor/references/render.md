@@ -243,4 +243,5 @@ and size tradeoff, not lossless.
 - [ ] Camera scenes built with `footageScene()` (or a declared `camera`); every target on a tier
 - [ ] With music: `beats.mjs --write` run, `edit.json` carries `"music"`, every cut on the grid
 - [ ] Breadth montage built with `montage.mjs` when the launch covers more than its heroes
+- [ ] Directed to the brief: hook moving on the first frame, at least four techniques declared per scene with no long runs, cuts on the music, a clean final frame held
 - [ ] `node qc.mjs` passes, then one still per scene read before rendering

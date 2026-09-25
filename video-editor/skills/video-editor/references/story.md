@@ -16,15 +16,27 @@ The film should let a new viewer say what the product does and why the demonstra
 
 | Beat | What it shows | Typical length |
 | --- | --- | --- |
-| Hook | The umbrella promise, as a title or as the product's most striking state | 1.5-2.5 s |
+| Hook | Something striking *moving on the first frame*: the product's boldest state, a kinetic line of type, a colour slam. The promise lands inside the first second | 1-2 s |
 | First contact | How the product appears or is invoked, in its real entrance | 1-2 s |
 | Core loop | The primary interaction and its result, filmed close | 2-3 s |
 | Hero features | 3-4 distinct capabilities, each an action and a visible result on a *different surface or state* | 1.5-2.5 s each |
 | Breadth montage | 4-8 more real capabilities as 8-14 frame glimpses, each a changed state, cut on motion to the beat | 2-4 s total |
 | Differentiator | The claim a competitor cannot make (compiles out, zero config, speed), as a title or proof shot | 2 s |
-| Call to action | Install line, URL, or brand hold | 2-3 s |
+| Final frame | One clean, memorable composition: brand and the install line or URL, settled and held | 1.5-3 s |
 
-Twenty to thirty seconds is the default length. Snappy beats complete.
+Fifteen to thirty seconds is the default length. Snappy beats complete.
+
+## The reel
+
+The default brief ([SKILL.md](../SKILL.md)) asks for a motion designer's résumé reel of the product. The beats above are *what* it says; the brief sets *how* it moves:
+
+- **Hook in the first second.** The first frame already has something striking in motion; never a fade up from blank or a title that takes two seconds to assemble. `qc.mjs` fails a film whose first frame is mostly flat.
+- **A sequence of distinct techniques.** Plan each section around one technique: typography, shape play, camera, colour, or the product's own motion. Neighbouring sections use different ones, and the film uses at least four. Declare each scene's `technique`; `validateEdit` checks the sequence. The catalogue is in [scenes](scenes.md) (Techniques).
+- **Cut to music.** Snap the cuts to the beat with `beats.mjs`, put the drop on the first product reveal, and let the biggest technique change land on a downbeat.
+- **A clean, memorable final frame.** It settles, holds long enough to read, and would work as the poster for the film. It never ends on a pull-back to nothing or a fade to an empty colour.
+- **Go crazy, around the product.** Be bold with type, shape, camera, colour, and rhythm; keep the product UI true to what ships.
+
+Add to the plan below: the technique for each section, and a one-line description of the final frame.
 
 The inventory has to cover the product's whole surface, not just the easiest part to film. Mark each capability **hero**, **montage**, or **omit** with a reason, list hero and montage items in `PARTS`, and let `validateCoverage` prove each appears. A launch that shows five features of a product with fifteen reads as a smaller product than it is; the montage exists so breadth costs seconds, not minutes. `montage.mjs` builds it on the beat (see Breadth montage in [scenes](scenes.md)). Montage glimpses are still real UI in a real state, and each must look different from its neighbours (see "The cut has to change the picture" in [scenes](scenes.md)).
 
@@ -50,7 +62,9 @@ Before rendering, write:
 Film mode and audience:
 Umbrella claim or focused claim:
 Inventory: every capability, marked hero / montage / omit, with source and reason:
-Default beats covered (hook, first contact, core loop, heroes, montage, differentiator, CTA) and any dropped:
+Default beats covered (hook, first contact, core loop, heroes, montage, differentiator, final frame) and any dropped:
+Technique per section (typography / shape / camera / colour / product), no neighbours alike:
+Final frame, in one line:
 Primary UI versus accessory context for each shot:
 Shot list with action, result, transition, and approximate reading hold:
 ```
