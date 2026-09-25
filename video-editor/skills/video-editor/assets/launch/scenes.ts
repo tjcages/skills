@@ -80,6 +80,12 @@ export type Scene = {
    */
   text?: string
   /**
+   * The reel technique this scene leads with (references/scenes.md,
+   * Techniques). Declared on every scene or none; when declared,
+   * `validateEdit` checks the film builds through distinct techniques.
+   */
+  technique?: Technique
+  /**
    * The shot's camera, when the scene frames a stage or footage with
    * `cameraAt`. With it, `validateEdit` checks the zoom actually on screen:
    * every camera target must sit on a tier, and the punch and same-surface
@@ -103,6 +109,11 @@ export type Scene = {
 }
 
 export type SceneCamera = { start: CameraState; moves?: CameraMove[] }
+
+export type Technique = 'typography' | 'shape' | 'camera' | 'colour' | 'product'
+/** A section may run a technique this long before the reel must change it. */
+const MAX_TECHNIQUE_RUN = { scenes: 3, frames: 150 }
+const MIN_TECHNIQUES = 4
 
 const TIERS = Object.keys(ZOOM) as Tier[]
 /** How far a camera target may sit from its tier: a drift, not a new size. */
@@ -375,6 +386,33 @@ export function validateEdit(
         )
       }
     })
+  }
+
+  // The reel builds through distinct techniques (the default brief).
+  const declared = inEdit.filter(scene => scene.technique)
+  if (declared.length > 0) {
+    const missing = inEdit.filter(scene => !scene.technique).map(scene => scene.id)
+    if (missing.length) problems.push(`declare a technique on every scene or none; missing on ${[...new Set(missing)].join(', ')}`)
+    let run: { technique: Technique; scenes: number; frames: number; from: string } | null = null
+    cuts.forEach(cut => {
+      const technique = byId.get(cut.scene)?.technique
+      if (!technique) return
+      if (run && run.technique === technique) {
+        run.scenes += 1
+        run.frames += clipLength(cut)
+      } else run = { technique, scenes: 1, frames: clipLength(cut), from: cut.scene }
+      if (technique !== 'product' && (run.scenes > MAX_TECHNIQUE_RUN.scenes || run.frames > MAX_TECHNIQUE_RUN.frames)) {
+        problems.push(
+          `"${technique}" runs from ${run.from} through ${cut.scene} (${run.scenes} scenes, ${run.frames} frames); change technique within ${MAX_TECHNIQUE_RUN.scenes} scenes or ${MAX_TECHNIQUE_RUN.frames} frames`
+        )
+      }
+    })
+    const distinct = new Set(declared.map(scene => scene.technique))
+    if (profile.mode === 'launch' && distinct.size < MIN_TECHNIQUES) {
+      problems.push(
+        `the reel uses ${distinct.size} technique${distinct.size === 1 ? '' : 's'} (${[...distinct].join(', ')}); a launch builds through at least ${MIN_TECHNIQUES}`
+      )
+    }
   }
 
   const total = filmDuration(cuts)

@@ -247,6 +247,28 @@ result has read. When a recorded take has a long approach, speed the camera
 and trim; do not play the approach. A launch that runs past 25 s usually has
 dead air, not too many features.
 
+### Techniques
+
+The default brief asks for a reel that builds through distinct techniques.
+Each section of the film leads with one, declared on its scenes as
+`technique`. Neighbouring sections change technique, and a launch uses at
+least four; `validateEdit` checks both. The product's own motion counts as a
+technique (`product`) and may sit between any two others.
+
+| Technique | What it looks like | Keeps the product true by |
+| --- | --- | --- |
+| `typography` | Kinetic type: words that slam, stack, mask-reveal, scale to fill the frame, or become the layout the product lands in | Setting type in the product's face; the product's own labels stay untouched |
+| `shape` | Geometry built from the product: its corner radius, its accent dot, a control's track, growing into frames, wipes, and counters | Deriving shapes from real UI, never drawing fake UI |
+| `camera` | Push-throughs, whip moves matched to a gesture, a macro that becomes a wide, parallax across layered surfaces | Moving the camera, not the UI; the four tiers still hold |
+| `colour` | A palette shift on the beat: a theme flood from the toggle that caused it, the accent taking over the frame, light to dark | Using the product's real colours and themes |
+| `product` | The product's own motion carrying the shot: a drag that throws, a panel that springs open, a list that re-sorts | Being the product: recorded or imported, never reanimated |
+
+Plan the order like a set list. Open on the boldest technique that shows the
+product, put the biggest change of technique on the drop, and let the last
+one resolve into the final frame. When two sections want the same technique,
+merge them or change one: a reel that does one trick three times reads as a
+template.
+
 ### Cut on the music
 
 A cut that lands on the beat feels intended even when the viewer cannot
@@ -315,8 +337,10 @@ has frame-driven pieces for the common ones:
 | Push through | `pushThrough()` scales the camera into a swatch or card until it fills the frame | The next scene is about what that element contains |
 | Element carry | An element ends at a fixed position; the next scene starts with it there | The same object moves to a new context, such as a pin to its row |
 
-Keep a film to two or three designed transitions. More turns the product
-into a showreel of effects.
+A reel can carry one designed transition per section, each a different
+kind, as long as every one is motivated by the product. What turns a reel
+into a showreel of effects is repetition and transitions that mean nothing,
+not their count.
 
 ## Focused-demo starter
 
