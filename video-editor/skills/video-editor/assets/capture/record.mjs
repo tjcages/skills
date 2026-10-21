@@ -1,4 +1,5 @@
-// Records a running product in slow motion and retimes it to 30 fps.
+// Records a running product in slow motion and retimes it to 30 fps
+// (or --fps).
 //
 // Why: primary UI must be filmed with its real motion (references/fidelity.md),
 // and a headless browser cannot screenshot full-resolution frames at 30 fps.
@@ -46,8 +47,11 @@ const clockPatch = (K) => {
   const dNow = Date.now
   const d0 = dNow()
   Date.now = () => d0 + (dNow() - d0) / K
+  // rAF hands its callback the patched clock, not its own timestamp: CDP's
+  // Animation.setPlaybackRate (below) already slows rAF timestamps, so
+  // scaling them again would run rAF-driven motion K times too slow.
   const raf = window.requestAnimationFrame.bind(window)
-  window.requestAnimationFrame = (cb) => raf((t) => cb(v(t)))
+  window.requestAnimationFrame = (cb) => raf(() => cb(v(pNow())))
   const st = window.setTimeout.bind(window)
   window.setTimeout = (f, ms = 0, ...a) => st(f, ms * K, ...a)
   const si = window.setInterval.bind(window)
@@ -68,8 +72,15 @@ const browser = await chromium.launch({
 const context = await browser.newContext({ viewport: VIEWPORT, deviceScaleFactor: DSF })
 await context.addInitScript(clockPatch, K)
 const page = await context.newPage()
+// Scripts that never appear in a shot (ambient canvases, analytics, review
+// overlays) still cost every capture; a shots file can name them in BLOCK.
+// Don't block a module another script imports, or that script never runs.
+if (config.BLOCK) await page.route(config.BLOCK, (route) => route.abort())
 page.on("pageerror", (e) => console.error("pageerror", e.message))
 const cdp = await context.newCDPSession(page)
+// A CDP session doesn't inherit Playwright's device scale; without this its
+// captures come back at 1x.
+await cdp.send("Emulation.setDeviceMetricsOverride", { width: VIEWPORT.width, height: VIEWPORT.height, deviceScaleFactor: DSF, mobile: false })
 
 // Continuity: a shot can start from the state another shot ended on. Prefer
 // one continuous take for beats on the same surface: a reload loses UI-only
@@ -161,7 +172,10 @@ let capturing = true
 const grab = (async () => {
   while (capturing) {
     const t0 = vnow()
-    const buf = await page.screenshot({ type: "jpeg", quality: 93 })
+    // CDP's capture with optimizeForSpeed is several times faster than
+    // page.screenshot at this size, so each output frame gets its own.
+    const { data } = await cdp.send("Page.captureScreenshot", { format: "jpeg", quality: 94, optimizeForSpeed: true })
+    const buf = Buffer.from(data, "base64")
     const t1 = vnow()
     const file = `${OUT}/frames/${String(frameNo++).padStart(6, "0")}.jpg`
     frames.push({ t: (t0 + t1) / 2, file })
@@ -182,7 +196,7 @@ await browser.close()
 // Resample to 30 fps of virtual time: each output frame shows the newest
 // captured frame at or before its timestamp.
 frames.sort((a, b) => a.t - b.t)
-const fps = 30
+const fps = Number(arg("fps", 30))
 const count = Math.floor(((end - start) / 1000) * fps)
 const list = []
 let j = 0
@@ -194,7 +208,7 @@ for (let i = 0; i < count; i++) {
 await writeFile(`${OUT}/list.txt`, list.join("\n") + "\n")
 execFileSync("ffmpeg", [
   "-loglevel", "error", "-y", "-f", "concat", "-safe", "0", "-i", `${OUT}/list.txt`,
-  "-r", "30", "-pix_fmt", "yuv420p", "-c:v", "libx264", "-crf", "12", "-preset", "medium",
+  "-r", String(fps), "-pix_fmt", "yuv420p", "-c:v", "libx264", "-crf", "10", "-preset", "medium",
   resolve("out", `${name}.mp4`),
 ])
 await writeFile(
@@ -216,6 +230,6 @@ for (let i = 1; i < samples.length; i++) {
 }
 const gaps = frames.slice(1).map((f, i) => f.t - frames[i].t)
 const worst = Math.max(...gaps)
-console.log(`${name}: ${count} frames @30fps from ${frames.length} captures; worst gap ${worst.toFixed(1)} ms virtual`)
+console.log(`${name}: ${count} frames @${fps}fps from ${frames.length} captures; worst gap ${worst.toFixed(1)} ms virtual`)
 if (worst > 1000 / fps) console.log(`  gap exceeds one frame: raise --k for smoother motion`)
 if (events.length) console.log(`  ${events.join(", ")}`)
