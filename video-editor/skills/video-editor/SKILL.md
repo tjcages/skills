@@ -3,7 +3,7 @@ name: video-editor
 description: Make a product launch film by default, or a focused demo when requested, from an app, package, feature, or website. Show the real product UI and motion, then render and mix the film.
 license: MIT
 metadata:
-  version: "0.6.0"
+  version: "0.6.1"
 ---
 
 # Video editor
