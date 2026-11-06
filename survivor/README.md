@@ -1,6 +1,6 @@
 # Survivor
 
-![Jeff Probst lighting a torch with Instagram, TikTok, and YouTube icons in the flame](assets/survivor-torch.png)
+![A Survivor tribal torch with Instagram, TikTok, and YouTube icons burning in the flame](assets/survivor-torch.png)
 
 A weekly pass across your social accounts. It ranks each account's last week of posts, retires the clearly worst one, and writes one lesson from the best one or two.
 
