@@ -14,7 +14,7 @@ A weekly pass across your social accounts. It ranks each account's last week of 
 - Skips a week when the pool is too small, the metrics are stale, or no post is a clear loser.
 - Archives the full text and a screenshot before anything changes.
 - Never posts, replies, likes, schedules, or edits text.
-- Waits for the user's reply before any permanent deletion.
+- Waits for the user's approval before any permanent deletion.
 
 ## Requirements
 

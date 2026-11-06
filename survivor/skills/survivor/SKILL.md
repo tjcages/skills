@@ -24,7 +24,7 @@ If `~/.survivor/config.json` is missing, copy `config.example.json` from this sk
    - `hide-then-confirm-delete` (TikTok, YouTube): set it to Only me or Private, record `retire --action hidden`, then `queue` it for permanent deletion.
    - `confirm-delete` (X): X has no hide or restore, so only `queue` it.
 6. Run `survivor.py log --account <key> --summary '<json>'` once per account with the pool size, winners, lesson title, and what was retired or why nothing was.
-7. **Report** in the run's chat: one short block per account with the winner (link and numbers), the lesson, and what was retired. End by listing every queued post (account, text, views, link) and asking the user to reply `delete` to permanently delete them, or to name the ones to keep. These deletes cannot be undone, so they always wait for the user's reply.
+7. **Report** in the run's chat: one short block per account with the winner (link and numbers), the lesson, and what was retired. End by listing every queued post (account, text, views, link) and asking the user to reply `delete` to permanently delete them, or to name the ones to keep. These deletes cannot be undone, so they always wait for the user's approval.
 
 Retire at most one post per account per week. Never post, reply, like, schedule, or edit post text.
 

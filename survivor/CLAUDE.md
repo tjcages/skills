@@ -5,7 +5,7 @@
 - `skills/survivor/SKILL.md` is the operating order. Keep it under about 100 lines.
 - `skills/survivor/scripts/survivor.py` owns all state changes. Never add a path that posts, replies, likes, schedules, or edits text.
 - Keep the account and platform examples generic. Personal handles, channel IDs, and private paths do not belong in this pack.
-- Permanent deletion always waits for the user's reply.
+- Permanent deletion always waits for the user's approval.
 
 ## Linear tracking
 
