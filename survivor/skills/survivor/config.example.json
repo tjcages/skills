@@ -1,0 +1,53 @@
+{
+  "windowDays": 7,
+  "matureHours": 48,
+  "baselineDays": 45,
+  "maxPages": 8,
+  "clusterMinutes": 10,
+  "staleHours": 36,
+  "minPoolToLearn": 3,
+  "minPoolToDelete": 5,
+  "maxLoserComposite": 0.25,
+  "minSecondBestComposite": 0.75,
+  "placementsFile": null,
+  "accounts": [
+    {
+      "key": "x-main",
+      "platform": "x",
+      "source": "x",
+      "handle": "YOUR_X_HANDLE",
+      "metrics": ["views", "likes", "replies", "reposts"],
+      "retire": "confirm-delete",
+      "protect": []
+    },
+    {
+      "key": "instagram-main",
+      "platform": "instagram",
+      "source": "instagram",
+      "handle": "YOUR_INSTAGRAM_HANDLE",
+      "metrics": ["views", "likes", "replies"],
+      "retire": "delete",
+      "protect": []
+    },
+    {
+      "key": "tiktok-main",
+      "platform": "tiktok",
+      "source": "tiktok",
+      "handle": "YOUR_TIKTOK_HANDLE",
+      "secUid": "YOUR_TIKTOK_SEC_UID",
+      "metrics": ["views", "likes", "replies", "reposts"],
+      "retire": "hide-then-confirm-delete",
+      "protect": []
+    },
+    {
+      "key": "youtube-main",
+      "platform": "youtube",
+      "source": "youtube",
+      "handle": "YOUR_YOUTUBE_HANDLE",
+      "channelId": "YOUR_YOUTUBE_CHANNEL_ID",
+      "metrics": ["views", "likes", "replies"],
+      "retire": "hide-then-confirm-delete",
+      "protect": []
+    }
+  ]
+}

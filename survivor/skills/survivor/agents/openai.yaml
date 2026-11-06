@@ -1,0 +1,4 @@
+interface:
+  display_name: "Survivor"
+  short_description: "Weekly prune of the worst post, lessons from the best"
+  default_prompt: "Use $survivor to run this week's Survivor pass across my social accounts."

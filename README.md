@@ -35,6 +35,7 @@ Each folder is one **pack** (router skill + methodology + shared docs), same sha
 | [`wip-frames/`](./wip-frames) | 🧪 Thin dogfood | v0.2.0 | Approval boards: dotted mat, 1 desktop or 3 mobiles, iOS 18 kit status bar. Theme tokens for project tint. |
 | [`video-editor/`](./video-editor) | ✍️ Draft | v0.4.0 | Focused demos and product launches, Remotion starter, packaged sound editor, and MP4 export. |
 | [`apple-native/`](./apple-native) | Public preview | 0.1.0 | Lightweight native iOS skill · [Catalogue](https://native.offbr.co) |
+| [`survivor/`](./survivor) | ✍️ Draft | v0.1 | Weekly prune of the worst post per social account, with one lesson from the best. |
 | [`useful-tests/`](./useful-tests) | ✍️ Draft | 0.1.0 | Add tests only for explicit requirements or meaningful risk; prefer existing coverage and focused checks. |
 
 ## Pack shape (every folder)
