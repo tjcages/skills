@@ -2,7 +2,7 @@
 
 ![A Survivor tribal torch with Instagram, TikTok, and YouTube icons burning in the flame](assets/survivor-torch.png)
 
-A weekly pass across your social accounts. It ranks each account's last week of posts, retires the clearly worst one, and writes one lesson from the best one or two.
+A weekly pass across your social accounts. It ranks each account's last week of posts, queues the clearly worst one for your approval, and writes one lesson from the best one or two.
 
 ## Status
 

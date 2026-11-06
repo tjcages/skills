@@ -26,7 +26,7 @@
       "source": "instagram",
       "handle": "YOUR_INSTAGRAM_HANDLE",
       "metrics": ["views", "likes", "replies"],
-      "retire": "delete",
+      "retire": "confirm-delete",
       "protect": []
     },
     {
@@ -36,7 +36,7 @@
       "handle": "YOUR_TIKTOK_HANDLE",
       "secUid": "YOUR_TIKTOK_SEC_UID",
       "metrics": ["views", "likes", "replies", "reposts"],
-      "retire": "hide-then-confirm-delete",
+      "retire": "confirm-delete",
       "protect": []
     },
     {
@@ -46,7 +46,7 @@
       "handle": "YOUR_YOUTUBE_HANDLE",
       "channelId": "YOUR_YOUTUBE_CHANNEL_ID",
       "metrics": ["views", "likes", "replies"],
-      "retire": "hide-then-confirm-delete",
+      "retire": "confirm-delete",
       "protect": []
     }
   ]

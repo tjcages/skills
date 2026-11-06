@@ -1,6 +1,6 @@
 ---
 name: survivor
-description: Weekly Survivor pass across the user's social accounts that ranks each account's last week of posts, retires the clearly worst one, and turns the best one or two into a lesson for future posts. Use for the scheduled weekly run, when the user confirms queued deletions, or when the user asks to run, tune, or review Survivor.
+description: Weekly Survivor pass across the user's social accounts that ranks each account's last week of posts, queues the clearly worst one for the user's approval, and turns the best one or two into a lesson for future posts. Use for the scheduled weekly run, when the user confirms queued deletions, or when the user asks to run, tune, or review Survivor.
 ---
 
 # Survivor
@@ -19,18 +19,15 @@ If `~/.survivor/config.json` is missing, copy `config.example.json` from this sk
 2. **Learn.** For each account with `learnFrom`, compare the winners' full text against the bottom of `ranked`: hook, format, topic, media, length, posting time. If a concrete pattern explains the gap and is not already in `lessons/<account>.md`, record exactly one lesson with `survivor.py learn --account <key> --pattern "..." --reason "..." --addition "..." --evidence <ids>`. Keep `--addition` to one or two actionable sentences in the account's voice. Skip learning when the winner is explained by something unrepeatable (a news spike, a big account's repost).
 3. **Verify the candidate** in the browser, signed in as the owning account. Read [references/platforms.md](references/platforms.md) for each platform's controls. Confirm it is the account's own post, the text matches, and it is not pinned, boosted, promoted, an ad, a collab, or the start of a thread. If any check fails, add its URL to that account's `protect` list in `config.json` and verify `backup` instead. If both fail, retire nothing for that account.
 4. **Archive** with `survivor.py archive --account <key> --post-id <id>`, then save a screenshot of the post to the returned `screenshot` path.
-5. **Retire** according to the account's `retire` mode:
-   - `delete` (Instagram): delete the post. Instagram keeps it in Recently Deleted for 30 days. Record with `retire --action deleted`.
-   - `hide-then-confirm-delete` (TikTok, YouTube): set it to Only me or Private, record `retire --action hidden`, then `queue` it for permanent deletion.
-   - `confirm-delete` (X): X has no hide or restore, so only `queue` it.
+5. **Queue, never retire.** Every account uses `confirm-delete`, so run `survivor.py queue --account <key> --post-id <id> --archive <archive>` and leave the post live. Do not hide, delete, or change any post during the weekly run, on any platform. The user approves each deletion before anything happens.
 6. Run `survivor.py log --account <key> --summary '<json>'` once per account with the pool size, winners, lesson title, and what was retired or why nothing was.
-7. **Report** in the run's chat: one short block per account with the winner (link and numbers), the lesson, and what was retired. End by listing every queued post (account, text, views, link) and asking the user to reply `delete` to permanently delete them, or to name the ones to keep. These deletes cannot be undone, so they always wait for the user's approval.
+7. **Report** in the run's chat: one short block per account with the winner (link and numbers) and the lesson. For each queued post, show its screenshot as an inline image of the archived `.png`, plus its text, views, likes, and link. Ask the user to approve the deletions by replying `delete`, or to name the posts to keep. Nothing is deleted until that reply.
 
 Retire at most one post per account per week. Never post, reply, like, schedule, or edit post text.
 
 ## Confirming queued deletions
 
-When the user replies `delete` (or names specific posts), run `survivor.py pending`. For each approved post, open it, check that it is still the same post, delete it permanently, and record `retire --action deleted --archive <archive>`. For posts the user wants to keep, record `retire --action dropped` and, on TikTok or YouTube, make the post public again. Posts nobody confirmed stay hidden and are listed again in the next weekly report.
+When the user replies `delete` (or names specific posts), run `survivor.py pending`. For each approved post, open it, check that it is still the same post, delete it permanently, and record `retire --action deleted --archive <archive>`. For posts the user wants to keep, record `retire --action dropped`. Posts nobody approved stay live and are listed again in the next weekly report.
 
 ## Accounts and tuning
 
