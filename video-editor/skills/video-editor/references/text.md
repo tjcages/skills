@@ -57,8 +57,10 @@ film:
 - The entrance finishes inside the entering budget that `readingFrames()`
   assumes, `words * 3 + 12` frames, so the hold maths stays true. A
   slower entrance is not more elegant, it is unreadable for longer.
-- **One treatment per film.** Every text scene reuses it; variety lives
-  across films, not within one.
+- **One reading treatment per film.** Every line the viewer must read
+  uses it; variety lives across films, not within one. A `typography`
+  section of the reel may go further (type that slams, stacks, or becomes
+  the layout), as long as each line still gets its reading hold.
 - Keep the frame alive through type, product elements, or a deliberate camera
   move. A repeated slow zoom is not a treatment by itself.
 - Entrances happen once, in the scene that introduces the line, as

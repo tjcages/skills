@@ -161,6 +161,16 @@ mkdirSync(OUT_DIR, { recursive: true })
 const warnings = []
 let previousOut = null
 
+// The hook lands in the first second, so the film's first frame must
+// already show something: not a blank canvas waiting for a fade or a title.
+function blankShare(image) {
+  const [r, g, b] = background(image)
+  let same = 0
+  let total = 0
+  for (let i = 0; i < image.width * image.height; i += 7, total++) if (!differs(image, i, r, g, b)) same++
+  return same / total
+}
+
 cuts.forEach((cut, index) => {
   const inPath = still(cut.scene, cut.in)
   const outPath = still(cut.scene, cut.out - 1)
@@ -170,6 +180,14 @@ cuts.forEach((cut, index) => {
   ]
 
   const lastFrameOfFilm = index === cuts.length - 1 ? cut.out - 1 : -1
+  if (index === 0) {
+    const blank = blankShare(frames[0][1])
+    if (blank > 0.985) {
+      warnings.push(
+        `${cut.scene} frame ${cut.in}: the film opens on a blank frame (${(blank * 100).toFixed(1)}% one colour). The hook lands in the first second: start on something striking already in motion. Open ${inPath}.`
+      )
+    }
+  }
 
   for (const [frame, image, path] of frames) {
     const fill = marginFill(image)
